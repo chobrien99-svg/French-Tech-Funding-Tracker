@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Tech Funding 2025 - Interactive Database</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" opacity="0.1"><path d="M0,0 L1200,0 L1200,80 Q900,120 600,80 T0,80 Z" fill="white"/></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ftj-badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Charts Section */
+        .charts-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            min-height: 350px;
+        }
+
+        .map-container {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            grid-column: span 2;
+        }
+
+        #map {
+            height: 500px;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .chart-toggle {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .chart-toggle:hover {
+            background: #764ba2;
+        }
+
+        /* Map Popup Styles */
+        .leaflet-popup-content-wrapper {
+            border-radius: 12px;
+            padding: 0;
+        }
+
+        .map-popup {
+            padding: 1rem;
+            min-width: 200px;
+        }
+
+        .map-popup-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-popup-stats {
+            display: grid;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .map-popup-stat {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .map-popup-label {
+            color: #666;
+        }
+
+        .map-popup-value {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .map-popup-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .map-popup-button:hover {
+            background: #764ba2;
+        }
+
+        /* Top Lists */
+        .top-lists {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .top-list {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .top-list h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .top-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .top-item:hover {
+            background: #f0f0f0;
+            border-left: 3px solid #667eea;
+            padding-left: 0.7rem;
+        }
+
+        .top-item-rank {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .top-item-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .top-item-value {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        /* Filters */
+        .filters-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .filter-group select {
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .filter-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-tag button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0;
+            line-height: 1;
+        }
+
+        /* Results */
+        .results-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-count {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .sort-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .sort-controls select {
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .company-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            overflow: hidden;
+        }
+
+        .company-card:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+            overflow: hidden;
+        }
+
+        .company-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            flex: 1;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .company-amount {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #667eea;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .company-sectors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .company-sector {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .company-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .company-meta {
+            display: grid;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .company-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            overflow: hidden;
+        }
+
+        .company-meta-label {
+            font-weight: 600;
+            min-width: 80px;
+        }
+
+        .company-meta-item a {
+            word-break: break-all;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            display: inline-block;
+        }
+
+        /* Pagination */
+        .pagination-wrapper {
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            min-width: 45px;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            border-color: #667eea;
+            background: #f8f9fa;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .page-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-dots {
+            padding: 0 0.5rem;
+            color: #999;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                grid-column: span 1;
+            }
+
+            .companies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Legend */
+        .map-legend {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .legend-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #667eea;
+        }
+    </style>
+</head>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QEY5FFC59"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QEY5FFC59');
+</script>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>🇫🇷 French Tech Funding 2025</h1>
+            <p class="subtitle">Interactive database of French startup funding rounds tracked by The French Tech Journal</p>
+            <a href="infographic.html" style="display: inline-block; margin-top: 15px; padding: 12px 24px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+                📊 View 2025 Year in Review Infographic
+            </a>
+            
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-companies">687</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-funding">€8.48B</div>
+                    <div class="stat-label">Total Funding</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-average">€12.5M</div>
+                    <div class="stat-label">Average Round</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-sectors">13</div>
+                    <div class="stat-label">Sectors</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2 class="chart-title">Sector Distribution</h2>
+                        <button class="chart-toggle" id="sector-toggle">By Funding €</button>
+                    </div>
+                    <canvas id="sectorChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2 class="chart-title">Funding Rounds</h2>
+                        <button class="chart-toggle" id="rounds-toggle">By Funding €</button>
+                    </div>
+                    <canvas id="roundsChart"></canvas>
+                </div>
+
+                <!-- Interactive Map -->
+                <div class="map-container">
+                    <div class="chart-header">
+                        <h2 class="chart-title">🗺️ Geographic Distribution Across France</h2>
+                        <button class="chart-toggle" id="map-toggle">By Funding €</button>
+                    </div>
+                    <div id="map"></div>
+                    <div class="map-legend">
+                        <div class="legend-title">Marker Size</div>
+                        <div class="legend-item">
+                            <div class="legend-circle" style="width: 10px; height: 10px; background: rgba(102, 126, 234, 0.7);"></div>
+                            <span>Small (< €100M or < 10 companies)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-circle" style="width: 15px; height: 15px; background: rgba(102, 126, 234, 0.7);"></div>
+                            <span>Medium (€100M-€500M or 10-30 companies)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-circle" style="width: 25px; height: 25px; background: rgba(102, 126, 234, 0.7);"></div>
+                            <span>Large (> €500M or > 30 companies)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Lists -->
+            <div class="top-lists">
+                <div class="top-list">
+                    <h3>🏆 Largest Deals</h3>
+                    <div id="top-deals"></div>
+                </div>
+                <div class="top-list">
+                    <h3>🏙️ Top Cities</h3>
+                    <div id="top-cities"></div>
+                </div>
+                <div class="top-list">
+                    <h3>💼 Most Active Investors</h3>
+                    <div id="top-investors"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <input type="text" class="search-box" id="search" placeholder="🔍 Search companies, investors, cities, or keywords...">
+            
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label>Sector</label>
+                    <select id="filter-sector">
+                        <option value="">All Sectors</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Month</label>
+                    <select id="filter-month">
+                        <option value="">All Months</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Round Type</label>
+                    <select id="filter-round">
+                        <option value="">All Round Types</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>City</label>
+                    <select id="filter-city">
+                        <option value="">All Cities</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Funding Size</label>
+                    <select id="filter-size">
+                        <option value="">All Amounts</option>
+                        <option value="0-1">Under €1M</option>
+                        <option value="1-5">€1M - €5M</option>
+                        <option value="5-10">€5M - €10M</option>
+                        <option value="10-50">€10M - €50M</option>
+                        <option value="50-999999">Over €50M</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="active-filters" id="active-filters"></div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <div class="results-header">
+                <div class="results-count" id="results-count">687 companies</div>
+                <div class="sort-controls">
+                    <label>Sort by:</label>
+                    <select id="sort-by">
+                        <option value="date-desc">Date (Newest First)</option>
+                        <option value="date-asc">Date (Oldest First)</option>
+                        <option value="amount-desc">Amount (Highest First)</option>
+                        <option value="amount-asc">Amount (Lowest First)</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="companies-grid" id="companies-grid"></div>
+            <div id="pagination" class="pagination-wrapper"></div>
+        </div>
+    </div>
+
+    <script>
+        let allCompanies = [];
+        let filteredCompanies = [];
+        let currentPage = 1;
+        let itemsPerPage = 50;
+        let sectorChart = null;
+        let roundsChart = null;
+        let map = null;
+        let markers = [];
+        let sectorChartMode = 'funding';
+        let roundsChartMode = 'funding';
+        let mapMode = 'funding'; // 'funding' or 'count'
+
+        // Helper function to get company sectors (backward compatible)
+        function getCompanySectors(company) {
+            // New format: sectors array
+            if (Array.isArray(company.sectors)) {
+                return company.sectors;
+            }
+            // Old format: single sector string (backward compatibility)
+            if (company.sector && typeof company.sector === 'string') {
+                return [company.sector];
+            }
+            return [];
+        }
+
+        // Chart color schemes
+        const chartColors = [
+            '#667eea', '#764ba2', '#f093fb', '#4facfe',
+            '#43e97b', '#fa709a', '#fee140', '#30cfd0',
+            '#a8edea', '#fed6e3', '#c471f5', '#667eea'
+        ];
+
+        // City coordinates
+        const cityCoordinates = {
+            'Paris': [48.8566, 2.3522],
+            'Lyon': [45.7640, 4.8357],
+            'Marseille': [43.2965, 5.3698],
+            'Toulouse': [43.6047, 1.4442],
+            'Nice': [43.7102, 7.2620],
+            'Nantes': [47.2184, -1.5536],
+            'Montpellier': [43.6108, 3.8767],
+            'Strasbourg': [48.5734, 7.7521],
+            'Bordeaux': [44.8378, -0.5792],
+            'Lille': [50.6292, 3.0573],
+            'Rennes': [48.1173, -1.6778],
+            'Grenoble': [45.1885, 5.7245],
+            'Montreuil': [48.8614, 2.4436],
+            'Annecy': [45.8992, 6.1294],
+            'Issy-les-Moulineaux': [48.8239, 2.2701],
+            'Aix-en-Provence': [43.5297, 5.4474],
+            'Boulogne-Billancourt': [48.8350, 2.2397],
+            'Clermont-Ferrand': [45.7772, 3.0870],
+            'Chambéry': [45.5646, 5.9178],
+            'Villeurbanne': [45.7660, 4.8795],
+            'Saint-Étienne': [45.4397, 4.3872],
+            'Meylan': [45.2097, 5.7697],
+            'Puteaux': [48.8838, 2.2394],
+            'Saint-Mandé': [48.8453, 2.4177],
+            'Cesson-Sévigné': [48.1211, -1.6031],
+            'Libourne': [44.9167, -0.2333],
+            'Vélizy-Villacoublay': [48.7833, 2.1833],
+            'Courbevoie': [48.8977, 2.2531],
+            'La Ciotat': [43.1742, 5.6064],
+            'Saint-Malo': [48.6500, -2.0167]
+        };
+
+        // Load data
+        fetch('funding-data.json')
+            .then(response => response.json())
+            .then(data => {
+                allCompanies = data;
+                filteredCompanies = [...allCompanies];
+                initializeFilters();
+                initializeCharts();
+                initializeMap();
+                updateDisplay();
+            });
+
+        function initializeMap() {
+            // Initialize Leaflet map centered on France
+            map = L.map('map').setView([46.603354, 1.888334], 6);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            updateMapMarkers();
+        }
+
+        function updateMapMarkers() {
+            // Clear existing markers
+            markers.forEach(marker => map.removeLayer(marker));
+            markers = [];
+
+            // Calculate city data
+            const cityData = {};
+            filteredCompanies.forEach(company => {
+                const city = company.hq;
+                if (city && cityCoordinates[city]) {
+                    if (!cityData[city]) {
+                        cityData[city] = {
+                            count: 0,
+                            funding: 0,
+                            companies: []
+                        };
+                    }
+                    cityData[city].count++;
+                    cityData[city].funding += company.amount || 0;
+                    cityData[city].companies.push(company.company);
+                }
+            });
+
+            // Add markers for each city
+            Object.entries(cityData).forEach(([city, data]) => {
+                const coords = cityCoordinates[city];
+                if (!coords) return;
+
+                // Calculate marker size based on mode
+                let value = mapMode === 'funding' ? data.funding : data.count;
+                let radius;
+                if (mapMode === 'funding') {
+                    if (value < 100) radius = 5;
+                    else if (value < 500) radius = 10;
+                    else radius = 20;
+                } else {
+                    if (value < 10) radius = 5;
+                    else if (value < 30) radius = 10;
+                    else radius = 20;
+                }
+
+                // Create circle marker
+                const marker = L.circleMarker(coords, {
+                    radius: radius,
+                    fillColor: '#667eea',
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.7
+                });
+
+                // Create popup content
+                const popupContent = `
+                    <div class="map-popup">
+                        <div class="map-popup-title">${city}</div>
+                        <div class="map-popup-stats">
+                            <div class="map-popup-stat">
+                                <span class="map-popup-label">Companies:</span>
+                                <span class="map-popup-value">${data.count}</span>
+                            </div>
+                            <div class="map-popup-stat">
+                                <span class="map-popup-label">Total Funding:</span>
+                                <span class="map-popup-value">${formatCurrency(data.funding)}</span>
+                            </div>
+                            <div class="map-popup-stat">
+                                <span class="map-popup-label">Avg Round:</span>
+                                <span class="map-popup-value">${formatCurrency(data.funding / data.count)}</span>
+                            </div>
+                        </div>
+                        <button class="map-popup-button" onclick="filterByCity('${city}')">View Companies</button>
+                    </div>
+                `;
+
+                marker.bindPopup(popupContent);
+                marker.addTo(map);
+                markers.push(marker);
+            });
+        }
+
+        function filterByCity(city) {
+            document.getElementById('filter-city').value = city;
+            applyFilters();
+            map.closePopup();
+            // Scroll to results
+            document.querySelector('.results-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function initializeFilters() {
+            // Populate sector filter - extract all unique sectors from all companies
+            const allSectors = allCompanies.flatMap(c => getCompanySectors(c));
+            const sectors = [...new Set(allSectors)].sort();
+            const sectorSelect = document.getElementById('filter-sector');
+            sectors.forEach(sector => {
+                const option = document.createElement('option');
+                option.value = sector;
+                option.textContent = sector;
+                sectorSelect.appendChild(option);
+            });
+
+            // Populate month filter
+            const months = [...new Set(allCompanies.map(c => c.month))].sort();
+            const monthSelect = document.getElementById('filter-month');
+            months.forEach(month => {
+                const option = document.createElement('option');
+                option.value = month;
+                option.textContent = month;
+                monthSelect.appendChild(option);
+            });
+
+            // Populate round filter
+            const rounds = [...new Set(allCompanies.map(c => c.round))].filter(r => r).sort();
+            const roundSelect = document.getElementById('filter-round');
+            rounds.forEach(round => {
+                const option = document.createElement('option');
+                option.value = round;
+                option.textContent = round;
+                roundSelect.appendChild(option);
+            });
+
+            // Populate city filter
+            const cities = [...new Set(allCompanies.map(c => c.hq))].filter(c => c).sort();
+            const citySelect = document.getElementById('filter-city');
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            });
+
+            // Add event listeners
+            document.getElementById('search').addEventListener('input', applyFilters);
+            document.getElementById('filter-sector').addEventListener('change', applyFilters);
+            document.getElementById('filter-month').addEventListener('change', applyFilters);
+            document.getElementById('filter-round').addEventListener('change', applyFilters);
+            document.getElementById('filter-city').addEventListener('change', applyFilters);
+            document.getElementById('filter-size').addEventListener('change', applyFilters);
+            document.getElementById('sort-by').addEventListener('change', updateDisplay);
+            document.getElementById('sector-toggle').addEventListener('click', toggleSectorChart);
+            document.getElementById('rounds-toggle').addEventListener('click', toggleRoundsChart);
+            document.getElementById('map-toggle').addEventListener('click', toggleMapMode);
+        }
+
+        function toggleMapMode() {
+            mapMode = mapMode === 'funding' ? 'count' : 'funding';
+            const button = document.getElementById('map-toggle');
+            button.textContent = mapMode === 'funding' ? 'By Funding €' : 'By Count #';
+            updateMapMarkers();
+        }
+
+        function applyFilters() {
+            currentPage = 1; // Reset to first page when filters change
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const sectorFilter = document.getElementById('filter-sector').value;
+            const monthFilter = document.getElementById('filter-month').value;
+            const roundFilter = document.getElementById('filter-round').value;
+            const cityFilter = document.getElementById('filter-city').value;
+            const sizeFilter = document.getElementById('filter-size').value;
+
+            filteredCompanies = allCompanies.filter(company => {
+                // Search filter
+                if (searchTerm) {
+                    const companySectors = getCompanySectors(company).join(' ');
+                    const searchFields = [
+                        company.company,
+                        company.description,
+                        company.hq,
+                        company.investors,
+                        company.founders,
+                        companySectors
+                    ].filter(f => f).join(' ').toLowerCase();
+
+                    if (!searchFields.includes(searchTerm)) return false;
+                }
+
+                // Sector filter - check if ANY sector matches
+                if (sectorFilter && !getCompanySectors(company).includes(sectorFilter)) return false;
+
+                // Month filter
+                if (monthFilter && company.month !== monthFilter) return false;
+
+                // Round filter
+                if (roundFilter && company.round !== roundFilter) return false;
+
+                // City filter
+                if (cityFilter && company.hq !== cityFilter) return false;
+
+                // Size filter
+                if (sizeFilter && company.amount) {
+                    const [min, max] = sizeFilter.split('-').map(Number);
+                    if (company.amount < min || company.amount > max) return false;
+                }
+
+                return true;
+            });
+
+            updateActiveFilters();
+            updateDisplay();
+            updateCharts();
+            updateMapMarkers();
+        }
+
+        function updateActiveFilters() {
+            const container = document.getElementById('active-filters');
+            container.innerHTML = '';
+
+            const filters = [
+                { id: 'filter-sector', label: 'Sector' },
+                { id: 'filter-month', label: 'Month' },
+                { id: 'filter-round', label: 'Round' },
+                { id: 'filter-city', label: 'City' },
+                { id: 'filter-size', label: 'Size' }
+            ];
+
+            filters.forEach(filter => {
+                const select = document.getElementById(filter.id);
+                if (select.value) {
+                    const tag = document.createElement('div');
+                    tag.className = 'filter-tag';
+                    tag.innerHTML = `
+                        ${filter.label}: ${select.options[select.selectedIndex].text}
+                        <button onclick="clearFilter('${filter.id}')">×</button>
+                    `;
+                    container.appendChild(tag);
+                }
+            });
+
+            const searchTerm = document.getElementById('search').value;
+            if (searchTerm) {
+                const tag = document.createElement('div');
+                tag.className = 'filter-tag';
+                tag.innerHTML = `
+                    Search: "${searchTerm}"
+                    <button onclick="clearSearch()">×</button>
+                `;
+                container.appendChild(tag);
+            }
+        }
+
+        function clearFilter(filterId) {
+            document.getElementById(filterId).value = '';
+            applyFilters();
+        }
+
+        function clearSearch() {
+            document.getElementById('search').value = '';
+            applyFilters();
+        }
+
+        function updateDisplay() {
+            // Update stats
+            const totalFunding = filteredCompanies.reduce((sum, c) => sum + (c.amount || 0), 0);
+            const avgFunding = filteredCompanies.length > 0 ? totalFunding / filteredCompanies.filter(c => c.amount).length : 0;
+            const allSectorsInFiltered = filteredCompanies.flatMap(c => getCompanySectors(c));
+            const sectors = new Set(allSectorsInFiltered).size;
+
+            document.getElementById('stat-companies').textContent = filteredCompanies.length;
+            document.getElementById('stat-funding').textContent = formatCurrency(totalFunding);
+            document.getElementById('stat-average').textContent = formatCurrency(avgFunding);
+            document.getElementById('stat-sectors').textContent = sectors;
+
+            // Update results count
+            document.getElementById('results-count').textContent = 
+                `${filteredCompanies.length} ${filteredCompanies.length === 1 ? 'company' : 'companies'}`;
+
+            // Sort companies
+            const sortBy = document.getElementById('sort-by').value;
+            const sorted = [...filteredCompanies].sort((a, b) => {
+                switch (sortBy) {
+                    case 'date-desc':
+                        return new Date(b.month || 0) - new Date(a.month || 0);
+                    case 'date-asc':
+                        return new Date(a.month || 0) - new Date(b.month || 0);
+                    case 'amount-desc':
+                        return (b.amount || 0) - (a.amount || 0);
+                    case 'amount-asc':
+                        return (a.amount || 0) - (b.amount || 0);
+                    case 'name-asc':
+                        return (a.company || '').localeCompare(b.company || '');
+                    case 'name-desc':
+                        return (b.company || '').localeCompare(a.company || '');
+                    default:
+                        return 0;
+                }
+            });
+
+            // Pagination: Only render current page
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageCompanies = sorted.slice(startIndex, endIndex);
+            const totalPages = Math.ceil(sorted.length / itemsPerPage);
+
+            // Render companies (only current page)
+            const grid = document.getElementById('companies-grid');
+            grid.innerHTML = pageCompanies.map(company => {
+                const companySectors = getCompanySectors(company);
+                const sectorsHTML = companySectors.length > 0
+                    ? `<div class="company-sectors">${companySectors.map(s => `<span class="company-sector">${s}</span>`).join('')}</div>`
+                    : '';
+
+                return `
+                <div class="company-card">
+                    <div class="company-header">
+                        <div class="company-name">${company.company || 'Unknown'}</div>
+                        ${company.amount ? `<div class="company-amount">${formatCurrency(company.amount)}</div>` : ''}
+                    </div>
+                    ${sectorsHTML}
+                    ${company.description ? `<div class="company-description">${company.description}</div>` : ''}
+                    <div class="company-meta">
+                        ${company.hq ? `<div class="company-meta-item"><span class="company-meta-label">📍 Location:</span> ${company.hq}</div>` : ''}
+                        ${company.round ? `<div class="company-meta-item"><span class="company-meta-label">💼 Round:</span> ${company.round}</div>` : ''}
+                        ${company.month ? `<div class="company-meta-item"><span class="company-meta-label">📅 Date:</span> ${company.month}</div>` : ''}
+                        ${company.investors ? `<div class="company-meta-item"><span class="company-meta-label">🤝 Investors:</span> ${company.investors}</div>` : ''}
+                        ${company.website ? `<div class="company-meta-item"><span class="company-meta-label">🔗 Website:</span> <a href="${company.website}" target="_blank" style="color: #667eea;">${company.website}</a></div>` : ''}
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            // Render pagination controls
+            renderPagination(totalPages);
+
+            updateTopLists();
+        }
+
+        function renderPagination(totalPages) {
+            const paginationContainer = document.getElementById('pagination');
+            if (!paginationContainer) return;
+
+            if (totalPages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+
+            let html = '<div class="pagination-controls">';
+            
+            // Previous button
+            html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Previous</button>`;
+            
+            // Page numbers (show 5 pages at a time)
+            const startPage = Math.max(1, currentPage - 2);
+            const endPage = Math.min(totalPages, currentPage + 2);
+            
+            if (startPage > 1) {
+                html += `<button class="page-btn" onclick="changePage(1)">1</button>`;
+                if (startPage > 2) html += '<span class="page-dots">...</span>';
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+            
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += '<span class="page-dots">...</span>';
+                html += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
+            }
+            
+            // Next button
+            html += `<button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
+            
+            html += '</div>';
+            paginationContainer.innerHTML = html;
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
+            if (page < 1 || page > totalPages) return;
+            
+            currentPage = page;
+            updateDisplay();
+            
+            // Scroll to top of results
+            document.getElementById('companies-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function updateTopLists() {
+            // Top Deals
+            const topDeals = [...filteredCompanies]
+                .filter(c => c.amount)
+                .sort((a, b) => b.amount - a.amount)
+                .slice(0, 10);
+            
+            document.getElementById('top-deals').innerHTML = topDeals.map((c, i) => `
+                <div class="top-item">
+                    <span class="top-item-rank">${i + 1}</span>
+                    <span class="top-item-name">${c.company}</span>
+                    <span class="top-item-value">${formatCurrency(c.amount)}</span>
+                </div>
+            `).join('');
+
+            // Top Cities
+            const cityCounts = {};
+            const cityFunding = {};
+            filteredCompanies.forEach(c => {
+                if (c.hq) {
+                    cityCounts[c.hq] = (cityCounts[c.hq] || 0) + 1;
+                    cityFunding[c.hq] = (cityFunding[c.hq] || 0) + (c.amount || 0);
+                }
+            });
+            const topCities = Object.entries(cityCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10);
+            
+            document.getElementById('top-cities').innerHTML = topCities.map(([city, count], i) => `
+                <div class="top-item" onclick="filterByCity('${city}')">
+                    <span class="top-item-rank">${i + 1}</span>
+                    <span class="top-item-name">${city}</span>
+                    <span class="top-item-value">${count} (${formatCurrency(cityFunding[city])})</span>
+                </div>
+            `).join('');
+
+            // Top Investors
+            const investorCounts = {};
+            filteredCompanies.forEach(c => {
+                if (c.investors) {
+                    const investors = c.investors.split(',').map(inv => inv.trim());
+                    investors.forEach(inv => {
+                        if (inv) {
+                            investorCounts[inv] = (investorCounts[inv] || 0) + 1;
+                        }
+                    });
+                }
+            });
+            const topInvestors = Object.entries(investorCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 10);
+            
+            document.getElementById('top-investors').innerHTML = topInvestors.map(([investor, count], i) => `
+                <div class="top-item">
+                    <span class="top-item-rank">${i + 1}</span>
+                    <span class="top-item-name">${investor}</span>
+                    <span class="top-item-value">${count}</span>
+                </div>
+            `).join('');
+        }
+
+        function initializeCharts() {
+            // Sector Chart
+            const sectorCtx = document.getElementById('sectorChart').getContext('2d');
+            sectorChart = new Chart(sectorCtx, {
+                type: 'pie',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: chartColors,
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10,
+                                font: { size: 11 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    if (sectorChartMode === 'funding') {
+                                        return `${label}: ${formatCurrency(value)} (${percentage}%)`;
+                                    } else {
+                                        return `${label}: ${value} companies (${percentage}%)`;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const sector = sectorChart.data.labels[index];
+                            document.getElementById('filter-sector').value = sector;
+                            applyFilters();
+                        }
+                    }
+                }
+            });
+
+            // Funding Rounds Chart
+            const roundsCtx = document.getElementById('roundsChart').getContext('2d');
+            roundsChart = new Chart(roundsCtx, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Funding (€M)',
+                        data: [],
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: '#667eea',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed.x || 0;
+                                    if (roundsChartMode === 'funding') {
+                                        return `Funding: ${formatCurrency(value)}`;
+                                    } else {
+                                        return `Companies: ${value}`;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    if (roundsChartMode === 'funding') {
+                                        return formatCurrency(value);
+                                    } else {
+                                        return value;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const round = roundsChart.data.labels[index];
+                            document.getElementById('filter-round').value = round;
+                            applyFilters();
+                        }
+                    }
+                }
+            });
+
+            updateCharts();
+        }
+
+        function updateCharts() {
+            // Update Sector Chart - count companies in all their sectors
+            const sectorData = {};
+            filteredCompanies.forEach(c => {
+                const companySectors = getCompanySectors(c);
+                companySectors.forEach(sector => {
+                    if (!sectorData[sector]) {
+                        sectorData[sector] = { count: 0, funding: 0 };
+                    }
+                    sectorData[sector].count++;
+                    sectorData[sector].funding += c.amount || 0;
+                });
+            });
+
+            const sortedSectors = Object.entries(sectorData)
+                .sort((a, b) => {
+                    if (sectorChartMode === 'funding') {
+                        return b[1].funding - a[1].funding;
+                    } else {
+                        return b[1].count - a[1].count;
+                    }
+                })
+                .slice(0, 14);
+
+            sectorChart.data.labels = sortedSectors.map(([sector]) => sector);
+            sectorChart.data.datasets[0].data = sortedSectors.map(([, data]) => {
+                return sectorChartMode === 'funding' ? data.funding : data.count;
+            });
+            sectorChart.update();
+
+            // Update Funding Rounds Chart
+            const allowedRounds = ['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth'];
+            const roundData = {};
+
+            filteredCompanies.forEach(c => {
+                if (c.round && allowedRounds.includes(c.round)) {
+                    if (!roundData[c.round]) {
+                        roundData[c.round] = { count: 0, funding: 0 };
+                    }
+                    roundData[c.round].count++;
+                    roundData[c.round].funding += c.amount || 0;
+                }
+            });
+
+            // Sort rounds in logical order
+            const roundOrder = ['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth'];
+            const sortedRounds = roundOrder
+                .filter(round => roundData[round])
+                .map(round => [round, roundData[round]]);
+
+            roundsChart.data.labels = sortedRounds.map(([round]) => round);
+            roundsChart.data.datasets[0].data = sortedRounds.map(([, data]) => {
+                return roundsChartMode === 'funding' ? data.funding : data.count;
+            });
+            roundsChart.data.datasets[0].label = roundsChartMode === 'funding' ? 'Funding (€M)' : 'Companies';
+            roundsChart.update();
+        }
+
+        function toggleSectorChart() {
+            sectorChartMode = sectorChartMode === 'funding' ? 'count' : 'funding';
+            const button = document.getElementById('sector-toggle');
+            button.textContent = sectorChartMode === 'funding' ? 'By Funding €' : 'By Count #';
+            updateCharts();
+        }
+
+        function toggleRoundsChart() {
+            roundsChartMode = roundsChartMode === 'funding' ? 'count' : 'funding';
+            const button = document.getElementById('rounds-toggle');
+            button.textContent = roundsChartMode === 'funding' ? 'By Funding €' : 'By Count #';
+            updateCharts();
+        }
+
+        function formatCurrency(amount) {
+            if (!amount) return '€0';
+            if (amount >= 1000) {
+                return '€' + (amount / 1000).toFixed(1) + 'B';
+            } else {
+                return '€' + amount.toFixed(1) + 'M';
+            }
+        }
+    </script>
+</body>
+</html>
