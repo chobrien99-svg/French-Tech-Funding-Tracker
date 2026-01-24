@@ -20,6 +20,70 @@ Supabase provides:
 - **Real-time subscriptions** for live updates
 - **Free tier** generous enough to start
 
+---
+
+## Quick Start with Supabase CLI (Recommended)
+
+### 1. Install the Supabase CLI
+
+```bash
+# macOS
+brew install supabase/tap/supabase
+
+# Windows (scoop)
+scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
+scoop install supabase
+
+# Linux (via Homebrew)
+brew install supabase/tap/supabase
+
+# Or via npm (npx)
+npx supabase --version
+```
+
+### 2. Login to Supabase
+
+```bash
+supabase login
+```
+
+### 3. Link to Your Project
+
+```bash
+# From the project root directory
+supabase link --project-ref tlwqkglfyjydwsgjrclx
+```
+
+You'll be prompted for your database password.
+
+### 4. Push the Schema to Production
+
+```bash
+supabase db push
+```
+
+This will run all migrations in `supabase/migrations/` against your production database.
+
+### 5. Run the Data Migration Script
+
+After the schema is in place, populate the data:
+
+```bash
+cd migration
+npm install
+export SUPABASE_URL="https://tlwqkglfyjydwsgjrclx.supabase.co"
+export SUPABASE_SERVICE_KEY="your-service-role-key"
+npm run migrate
+```
+
+---
+
+## Alternative: Manual SQL Setup
+
+If you prefer not to use the CLI, see the manual setup instructions below.
+
+---
+
 ## Database Schema
 
 The schema creates the following tables:
