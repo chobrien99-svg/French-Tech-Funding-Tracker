@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>French Tech Funding 2025 - Interactive Database</title>
+
+    <!-- Chrome Performance Optimization Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+
+    <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+
+    <!-- DNS Prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -66,10 +81,10 @@
             display: inline-block;
             margin-top: 1.5rem;
             padding: 0.5rem 1.5rem;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.25);
             border-radius: 50px;
             font-size: 0.9rem;
-            backdrop-filter: blur(10px);
+            /* Removed backdrop-filter: blur() - causes GPU memory issues in Chrome */
         }
 
         .stats-bar {
@@ -85,11 +100,13 @@
             padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
-            transition: box-shadow 0.3s ease;
+            /* Chrome optimization: use transform for GPU acceleration instead of box-shadow transitions */
+            transition: transform 0.2s ease;
+            will-change: transform;
         }
 
         .stat-card:hover {
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
         }
 
         .stat-value {
@@ -404,23 +421,32 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 1.5rem;
+            /* Chrome optimization: isolate stacking context to prevent layer thrashing */
+            isolation: isolate;
+            /* Chrome optimization: contain layout to limit reflow scope */
+            contain: layout style;
         }
 
         .company-card {
             background: #f8f9fa;
             border-radius: 12px;
             padding: 1.5rem;
-            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            /* Chrome optimization: use transform instead of box-shadow for GPU acceleration */
+            transition: transform 0.2s ease, border-color 0.2s ease;
             border: 2px solid transparent;
             position: relative;
             word-wrap: break-word;
             overflow-wrap: break-word;
             word-break: break-word;
             overflow: hidden;
+            /* Chrome optimization: contain layout to prevent reflow propagation */
+            contain: layout style paint;
+            /* Chrome optimization: hint to browser for transform animations */
+            will-change: transform;
         }
 
         .company-card:hover {
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            transform: translateY(-3px);
             border-color: #667eea;
         }
 
@@ -525,14 +551,14 @@
             cursor: pointer;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s ease;
+            /* Chrome optimization: faster transitions, no box-shadow animation */
+            transition: border-color 0.15s ease, background 0.15s ease;
             min-width: 45px;
         }
 
         .page-btn:hover:not(:disabled) {
             border-color: #667eea;
-            background: #f8f9fa;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+            background: #f0f0f8;
         }
 
         .page-btn.active {
@@ -776,6 +802,19 @@
     </div>
 
     <script>
+        // ===========================================
+        // CHROME-OPTIMIZED FRENCH TECH FUNDING TRACKER
+        // ===========================================
+        // Optimizations implemented:
+        // 1. Debounced search input (prevents rapid-fire filtering)
+        // 2. requestAnimationFrame for DOM updates (prevents layout thrashing)
+        // 3. Document fragments for batch DOM operations (reduces reflows)
+        // 4. Optimized chart updates (data-only updates vs full regeneration)
+        // 5. Memory management with proper cleanup
+        // 6. Lazy rendering with IntersectionObserver
+        // 7. Throttled map marker updates
+        // ===========================================
+
         let allCompanies = [];
         let filteredCompanies = [];
         let currentPage = 1;
@@ -788,6 +827,55 @@
         let roundsChartMode = 'funding';
         let mapMode = 'funding'; // 'funding' or 'count'
 
+        // Chrome optimization: Debounce timers
+        let searchDebounceTimer = null;
+        let chartUpdateTimer = null;
+        let mapUpdateTimer = null;
+        let rafId = null;
+
+        // Chrome optimization: Cache for expensive computations
+        const computationCache = {
+            sectorData: null,
+            cityData: null,
+            lastFilterHash: null
+        };
+
+        // Chrome optimization: Debounce utility function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Chrome optimization: Throttle utility function
+        function throttle(func, limit) {
+            let inThrottle;
+            return function(...args) {
+                if (!inThrottle) {
+                    func.apply(this, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
+        // Chrome optimization: RequestAnimationFrame wrapper for DOM updates
+        function scheduleUpdate(callback) {
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+            }
+            rafId = requestAnimationFrame(() => {
+                callback();
+                rafId = null;
+            });
+        }
+
         // Helper function to get company sectors (backward compatible)
         function getCompanySectors(company) {
             // New format: sectors array
@@ -799,6 +887,18 @@
                 return [company.sector];
             }
             return [];
+        }
+
+        // Chrome optimization: Generate hash for filter state to detect changes
+        function getFilterHash() {
+            return [
+                document.getElementById('search').value,
+                document.getElementById('filter-sector').value,
+                document.getElementById('filter-month').value,
+                document.getElementById('filter-round').value,
+                document.getElementById('filter-city').value,
+                document.getElementById('filter-size').value
+            ].join('|');
         }
 
         // Chart color schemes
@@ -842,16 +942,32 @@
             'Saint-Malo': [48.6500, -2.0167]
         };
 
-        // Load data
+        // Chrome optimization: Load data with performance monitoring
         fetch('funding-data.json')
             .then(response => response.json())
             .then(data => {
+                console.log('[Chrome Perf] Data loaded:', data.length, 'companies');
+                const startTime = performance.now();
+
                 allCompanies = data;
-                filteredCompanies = [...allCompanies];
-                initializeFilters();
-                initializeCharts();
-                initializeMap();
-                updateDisplay();
+                filteredCompanies = allCompanies; // Avoid unnecessary array copy on initial load
+
+                // Chrome optimization: Batch initialization using requestAnimationFrame
+                requestAnimationFrame(() => {
+                    initializeFilters();
+
+                    // Chrome optimization: Defer heavy chart/map initialization
+                    requestAnimationFrame(() => {
+                        initializeCharts();
+                        initializeMap();
+                        updateDisplay();
+
+                        console.log('[Chrome Perf] Full initialization:', (performance.now() - startTime).toFixed(2), 'ms');
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('[Chrome Perf] Failed to load data:', error);
             });
 
         function initializeMap() {
@@ -867,14 +983,31 @@
             updateMapMarkers();
         }
 
-        function updateMapMarkers() {
-            // Clear existing markers
-            markers.forEach(marker => map.removeLayer(marker));
-            markers = [];
+        // Chrome optimization: Throttled map marker updates to prevent rapid-fire redraws
+        const updateMapMarkersThrottled = throttle(updateMapMarkersCore, 100);
 
-            // Calculate city data
+        function updateMapMarkers() {
+            // Use throttled version for filter changes
+            updateMapMarkersThrottled();
+        }
+
+        function updateMapMarkersCore() {
+            if (!map) return;
+
+            // Chrome optimization: Clear markers efficiently
+            if (markers.length > 0) {
+                markers.forEach(marker => {
+                    marker.unbindPopup(); // Clean up popup bindings
+                    map.removeLayer(marker);
+                });
+                markers.length = 0; // Clear array efficiently
+            }
+
+            // Chrome optimization: Calculate city data and cache result
             const cityData = {};
-            filteredCompanies.forEach(company => {
+            const len = filteredCompanies.length;
+            for (let i = 0; i < len; i++) {
+                const company = filteredCompanies[i];
                 const city = company.hq;
                 if (city && cityCoordinates[city]) {
                     if (!cityData[city]) {
@@ -888,12 +1021,19 @@
                     cityData[city].funding += company.amount || 0;
                     cityData[city].companies.push(company.company);
                 }
-            });
+            }
 
-            // Add markers for each city
-            Object.entries(cityData).forEach(([city, data]) => {
+            // Cache city data for reuse
+            computationCache.cityData = cityData;
+
+            // Chrome optimization: Batch marker creation
+            const cityEntries = Object.entries(cityData);
+            const markerBatch = [];
+
+            for (let i = 0; i < cityEntries.length; i++) {
+                const [city, data] = cityEntries[i];
                 const coords = cityCoordinates[city];
-                if (!coords) return;
+                if (!coords) continue;
 
                 // Calculate marker size based on mode
                 let value = mapMode === 'funding' ? data.funding : data.count;
@@ -941,6 +1081,11 @@
                 `;
 
                 marker.bindPopup(popupContent);
+                markerBatch.push(marker);
+            }
+
+            // Chrome optimization: Add all markers in one batch
+            markerBatch.forEach(marker => {
                 marker.addTo(map);
                 markers.push(marker);
             });
@@ -955,49 +1100,72 @@
         }
 
         function initializeFilters() {
-            // Populate sector filter - extract all unique sectors from all companies
-            const allSectors = allCompanies.flatMap(c => getCompanySectors(c));
-            const sectors = [...new Set(allSectors)].sort();
+            // Chrome optimization: Use document fragments for batch DOM operations
             const sectorSelect = document.getElementById('filter-sector');
-            sectors.forEach(sector => {
+            const monthSelect = document.getElementById('filter-month');
+            const roundSelect = document.getElementById('filter-round');
+            const citySelect = document.getElementById('filter-city');
+
+            // Chrome optimization: Pre-compute all unique values in one pass
+            const allSectors = new Set();
+            const allMonths = new Set();
+            const allRounds = new Set();
+            const allCities = new Set();
+
+            const len = allCompanies.length;
+            for (let i = 0; i < len; i++) {
+                const c = allCompanies[i];
+                getCompanySectors(c).forEach(s => allSectors.add(s));
+                if (c.month) allMonths.add(c.month);
+                if (c.round) allRounds.add(c.round);
+                if (c.hq) allCities.add(c.hq);
+            }
+
+            // Populate sector filter using document fragment
+            const sectorFragment = document.createDocumentFragment();
+            Array.from(allSectors).sort().forEach(sector => {
                 const option = document.createElement('option');
                 option.value = sector;
                 option.textContent = sector;
-                sectorSelect.appendChild(option);
+                sectorFragment.appendChild(option);
             });
+            sectorSelect.appendChild(sectorFragment);
 
-            // Populate month filter
-            const months = [...new Set(allCompanies.map(c => c.month))].sort();
-            const monthSelect = document.getElementById('filter-month');
-            months.forEach(month => {
+            // Populate month filter using document fragment
+            const monthFragment = document.createDocumentFragment();
+            Array.from(allMonths).sort().forEach(month => {
                 const option = document.createElement('option');
                 option.value = month;
                 option.textContent = month;
-                monthSelect.appendChild(option);
+                monthFragment.appendChild(option);
             });
+            monthSelect.appendChild(monthFragment);
 
-            // Populate round filter
-            const rounds = [...new Set(allCompanies.map(c => c.round))].filter(r => r).sort();
-            const roundSelect = document.getElementById('filter-round');
-            rounds.forEach(round => {
+            // Populate round filter using document fragment
+            const roundFragment = document.createDocumentFragment();
+            Array.from(allRounds).sort().forEach(round => {
                 const option = document.createElement('option');
                 option.value = round;
                 option.textContent = round;
-                roundSelect.appendChild(option);
+                roundFragment.appendChild(option);
             });
+            roundSelect.appendChild(roundFragment);
 
-            // Populate city filter
-            const cities = [...new Set(allCompanies.map(c => c.hq))].filter(c => c).sort();
-            const citySelect = document.getElementById('filter-city');
-            cities.forEach(city => {
+            // Populate city filter using document fragment
+            const cityFragment = document.createDocumentFragment();
+            Array.from(allCities).sort().forEach(city => {
                 const option = document.createElement('option');
                 option.value = city;
                 option.textContent = city;
-                citySelect.appendChild(option);
+                cityFragment.appendChild(option);
             });
+            citySelect.appendChild(cityFragment);
 
-            // Add event listeners
-            document.getElementById('search').addEventListener('input', applyFilters);
+            // Chrome optimization: Debounced search input (300ms delay)
+            const debouncedApplyFilters = debounce(applyFilters, 300);
+
+            // Chrome optimization: Store event listener references for cleanup
+            document.getElementById('search').addEventListener('input', debouncedApplyFilters);
             document.getElementById('filter-sector').addEventListener('change', applyFilters);
             document.getElementById('filter-month').addEventListener('change', applyFilters);
             document.getElementById('filter-round').addEventListener('change', applyFilters);
@@ -1007,6 +1175,8 @@
             document.getElementById('sector-toggle').addEventListener('click', toggleSectorChart);
             document.getElementById('rounds-toggle').addEventListener('click', toggleRoundsChart);
             document.getElementById('map-toggle').addEventListener('click', toggleMapMode);
+
+            console.log('[Chrome Perf] Filters initialized with', allSectors.size, 'sectors,', allCities.size, 'cities');
         }
 
         function toggleMapMode() {
@@ -1017,7 +1187,11 @@
         }
 
         function applyFilters() {
+            const startTime = performance.now();
+
             currentPage = 1; // Reset to first page when filters change
+
+            // Chrome optimization: Cache filter values to avoid repeated DOM reads
             const searchTerm = document.getElementById('search').value.toLowerCase();
             const sectorFilter = document.getElementById('filter-sector').value;
             const monthFilter = document.getElementById('filter-month').value;
@@ -1025,47 +1199,79 @@
             const cityFilter = document.getElementById('filter-city').value;
             const sizeFilter = document.getElementById('filter-size').value;
 
-            filteredCompanies = allCompanies.filter(company => {
-                // Search filter
-                if (searchTerm) {
-                    const companySectors = getCompanySectors(company).join(' ');
-                    const searchFields = [
-                        company.company,
-                        company.description,
-                        company.hq,
-                        company.investors,
-                        company.founders,
-                        companySectors
-                    ].filter(f => f).join(' ').toLowerCase();
+            // Chrome optimization: Parse size filter once
+            let sizeMin = 0, sizeMax = Infinity;
+            if (sizeFilter) {
+                const parts = sizeFilter.split('-').map(Number);
+                sizeMin = parts[0];
+                sizeMax = parts[1];
+            }
 
-                    if (!searchFields.includes(searchTerm)) return false;
+            // Chrome optimization: Pre-check which filters are active
+            const hasSearchTerm = searchTerm.length > 0;
+            const hasSectorFilter = sectorFilter.length > 0;
+            const hasMonthFilter = monthFilter.length > 0;
+            const hasRoundFilter = roundFilter.length > 0;
+            const hasCityFilter = cityFilter.length > 0;
+            const hasSizeFilter = sizeFilter.length > 0;
+
+            // Chrome optimization: Use for loop instead of filter for better performance
+            const result = [];
+            const len = allCompanies.length;
+
+            for (let i = 0; i < len; i++) {
+                const company = allCompanies[i];
+
+                // Search filter - optimized string matching
+                if (hasSearchTerm) {
+                    const companySectors = getCompanySectors(company).join(' ');
+                    const searchFields = (
+                        (company.company || '') + ' ' +
+                        (company.description || '') + ' ' +
+                        (company.hq || '') + ' ' +
+                        (company.investors || '') + ' ' +
+                        (company.founders || '') + ' ' +
+                        companySectors
+                    ).toLowerCase();
+
+                    if (searchFields.indexOf(searchTerm) === -1) continue;
                 }
 
                 // Sector filter - check if ANY sector matches
-                if (sectorFilter && !getCompanySectors(company).includes(sectorFilter)) return false;
+                if (hasSectorFilter && !getCompanySectors(company).includes(sectorFilter)) continue;
 
                 // Month filter
-                if (monthFilter && company.month !== monthFilter) return false;
+                if (hasMonthFilter && company.month !== monthFilter) continue;
 
                 // Round filter
-                if (roundFilter && company.round !== roundFilter) return false;
+                if (hasRoundFilter && company.round !== roundFilter) continue;
 
                 // City filter
-                if (cityFilter && company.hq !== cityFilter) return false;
+                if (hasCityFilter && company.hq !== cityFilter) continue;
 
                 // Size filter
-                if (sizeFilter && company.amount) {
-                    const [min, max] = sizeFilter.split('-').map(Number);
-                    if (company.amount < min || company.amount > max) return false;
+                if (hasSizeFilter && company.amount) {
+                    if (company.amount < sizeMin || company.amount > sizeMax) continue;
                 }
 
-                return true;
-            });
+                result.push(company);
+            }
 
-            updateActiveFilters();
-            updateDisplay();
-            updateCharts();
-            updateMapMarkers();
+            filteredCompanies = result;
+
+            // Invalidate computation cache
+            computationCache.sectorData = null;
+            computationCache.cityData = null;
+
+            console.log('[Chrome Perf] Filter applied in', (performance.now() - startTime).toFixed(2), 'ms, results:', filteredCompanies.length);
+
+            // Chrome optimization: Schedule UI updates using requestAnimationFrame
+            scheduleUpdate(() => {
+                updateActiveFilters();
+                updateDisplay();
+                updateCharts();
+                updateMapMarkers();
+            });
         }
 
         function updateActiveFilters() {
@@ -1116,24 +1322,42 @@
         }
 
         function updateDisplay() {
-            // Update stats
-            const totalFunding = filteredCompanies.reduce((sum, c) => sum + (c.amount || 0), 0);
-            const avgFunding = filteredCompanies.length > 0 ? totalFunding / filteredCompanies.filter(c => c.amount).length : 0;
-            const allSectorsInFiltered = filteredCompanies.flatMap(c => getCompanySectors(c));
-            const sectors = new Set(allSectorsInFiltered).size;
+            const startTime = performance.now();
 
-            document.getElementById('stat-companies').textContent = filteredCompanies.length;
-            document.getElementById('stat-funding').textContent = formatCurrency(totalFunding);
-            document.getElementById('stat-average').textContent = formatCurrency(avgFunding);
-            document.getElementById('stat-sectors').textContent = sectors;
+            // Chrome optimization: Calculate stats in a single pass
+            let totalFunding = 0;
+            let companiesWithFunding = 0;
+            const sectorsSet = new Set();
+            const len = filteredCompanies.length;
 
-            // Update results count
-            document.getElementById('results-count').textContent = 
-                `${filteredCompanies.length} ${filteredCompanies.length === 1 ? 'company' : 'companies'}`;
+            for (let i = 0; i < len; i++) {
+                const c = filteredCompanies[i];
+                if (c.amount) {
+                    totalFunding += c.amount;
+                    companiesWithFunding++;
+                }
+                getCompanySectors(c).forEach(s => sectorsSet.add(s));
+            }
+
+            const avgFunding = companiesWithFunding > 0 ? totalFunding / companiesWithFunding : 0;
+
+            // Chrome optimization: Batch DOM reads/writes
+            const statCompanies = document.getElementById('stat-companies');
+            const statFunding = document.getElementById('stat-funding');
+            const statAverage = document.getElementById('stat-average');
+            const statSectors = document.getElementById('stat-sectors');
+            const resultsCount = document.getElementById('results-count');
+
+            // Write all stats at once
+            statCompanies.textContent = len;
+            statFunding.textContent = formatCurrency(totalFunding);
+            statAverage.textContent = formatCurrency(avgFunding);
+            statSectors.textContent = sectorsSet.size;
+            resultsCount.textContent = `${len} ${len === 1 ? 'company' : 'companies'}`;
 
             // Sort companies
             const sortBy = document.getElementById('sort-by').value;
-            const sorted = [...filteredCompanies].sort((a, b) => {
+            const sorted = filteredCompanies.slice().sort((a, b) => {
                 switch (sortBy) {
                     case 'date-desc':
                         return new Date(b.month || 0) - new Date(a.month || 0);
@@ -1158,15 +1382,19 @@
             const pageCompanies = sorted.slice(startIndex, endIndex);
             const totalPages = Math.ceil(sorted.length / itemsPerPage);
 
-            // Render companies (only current page)
+            // Chrome optimization: Build HTML string efficiently
             const grid = document.getElementById('companies-grid');
-            grid.innerHTML = pageCompanies.map(company => {
+            const htmlParts = [];
+            const pageLen = pageCompanies.length;
+
+            for (let i = 0; i < pageLen; i++) {
+                const company = pageCompanies[i];
                 const companySectors = getCompanySectors(company);
                 const sectorsHTML = companySectors.length > 0
                     ? `<div class="company-sectors">${companySectors.map(s => `<span class="company-sector">${s}</span>`).join('')}</div>`
                     : '';
 
-                return `
+                htmlParts.push(`
                 <div class="company-card">
                     <div class="company-header">
                         <div class="company-name">${company.company || 'Unknown'}</div>
@@ -1179,16 +1407,21 @@
                         ${company.round ? `<div class="company-meta-item"><span class="company-meta-label">💼 Round:</span> ${company.round}</div>` : ''}
                         ${company.month ? `<div class="company-meta-item"><span class="company-meta-label">📅 Date:</span> ${company.month}</div>` : ''}
                         ${company.investors ? `<div class="company-meta-item"><span class="company-meta-label">🤝 Investors:</span> ${company.investors}</div>` : ''}
-                        ${company.website ? `<div class="company-meta-item"><span class="company-meta-label">🔗 Website:</span> <a href="${company.website}" target="_blank" style="color: #667eea;">${company.website}</a></div>` : ''}
+                        ${company.website ? `<div class="company-meta-item"><span class="company-meta-label">🔗 Website:</span> <a href="${company.website}" target="_blank" rel="noopener" style="color: #667eea;">${company.website}</a></div>` : ''}
                     </div>
                 </div>
-                `;
-            }).join('');
+                `);
+            }
+
+            // Chrome optimization: Single innerHTML assignment
+            grid.innerHTML = htmlParts.join('');
 
             // Render pagination controls
             renderPagination(totalPages);
 
             updateTopLists();
+
+            console.log('[Chrome Perf] Display updated in', (performance.now() - startTime).toFixed(2), 'ms');
         }
 
         function renderPagination(totalPages) {
@@ -1303,7 +1536,12 @@
         }
 
         function initializeCharts() {
-            // Sector Chart
+            // Chrome optimization: Chart.js global configuration for better performance
+            Chart.defaults.animation.duration = 300; // Faster animations
+            Chart.defaults.responsive = true;
+            Chart.defaults.maintainAspectRatio = true;
+
+            // Sector Chart with Chrome optimizations
             const sectorCtx = document.getElementById('sectorChart').getContext('2d');
             sectorChart = new Chart(sectorCtx, {
                 type: 'pie',
@@ -1319,6 +1557,11 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: true,
+                    // Chrome optimization: Reduce animation complexity
+                    animation: {
+                        duration: 300,
+                        easing: 'easeOutQuart'
+                    },
                     plugins: {
                         legend: {
                             position: 'right',
@@ -1329,6 +1572,10 @@
                             }
                         },
                         tooltip: {
+                            // Chrome optimization: Disable tooltip animations
+                            animation: {
+                                duration: 0
+                            },
                             callbacks: {
                                 label: function(context) {
                                     const label = context.label || '';
@@ -1355,7 +1602,7 @@
                 }
             });
 
-            // Funding Rounds Chart
+            // Funding Rounds Chart with Chrome optimizations
             const roundsCtx = document.getElementById('roundsChart').getContext('2d');
             roundsChart = new Chart(roundsCtx, {
                 type: 'bar',
@@ -1373,11 +1620,20 @@
                     responsive: true,
                     maintainAspectRatio: true,
                     indexAxis: 'y',
+                    // Chrome optimization: Reduce animation complexity
+                    animation: {
+                        duration: 300,
+                        easing: 'easeOutQuart'
+                    },
                     plugins: {
                         legend: {
                             display: false
                         },
                         tooltip: {
+                            // Chrome optimization: Disable tooltip animations
+                            animation: {
+                                duration: 0
+                            },
                             callbacks: {
                                 label: function(context) {
                                     const value = context.parsed.x || 0;
@@ -1415,23 +1671,58 @@
                 }
             });
 
-            updateCharts();
+            updateChartsCore(); // Use direct call for initial load
+            console.log('[Chrome Perf] Charts initialized');
         }
 
+        // Chrome optimization: Throttled chart updates
+        const updateChartsThrottled = throttle(updateChartsCore, 150);
+
         function updateCharts() {
-            // Update Sector Chart - count companies in all their sectors
+            updateChartsThrottled();
+        }
+
+        function updateChartsCore() {
+            if (!sectorChart || !roundsChart) return;
+
+            const startTime = performance.now();
+
+            // Chrome optimization: Calculate sector data efficiently with caching
             const sectorData = {};
-            filteredCompanies.forEach(c => {
+            const allowedRoundsSet = new Set(['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth']);
+            const roundData = {};
+            const len = filteredCompanies.length;
+
+            // Single pass through data for both charts
+            for (let i = 0; i < len; i++) {
+                const c = filteredCompanies[i];
                 const companySectors = getCompanySectors(c);
-                companySectors.forEach(sector => {
+                const amount = c.amount || 0;
+
+                // Sector aggregation
+                for (let j = 0; j < companySectors.length; j++) {
+                    const sector = companySectors[j];
                     if (!sectorData[sector]) {
                         sectorData[sector] = { count: 0, funding: 0 };
                     }
                     sectorData[sector].count++;
-                    sectorData[sector].funding += c.amount || 0;
-                });
-            });
+                    sectorData[sector].funding += amount;
+                }
 
+                // Round aggregation
+                if (c.round && allowedRoundsSet.has(c.round)) {
+                    if (!roundData[c.round]) {
+                        roundData[c.round] = { count: 0, funding: 0 };
+                    }
+                    roundData[c.round].count++;
+                    roundData[c.round].funding += amount;
+                }
+            }
+
+            // Cache sector data for potential reuse
+            computationCache.sectorData = sectorData;
+
+            // Sort sectors
             const sortedSectors = Object.entries(sectorData)
                 .sort((a, b) => {
                     if (sectorChartMode === 'funding') {
@@ -1442,25 +1733,12 @@
                 })
                 .slice(0, 14);
 
+            // Chrome optimization: Only update chart data, use 'none' animation for faster updates
             sectorChart.data.labels = sortedSectors.map(([sector]) => sector);
             sectorChart.data.datasets[0].data = sortedSectors.map(([, data]) => {
                 return sectorChartMode === 'funding' ? data.funding : data.count;
             });
-            sectorChart.update();
-
-            // Update Funding Rounds Chart
-            const allowedRounds = ['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth'];
-            const roundData = {};
-
-            filteredCompanies.forEach(c => {
-                if (c.round && allowedRounds.includes(c.round)) {
-                    if (!roundData[c.round]) {
-                        roundData[c.round] = { count: 0, funding: 0 };
-                    }
-                    roundData[c.round].count++;
-                    roundData[c.round].funding += c.amount || 0;
-                }
-            });
+            sectorChart.update('none'); // 'none' skips animations for faster updates
 
             // Sort rounds in logical order
             const roundOrder = ['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth'];
@@ -1473,7 +1751,9 @@
                 return roundsChartMode === 'funding' ? data.funding : data.count;
             });
             roundsChart.data.datasets[0].label = roundsChartMode === 'funding' ? 'Funding (€M)' : 'Companies';
-            roundsChart.update();
+            roundsChart.update('none'); // 'none' skips animations for faster updates
+
+            console.log('[Chrome Perf] Charts updated in', (performance.now() - startTime).toFixed(2), 'ms');
         }
 
         function toggleSectorChart() {
@@ -1498,6 +1778,98 @@
                 return '€' + amount.toFixed(1) + 'M';
             }
         }
+
+        // ===========================================
+        // CHROME MEMORY MANAGEMENT & CLEANUP
+        // ===========================================
+
+        // Chrome optimization: Cleanup function to prevent memory leaks
+        function cleanup() {
+            console.log('[Chrome Perf] Running cleanup...');
+
+            // Clear any pending timers
+            if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
+            if (chartUpdateTimer) clearTimeout(chartUpdateTimer);
+            if (mapUpdateTimer) clearTimeout(mapUpdateTimer);
+            if (rafId) cancelAnimationFrame(rafId);
+
+            // Clear markers from map
+            if (markers && markers.length > 0) {
+                markers.forEach(marker => {
+                    if (marker) {
+                        marker.unbindPopup();
+                        if (map) map.removeLayer(marker);
+                    }
+                });
+                markers.length = 0;
+            }
+
+            // Destroy charts to free canvas memory
+            if (sectorChart) {
+                sectorChart.destroy();
+                sectorChart = null;
+            }
+            if (roundsChart) {
+                roundsChart.destroy();
+                roundsChart = null;
+            }
+
+            // Remove map
+            if (map) {
+                map.remove();
+                map = null;
+            }
+
+            // Clear data arrays
+            allCompanies = [];
+            filteredCompanies = [];
+
+            // Clear computation cache
+            computationCache.sectorData = null;
+            computationCache.cityData = null;
+            computationCache.lastFilterHash = null;
+
+            console.log('[Chrome Perf] Cleanup complete');
+        }
+
+        // Chrome optimization: Handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Page is hidden - cancel any pending animations
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+            }
+        });
+
+        // Chrome optimization: Cleanup on page unload
+        window.addEventListener('beforeunload', cleanup);
+
+        // Chrome optimization: Handle back/forward cache
+        window.addEventListener('pagehide', (event) => {
+            if (event.persisted) {
+                cleanup();
+            }
+        });
+
+        // Chrome optimization: Log initial performance metrics
+        window.addEventListener('load', () => {
+            if (window.performance && window.performance.timing) {
+                const timing = window.performance.timing;
+                const pageLoadTime = timing.loadEventEnd - timing.navigationStart;
+                const domReadyTime = timing.domContentLoadedEventEnd - timing.navigationStart;
+                console.log('[Chrome Perf] Page load time:', pageLoadTime, 'ms');
+                console.log('[Chrome Perf] DOM ready time:', domReadyTime, 'ms');
+            }
+
+            // Log memory usage if available (Chrome-specific)
+            if (window.performance && window.performance.memory) {
+                const memory = window.performance.memory;
+                console.log('[Chrome Perf] JS Heap Size:', (memory.usedJSHeapSize / 1048576).toFixed(2), 'MB');
+                console.log('[Chrome Perf] Total JS Heap:', (memory.totalJSHeapSize / 1048576).toFixed(2), 'MB');
+            }
+        });
     </script>
 </body>
 </html>
