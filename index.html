@@ -573,6 +573,102 @@
             text-decoration: underline;
         }
 
+        .card-section {
+            margin-top: 0.875rem;
+            padding-top: 0.875rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .card-section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-founders {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .founder-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.25rem 0.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .founder-link:hover {
+            background: rgba(59,130,246,0.1);
+            border-color: rgba(59,130,246,0.3);
+            color: #93c5fd;
+        }
+
+        .founder-link.has-linkedin {
+            color: #93c5fd;
+        }
+
+        .founder-link.has-linkedin:hover {
+            background: rgba(59,130,246,0.15);
+        }
+
+        .card-investors {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .card-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 0.875rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card-action-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--border-hover);
+        }
+
+        .card-action-btn.primary {
+            background: rgba(59,130,246,0.15);
+            border-color: rgba(59,130,246,0.3);
+            color: #93c5fd;
+        }
+
+        .card-action-btn.primary:hover {
+            background: rgba(59,130,246,0.25);
+        }
+
+        .card-meta-item a:hover {
+            text-decoration: underline;
+        }
+
         /* Pagination */
         .pagination {
             display: flex;
@@ -1596,6 +1692,47 @@
                         `<span class="sector-badge ${getSectorClass(s)}">${s}</span>`
                     ).join('');
 
+                    // Build founders HTML with LinkedIn links where available
+                    let foundersHTML = '';
+                    if (company.foundersData && company.foundersData.length > 0) {
+                        const founderLinks = company.foundersData.map(founder => {
+                            if (founder.linkedin_url) {
+                                return `<a href="${founder.linkedin_url}" target="_blank" rel="noopener" class="founder-link has-linkedin" title="View LinkedIn">
+                                    <span>in</span> ${founder.full_name}
+                                </a>`;
+                            } else {
+                                return `<span class="founder-link">${founder.full_name}</span>`;
+                            }
+                        }).join('');
+                        foundersHTML = `
+                            <div class="card-section">
+                                <div class="card-section-title">Founders</div>
+                                <div class="card-founders">${founderLinks}</div>
+                            </div>
+                        `;
+                    }
+
+                    // Build investors HTML
+                    let investorsHTML = '';
+                    if (company.investors) {
+                        investorsHTML = `
+                            <div class="card-section">
+                                <div class="card-section-title">Investors</div>
+                                <div class="card-investors">${company.investors}</div>
+                            </div>
+                        `;
+                    }
+
+                    // Build action buttons
+                    let actionsHTML = '<div class="card-actions">';
+                    if (company.website) {
+                        actionsHTML += `<a href="${company.website}" target="_blank" rel="noopener" class="card-action-btn">🔗 Website</a>`;
+                    }
+                    if (company.news) {
+                        actionsHTML += `<a href="${company.news}" target="_blank" rel="noopener" class="card-action-btn primary">📰 News Source</a>`;
+                    }
+                    actionsHTML += '</div>';
+
                     return `
                         <div class="company-card">
                             <div class="card-header">
@@ -1609,8 +1746,11 @@
                             <div class="card-meta">
                                 ${company.hq ? `<div class="card-meta-item">📍 ${company.hq}</div>` : ''}
                                 ${company.round ? `<div class="card-meta-item">💼 ${company.round}</div>` : ''}
-                                ${company.website ? `<div class="card-meta-item"><a href="${company.website}" target="_blank" rel="noopener">🔗 Website</a></div>` : ''}
+                                ${company.month ? `<div class="card-meta-item">📅 ${company.month} ${company.year}</div>` : ''}
                             </div>
+                            ${foundersHTML}
+                            ${investorsHTML}
+                            ${(company.website || company.news) ? actionsHTML : ''}
                         </div>
                     `;
                 }).join('');
