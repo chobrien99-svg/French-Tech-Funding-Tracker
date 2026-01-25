@@ -1695,7 +1695,24 @@
                     // Build founders HTML with LinkedIn links where available
                     let foundersHTML = '';
                     if (company.foundersData && company.foundersData.length > 0) {
-                        const founderLinks = company.foundersData.map(founder => {
+                        // Flatten founders - some may have multiple names separated by semicolons
+                        const allFounders = [];
+                        company.foundersData.forEach(founder => {
+                            // Check if name contains semicolons (multiple founders in one record)
+                            if (founder.full_name && founder.full_name.includes(';')) {
+                                // Split and create individual entries (no LinkedIn for split names)
+                                founder.full_name.split(';').forEach(name => {
+                                    const trimmedName = name.trim();
+                                    if (trimmedName) {
+                                        allFounders.push({ full_name: trimmedName, linkedin_url: null });
+                                    }
+                                });
+                            } else {
+                                allFounders.push(founder);
+                            }
+                        });
+
+                        const founderLinks = allFounders.map(founder => {
                             if (founder.linkedin_url) {
                                 return `<a href="${founder.linkedin_url}" target="_blank" rel="noopener" class="founder-link has-linkedin" title="View LinkedIn">
                                     <span>in</span> ${founder.full_name}
