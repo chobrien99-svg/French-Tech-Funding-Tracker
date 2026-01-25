@@ -350,7 +350,7 @@
 
         .latest-deals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 1rem;
             contain: layout style;
         }
@@ -358,7 +358,7 @@
         .latest-deal-card {
             background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.08) 100%);
             border: 1px solid rgba(59,130,246,0.2);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 1.25rem;
             transition: all 0.2s ease;
             contain: layout style paint;
@@ -394,44 +394,6 @@
             padding: 0.25rem 0.5rem;
             border-radius: 6px;
             margin-bottom: 0.75rem;
-        }
-
-        .deal-company-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .deal-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .deal-meta-item {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .deal-amount {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .deal-investors {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            line-height: 1.4;
         }
 
         /* Company Grid */
@@ -1114,29 +1076,6 @@
                 </div>
             </section>
 
-            <!-- Companies Grid -->
-            <section class="companies-section">
-                <div class="section-header">
-                    <h2 class="section-title"><span class="icon">💼</span> Funded Companies</h2>
-                    <div class="sort-controls">
-                        <label>Sort:</label>
-                        <select class="filter-select" id="sort-by" style="min-width: 180px;">
-                            <option value="amount-desc">Highest Amount</option>
-                            <option value="amount-asc">Lowest Amount</option>
-                            <option value="name-asc">Name A-Z</option>
-                            <option value="name-desc">Name Z-A</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="companies-grid" id="companies-grid">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        Loading companies...
-                    </div>
-                </div>
-                <div class="pagination" id="pagination"></div>
-            </section>
-
             <!-- Analytics -->
             <section class="analytics-section">
                 <div class="section-header">
@@ -1162,6 +1101,29 @@
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <!-- Companies Grid -->
+            <section class="companies-section">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="icon">💼</span> Funded Companies</h2>
+                    <div class="sort-controls">
+                        <label>Sort:</label>
+                        <select class="filter-select" id="sort-by" style="min-width: 180px;">
+                            <option value="amount-desc">Highest Amount</option>
+                            <option value="amount-asc">Lowest Amount</option>
+                            <option value="name-asc">Name A-Z</option>
+                            <option value="name-desc">Name Z-A</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="companies-grid" id="companies-grid">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading companies...
+                    </div>
+                </div>
+                <div class="pagination" id="pagination"></div>
             </section>
 
             <!-- Top Lists -->
@@ -1645,19 +1607,89 @@
                 return;
             }
 
-            grid.innerHTML = latestDeals.map(deal => `
-                <div class="latest-deal-card">
-                    <div class="deal-new-badge">● New</div>
-                    <div class="deal-company-name">${deal.company}</div>
-                    <div class="deal-meta">
-                        <span class="deal-meta-item">📍 ${deal.hq || 'France'}</span>
-                        <span class="deal-meta-item">🏷️ ${deal.round || 'Funding'}</span>
-                        ${deal.month ? `<span class="deal-meta-item">📅 ${deal.month} ${deal.year}</span>` : ''}
+            grid.innerHTML = latestDeals.map(deal => {
+                // Build sector badges
+                const sectorsHTML = deal.sectors.map(s =>
+                    `<span class="sector-badge ${getSectorClass(s)}">${s}</span>`
+                ).join('');
+
+                // Build founders HTML with LinkedIn links where available
+                let foundersHTML = '';
+                if (deal.foundersData && deal.foundersData.length > 0) {
+                    const allFounders = [];
+                    deal.foundersData.forEach(founder => {
+                        if (founder.full_name && founder.full_name.includes(';')) {
+                            founder.full_name.split(';').forEach(name => {
+                                const trimmedName = name.trim();
+                                if (trimmedName) {
+                                    allFounders.push({ full_name: trimmedName, linkedin_url: null });
+                                }
+                            });
+                        } else {
+                            allFounders.push(founder);
+                        }
+                    });
+
+                    const founderLinks = allFounders.map(founder => {
+                        if (founder.linkedin_url) {
+                            return `<a href="${founder.linkedin_url}" target="_blank" rel="noopener" class="founder-link has-linkedin" title="View LinkedIn">
+                                <span>in</span> ${founder.full_name}
+                            </a>`;
+                        } else {
+                            return `<span class="founder-link">${founder.full_name}</span>`;
+                        }
+                    }).join('');
+                    foundersHTML = `
+                        <div class="card-section">
+                            <div class="card-section-title">Founders</div>
+                            <div class="card-founders">${founderLinks}</div>
+                        </div>
+                    `;
+                }
+
+                // Build investors HTML
+                let investorsHTML = '';
+                if (deal.investors) {
+                    investorsHTML = `
+                        <div class="card-section">
+                            <div class="card-section-title">Investors</div>
+                            <div class="card-investors">${deal.investors}</div>
+                        </div>
+                    `;
+                }
+
+                // Build action buttons
+                let actionsHTML = '<div class="card-actions">';
+                if (deal.website) {
+                    actionsHTML += `<a href="${deal.website}" target="_blank" rel="noopener" class="card-action-btn">🔗 Website</a>`;
+                }
+                if (deal.news) {
+                    actionsHTML += `<a href="${deal.news}" target="_blank" rel="noopener" class="card-action-btn primary">📰 News Source</a>`;
+                }
+                actionsHTML += '</div>';
+
+                return `
+                    <div class="latest-deal-card">
+                        <div class="deal-new-badge">● New</div>
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <div class="card-title">${deal.company}</div>
+                            </div>
+                            <div class="card-amount">${formatCurrency(deal.amount)}</div>
+                        </div>
+                        <div class="sector-badges">${sectorsHTML}</div>
+                        ${deal.description ? `<div class="card-description">${deal.description}</div>` : ''}
+                        <div class="card-meta">
+                            ${deal.hq ? `<div class="card-meta-item">📍 ${deal.hq}</div>` : ''}
+                            ${deal.round ? `<div class="card-meta-item">💼 ${deal.round}</div>` : ''}
+                            ${deal.month ? `<div class="card-meta-item">📅 ${deal.month} ${deal.year}</div>` : ''}
+                        </div>
+                        ${foundersHTML}
+                        ${investorsHTML}
+                        ${(deal.website || deal.news) ? actionsHTML : ''}
                     </div>
-                    <div class="deal-amount">${formatCurrency(deal.amount)}</div>
-                    ${deal.investors ? `<div class="deal-investors">💼 ${deal.investors}</div>` : ''}
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function updateDisplay() {
@@ -1909,6 +1941,16 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { position: 'right', labels: { boxWidth: 12, padding: 8, font: { size: 11 } } }
+                    },
+                    onClick: (event, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const sectorName = sectorChart.data.labels[index];
+                            // Set the sector filter and apply
+                            const sectorSelect = document.getElementById('filter-sector');
+                            sectorSelect.value = sectorName;
+                            applyFilters();
+                        }
                     }
                 }
             });
