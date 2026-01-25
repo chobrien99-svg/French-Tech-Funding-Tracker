@@ -343,6 +343,97 @@
             color: var(--text-muted);
         }
 
+        /* Latest Deals */
+        .latest-deals-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .latest-deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            contain: layout style;
+        }
+
+        .latest-deal-card {
+            background: linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.08) 100%);
+            border: 1px solid rgba(59,130,246,0.2);
+            border-radius: 14px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+            contain: layout style paint;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .latest-deal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+        }
+
+        .latest-deal-card:hover {
+            border-color: rgba(59,130,246,0.4);
+            transform: translateY(-2px);
+        }
+
+        .deal-new-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #34d399;
+            background: rgba(52,211,153,0.15);
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+        }
+
+        .deal-company-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .deal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .deal-meta-item {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .deal-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .deal-investors {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            line-height: 1.4;
+        }
+
         /* Company Grid */
         .companies-section {
             margin-bottom: 3rem;
@@ -906,9 +997,25 @@
                         <option value="10-50">€10M - €50M</option>
                         <option value="50-999999">Over €50M</option>
                     </select>
+                    <select class="filter-select" id="filter-year">
+                        <option value="">All Years</option>
+                    </select>
                 </div>
                 <div class="active-filters" id="active-filters"></div>
                 <div class="results-info" id="results-info"></div>
+            </section>
+
+            <!-- Latest Deals -->
+            <section class="latest-deals-section">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="icon">🆕</span> Latest Deals</h2>
+                </div>
+                <div class="latest-deals-grid" id="latest-deals-grid">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading latest deals...
+                    </div>
+                </div>
             </section>
 
             <!-- Companies Grid -->
@@ -1214,6 +1321,9 @@
                         amount: latestRound?.amount_eur || 0,
                         round: latestRound?.round_type || '',
                         month: latestRound?.announced_month || '',
+                        year: latestRound?.announced_year || 2025,
+                        announcedDate: latestRound?.announced_date || null,
+                        createdAt: latestRound?.created_at || company.created_at,
                         investors: investorNames.join(', '),
                         founders: founders.map(f => f.full_name).join(', '),
                         foundersData: founders,
@@ -1229,6 +1339,7 @@
                 initializeFilters();
                 initializeCharts();
                 initializeMap();
+                updateLatestDeals();
                 updateDisplay();
                 updateStats();
 
@@ -1252,11 +1363,13 @@
             const allSectors = new Set();
             const allRounds = new Set();
             const allCities = new Set();
+            const allYears = new Set();
 
             allCompanies.forEach(c => {
                 c.sectors.forEach(s => allSectors.add(s));
                 if (c.round) allRounds.add(c.round);
                 if (c.hq) allCities.add(c.hq);
+                if (c.year) allYears.add(c.year);
             });
 
             // Populate sector filter
@@ -1287,6 +1400,15 @@
                 citySelect.appendChild(option);
             });
 
+            // Populate year filter (descending order - newest first)
+            const yearSelect = document.getElementById('filter-year');
+            Array.from(allYears).sort((a, b) => b - a).forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            });
+
             // Event listeners with debouncing
             const debouncedFilter = debounce(applyFilters, 300);
             document.getElementById('search').addEventListener('input', debouncedFilter);
@@ -1294,6 +1416,7 @@
             document.getElementById('filter-round').addEventListener('change', applyFilters);
             document.getElementById('filter-city').addEventListener('change', applyFilters);
             document.getElementById('filter-size').addEventListener('change', applyFilters);
+            document.getElementById('filter-year').addEventListener('change', applyFilters);
             document.getElementById('sort-by').addEventListener('change', () => { currentPage = 1; updateDisplay(); });
 
             // Chart toggles
@@ -1310,6 +1433,7 @@
             const roundFilter = document.getElementById('filter-round').value;
             const cityFilter = document.getElementById('filter-city').value;
             const sizeFilter = document.getElementById('filter-size').value;
+            const yearFilter = document.getElementById('filter-year').value;
 
             let sizeMin = 0, sizeMax = Infinity;
             if (sizeFilter) {
@@ -1335,6 +1459,7 @@
                 if (roundFilter && company.round !== roundFilter) return false;
                 if (cityFilter && company.hq !== cityFilter) return false;
                 if (sizeFilter && (company.amount < sizeMin || company.amount > sizeMax)) return false;
+                if (yearFilter && company.year !== parseInt(yearFilter)) return false;
 
                 return true;
             });
@@ -1354,7 +1479,8 @@
                 { id: 'filter-sector', label: 'Sector' },
                 { id: 'filter-round', label: 'Round' },
                 { id: 'filter-city', label: 'City' },
-                { id: 'filter-size', label: 'Size' }
+                { id: 'filter-size', label: 'Size' },
+                { id: 'filter-year', label: 'Year' }
             ];
 
             filters.forEach(filter => {
@@ -1399,6 +1525,43 @@
             document.getElementById('stat-average').textContent = formatCurrency(avgFunding);
 
             document.getElementById('results-info').innerHTML = `Showing <strong>${filteredCompanies.length}</strong> of ${allCompanies.length} companies`;
+        }
+
+        function updateLatestDeals() {
+            const grid = document.getElementById('latest-deals-grid');
+
+            // Sort by createdAt (most recent first), then take top 6
+            const latestDeals = [...allCompanies]
+                .sort((a, b) => {
+                    const dateA = new Date(a.createdAt || 0);
+                    const dateB = new Date(b.createdAt || 0);
+                    return dateB - dateA;
+                })
+                .slice(0, 6);
+
+            if (latestDeals.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <div class="empty-title">No deals yet</div>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = latestDeals.map(deal => `
+                <div class="latest-deal-card">
+                    <div class="deal-new-badge">● New</div>
+                    <div class="deal-company-name">${deal.company}</div>
+                    <div class="deal-meta">
+                        <span class="deal-meta-item">📍 ${deal.hq || 'France'}</span>
+                        <span class="deal-meta-item">🏷️ ${deal.round || 'Funding'}</span>
+                        ${deal.month ? `<span class="deal-meta-item">📅 ${deal.month} ${deal.year}</span>` : ''}
+                    </div>
+                    <div class="deal-amount">${formatCurrency(deal.amount)}</div>
+                    ${deal.investors ? `<div class="deal-investors">💼 ${deal.investors}</div>` : ''}
+                </div>
+            `).join('');
         }
 
         function updateDisplay() {
