@@ -3,163 +3,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>French Tech Funding 2025 - Interactive Database</title>
+    <title>French Tech Funding 2025 - The French Tech Journal</title>
 
     <!-- Chrome Performance Optimization Meta Tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <meta name="force-rendering" content="webkit">
+    <meta name="theme-color" content="#0a0f1a">
 
-    <!-- Preconnect to external resources for faster loading -->
+    <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://tlwqkglfyjydwsgjrclx.supabase.co" crossorigin>
 
-    <!-- DNS Prefetch for external domains -->
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://unpkg.com">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <style>
-        * {
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: rgba(255,255,255,0.04);
+            --bg-card-hover: rgba(255,255,255,0.07);
+            --border-subtle: rgba(255,255,255,0.08);
+            --border-hover: rgba(255,255,255,0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-violet: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #0f172a 50%, #1e1b4b 100%);
+            color: var(--text-primary);
             min-height: 100vh;
+            line-height: 1.6;
         }
 
-        .header {
-            background: var(--gradient);
-            color: white;
-            padding: 4rem 2rem 3rem;
-            text-align: center;
-            position: relative;
+        /* Background Effects */
+        .bg-effects {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
             overflow: hidden;
+            z-index: 0;
         }
 
-        .header::before {
+        .bg-effects::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" opacity="0.1"><path d="M0,0 L1200,0 L1200,80 Q900,120 600,80 T0,80 Z" fill="white"/></svg>') no-repeat bottom;
-            background-size: cover;
+            top: -10%;
+            right: -5%;
+            width: 40%;
+            height: 40%;
+            background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+            filter: blur(60px);
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
+        .bg-effects::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -10%;
+            width: 35%;
+            height: 35%;
+            background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+            filter: blur(60px);
         }
 
-        .header h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header p {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .ftj-badge {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.5rem 1.5rem;
-            background: rgba(255,255,255,0.25);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            /* Removed backdrop-filter: blur() - causes GPU memory issues in Chrome */
-        }
-
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            /* Chrome optimization: use transform for GPU acceleration instead of box-shadow transitions */
-            transition: transform 0.2s ease;
-            will-change: transform;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
+        /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Charts Section */
-        .charts-section {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10,15,26,0.9);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #fff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-stats {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.875rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .stat-badge:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .stat-badge.highlight {
+            background: rgba(59,130,246,0.1);
+            border-color: rgba(59,130,246,0.3);
+            color: #93c5fd;
+        }
+
+        .stat-badge .value {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0 4rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title .icon {
+            font-size: 1.2rem;
+        }
+
+        /* Search & Filters */
+        .filters-section {
             margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .search-wrapper {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 2.75rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(59,130,246,0.5);
+            background: rgba(255,255,255,0.07);
+        }
+
+        .filter-select {
+            padding: 0.875rem 2.5rem 0.875rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: inherit;
+            cursor: pointer;
+            min-width: 160px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            transition: all 0.2s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: rgba(59,130,246,0.5);
+        }
+
+        .filter-select option {
+            background: #1e293b;
+            color: var(--text-primary);
+        }
+
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.75rem;
+            background: rgba(59,130,246,0.15);
+            border: 1px solid rgba(59,130,246,0.3);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #93c5fd;
+        }
+
+        .filter-tag button {
+            background: none;
+            border: none;
+            color: #93c5fd;
+            cursor: pointer;
+            padding: 0;
+            font-size: 1rem;
+            line-height: 1;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .filter-tag button:hover {
+            opacity: 1;
+        }
+
+        .results-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .results-info strong {
+            color: var(--text-primary);
+        }
+
+        /* Sort Controls */
+        .sort-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sort-controls label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Company Grid */
+        .companies-section {
+            margin-bottom: 3rem;
+        }
+
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1rem;
+            /* Chrome optimization */
+            contain: layout style;
+            isolation: isolate;
+        }
+
+        @media (max-width: 400px) {
+            .companies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .company-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 1.25rem;
+            transition: all 0.2s ease;
+            /* Chrome optimization */
+            contain: layout style paint;
+            will-change: transform;
+        }
+
+        .company-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-title-group {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-amount {
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .sector-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .sector-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* Sector Colors */
+        .sector-ai { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); }
+        .sector-saas { background: rgba(59,130,246,0.15); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
+        .sector-fintech { background: rgba(234,179,8,0.15); color: #fde047; border: 1px solid rgba(234,179,8,0.3); }
+        .sector-healthtech { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+        .sector-cleantech { background: rgba(132,204,22,0.15); color: #bef264; border: 1px solid rgba(132,204,22,0.3); }
+        .sector-cybersecurity { background: rgba(244,63,94,0.15); color: #fda4af; border: 1px solid rgba(244,63,94,0.3); }
+        .sector-ecommerce { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+        .sector-foodtech { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+        .sector-proptech { background: rgba(6,182,212,0.15); color: #67e8f9; border: 1px solid rgba(6,182,212,0.3); }
+        .sector-edtech { background: rgba(20,184,166,0.15); color: #5eead4; border: 1px solid rgba(20,184,166,0.3); }
+        .sector-mobility { background: rgba(99,102,241,0.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
+        .sector-deeptech { background: rgba(168,85,247,0.15); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.3); }
+        .sector-media { background: rgba(236,72,153,0.15); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.3); }
+        .sector-biotech { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+        .sector-hrtech { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); }
+        .sector-legaltech { background: rgba(100,116,139,0.15); color: #cbd5e1; border: 1px solid rgba(100,116,139,0.3); }
+        .sector-default { background: rgba(100,116,139,0.15); color: #cbd5e1; border: 1px solid rgba(100,116,139,0.3); }
+
+        .card-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .card-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .card-meta-item a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .card-meta-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 0.6rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--border-hover);
+            color: var(--text-primary);
+        }
+
+        .page-btn.active {
+            background: var(--accent-gradient);
+            border-color: transparent;
+            color: white;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-dots {
+            color: var(--text-muted);
+            padding: 0 0.5rem;
+        }
+
+        /* Analytics Section */
+        .analytics-section {
+            margin-bottom: 3rem;
         }
 
         .charts-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
         }
 
-        .chart-container {
-            background: #f8f9fa;
+        @media (max-width: 900px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
             padding: 1.5rem;
-            border-radius: 12px;
-            min-height: 350px;
-        }
-
-        .map-container {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
-            grid-column: span 2;
-        }
-
-        #map {
-            height: 500px;
-            border-radius: 8px;
-            margin-top: 1rem;
         }
 
         .chart-header {
@@ -170,602 +558,347 @@
         }
 
         .chart-title {
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #333;
+            color: var(--text-primary);
         }
 
         .chart-toggle {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.75rem;
+            background: rgba(59,130,246,0.15);
+            border: 1px solid rgba(59,130,246,0.3);
             border-radius: 6px;
+            color: #93c5fd;
+            font-size: 0.75rem;
+            font-family: inherit;
             cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .chart-toggle:hover {
-            background: #764ba2;
+            background: rgba(59,130,246,0.25);
         }
 
-        /* Map Popup Styles */
-        .leaflet-popup-content-wrapper {
-            border-radius: 12px;
-            padding: 0;
+        .chart-container {
+            height: 280px;
         }
 
-        .map-popup {
-            padding: 1rem;
-            min-width: 200px;
+        /* Top Lists Section */
+        .insights-section {
+            margin-bottom: 3rem;
         }
 
-        .map-popup-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .map-popup-stats {
-            display: grid;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .map-popup-stat {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-        }
-
-        .map-popup-label {
-            color: #666;
-        }
-
-        .map-popup-value {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .map-popup-button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
-        }
-
-        .map-popup-button:hover {
-            background: #764ba2;
-        }
-
-        /* Top Lists */
-        .top-lists {
+        .top-lists-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
         }
 
-        .top-list {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 12px;
+        .top-list-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 1.25rem;
         }
 
-        .top-list h3 {
+        .top-list-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 1rem;
-            color: #667eea;
-            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .top-item {
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            background: white;
-            border-radius: 8px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: transform 0.2s ease;
+            gap: 0.75rem;
+            padding: 0.65rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
 
         .top-item:hover {
-            background: #f0f0f0;
-            border-left: 3px solid #667eea;
-            padding-left: 0.7rem;
+            background: rgba(255,255,255,0.05);
         }
 
         .top-item-rank {
-            font-weight: bold;
-            color: #667eea;
-            margin-right: 0.75rem;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            min-width: 24px;
         }
 
         .top-item-name {
             flex: 1;
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .top-item-value {
-            font-weight: bold;
-            color: #764ba2;
-        }
-
-        /* Filters */
-        .filters-section {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .filters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .filter-group label {
-            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            color: #555;
+            color: var(--accent-violet);
         }
 
-        .filter-group select {
-            padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+        /* Map Section */
+        .map-section {
+            margin-bottom: 3rem;
         }
 
-        .filter-group select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .active-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .filter-tag {
-            background: #667eea;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filter-tag button {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0;
-            line-height: 1;
-        }
-
-        /* Results */
-        .results-section {
-            background: white;
+        .map-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .results-count {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #667eea;
-        }
-
-        .sort-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .sort-controls select {
-            padding: 0.75rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-        }
-
-        .companies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
-            /* Chrome optimization: isolate stacking context to prevent layer thrashing */
-            isolation: isolate;
-            /* Chrome optimization: contain layout to limit reflow scope */
-            contain: layout style;
-        }
-
-        .company-card {
-            background: #f8f9fa;
-            border-radius: 12px;
             padding: 1.5rem;
-            /* Chrome optimization: use transform instead of box-shadow for GPU acceleration */
-            transition: transform 0.2s ease, border-color 0.2s ease;
-            border: 2px solid transparent;
-            position: relative;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            word-break: break-word;
-            overflow: hidden;
-            /* Chrome optimization: contain layout to prevent reflow propagation */
-            contain: layout style paint;
-            /* Chrome optimization: hint to browser for transform animations */
-            will-change: transform;
         }
 
-        .company-card:hover {
-            transform: translateY(-3px);
-            border-color: #667eea;
-        }
-
-        .company-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-            gap: 1rem;
-            overflow: hidden;
-        }
-
-        .company-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #333;
-            flex: 1;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-        }
-
-        .company-amount {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #667eea;
-            white-space: nowrap;
-            margin-left: 1rem;
-        }
-
-        .company-sectors {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .company-sector {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-        }
-
-        .company-description {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .company-meta {
-            display: grid;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .company-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            overflow: hidden;
-        }
-
-        .company-meta-label {
-            font-weight: 600;
-            min-width: 80px;
-        }
-
-        .company-meta-item a {
-            word-break: break-all;
-            overflow-wrap: break-word;
-            max-width: 100%;
-            display: inline-block;
-        }
-
-        /* Pagination */
-        .pagination-wrapper {
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .pagination-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .page-btn {
-            padding: 0.75rem 1.25rem;
-            border: 2px solid #e0e0e0;
-            background: white;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 500;
-            /* Chrome optimization: faster transitions, no box-shadow animation */
-            transition: border-color 0.15s ease, background 0.15s ease;
-            min-width: 45px;
-        }
-
-        .page-btn:hover:not(:disabled) {
-            border-color: #667eea;
-            background: #f0f0f8;
-        }
-
-        .page-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-color: #667eea;
-        }
-
-        .page-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .page-dots {
-            padding: 0 0.5rem;
-            color: #999;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .map-container {
-                grid-column: span 1;
-            }
-
-            .companies-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-bar {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Legend */
-        .map-legend {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        #map {
+            height: 450px;
+            border-radius: 12px;
             margin-top: 1rem;
-            display: inline-block;
         }
 
-        .legend-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #667eea;
+        .map-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin: 0.25rem 0;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
         .legend-circle {
-            width: 20px;
-            height: 20px;
             border-radius: 50%;
-            border: 2px solid #667eea;
+            background: rgba(59,130,246,0.7);
+            border: 2px solid rgba(59,130,246,0.9);
+        }
+
+        /* Map Popup Styles */
+        .leaflet-popup-content-wrapper {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            color: var(--text-primary);
+        }
+
+        .leaflet-popup-tip {
+            background: var(--bg-secondary);
+        }
+
+        .map-popup {
+            padding: 0.5rem;
+            min-width: 180px;
+        }
+
+        .map-popup-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .map-popup-stats {
+            display: grid;
+            gap: 0.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .map-popup-stat {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+        }
+
+        .map-popup-label {
+            color: var(--text-muted);
+        }
+
+        .map-popup-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .map-popup-button {
+            width: 100%;
+            padding: 0.5rem;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .map-popup-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 1.5rem 0;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .footer-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading State */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            color: var(--text-muted);
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--border-subtle);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-stats {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
         }
     </style>
 </head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QEY5FFC59"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8QEY5FFC59');
-</script>
 
 <body>
-    <div class="header">
-        <div class="header-content">
-            <h1>🇫🇷 French Tech Funding 2025</h1>
-            <p class="subtitle">Interactive database of French startup funding rounds tracked by The French Tech Journal</p>
-            <a href="infographic.html" style="display: inline-block; margin-top: 15px; padding: 12px 24px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">
-                📊 View 2025 Year in Review Infographic
-            </a>
-            
-            <div class="stats-bar">
-                <div class="stat-card">
-                    <div class="stat-value" id="stat-companies">687</div>
-                    <div class="stat-label">Companies</div>
+    <div class="bg-effects"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="brand">
+                    <div class="brand-icon">🇫🇷</div>
+                    <div class="brand-text">
+                        <span class="brand-label">The French Tech Journal</span>
+                        <span class="brand-title">Funding Tracker 2025</span>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="stat-funding">€8.48B</div>
-                    <div class="stat-label">Total Funding</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="stat-average">€12.5M</div>
-                    <div class="stat-label">Average Round</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="stat-sectors">13</div>
-                    <div class="stat-label">Sectors</div>
+                <div class="header-stats">
+                    <div class="stat-badge highlight">
+                        <span class="value" id="stat-companies">-</span>
+                        <span>Companies</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="value" id="stat-funding">-</span>
+                        <span>Total Raised</span>
+                    </div>
+                    <div class="stat-badge">
+                        <span class="value" id="stat-average">-</span>
+                        <span>Avg Round</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="container">
-        <!-- Charts Section -->
-        <div class="charts-section">
-            <div class="charts-grid">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h2 class="chart-title">Sector Distribution</h2>
-                        <button class="chart-toggle" id="sector-toggle">By Funding €</button>
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Search & Filters -->
+            <section class="filters-section">
+                <div class="search-row">
+                    <div class="search-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="search-input" id="search" placeholder="Search companies, investors, founders...">
                     </div>
-                    <canvas id="sectorChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h2 class="chart-title">Funding Rounds</h2>
-                        <button class="chart-toggle" id="rounds-toggle">By Funding €</button>
-                    </div>
-                    <canvas id="roundsChart"></canvas>
-                </div>
-
-                <!-- Interactive Map -->
-                <div class="map-container">
-                    <div class="chart-header">
-                        <h2 class="chart-title">🗺️ Geographic Distribution Across France</h2>
-                        <button class="chart-toggle" id="map-toggle">By Funding €</button>
-                    </div>
-                    <div id="map"></div>
-                    <div class="map-legend">
-                        <div class="legend-title">Marker Size</div>
-                        <div class="legend-item">
-                            <div class="legend-circle" style="width: 10px; height: 10px; background: rgba(102, 126, 234, 0.7);"></div>
-                            <span>Small (< €100M or < 10 companies)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-circle" style="width: 15px; height: 15px; background: rgba(102, 126, 234, 0.7);"></div>
-                            <span>Medium (€100M-€500M or 10-30 companies)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-circle" style="width: 25px; height: 25px; background: rgba(102, 126, 234, 0.7);"></div>
-                            <span>Large (> €500M or > 30 companies)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Top Lists -->
-            <div class="top-lists">
-                <div class="top-list">
-                    <h3>🏆 Largest Deals</h3>
-                    <div id="top-deals"></div>
-                </div>
-                <div class="top-list">
-                    <h3>🏙️ Top Cities</h3>
-                    <div id="top-cities"></div>
-                </div>
-                <div class="top-list">
-                    <h3>💼 Most Active Investors</h3>
-                    <div id="top-investors"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Filters Section -->
-        <div class="filters-section">
-            <input type="text" class="search-box" id="search" placeholder="🔍 Search companies, investors, cities, or keywords...">
-            
-            <div class="filters-grid">
-                <div class="filter-group">
-                    <label>Sector</label>
-                    <select id="filter-sector">
+                    <select class="filter-select" id="filter-sector">
                         <option value="">All Sectors</option>
                     </select>
-                </div>
-                <div class="filter-group">
-                    <label>Month</label>
-                    <select id="filter-month">
-                        <option value="">All Months</option>
+                    <select class="filter-select" id="filter-round">
+                        <option value="">All Rounds</option>
                     </select>
-                </div>
-                <div class="filter-group">
-                    <label>Round Type</label>
-                    <select id="filter-round">
-                        <option value="">All Round Types</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label>City</label>
-                    <select id="filter-city">
+                    <select class="filter-select" id="filter-city">
                         <option value="">All Cities</option>
                     </select>
-                </div>
-                <div class="filter-group">
-                    <label>Funding Size</label>
-                    <select id="filter-size">
+                    <select class="filter-select" id="filter-size">
                         <option value="">All Amounts</option>
                         <option value="0-1">Under €1M</option>
                         <option value="1-5">€1M - €5M</option>
@@ -774,86 +907,162 @@
                         <option value="50-999999">Over €50M</option>
                     </select>
                 </div>
-            </div>
+                <div class="active-filters" id="active-filters"></div>
+                <div class="results-info" id="results-info"></div>
+            </section>
 
-            <div class="active-filters" id="active-filters"></div>
-        </div>
-
-        <!-- Results Section -->
-        <div class="results-section">
-            <div class="results-header">
-                <div class="results-count" id="results-count">687 companies</div>
-                <div class="sort-controls">
-                    <label>Sort by:</label>
-                    <select id="sort-by">
-                        <option value="date-desc">Date (Newest First)</option>
-                        <option value="date-asc">Date (Oldest First)</option>
-                        <option value="amount-desc">Amount (Highest First)</option>
-                        <option value="amount-asc">Amount (Lowest First)</option>
-                        <option value="name-asc">Name (A-Z)</option>
-                        <option value="name-desc">Name (Z-A)</option>
-                    </select>
+            <!-- Companies Grid -->
+            <section class="companies-section">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="icon">💼</span> Funded Companies</h2>
+                    <div class="sort-controls">
+                        <label>Sort:</label>
+                        <select class="filter-select" id="sort-by" style="min-width: 180px;">
+                            <option value="amount-desc">Highest Amount</option>
+                            <option value="amount-asc">Lowest Amount</option>
+                            <option value="name-asc">Name A-Z</option>
+                            <option value="name-desc">Name Z-A</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="companies-grid" id="companies-grid"></div>
-            <div id="pagination" class="pagination-wrapper"></div>
+                <div class="companies-grid" id="companies-grid">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading companies...
+                    </div>
+                </div>
+                <div class="pagination" id="pagination"></div>
+            </section>
+
+            <!-- Analytics -->
+            <section class="analytics-section">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="icon">📊</span> Analytics</h2>
+                </div>
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Funding by Sector</h3>
+                            <button class="chart-toggle" id="sector-toggle">By Amount €</button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="sectorChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Funding by Round</h3>
+                            <button class="chart-toggle" id="rounds-toggle">By Amount €</button>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="roundsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Lists -->
+            <section class="insights-section">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="icon">🏆</span> Insights</h2>
+                </div>
+                <div class="top-lists-grid">
+                    <div class="top-list-card">
+                        <h3 class="top-list-title">💰 Largest Rounds</h3>
+                        <div id="top-deals"></div>
+                    </div>
+                    <div class="top-list-card">
+                        <h3 class="top-list-title">🏙️ Top Cities</h3>
+                        <div id="top-cities"></div>
+                    </div>
+                    <div class="top-list-card">
+                        <h3 class="top-list-title">🤝 Most Active Investors</h3>
+                        <div id="top-investors"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Map -->
+            <section class="map-section">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="icon">🗺️</span> Geographic Distribution</h2>
+                </div>
+                <div class="map-card">
+                    <div class="chart-header">
+                        <span class="chart-title">Funding Across France</span>
+                        <button class="chart-toggle" id="map-toggle">By Amount €</button>
+                    </div>
+                    <div id="map"></div>
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <div class="legend-circle" style="width: 10px; height: 10px;"></div>
+                            <span>&lt; €100M</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-circle" style="width: 16px; height: 16px;"></div>
+                            <span>€100M - €500M</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-circle" style="width: 24px; height: 24px;"></div>
+                            <span>&gt; €500M</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">
+                Data tracked by <a href="https://thefrenchtechjournal.com" class="footer-link" target="_blank">The French Tech Journal</a> ·
+                Updated January 2025
+            </p>
+        </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QEY5FFC59"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8QEY5FFC59');
+    </script>
 
     <script>
         // ===========================================
-        // CHROME-OPTIMIZED FRENCH TECH FUNDING TRACKER
-        // ===========================================
-        // Optimizations implemented:
-        // 1. Debounced search input (prevents rapid-fire filtering)
-        // 2. requestAnimationFrame for DOM updates (prevents layout thrashing)
-        // 3. Document fragments for batch DOM operations (reduces reflows)
-        // 4. Optimized chart updates (data-only updates vs full regeneration)
-        // 5. Memory management with proper cleanup
-        // 6. Lazy rendering with IntersectionObserver
-        // 7. Throttled map marker updates
+        // FRENCH TECH FUNDING TRACKER
+        // Supabase-connected, Chrome-optimized
         // ===========================================
 
+        // Supabase Configuration
+        const SUPABASE_URL = 'https://tlwqkglfyjydwsgjrclx.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsd3FrZ2xmeWp5ZHdzZ2pyY2x4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc3NjA5MjAsImV4cCI6MjA1MzMzNjkyMH0.bGeaVpG_4Pxs-qd96v5EHvfSKkRvv6ExN7t1vnpSL5c';
+
+        // State
         let allCompanies = [];
         let filteredCompanies = [];
         let currentPage = 1;
-        let itemsPerPage = 50;
+        const itemsPerPage = 24;
         let sectorChart = null;
         let roundsChart = null;
         let map = null;
         let markers = [];
         let sectorChartMode = 'funding';
         let roundsChartMode = 'funding';
-        let mapMode = 'funding'; // 'funding' or 'count'
+        let mapMode = 'funding';
 
-        // Chrome optimization: Debounce timers
-        let searchDebounceTimer = null;
-        let chartUpdateTimer = null;
-        let mapUpdateTimer = null;
-        let rafId = null;
-
-        // Chrome optimization: Cache for expensive computations
-        const computationCache = {
-            sectorData: null,
-            cityData: null,
-            lastFilterHash: null
-        };
-
-        // Chrome optimization: Debounce utility function
+        // Chrome optimization: Debounce/throttle utilities
         function debounce(func, wait) {
             let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
+            return function(...args) {
                 clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
+                timeout = setTimeout(() => func.apply(this, args), wait);
             };
         }
 
-        // Chrome optimization: Throttle utility function
         function throttle(func, limit) {
             let inThrottle;
             return function(...args) {
@@ -865,50 +1074,7 @@
             };
         }
 
-        // Chrome optimization: RequestAnimationFrame wrapper for DOM updates
-        function scheduleUpdate(callback) {
-            if (rafId) {
-                cancelAnimationFrame(rafId);
-            }
-            rafId = requestAnimationFrame(() => {
-                callback();
-                rafId = null;
-            });
-        }
-
-        // Helper function to get company sectors (backward compatible)
-        function getCompanySectors(company) {
-            // New format: sectors array
-            if (Array.isArray(company.sectors)) {
-                return company.sectors;
-            }
-            // Old format: single sector string (backward compatibility)
-            if (company.sector && typeof company.sector === 'string') {
-                return [company.sector];
-            }
-            return [];
-        }
-
-        // Chrome optimization: Generate hash for filter state to detect changes
-        function getFilterHash() {
-            return [
-                document.getElementById('search').value,
-                document.getElementById('filter-sector').value,
-                document.getElementById('filter-month').value,
-                document.getElementById('filter-round').value,
-                document.getElementById('filter-city').value,
-                document.getElementById('filter-size').value
-            ].join('|');
-        }
-
-        // Chart color schemes
-        const chartColors = [
-            '#667eea', '#764ba2', '#f093fb', '#4facfe',
-            '#43e97b', '#fa709a', '#fee140', '#30cfd0',
-            '#a8edea', '#fed6e3', '#c471f5', '#667eea'
-        ];
-
-        // City coordinates
+        // City coordinates for map
         const cityCoordinates = {
             'Paris': [48.8566, 2.3522],
             'Lyon': [45.7640, 4.8357],
@@ -924,354 +1090,260 @@
             'Grenoble': [45.1885, 5.7245],
             'Montreuil': [48.8614, 2.4436],
             'Annecy': [45.8992, 6.1294],
-            'Issy-les-Moulineaux': [48.8239, 2.2701],
             'Aix-en-Provence': [43.5297, 5.4474],
             'Boulogne-Billancourt': [48.8350, 2.2397],
-            'Clermont-Ferrand': [45.7772, 3.0870],
-            'Chambéry': [45.5646, 5.9178],
-            'Villeurbanne': [45.7660, 4.8795],
-            'Saint-Étienne': [45.4397, 4.3872],
-            'Meylan': [45.2097, 5.7697],
-            'Puteaux': [48.8838, 2.2394],
-            'Saint-Mandé': [48.8453, 2.4177],
-            'Cesson-Sévigné': [48.1211, -1.6031],
-            'Libourne': [44.9167, -0.2333],
-            'Vélizy-Villacoublay': [48.7833, 2.1833],
-            'Courbevoie': [48.8977, 2.2531],
-            'La Ciotat': [43.1742, 5.6064],
-            'Saint-Malo': [48.6500, -2.0167]
+            'Clermont-Ferrand': [45.7772, 3.0870]
         };
 
-        // Chrome optimization: Load data with performance monitoring
-        fetch('funding-data.json')
-            .then(response => response.json())
-            .then(data => {
-                console.log('[Chrome Perf] Data loaded:', data.length, 'companies');
+        // Sector to CSS class mapping
+        function getSectorClass(sectorName) {
+            const mapping = {
+                'AI & Machine Learning': 'sector-ai',
+                'SaaS & Enterprise': 'sector-saas',
+                'FinTech': 'sector-fintech',
+                'HealthTech': 'sector-healthtech',
+                'CleanTech & Energy': 'sector-cleantech',
+                'Cybersecurity': 'sector-cybersecurity',
+                'E-commerce & Retail': 'sector-ecommerce',
+                'FoodTech & AgriTech': 'sector-foodtech',
+                'PropTech & Real Estate': 'sector-proptech',
+                'EdTech': 'sector-edtech',
+                'Mobility & Logistics': 'sector-mobility',
+                'DeepTech & Hardware': 'sector-deeptech',
+                'Media & Entertainment': 'sector-media',
+                'BioTech & Pharma': 'sector-biotech',
+                'HRTech': 'sector-hrtech',
+                'LegalTech': 'sector-legaltech'
+            };
+            return mapping[sectorName] || 'sector-default';
+        }
+
+        // Format currency
+        function formatCurrency(amount) {
+            if (!amount) return '€0';
+            if (amount >= 1000) return '€' + (amount / 1000).toFixed(1) + 'B';
+            if (amount >= 1) return '€' + amount.toFixed(1) + 'M';
+            return '€' + (amount * 1000).toFixed(0) + 'K';
+        }
+
+        // ===========================================
+        // SUPABASE DATA FETCHING
+        // ===========================================
+
+        async function fetchFromSupabase(table, query = '') {
+            const url = `${SUPABASE_URL}/rest/v1/${table}${query}`;
+            const response = await fetch(url, {
+                headers: {
+                    'apikey': SUPABASE_ANON_KEY,
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                }
+            });
+            if (!response.ok) throw new Error(`Failed to fetch ${table}`);
+            return response.json();
+        }
+
+        async function loadData() {
+            try {
+                console.log('[Supabase] Loading data...');
                 const startTime = performance.now();
 
-                allCompanies = data;
-                filteredCompanies = allCompanies; // Avoid unnecessary array copy on initial load
+                // Fetch all data in parallel
+                const [companies, fundingRounds, sectors, companySectors, companyPeople, people, investors, fundingInvestors] = await Promise.all([
+                    fetchFromSupabase('companies', '?select=*'),
+                    fetchFromSupabase('funding_rounds', '?select=*'),
+                    fetchFromSupabase('sectors', '?select=*'),
+                    fetchFromSupabase('company_sectors', '?select=*'),
+                    fetchFromSupabase('company_people', '?select=*'),
+                    fetchFromSupabase('people', '?select=*'),
+                    fetchFromSupabase('investors', '?select=*'),
+                    fetchFromSupabase('funding_round_investors', '?select=*')
+                ]);
 
-                // Chrome optimization: Batch initialization using requestAnimationFrame
-                requestAnimationFrame(() => {
-                    initializeFilters();
+                // Build lookup maps
+                const sectorsMap = new Map(sectors.map(s => [s.id, s]));
+                const peopleMap = new Map(people.map(p => [p.id, p]));
+                const investorsMap = new Map(investors.map(i => [i.id, i]));
 
-                    // Chrome optimization: Defer heavy chart/map initialization
-                    requestAnimationFrame(() => {
-                        initializeCharts();
-                        initializeMap();
-                        updateDisplay();
-
-                        console.log('[Chrome Perf] Full initialization:', (performance.now() - startTime).toFixed(2), 'ms');
-                    });
+                // Group data by company
+                const companySectorsMap = new Map();
+                companySectors.forEach(cs => {
+                    if (!companySectorsMap.has(cs.company_id)) companySectorsMap.set(cs.company_id, []);
+                    const sector = sectorsMap.get(cs.sector_id);
+                    if (sector) companySectorsMap.get(cs.company_id).push(sector.name);
                 });
-            })
-            .catch(error => {
-                console.error('[Chrome Perf] Failed to load data:', error);
-            });
 
-        function initializeMap() {
-            // Initialize Leaflet map centered on France
-            map = L.map('map').setView([46.603354, 1.888334], 6);
-
-            // Add OpenStreetMap tiles
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© OpenStreetMap contributors',
-                maxZoom: 19
-            }).addTo(map);
-
-            updateMapMarkers();
-        }
-
-        // Chrome optimization: Throttled map marker updates to prevent rapid-fire redraws
-        const updateMapMarkersThrottled = throttle(updateMapMarkersCore, 100);
-
-        function updateMapMarkers() {
-            // Use throttled version for filter changes
-            updateMapMarkersThrottled();
-        }
-
-        function updateMapMarkersCore() {
-            if (!map) return;
-
-            // Chrome optimization: Clear markers efficiently
-            if (markers.length > 0) {
-                markers.forEach(marker => {
-                    marker.unbindPopup(); // Clean up popup bindings
-                    map.removeLayer(marker);
+                const companyPeopleMap = new Map();
+                companyPeople.forEach(cp => {
+                    if (!companyPeopleMap.has(cp.company_id)) companyPeopleMap.set(cp.company_id, []);
+                    const person = peopleMap.get(cp.person_id);
+                    if (person) companyPeopleMap.get(cp.company_id).push(person);
                 });
-                markers.length = 0; // Clear array efficiently
-            }
 
-            // Chrome optimization: Calculate city data and cache result
-            const cityData = {};
-            const len = filteredCompanies.length;
-            for (let i = 0; i < len; i++) {
-                const company = filteredCompanies[i];
-                const city = company.hq;
-                if (city && cityCoordinates[city]) {
-                    if (!cityData[city]) {
-                        cityData[city] = {
-                            count: 0,
-                            funding: 0,
-                            companies: []
-                        };
+                const fundingRoundsMap = new Map();
+                fundingRounds.forEach(fr => {
+                    if (!fundingRoundsMap.has(fr.company_id)) fundingRoundsMap.set(fr.company_id, []);
+                    fundingRoundsMap.get(fr.company_id).push(fr);
+                });
+
+                const fundingInvestorsMap = new Map();
+                fundingInvestors.forEach(fi => {
+                    if (!fundingInvestorsMap.has(fi.funding_round_id)) fundingInvestorsMap.set(fi.funding_round_id, []);
+                    const investor = investorsMap.get(fi.investor_id);
+                    if (investor) fundingInvestorsMap.get(fi.funding_round_id).push(investor.name);
+                });
+
+                // Build unified company objects
+                allCompanies = companies.map(company => {
+                    const rounds = fundingRoundsMap.get(company.id) || [];
+                    const latestRound = rounds.sort((a, b) => (b.amount_eur || 0) - (a.amount_eur || 0))[0];
+
+                    let investorNames = [];
+                    if (latestRound) {
+                        investorNames = fundingInvestorsMap.get(latestRound.id) || [];
                     }
-                    cityData[city].count++;
-                    cityData[city].funding += company.amount || 0;
-                    cityData[city].companies.push(company.company);
-                }
-            }
 
-            // Cache city data for reuse
-            computationCache.cityData = cityData;
+                    const founders = companyPeopleMap.get(company.id) || [];
 
-            // Chrome optimization: Batch marker creation
-            const cityEntries = Object.entries(cityData);
-            const markerBatch = [];
+                    return {
+                        id: company.id,
+                        company: company.name,
+                        description: company.description,
+                        website: company.website,
+                        hq: company.hq_city_name,
+                        sectors: companySectorsMap.get(company.id) || [],
+                        amount: latestRound?.amount_eur || 0,
+                        round: latestRound?.round_type || '',
+                        month: latestRound?.announced_month || '',
+                        investors: investorNames.join(', '),
+                        founders: founders.map(f => f.full_name).join(', '),
+                        foundersData: founders,
+                        news: latestRound?.news_url || ''
+                    };
+                }).filter(c => c.amount > 0); // Only show companies with funding
 
-            for (let i = 0; i < cityEntries.length; i++) {
-                const [city, data] = cityEntries[i];
-                const coords = cityCoordinates[city];
-                if (!coords) continue;
+                filteredCompanies = [...allCompanies];
 
-                // Calculate marker size based on mode
-                let value = mapMode === 'funding' ? data.funding : data.count;
-                let radius;
-                if (mapMode === 'funding') {
-                    if (value < 100) radius = 5;
-                    else if (value < 500) radius = 10;
-                    else radius = 20;
-                } else {
-                    if (value < 10) radius = 5;
-                    else if (value < 30) radius = 10;
-                    else radius = 20;
-                }
+                console.log('[Supabase] Data loaded:', allCompanies.length, 'companies in', (performance.now() - startTime).toFixed(0), 'ms');
 
-                // Create circle marker
-                const marker = L.circleMarker(coords, {
-                    radius: radius,
-                    fillColor: '#667eea',
-                    color: '#fff',
-                    weight: 2,
-                    opacity: 1,
-                    fillOpacity: 0.7
-                });
+                // Initialize UI
+                initializeFilters();
+                initializeCharts();
+                initializeMap();
+                updateDisplay();
+                updateStats();
 
-                // Create popup content
-                const popupContent = `
-                    <div class="map-popup">
-                        <div class="map-popup-title">${city}</div>
-                        <div class="map-popup-stats">
-                            <div class="map-popup-stat">
-                                <span class="map-popup-label">Companies:</span>
-                                <span class="map-popup-value">${data.count}</span>
-                            </div>
-                            <div class="map-popup-stat">
-                                <span class="map-popup-label">Total Funding:</span>
-                                <span class="map-popup-value">${formatCurrency(data.funding)}</span>
-                            </div>
-                            <div class="map-popup-stat">
-                                <span class="map-popup-label">Avg Round:</span>
-                                <span class="map-popup-value">${formatCurrency(data.funding / data.count)}</span>
-                            </div>
-                        </div>
-                        <button class="map-popup-button" onclick="filterByCity('${city}')">View Companies</button>
+            } catch (error) {
+                console.error('[Supabase] Error loading data:', error);
+                document.getElementById('companies-grid').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⚠️</div>
+                        <div class="empty-title">Failed to load data</div>
+                        <div class="empty-text">Please try refreshing the page</div>
                     </div>
                 `;
-
-                marker.bindPopup(popupContent);
-                markerBatch.push(marker);
             }
-
-            // Chrome optimization: Add all markers in one batch
-            markerBatch.forEach(marker => {
-                marker.addTo(map);
-                markers.push(marker);
-            });
         }
 
-        function filterByCity(city) {
-            document.getElementById('filter-city').value = city;
-            applyFilters();
-            map.closePopup();
-            // Scroll to results
-            document.querySelector('.results-section').scrollIntoView({ behavior: 'smooth' });
-        }
+        // ===========================================
+        // FILTERS
+        // ===========================================
 
         function initializeFilters() {
-            // Chrome optimization: Use document fragments for batch DOM operations
-            const sectorSelect = document.getElementById('filter-sector');
-            const monthSelect = document.getElementById('filter-month');
-            const roundSelect = document.getElementById('filter-round');
-            const citySelect = document.getElementById('filter-city');
-
-            // Chrome optimization: Pre-compute all unique values in one pass
             const allSectors = new Set();
-            const allMonths = new Set();
             const allRounds = new Set();
             const allCities = new Set();
 
-            const len = allCompanies.length;
-            for (let i = 0; i < len; i++) {
-                const c = allCompanies[i];
-                getCompanySectors(c).forEach(s => allSectors.add(s));
-                if (c.month) allMonths.add(c.month);
+            allCompanies.forEach(c => {
+                c.sectors.forEach(s => allSectors.add(s));
                 if (c.round) allRounds.add(c.round);
                 if (c.hq) allCities.add(c.hq);
-            }
+            });
 
-            // Populate sector filter using document fragment
-            const sectorFragment = document.createDocumentFragment();
+            // Populate sector filter
+            const sectorSelect = document.getElementById('filter-sector');
             Array.from(allSectors).sort().forEach(sector => {
                 const option = document.createElement('option');
                 option.value = sector;
                 option.textContent = sector;
-                sectorFragment.appendChild(option);
+                sectorSelect.appendChild(option);
             });
-            sectorSelect.appendChild(sectorFragment);
 
-            // Populate month filter using document fragment
-            const monthFragment = document.createDocumentFragment();
-            Array.from(allMonths).sort().forEach(month => {
-                const option = document.createElement('option');
-                option.value = month;
-                option.textContent = month;
-                monthFragment.appendChild(option);
-            });
-            monthSelect.appendChild(monthFragment);
-
-            // Populate round filter using document fragment
-            const roundFragment = document.createDocumentFragment();
-            Array.from(allRounds).sort().forEach(round => {
+            // Populate round filter
+            const roundSelect = document.getElementById('filter-round');
+            const roundOrder = ['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth'];
+            roundOrder.filter(r => allRounds.has(r)).forEach(round => {
                 const option = document.createElement('option');
                 option.value = round;
                 option.textContent = round;
-                roundFragment.appendChild(option);
+                roundSelect.appendChild(option);
             });
-            roundSelect.appendChild(roundFragment);
 
-            // Populate city filter using document fragment
-            const cityFragment = document.createDocumentFragment();
+            // Populate city filter
+            const citySelect = document.getElementById('filter-city');
             Array.from(allCities).sort().forEach(city => {
                 const option = document.createElement('option');
                 option.value = city;
                 option.textContent = city;
-                cityFragment.appendChild(option);
+                citySelect.appendChild(option);
             });
-            citySelect.appendChild(cityFragment);
 
-            // Chrome optimization: Debounced search input (300ms delay)
-            const debouncedApplyFilters = debounce(applyFilters, 300);
-
-            // Chrome optimization: Store event listener references for cleanup
-            document.getElementById('search').addEventListener('input', debouncedApplyFilters);
+            // Event listeners with debouncing
+            const debouncedFilter = debounce(applyFilters, 300);
+            document.getElementById('search').addEventListener('input', debouncedFilter);
             document.getElementById('filter-sector').addEventListener('change', applyFilters);
-            document.getElementById('filter-month').addEventListener('change', applyFilters);
             document.getElementById('filter-round').addEventListener('change', applyFilters);
             document.getElementById('filter-city').addEventListener('change', applyFilters);
             document.getElementById('filter-size').addEventListener('change', applyFilters);
-            document.getElementById('sort-by').addEventListener('change', updateDisplay);
+            document.getElementById('sort-by').addEventListener('change', () => { currentPage = 1; updateDisplay(); });
+
+            // Chart toggles
             document.getElementById('sector-toggle').addEventListener('click', toggleSectorChart);
             document.getElementById('rounds-toggle').addEventListener('click', toggleRoundsChart);
             document.getElementById('map-toggle').addEventListener('click', toggleMapMode);
-
-            console.log('[Chrome Perf] Filters initialized with', allSectors.size, 'sectors,', allCities.size, 'cities');
-        }
-
-        function toggleMapMode() {
-            mapMode = mapMode === 'funding' ? 'count' : 'funding';
-            const button = document.getElementById('map-toggle');
-            button.textContent = mapMode === 'funding' ? 'By Funding €' : 'By Count #';
-            updateMapMarkers();
         }
 
         function applyFilters() {
-            const startTime = performance.now();
+            currentPage = 1;
 
-            currentPage = 1; // Reset to first page when filters change
-
-            // Chrome optimization: Cache filter values to avoid repeated DOM reads
             const searchTerm = document.getElementById('search').value.toLowerCase();
             const sectorFilter = document.getElementById('filter-sector').value;
-            const monthFilter = document.getElementById('filter-month').value;
             const roundFilter = document.getElementById('filter-round').value;
             const cityFilter = document.getElementById('filter-city').value;
             const sizeFilter = document.getElementById('filter-size').value;
 
-            // Chrome optimization: Parse size filter once
             let sizeMin = 0, sizeMax = Infinity;
             if (sizeFilter) {
-                const parts = sizeFilter.split('-').map(Number);
-                sizeMin = parts[0];
-                sizeMax = parts[1];
+                const [min, max] = sizeFilter.split('-').map(Number);
+                sizeMin = min;
+                sizeMax = max;
             }
 
-            // Chrome optimization: Pre-check which filters are active
-            const hasSearchTerm = searchTerm.length > 0;
-            const hasSectorFilter = sectorFilter.length > 0;
-            const hasMonthFilter = monthFilter.length > 0;
-            const hasRoundFilter = roundFilter.length > 0;
-            const hasCityFilter = cityFilter.length > 0;
-            const hasSizeFilter = sizeFilter.length > 0;
-
-            // Chrome optimization: Use for loop instead of filter for better performance
-            const result = [];
-            const len = allCompanies.length;
-
-            for (let i = 0; i < len; i++) {
-                const company = allCompanies[i];
-
-                // Search filter - optimized string matching
-                if (hasSearchTerm) {
-                    const companySectors = getCompanySectors(company).join(' ');
-                    const searchFields = (
-                        (company.company || '') + ' ' +
-                        (company.description || '') + ' ' +
-                        (company.hq || '') + ' ' +
-                        (company.investors || '') + ' ' +
-                        (company.founders || '') + ' ' +
-                        companySectors
-                    ).toLowerCase();
-
-                    if (searchFields.indexOf(searchTerm) === -1) continue;
+            filteredCompanies = allCompanies.filter(company => {
+                if (searchTerm) {
+                    const searchFields = [
+                        company.company,
+                        company.description,
+                        company.hq,
+                        company.investors,
+                        company.founders,
+                        ...company.sectors
+                    ].filter(Boolean).join(' ').toLowerCase();
+                    if (!searchFields.includes(searchTerm)) return false;
                 }
 
-                // Sector filter - check if ANY sector matches
-                if (hasSectorFilter && !getCompanySectors(company).includes(sectorFilter)) continue;
+                if (sectorFilter && !company.sectors.includes(sectorFilter)) return false;
+                if (roundFilter && company.round !== roundFilter) return false;
+                if (cityFilter && company.hq !== cityFilter) return false;
+                if (sizeFilter && (company.amount < sizeMin || company.amount > sizeMax)) return false;
 
-                // Month filter
-                if (hasMonthFilter && company.month !== monthFilter) continue;
-
-                // Round filter
-                if (hasRoundFilter && company.round !== roundFilter) continue;
-
-                // City filter
-                if (hasCityFilter && company.hq !== cityFilter) continue;
-
-                // Size filter
-                if (hasSizeFilter && company.amount) {
-                    if (company.amount < sizeMin || company.amount > sizeMax) continue;
-                }
-
-                result.push(company);
-            }
-
-            filteredCompanies = result;
-
-            // Invalidate computation cache
-            computationCache.sectorData = null;
-            computationCache.cityData = null;
-
-            console.log('[Chrome Perf] Filter applied in', (performance.now() - startTime).toFixed(2), 'ms, results:', filteredCompanies.length);
-
-            // Chrome optimization: Schedule UI updates using requestAnimationFrame
-            scheduleUpdate(() => {
-                updateActiveFilters();
-                updateDisplay();
-                updateCharts();
-                updateMapMarkers();
+                return true;
             });
+
+            updateActiveFilters();
+            updateDisplay();
+            updateStats();
+            updateCharts();
+            updateMapMarkers();
         }
 
         function updateActiveFilters() {
@@ -1280,7 +1352,6 @@
 
             const filters = [
                 { id: 'filter-sector', label: 'Sector' },
-                { id: 'filter-month', label: 'Month' },
                 { id: 'filter-round', label: 'Round' },
                 { id: 'filter-city', label: 'City' },
                 { id: 'filter-size', label: 'Size' }
@@ -1291,10 +1362,7 @@
                 if (select.value) {
                     const tag = document.createElement('div');
                     tag.className = 'filter-tag';
-                    tag.innerHTML = `
-                        ${filter.label}: ${select.options[select.selectedIndex].text}
-                        <button onclick="clearFilter('${filter.id}')">×</button>
-                    `;
+                    tag.innerHTML = `${filter.label}: ${select.options[select.selectedIndex].text} <button onclick="clearFilter('${filter.id}')">×</button>`;
                     container.appendChild(tag);
                 }
             });
@@ -1303,10 +1371,7 @@
             if (searchTerm) {
                 const tag = document.createElement('div');
                 tag.className = 'filter-tag';
-                tag.innerHTML = `
-                    Search: "${searchTerm}"
-                    <button onclick="clearSearch()">×</button>
-                `;
+                tag.innerHTML = `Search: "${searchTerm}" <button onclick="clearSearch()">×</button>`;
                 container.appendChild(tag);
             }
         }
@@ -1321,166 +1386,127 @@
             applyFilters();
         }
 
+        // ===========================================
+        // DISPLAY
+        // ===========================================
+
+        function updateStats() {
+            const totalFunding = filteredCompanies.reduce((sum, c) => sum + (c.amount || 0), 0);
+            const avgFunding = filteredCompanies.length > 0 ? totalFunding / filteredCompanies.length : 0;
+
+            document.getElementById('stat-companies').textContent = filteredCompanies.length;
+            document.getElementById('stat-funding').textContent = formatCurrency(totalFunding);
+            document.getElementById('stat-average').textContent = formatCurrency(avgFunding);
+
+            document.getElementById('results-info').innerHTML = `Showing <strong>${filteredCompanies.length}</strong> of ${allCompanies.length} companies`;
+        }
+
         function updateDisplay() {
-            const startTime = performance.now();
-
-            // Chrome optimization: Calculate stats in a single pass
-            let totalFunding = 0;
-            let companiesWithFunding = 0;
-            const sectorsSet = new Set();
-            const len = filteredCompanies.length;
-
-            for (let i = 0; i < len; i++) {
-                const c = filteredCompanies[i];
-                if (c.amount) {
-                    totalFunding += c.amount;
-                    companiesWithFunding++;
-                }
-                getCompanySectors(c).forEach(s => sectorsSet.add(s));
-            }
-
-            const avgFunding = companiesWithFunding > 0 ? totalFunding / companiesWithFunding : 0;
-
-            // Chrome optimization: Batch DOM reads/writes
-            const statCompanies = document.getElementById('stat-companies');
-            const statFunding = document.getElementById('stat-funding');
-            const statAverage = document.getElementById('stat-average');
-            const statSectors = document.getElementById('stat-sectors');
-            const resultsCount = document.getElementById('results-count');
-
-            // Write all stats at once
-            statCompanies.textContent = len;
-            statFunding.textContent = formatCurrency(totalFunding);
-            statAverage.textContent = formatCurrency(avgFunding);
-            statSectors.textContent = sectorsSet.size;
-            resultsCount.textContent = `${len} ${len === 1 ? 'company' : 'companies'}`;
-
-            // Sort companies
             const sortBy = document.getElementById('sort-by').value;
-            const sorted = filteredCompanies.slice().sort((a, b) => {
+            const sorted = [...filteredCompanies].sort((a, b) => {
                 switch (sortBy) {
-                    case 'date-desc':
-                        return new Date(b.month || 0) - new Date(a.month || 0);
-                    case 'date-asc':
-                        return new Date(a.month || 0) - new Date(b.month || 0);
-                    case 'amount-desc':
-                        return (b.amount || 0) - (a.amount || 0);
-                    case 'amount-asc':
-                        return (a.amount || 0) - (b.amount || 0);
-                    case 'name-asc':
-                        return (a.company || '').localeCompare(b.company || '');
-                    case 'name-desc':
-                        return (b.company || '').localeCompare(a.company || '');
-                    default:
-                        return 0;
+                    case 'amount-desc': return (b.amount || 0) - (a.amount || 0);
+                    case 'amount-asc': return (a.amount || 0) - (b.amount || 0);
+                    case 'name-asc': return (a.company || '').localeCompare(b.company || '');
+                    case 'name-desc': return (b.company || '').localeCompare(a.company || '');
+                    default: return 0;
                 }
             });
 
-            // Pagination: Only render current page
             const startIndex = (currentPage - 1) * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-            const pageCompanies = sorted.slice(startIndex, endIndex);
+            const pageCompanies = sorted.slice(startIndex, startIndex + itemsPerPage);
             const totalPages = Math.ceil(sorted.length / itemsPerPage);
 
-            // Chrome optimization: Build HTML string efficiently
             const grid = document.getElementById('companies-grid');
-            const htmlParts = [];
-            const pageLen = pageCompanies.length;
 
-            for (let i = 0; i < pageLen; i++) {
-                const company = pageCompanies[i];
-                const companySectors = getCompanySectors(company);
-                const sectorsHTML = companySectors.length > 0
-                    ? `<div class="company-sectors">${companySectors.map(s => `<span class="company-sector">${s}</span>`).join('')}</div>`
-                    : '';
+            if (pageCompanies.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🔍</div>
+                        <div class="empty-title">No companies found</div>
+                        <div class="empty-text">Try adjusting your filters</div>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = pageCompanies.map(company => {
+                    const sectorsHTML = company.sectors.map(s =>
+                        `<span class="sector-badge ${getSectorClass(s)}">${s}</span>`
+                    ).join('');
 
-                htmlParts.push(`
-                <div class="company-card">
-                    <div class="company-header">
-                        <div class="company-name">${company.company || 'Unknown'}</div>
-                        ${company.amount ? `<div class="company-amount">${formatCurrency(company.amount)}</div>` : ''}
-                    </div>
-                    ${sectorsHTML}
-                    ${company.description ? `<div class="company-description">${company.description}</div>` : ''}
-                    <div class="company-meta">
-                        ${company.hq ? `<div class="company-meta-item"><span class="company-meta-label">📍 Location:</span> ${company.hq}</div>` : ''}
-                        ${company.round ? `<div class="company-meta-item"><span class="company-meta-label">💼 Round:</span> ${company.round}</div>` : ''}
-                        ${company.month ? `<div class="company-meta-item"><span class="company-meta-label">📅 Date:</span> ${company.month}</div>` : ''}
-                        ${company.investors ? `<div class="company-meta-item"><span class="company-meta-label">🤝 Investors:</span> ${company.investors}</div>` : ''}
-                        ${company.website ? `<div class="company-meta-item"><span class="company-meta-label">🔗 Website:</span> <a href="${company.website}" target="_blank" rel="noopener" style="color: #667eea;">${company.website}</a></div>` : ''}
-                    </div>
-                </div>
-                `);
+                    return `
+                        <div class="company-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <div class="card-title">${company.company}</div>
+                                </div>
+                                <div class="card-amount">${formatCurrency(company.amount)}</div>
+                            </div>
+                            <div class="sector-badges">${sectorsHTML}</div>
+                            ${company.description ? `<div class="card-description">${company.description}</div>` : ''}
+                            <div class="card-meta">
+                                ${company.hq ? `<div class="card-meta-item">📍 ${company.hq}</div>` : ''}
+                                ${company.round ? `<div class="card-meta-item">💼 ${company.round}</div>` : ''}
+                                ${company.website ? `<div class="card-meta-item"><a href="${company.website}" target="_blank" rel="noopener">🔗 Website</a></div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             }
 
-            // Chrome optimization: Single innerHTML assignment
-            grid.innerHTML = htmlParts.join('');
-
-            // Render pagination controls
             renderPagination(totalPages);
-
             updateTopLists();
-
-            console.log('[Chrome Perf] Display updated in', (performance.now() - startTime).toFixed(2), 'ms');
         }
 
         function renderPagination(totalPages) {
-            const paginationContainer = document.getElementById('pagination');
-            if (!paginationContainer) return;
-
+            const container = document.getElementById('pagination');
             if (totalPages <= 1) {
-                paginationContainer.innerHTML = '';
+                container.innerHTML = '';
                 return;
             }
 
-            let html = '<div class="pagination-controls">';
-            
-            // Previous button
-            html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Previous</button>`;
-            
-            // Page numbers (show 5 pages at a time)
+            let html = '';
+            html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>← Prev</button>`;
+
             const startPage = Math.max(1, currentPage - 2);
             const endPage = Math.min(totalPages, currentPage + 2);
-            
+
             if (startPage > 1) {
                 html += `<button class="page-btn" onclick="changePage(1)">1</button>`;
                 if (startPage > 2) html += '<span class="page-dots">...</span>';
             }
-            
+
             for (let i = startPage; i <= endPage; i++) {
                 html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
             }
-            
+
             if (endPage < totalPages) {
                 if (endPage < totalPages - 1) html += '<span class="page-dots">...</span>';
                 html += `<button class="page-btn" onclick="changePage(${totalPages})">${totalPages}</button>`;
             }
-            
-            // Next button
+
             html += `<button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>Next →</button>`;
-            
-            html += '</div>';
-            paginationContainer.innerHTML = html;
+
+            container.innerHTML = html;
         }
 
         function changePage(page) {
             const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
             if (page < 1 || page > totalPages) return;
-            
             currentPage = page;
             updateDisplay();
-            
-            // Scroll to top of results
-            document.getElementById('companies-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelector('.companies-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        // ===========================================
+        // TOP LISTS
+        // ===========================================
 
         function updateTopLists() {
             // Top Deals
             const topDeals = [...filteredCompanies]
-                .filter(c => c.amount)
                 .sort((a, b) => b.amount - a.amount)
-                .slice(0, 10);
-            
+                .slice(0, 8);
+
             document.getElementById('top-deals').innerHTML = topDeals.map((c, i) => `
                 <div class="top-item">
                     <span class="top-item-rank">${i + 1}</span>
@@ -1490,23 +1516,24 @@
             `).join('');
 
             // Top Cities
-            const cityCounts = {};
-            const cityFunding = {};
+            const cityData = {};
             filteredCompanies.forEach(c => {
                 if (c.hq) {
-                    cityCounts[c.hq] = (cityCounts[c.hq] || 0) + 1;
-                    cityFunding[c.hq] = (cityFunding[c.hq] || 0) + (c.amount || 0);
+                    if (!cityData[c.hq]) cityData[c.hq] = { count: 0, funding: 0 };
+                    cityData[c.hq].count++;
+                    cityData[c.hq].funding += c.amount || 0;
                 }
             });
-            const topCities = Object.entries(cityCounts)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 10);
-            
-            document.getElementById('top-cities').innerHTML = topCities.map(([city, count], i) => `
+
+            const topCities = Object.entries(cityData)
+                .sort((a, b) => b[1].funding - a[1].funding)
+                .slice(0, 8);
+
+            document.getElementById('top-cities').innerHTML = topCities.map(([city, data], i) => `
                 <div class="top-item" onclick="filterByCity('${city}')">
                     <span class="top-item-rank">${i + 1}</span>
                     <span class="top-item-name">${city}</span>
-                    <span class="top-item-value">${count} (${formatCurrency(cityFunding[city])})</span>
+                    <span class="top-item-value">${formatCurrency(data.funding)}</span>
                 </div>
             `).join('');
 
@@ -1514,362 +1541,208 @@
             const investorCounts = {};
             filteredCompanies.forEach(c => {
                 if (c.investors) {
-                    const investors = c.investors.split(',').map(inv => inv.trim());
-                    investors.forEach(inv => {
-                        if (inv) {
-                            investorCounts[inv] = (investorCounts[inv] || 0) + 1;
-                        }
+                    c.investors.split(',').map(i => i.trim()).filter(Boolean).forEach(inv => {
+                        investorCounts[inv] = (investorCounts[inv] || 0) + 1;
                     });
                 }
             });
+
             const topInvestors = Object.entries(investorCounts)
                 .sort((a, b) => b[1] - a[1])
-                .slice(0, 10);
-            
+                .slice(0, 8);
+
             document.getElementById('top-investors').innerHTML = topInvestors.map(([investor, count], i) => `
                 <div class="top-item">
                     <span class="top-item-rank">${i + 1}</span>
                     <span class="top-item-name">${investor}</span>
-                    <span class="top-item-value">${count}</span>
+                    <span class="top-item-value">${count} deals</span>
                 </div>
             `).join('');
         }
 
-        function initializeCharts() {
-            // Chrome optimization: Chart.js global configuration for better performance
-            Chart.defaults.animation.duration = 300; // Faster animations
-            Chart.defaults.responsive = true;
-            Chart.defaults.maintainAspectRatio = true;
+        function filterByCity(city) {
+            document.getElementById('filter-city').value = city;
+            applyFilters();
+            document.querySelector('.companies-section').scrollIntoView({ behavior: 'smooth' });
+        }
 
-            // Sector Chart with Chrome optimizations
+        // ===========================================
+        // CHARTS
+        // ===========================================
+
+        const chartColors = [
+            '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ef4444',
+            '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1',
+            '#14b8a6', '#a855f7'
+        ];
+
+        function initializeCharts() {
+            Chart.defaults.color = '#94a3b8';
+            Chart.defaults.borderColor = 'rgba(255,255,255,0.08)';
+
             const sectorCtx = document.getElementById('sectorChart').getContext('2d');
             sectorChart = new Chart(sectorCtx, {
-                type: 'pie',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        data: [],
-                        backgroundColor: chartColors,
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }]
-                },
+                type: 'doughnut',
+                data: { labels: [], datasets: [{ data: [], backgroundColor: chartColors, borderWidth: 0 }] },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
-                    // Chrome optimization: Reduce animation complexity
-                    animation: {
-                        duration: 300,
-                        easing: 'easeOutQuart'
-                    },
+                    maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                boxWidth: 12,
-                                padding: 10,
-                                font: { size: 11 }
-                            }
-                        },
-                        tooltip: {
-                            // Chrome optimization: Disable tooltip animations
-                            animation: {
-                                duration: 0
-                            },
-                            callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.parsed || 0;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(1);
-                                    if (sectorChartMode === 'funding') {
-                                        return `${label}: ${formatCurrency(value)} (${percentage}%)`;
-                                    } else {
-                                        return `${label}: ${value} companies (${percentage}%)`;
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    onClick: (event, elements) => {
-                        if (elements.length > 0) {
-                            const index = elements[0].index;
-                            const sector = sectorChart.data.labels[index];
-                            document.getElementById('filter-sector').value = sector;
-                            applyFilters();
-                        }
+                        legend: { position: 'right', labels: { boxWidth: 12, padding: 8, font: { size: 11 } } }
                     }
                 }
             });
 
-            // Funding Rounds Chart with Chrome optimizations
             const roundsCtx = document.getElementById('roundsChart').getContext('2d');
             roundsChart = new Chart(roundsCtx, {
                 type: 'bar',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        label: 'Funding (€M)',
-                        data: [],
-                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
-                        borderColor: '#667eea',
-                        borderWidth: 2
-                    }]
-                },
+                data: { labels: [], datasets: [{ data: [], backgroundColor: '#3b82f6', borderRadius: 6 }] },
                 options: {
                     responsive: true,
-                    maintainAspectRatio: true,
+                    maintainAspectRatio: false,
                     indexAxis: 'y',
-                    // Chrome optimization: Reduce animation complexity
-                    animation: {
-                        duration: 300,
-                        easing: 'easeOutQuart'
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            // Chrome optimization: Disable tooltip animations
-                            animation: {
-                                duration: 0
-                            },
-                            callbacks: {
-                                label: function(context) {
-                                    const value = context.parsed.x || 0;
-                                    if (roundsChartMode === 'funding') {
-                                        return `Funding: ${formatCurrency(value)}`;
-                                    } else {
-                                        return `Companies: ${value}`;
-                                    }
-                                }
-                            }
-                        }
-                    },
+                    plugins: { legend: { display: false } },
                     scales: {
-                        x: {
-                            beginAtZero: true,
-                            ticks: {
-                                callback: function(value) {
-                                    if (roundsChartMode === 'funding') {
-                                        return formatCurrency(value);
-                                    } else {
-                                        return value;
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    onClick: (event, elements) => {
-                        if (elements.length > 0) {
-                            const index = elements[0].index;
-                            const round = roundsChart.data.labels[index];
-                            document.getElementById('filter-round').value = round;
-                            applyFilters();
-                        }
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { grid: { display: false } }
                     }
                 }
             });
 
-            updateChartsCore(); // Use direct call for initial load
-            console.log('[Chrome Perf] Charts initialized');
+            updateCharts();
         }
 
-        // Chrome optimization: Throttled chart updates
-        const updateChartsThrottled = throttle(updateChartsCore, 150);
-
-        function updateCharts() {
-            updateChartsThrottled();
-        }
-
-        function updateChartsCore() {
+        const updateCharts = throttle(function() {
             if (!sectorChart || !roundsChart) return;
 
-            const startTime = performance.now();
-
-            // Chrome optimization: Calculate sector data efficiently with caching
+            // Sector data
             const sectorData = {};
-            const allowedRoundsSet = new Set(['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth']);
-            const roundData = {};
-            const len = filteredCompanies.length;
+            filteredCompanies.forEach(c => {
+                c.sectors.forEach(s => {
+                    if (!sectorData[s]) sectorData[s] = { count: 0, funding: 0 };
+                    sectorData[s].count++;
+                    sectorData[s].funding += c.amount || 0;
+                });
+            });
 
-            // Single pass through data for both charts
-            for (let i = 0; i < len; i++) {
-                const c = filteredCompanies[i];
-                const companySectors = getCompanySectors(c);
-                const amount = c.amount || 0;
-
-                // Sector aggregation
-                for (let j = 0; j < companySectors.length; j++) {
-                    const sector = companySectors[j];
-                    if (!sectorData[sector]) {
-                        sectorData[sector] = { count: 0, funding: 0 };
-                    }
-                    sectorData[sector].count++;
-                    sectorData[sector].funding += amount;
-                }
-
-                // Round aggregation
-                if (c.round && allowedRoundsSet.has(c.round)) {
-                    if (!roundData[c.round]) {
-                        roundData[c.round] = { count: 0, funding: 0 };
-                    }
-                    roundData[c.round].count++;
-                    roundData[c.round].funding += amount;
-                }
-            }
-
-            // Cache sector data for potential reuse
-            computationCache.sectorData = sectorData;
-
-            // Sort sectors
             const sortedSectors = Object.entries(sectorData)
-                .sort((a, b) => {
-                    if (sectorChartMode === 'funding') {
-                        return b[1].funding - a[1].funding;
-                    } else {
-                        return b[1].count - a[1].count;
-                    }
-                })
-                .slice(0, 14);
+                .sort((a, b) => sectorChartMode === 'funding' ? b[1].funding - a[1].funding : b[1].count - a[1].count)
+                .slice(0, 10);
 
-            // Chrome optimization: Only update chart data, use 'none' animation for faster updates
-            sectorChart.data.labels = sortedSectors.map(([sector]) => sector);
-            sectorChart.data.datasets[0].data = sortedSectors.map(([, data]) => {
-                return sectorChartMode === 'funding' ? data.funding : data.count;
-            });
-            sectorChart.update('none'); // 'none' skips animations for faster updates
+            sectorChart.data.labels = sortedSectors.map(([s]) => s);
+            sectorChart.data.datasets[0].data = sortedSectors.map(([, d]) => sectorChartMode === 'funding' ? d.funding : d.count);
+            sectorChart.update('none');
 
-            // Sort rounds in logical order
+            // Rounds data
+            const roundData = {};
             const roundOrder = ['Pre-Seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Growth'];
-            const sortedRounds = roundOrder
-                .filter(round => roundData[round])
-                .map(round => [round, roundData[round]]);
-
-            roundsChart.data.labels = sortedRounds.map(([round]) => round);
-            roundsChart.data.datasets[0].data = sortedRounds.map(([, data]) => {
-                return roundsChartMode === 'funding' ? data.funding : data.count;
+            filteredCompanies.forEach(c => {
+                if (c.round && roundOrder.includes(c.round)) {
+                    if (!roundData[c.round]) roundData[c.round] = { count: 0, funding: 0 };
+                    roundData[c.round].count++;
+                    roundData[c.round].funding += c.amount || 0;
+                }
             });
-            roundsChart.data.datasets[0].label = roundsChartMode === 'funding' ? 'Funding (€M)' : 'Companies';
-            roundsChart.update('none'); // 'none' skips animations for faster updates
 
-            console.log('[Chrome Perf] Charts updated in', (performance.now() - startTime).toFixed(2), 'ms');
-        }
+            const sortedRounds = roundOrder.filter(r => roundData[r]).map(r => [r, roundData[r]]);
+
+            roundsChart.data.labels = sortedRounds.map(([r]) => r);
+            roundsChart.data.datasets[0].data = sortedRounds.map(([, d]) => roundsChartMode === 'funding' ? d.funding : d.count);
+            roundsChart.update('none');
+        }, 150);
 
         function toggleSectorChart() {
             sectorChartMode = sectorChartMode === 'funding' ? 'count' : 'funding';
-            const button = document.getElementById('sector-toggle');
-            button.textContent = sectorChartMode === 'funding' ? 'By Funding €' : 'By Count #';
+            document.getElementById('sector-toggle').textContent = sectorChartMode === 'funding' ? 'By Amount €' : 'By Count #';
             updateCharts();
         }
 
         function toggleRoundsChart() {
             roundsChartMode = roundsChartMode === 'funding' ? 'count' : 'funding';
-            const button = document.getElementById('rounds-toggle');
-            button.textContent = roundsChartMode === 'funding' ? 'By Funding €' : 'By Count #';
+            document.getElementById('rounds-toggle').textContent = roundsChartMode === 'funding' ? 'By Amount €' : 'By Count #';
             updateCharts();
         }
 
-        function formatCurrency(amount) {
-            if (!amount) return '€0';
-            if (amount >= 1000) {
-                return '€' + (amount / 1000).toFixed(1) + 'B';
-            } else {
-                return '€' + amount.toFixed(1) + 'M';
-            }
-        }
-
         // ===========================================
-        // CHROME MEMORY MANAGEMENT & CLEANUP
+        // MAP
         // ===========================================
 
-        // Chrome optimization: Cleanup function to prevent memory leaks
-        function cleanup() {
-            console.log('[Chrome Perf] Running cleanup...');
+        function initializeMap() {
+            map = L.map('map', { scrollWheelZoom: false }).setView([46.603354, 1.888334], 6);
 
-            // Clear any pending timers
-            if (searchDebounceTimer) clearTimeout(searchDebounceTimer);
-            if (chartUpdateTimer) clearTimeout(chartUpdateTimer);
-            if (mapUpdateTimer) clearTimeout(mapUpdateTimer);
-            if (rafId) cancelAnimationFrame(rafId);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '© OpenStreetMap contributors © CARTO',
+                maxZoom: 19
+            }).addTo(map);
 
-            // Clear markers from map
-            if (markers && markers.length > 0) {
-                markers.forEach(marker => {
-                    if (marker) {
-                        marker.unbindPopup();
-                        if (map) map.removeLayer(marker);
-                    }
-                });
-                markers.length = 0;
-            }
-
-            // Destroy charts to free canvas memory
-            if (sectorChart) {
-                sectorChart.destroy();
-                sectorChart = null;
-            }
-            if (roundsChart) {
-                roundsChart.destroy();
-                roundsChart = null;
-            }
-
-            // Remove map
-            if (map) {
-                map.remove();
-                map = null;
-            }
-
-            // Clear data arrays
-            allCompanies = [];
-            filteredCompanies = [];
-
-            // Clear computation cache
-            computationCache.sectorData = null;
-            computationCache.cityData = null;
-            computationCache.lastFilterHash = null;
-
-            console.log('[Chrome Perf] Cleanup complete');
+            updateMapMarkers();
         }
 
-        // Chrome optimization: Handle page visibility changes
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                // Page is hidden - cancel any pending animations
-                if (rafId) {
-                    cancelAnimationFrame(rafId);
-                    rafId = null;
+        const updateMapMarkers = throttle(function() {
+            if (!map) return;
+
+            markers.forEach(m => { m.unbindPopup(); map.removeLayer(m); });
+            markers = [];
+
+            const cityData = {};
+            filteredCompanies.forEach(c => {
+                if (c.hq && cityCoordinates[c.hq]) {
+                    if (!cityData[c.hq]) cityData[c.hq] = { count: 0, funding: 0 };
+                    cityData[c.hq].count++;
+                    cityData[c.hq].funding += c.amount || 0;
                 }
-            }
-        });
+            });
 
-        // Chrome optimization: Cleanup on page unload
-        window.addEventListener('beforeunload', cleanup);
+            Object.entries(cityData).forEach(([city, data]) => {
+                const coords = cityCoordinates[city];
+                if (!coords) return;
 
-        // Chrome optimization: Handle back/forward cache
-        window.addEventListener('pagehide', (event) => {
-            if (event.persisted) {
-                cleanup();
-            }
-        });
+                const value = mapMode === 'funding' ? data.funding : data.count;
+                let radius = value < 100 ? 8 : value < 500 ? 14 : 22;
+                if (mapMode === 'count') radius = data.count < 10 ? 8 : data.count < 30 ? 14 : 22;
 
-        // Chrome optimization: Log initial performance metrics
-        window.addEventListener('load', () => {
-            if (window.performance && window.performance.timing) {
-                const timing = window.performance.timing;
-                const pageLoadTime = timing.loadEventEnd - timing.navigationStart;
-                const domReadyTime = timing.domContentLoadedEventEnd - timing.navigationStart;
-                console.log('[Chrome Perf] Page load time:', pageLoadTime, 'ms');
-                console.log('[Chrome Perf] DOM ready time:', domReadyTime, 'ms');
-            }
+                const marker = L.circleMarker(coords, {
+                    radius,
+                    fillColor: '#3b82f6',
+                    color: '#1e3a8a',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.7
+                });
 
-            // Log memory usage if available (Chrome-specific)
-            if (window.performance && window.performance.memory) {
-                const memory = window.performance.memory;
-                console.log('[Chrome Perf] JS Heap Size:', (memory.usedJSHeapSize / 1048576).toFixed(2), 'MB');
-                console.log('[Chrome Perf] Total JS Heap:', (memory.totalJSHeapSize / 1048576).toFixed(2), 'MB');
-            }
-        });
+                marker.bindPopup(`
+                    <div class="map-popup">
+                        <div class="map-popup-title">${city}</div>
+                        <div class="map-popup-stats">
+                            <div class="map-popup-stat">
+                                <span class="map-popup-label">Companies</span>
+                                <span class="map-popup-value">${data.count}</span>
+                            </div>
+                            <div class="map-popup-stat">
+                                <span class="map-popup-label">Total Funding</span>
+                                <span class="map-popup-value">${formatCurrency(data.funding)}</span>
+                            </div>
+                        </div>
+                        <button class="map-popup-button" onclick="filterByCity('${city}')">View Companies</button>
+                    </div>
+                `);
+
+                marker.addTo(map);
+                markers.push(marker);
+            });
+        }, 100);
+
+        function toggleMapMode() {
+            mapMode = mapMode === 'funding' ? 'count' : 'funding';
+            document.getElementById('map-toggle').textContent = mapMode === 'funding' ? 'By Amount €' : 'By Count #';
+            updateMapMarkers();
+        }
+
+        // ===========================================
+        // INITIALIZE
+        // ===========================================
+
+        document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
