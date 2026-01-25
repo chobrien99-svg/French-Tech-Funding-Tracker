@@ -10172,5 +10172,252 @@
     "sectors": [
       "DeepTech & Hardware"
     ]
+  },
+  {
+    "company": "Harmattan AI",
+    "description": "Defense technology company developing vertically integrated autonomous systems, including AI-enabled ISR and strike UAVs, layered air-defense solutions, drone interception, electronic warfare platforms, and C2 systems. Harmattan AI focuses on sovereign, controlled autonomy deployed at scale for NATO and allied forces.",
+    "website": "https://www.harmattan.ai",
+    "hq": "Paris",
+    "round": "Series B",
+    "amount": 181.82,
+    "investors": "Dassault Aviation",
+    "founders": "Mouad M'Ghari, Martin de Gourcuff, Edouard Rosset",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "AI & Machine Learning",
+      "SpaceTech & Aerospace"
+    ]
+  },
+  {
+    "company": "FineHeart",
+    "description": "FineHeart is a clinical-stage medical technology company developing next-generation Active Implantable Medical Devices (AIMDs) for advanced heart failure. Its flagship product, FlowMaker\u00ae, is the world's first fully implantable cardiac output accelerator, designed to work in synergy with natural heart contractions while minimizing energy consumption and infection risk.",
+    "website": null,
+    "hq": "Bordeaux",
+    "round": "Series C",
+    "amount": 35,
+    "investors": "Groupe Pasteur Mutualit\u00e9, Groupe Etchart, European Innovation Council, EIB Fund, FH Founders, Lurra, IRDI Capital Investment, Groupe Doliam, NACO, Aquiti Gestion, Galia Gestion, Broadview Ventures, M Capital, UI Investment, Verve Capital",
+    "founders": "Arnaud Mascarell, Dr. St\u00e9phane Garrigue, Dr. Philippe Ritter",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "HealthTech & BioTech"
+    ]
+  },
+  {
+    "company": "SunLib",
+    "description": "SunLib is a French solar autoconsumption startup offering residential photovoltaic installations through a subscription model, removing upfront investment and credit constraints. The company installs and owns solar panels, allowing households to access clean energy for a monthly fee while accelerating the adoption of distributed solar in France.",
+    "website": null,
+    "hq": "Aix-en-Provence",
+    "round": "Series A",
+    "amount": 25,
+    "investors": "Epop\u00e9e Gestion",
+    "founders": "Arnaud Langlois",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "CleanTech & Energy",
+      "FinTech"
+    ]
+  },
+  {
+    "company": "Enodia Therapeutics",
+    "description": "Develops small-molecule drugs that trigger the degradation of disease-causing proteins as they are being synthesized, using a platform combining proteomics and machine learning.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Seed",
+    "amount": 20.7,
+    "investors": "Elaia, Pfizer Ventures, Bpifrance, Sambrinvest, MACSF, Investsud, Argobio, Institut Pasteur, Wallonie Entreprendre",
+    "founders": "Caroline Demangel, Yves Ribeill",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "AI & Machine Learning",
+      "HealthTech & BioTech"
+    ]
+  },
+  {
+    "company": "MYCOPHYTO",
+    "description": "MYCOPHYTO is a French pioneer in mycorrhizal biostimulants and soil regeneration, developing nature-inspired solutions that improve crop resilience, water retention, and yields. Leveraging a proprietary R&D platform, protected biobank, and AI-driven formulation adapted to local soil and climate conditions, the company supports farmers' transition to agroecology while addressing climate-driven stress such as drought.",
+    "website": null,
+    "hq": "Grasse",
+    "round": "Series A",
+    "amount": 16,
+    "investors": "Innovacom, BNP Paribas, Bpifrance, CDG Invest, Noshaq, RSI, Cr\u00e9dit Agricole",
+    "founders": "Justine Lipuma",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "AgriTech & FoodTech",
+      "CleanTech & Energy"
+    ]
+  },
+  {
+    "company": "Equitable Earth",
+    "description": "Builds a certification platform for nature-based carbon projects focused on transparency, community impact, and ecological integrity. Certification standard specializing in nature-based carbon removal projects, particularly afforestation, reforestation, and revegetation (ARR). Leveraging advanced remote sensing, data science, and expert-led methodologies, ERS offers one of the fastest certification processes in the market\u2014up to four times quicker than comparable standards\u2014serving project developers and end buyers across more than 20 countries.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Growth",
+    "amount": 12.6,
+    "investors": "US family office, AENU, noa, Localglobe",
+    "founders": "Priscille Raynaud, Thibault Sorret",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "AgriTech & FoodTech"
+    ]
+  },
+  {
+    "company": "Kepplair Evolution",
+    "description": "Kepplair Evolution develops a multi-role firefighting aircraft by converting the ATR 72 into a next-generation water bomber, the KEPPLAIR 72 \"Forest Keeper\". By leveraging an existing aircraft platform, the company cuts time-to-market to three years and significantly reduces development and operating costs. The aircraft is designed for aerial firefighting as well as cargo transport and medical evacuation, addressing the rapidly growing risk of wildfires driven by climate change and the critical shortage of modern firefighting fleets in Europe and globally.",
+    "website": null,
+    "hq": "Toulouse",
+    "round": "Seed",
+    "amount": 5,
+    "investors": "Groupe AVICO, ORA",
+    "founders": "David Joubert",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "SpaceTech & Aerospace"
+    ]
+  },
+  {
+    "company": "Cementic",
+    "description": "Develops a nanomaterial for root canal fillings that eliminates 99.99% of lingering bacteria, aiming to reduce post-treatment infections and antibiotic use.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Seed",
+    "amount": 4,
+    "investors": "Blast, Business Angels, dental professionals",
+    "founders": "Samir Raddi",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "HealthTech & BioTech"
+    ]
+  },
+  {
+    "company": "Revox",
+    "description": "Revox builds a developer-first API that enables reliable, production-grade outbound AI calling at scale. Its platform addresses critical infrastructure challenges that have hindered voice agents in real-world deployments, including voicemail detection, IVR navigation, call drops, latency, and edge-case orchestration. Revox combines low-latency voice models, resilient call orchestration, and self-improving agents with humans-in-the-loop to unlock high-trust, real-world voice AI use cases.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Pre-Seed",
+    "amount": 2.73,
+    "investors": "Seedcamp, Weekend Fund, Drysdale, Purple, OPRTRS CLUB, Firedrop, Kima Ventures, Tiny VC, Business Angels, Stanislas Polu, Gabriel Hubert, Alex Yazdi",
+    "founders": "Aric Lasry, Jean-Baptiste de La Fage",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "AI & Machine Learning"
+    ]
+  },
+  {
+    "company": "Sweetech",
+    "description": "Develops a fermentation-based process to produce rare sugars used in pharmaceuticals, cosmetics, and nutraceuticals, offering a green alternative to synthetic sugar chemistry.",
+    "website": null,
+    "hq": "Toulouse",
+    "round": "Seed",
+    "amount": 2.25,
+    "investors": "Iron Hands Capital, Bpifrance",
+    "founders": "Julien Durand, Yannick Malbert",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "HealthTech & BioTech"
+    ]
+  },
+  {
+    "company": "Viti-Tunnel",
+    "description": "Viti-Tunnel develops a retractable physical protection system for row crops, designed to shield vineyards and other agricultural productions from climatic hazards while reducing reliance on chemical inputs. Industrialized and cost-optimized, the solution secures yields, preserves farm value, and supports resilient, pesticide-free farming systems.",
+    "website": null,
+    "hq": "Le Haillan",
+    "round": "Seed",
+    "amount": 2,
+    "investors": "Parnass, Cr\u00e9dit Agricole Aquitaine Expansion, Sowefund, Demea Invest",
+    "founders": "Patrick Delmarre",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "AgriTech & FoodTech",
+      "CleanTech & Energy"
+    ]
+  },
+  {
+    "company": "Campsider",
+    "description": "Campsider is a curated marketplace for second-hand technical sports equipment, often described as the \"Back Market of used bikes and skis.\" The platform digitalizes professional sports retailers' second-hand inventories and manages the full value chain\u2014product qualification, pricing, logistics, delivery, and expert advice\u2014positioning itself as a trusted intermediary for high-performance and safety-critical gear.",
+    "website": null,
+    "hq": "Lyon",
+    "round": "Seed",
+    "amount": 1.5,
+    "investors": "Founders Future, 50Partners Impact, Sowefund",
+    "founders": "Thomas Gounot, Arthur Rocle",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "E-commerce & Retail"
+    ]
+  },
+  {
+    "company": "Gamevestor",
+    "description": "Gamevestor is a regulated crowdinvesting platform dedicated to video game projects. It enables individuals to invest in game development through a secure, transparent, and milestone-based funding model, while allowing studios to retain their creative and strategic independence. All projects are vetted by an independent committee of gaming and finance experts, with staged fund releases and full risk disclosure.",
+    "website": null,
+    "hq": "Annecy",
+    "round": "Seed",
+    "amount": 0.55,
+    "investors": "ForsVC, LeanSquare, Noshaq, Ben Fiquet, Business Angels, Bpifrance, R\u00e9gion Auvergne\u2013Rh\u00f4ne-Alpes, Initiative Grand Annecy",
+    "founders": "Ivan Marchand, Arthur Van Clap",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "Gaming",
+      "FinTech"
+    ]
+  },
+  {
+    "company": "Smartphone iD",
+    "description": "French startup reinventing identity photo and remote identity verification using a proprietary AI-based biometric technology combined with human verification. Smartphone iD aims to become the standard for secure remote identification, replacing physical photo booths in a \u20ac5B legacy market. The solution is compliant with ISO 30107 standards, integrates \"liveness detection\" patents, and is already deployed in more than 190 countries.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Seed",
+    "amount": 0.2,
+    "investors": "QVEMA, Kelly Massol, Anthony Bourbon",
+    "founders": "\u00c9mile Menetrey",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "Cybersecurity",
+      "AI & Machine Learning"
+    ]
+  },
+  {
+    "company": "BW Ideol",
+    "description": "BW Ideol is a pioneer in floating offshore wind foundation technology, with over 15 years of experience in the design, engineering, and fabrication of concrete floating foundations. The company develops scalable, cost-competitive solutions to unlock deep-water wind resources and accelerate the global energy transition.",
+    "website": null,
+    "hq": "La Ciotat",
+    "round": "Growth",
+    "amount": 0,
+    "investors": "Holcim",
+    "founders": "Paul de la Guérivi\u00e8re, Pierre Coulombeau",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "CleanTech & Energy"
+    ]
+  },
+  {
+    "company": "Abbelight",
+    "description": "Abbelight is a pioneer in super-resolution microscopy, delivering end-to-end nanoscopy (SMLM) solutions that combine advanced chemistry, optics, and data analysis. Its platforms enable researchers to visualize, quantify, and interpret complex intracellular mechanisms at the nanoscale, supporting applications ranging from fundamental research to drug discovery and single-cell phenotyping.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Series B",
+    "amount": 0,
+    "investors": "AVANT BIO",
+    "founders": "Jean-Baptiste Marie, Nicolas Bourg",
+    "news": null,
+    "month": "January",
+    "sectors": [
+      "HealthTech & BioTech"
+    ]
   }
 ]
