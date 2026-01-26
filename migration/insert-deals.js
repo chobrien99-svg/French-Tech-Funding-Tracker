@@ -58,25 +58,28 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 // Replace this array with new deals each time you run the script.
 
 const DEALS = [
-    // Example deal (remove or replace before running):
-    // {
-    //     company: "Acme Corp",
-    //     description: "Acme Corp builds AI-powered widgets for enterprise customers.",
-    //     hq: "Paris",
-    //     round: "Series A",
-    //     amount: 15,
-    //     month: "January",
-    //     year: 2026,
-    //     sectors: ["AI & Machine Learning", "SaaS & Enterprise"],
-    //     investors: ["Sequoia Capital", "Bpifrance"],
-    //     founders: [
-    //         { name: "Marie Dupont", linkedin: "https://linkedin.com/in/mariedupont" },
-    //         { name: "Pierre Martin" }
-    //     ],
-    //     news_url: "https://techcrunch.com/2026/01/acme-corp-raises-15m",
-    //     news_summary: "Acme Corp raised €15M Series A led by Sequoia to scale its AI widget platform across Europe.",
-    //     website: "https://acmecorp.fr"
-    // }
+    {
+        company: "Pennylane",
+        description: "Pennylane is a unified financial and accounting operating system designed for accounting firms and their SME clients. The platform combines accounting production, financial management, electronic invoicing, and integrated financial services, with a strong focus on collaboration between accountants and business leaders. Founded in 2020, Pennylane positions itself as a sovereign, product-led alternative to legacy accounting software, increasingly powered by AI.",
+        hq: "Paris",
+        round: "Growth",
+        amount: 175,
+        month: "January",
+        year: 2026,
+        sectors: ["FinTech", "AI & Machine Learning"],
+        investors: ["TCV", "Blackstone Growth", "Sequoia Capital", "DST Global", "CapitalG", "Meritech Capital"],
+        founders: [
+            { name: "Arthur Waller", linkedin: "https://linkedin.com/in/arthur-waller-a793a611" },
+            { name: "Tancrède Besnard", linkedin: "https://linkedin.com/in/tancr%C3%A8de-besnard-7b721033" },
+            { name: "Félix Blossier", linkedin: "https://linkedin.com/in/felix-blossier" },
+            { name: "Thierry Déo", linkedin: "https://linkedin.com/in/thierry-deo-78448273" },
+            { name: "Édouard Mascré", linkedin: "https://linkedin.com/in/edouard-mascr%C3%A9-8b7bb825" },
+            { name: "Quentin de Metz", linkedin: "https://linkedin.com/in/quentindemetz" }
+        ],
+        news_url: "https://www.eu-startups.com/2026/01/sequoia-backed-french-accounting-unicorn-pennylane-secures-e175-million-as-it-approaches-profitability/",
+        news_summary: "Pennylane secured a €175M growth round led by TCV with participation from Blackstone Growth and all major historical investors. The company serves over 6,000 accounting firms and 800,000 businesses with a team of 1,000 employees and near-term profitability. Capital will fund an AI-powered copilot for accountants, European expansion starting with Germany, electronic invoicing infrastructure, and embedded financial services.",
+        website: "https://www.pennylane.com"
+    }
 ];
 
 // =============================================
