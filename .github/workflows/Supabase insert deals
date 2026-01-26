@@ -1,0 +1,42 @@
+name: Supabase insert deals
+
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Migration script to run (relative to migration/)"
+        required: true
+        default: "insert-deals.js"
+
+jobs:
+  insert-deals:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: migration
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: migration/package-lock.json
+
+      - name: Validate Supabase secrets
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_SERVICE_KEY" ]; then
+            echo "Missing SUPABASE_URL or SUPABASE_SERVICE_KEY secrets."
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run insert script
+        run: node "${{ github.event.inputs.script }}"
