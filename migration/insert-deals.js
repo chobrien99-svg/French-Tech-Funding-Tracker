@@ -342,36 +342,48 @@ async function insertDeal(deal, index) {
     // 1. City
     const cityId = await upsertCity(deal.hq);
 
-    // 2. Company (check for existing first to avoid duplicates)
+    // 2. Company (reuse existing or create new)
     const { data: existingCompany } = await supabase
         .from('companies')
         .select('id')
         .eq('name', deal.company)
         .maybeSingle();
 
+    let companyId;
     if (existingCompany) {
-        console.log(`    SKIPPED: company "${deal.company}" already exists (id: ${existingCompany.id})`);
-        return 'skipped';
-    }
+        companyId = existingCompany.id;
+        console.log(`    Company already exists: ${companyId} — adding new funding round`);
 
-    const { data: companyData, error: companyErr } = await supabase
-        .from('companies')
-        .insert({
-            name: deal.company,
-            description: deal.description,
-            website: deal.website || null,
-            hq_city_id: cityId,
-            hq_city_name: deal.hq
-        })
-        .select('id')
-        .single();
+        // Update company info with latest data
+        const updates = {};
+        if (deal.description) updates.description = deal.description;
+        if (deal.website) updates.website = deal.website;
+        if (cityId) { updates.hq_city_id = cityId; updates.hq_city_name = deal.hq; }
+        if (Object.keys(updates).length > 0) {
+            updates.updated_at = new Date().toISOString();
+            await supabase.from('companies').update(updates).eq('id', companyId);
+            console.log(`    Company info updated`);
+        }
+    } else {
+        const { data: companyData, error: companyErr } = await supabase
+            .from('companies')
+            .insert({
+                name: deal.company,
+                description: deal.description,
+                website: deal.website || null,
+                hq_city_id: cityId,
+                hq_city_name: deal.hq
+            })
+            .select('id')
+            .single();
 
-    if (companyErr) {
-        console.error(`    Company insert failed: ${companyErr.message}`);
-        return 'failed';
+        if (companyErr) {
+            console.error(`    Company insert failed: ${companyErr.message}`);
+            return 'failed';
+        }
+        companyId = companyData.id;
+        console.log(`    Company created: ${companyId}`);
     }
-    const companyId = companyData.id;
-    console.log(`    Company created: ${companyId}`);
 
     // 3. Funding round (with news_url and notes)
     const { data: roundData, error: roundErr } = await supabase
@@ -445,7 +457,7 @@ async function insertDeal(deal, index) {
     const newsStatus = deal.news_url ? 'URL' : (deal.news_summary ? 'summary only' : 'none');
     console.log(`    News: ${newsStatus}`);
     console.log(`    DONE`);
-    return 'success';
+    return existingCompany ? 'added' : 'success';
 }
 
 // =============================================
@@ -481,7 +493,7 @@ async function main() {
 
     // Insert deals
     console.log('\n--- Insertion ---');
-    const results = { success: 0, skipped: 0, failed: 0 };
+    const results = { success: 0, added: 0, failed: 0 };
 
     for (let i = 0; i < DEALS.length; i++) {
         try {
@@ -496,8 +508,8 @@ async function main() {
     // Summary
     console.log('\n=================================================');
     console.log('RESULTS');
-    console.log(`  Inserted: ${results.success}`);
-    console.log(`  Skipped:  ${results.skipped} (already existed)`);
+    console.log(`  New companies: ${results.success}`);
+    console.log(`  New rounds (existing companies): ${results.added}`);
     console.log(`  Failed:   ${results.failed}`);
     console.log('=================================================');
 
