@@ -1119,6 +1119,8 @@
                         <select class="filter-select" id="sort-by" style="min-width: 180px;">
                             <option value="amount-desc">Highest Amount</option>
                             <option value="amount-asc">Lowest Amount</option>
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
                             <option value="name-asc">Name A-Z</option>
                             <option value="name-desc">Name Z-A</option>
                         </select>
@@ -1377,10 +1379,10 @@
                         website: company.website,
                         hq: company.hq_city_name,
                         sectors: companySectorsMap.get(company.id) || [],
-                        amount: round.amount_eur || 0,
+                        amount: Number(round.amount_eur) || 0,
                         round: round.round_type || '',
                         month: round.announced_month || '',
-                        year: round.announced_year || 2025,
+                        year: Number(round.announced_year) || 2025,
                         announcedDate: round.announced_date || null,
                         createdAt: round.created_at || company.created_at,
                         investors: investorNames.join(', '),
@@ -1400,8 +1402,7 @@
                 initializeCharts();
                 initializeMap();
                 updateLatestDeals();
-                updateDisplay();
-                updateStats();
+                applyFilters();
 
             } catch (error) {
                 console.error('[Supabase] Error loading data:', error);
@@ -1713,6 +1714,8 @@
                 switch (sortBy) {
                     case 'amount-desc': return (b.amount || 0) - (a.amount || 0);
                     case 'amount-asc': return (a.amount || 0) - (b.amount || 0);
+                    case 'date-desc': return (b.year || 0) - (a.year || 0) || (b.amount || 0) - (a.amount || 0);
+                    case 'date-asc': return (a.year || 0) - (b.year || 0) || (a.amount || 0) - (b.amount || 0);
                     case 'name-asc': return (a.company || '').localeCompare(b.company || '');
                     case 'name-desc': return (b.company || '').localeCompare(a.company || '');
                     default: return 0;
