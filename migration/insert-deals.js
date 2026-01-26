@@ -86,30 +86,6 @@ const DEALS = [
   news_url: "https://www.eu-startups.com/2026/01/sequoia-backed-french-accounting-unicorn-pennylane-secures-e175-million-as-it-approaches-profitability/?ref=frenchtechjournal.com",
   news_summary: "Pennylane raised €175M in a growth round led by TCV, with participation from Blackstone Growth and all major historical investors. The round was completed with limited dilution and a strict governance charter ensuring founder control, pricing stability, and product continuity. The capital will support AI-driven product development, European expansion, electronic invoicing infrastructure, and the expansion of embedded financial services, as Pennylane aims to become the European leader in financial and accounting operating systems for SMEs and their advisors.",
   website: "https://www.pennylane.com"
-},
-    {
-  company: "ErVimmune",
-  description: "ErVimmune is an immuno-oncology biotech developing off-the-shelf cancer vaccines and cell therapies targeting so-called cold tumors that do not respond to existing immunotherapies. Leveraging proprietary antigen discovery based on human endogenous retroviruses (HERVs), the company designs shared, non-personalised vaccines for broad patient populations, with a lead candidate targeting triple-negative breast cancer and ovarian cancer.",
-  hq: "Lyon",
-  round: "Series A",
-  amount: 17,
-  month: "January",
-  year: 2026,
-  sectors: ["HealthTech & BioTech"],
-  investors: [
-    "Seventure Partners",
-    "SPRIM Global Investments",
-    "Bpifrance",
-    "France 2030"
-  ],
-  founders: [
-    { name: "Stéphane Depil" },
-    { name: "Nathalie Donne" },
-    { name: "Eric Halioua" }
-  ],
-  news_url: "https://www.eu-startups.com/2026/01/french-biotech-company-ervimmune-raises-e17-million-to-tackle-hard-to-treat-cancers/?ref=frenchtechjournal.com",
-  news_summary: "ErVimmune announced the first closing of its €17M Series A to advance its lead cancer vaccine, ErVac01, into first-in-human clinical trials. Founded in 2019 as a spin-off from Centre Léon Bérard, the company develops HERV-derived tumor antigens designed as ready-to-use vaccines covering a majority of global HLA alleles. The funding will support clinical development in triple-negative breast cancer and ovarian cancer, strengthen governance, and validate ErVimmune’s broader immuno-oncology platform.",
-  website: "https://www.ervimmune.com"
 }
 ];
 // =============================================
