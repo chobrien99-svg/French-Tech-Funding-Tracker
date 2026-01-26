@@ -78,6 +78,19 @@ npm run migrate
 
 ---
 
+## Optional: Run Insert Scripts via GitHub Actions
+
+If you prefer to run `insert-deals.js` from GitHub, use the workflow at
+`.github/workflows/supabase-insert-deals.yml`. Set repository secrets:
+
+- `SUPABASE_URL` (project URL, e.g. `https://tlwqkglfyjydwsgjrclx.supabase.co`)
+- `SUPABASE_SERVICE_KEY` (service role key)
+
+Then trigger **Actions → Supabase insert deals** and provide the script name
+relative to `migration/` (default: `insert-deals.js`).
+
+---
+
 ## Alternative: Manual SQL Setup
 
 If you prefer not to use the CLI, see the manual setup instructions below.

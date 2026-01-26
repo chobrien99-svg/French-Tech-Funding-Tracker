@@ -340,7 +340,7 @@ const DEALS = [
   news_summary: "Obside raised €500K from private investors, bringing total seed funding to €515K and valuing the company at €2.5M. The funding will be used to expand the engineering team and accelerate international growth as Obside positions itself as a natural-language-driven trading automation platform accessible beyond professional trading desks.",
   website: "https://www.obside.ai"
 }
-;
+];
 // =============================================
 // SECTOR UTILITIES
 // =============================================
