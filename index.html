@@ -590,6 +590,13 @@
             line-height: 1.5;
         }
 
+        .card-news-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-style: italic;
+        }
+
         .card-actions {
             display: flex;
             gap: 0.5rem;
@@ -1314,14 +1321,14 @@
 
                 // Fetch all data in parallel
                 const [companies, fundingRounds, sectors, companySectors, companyPeople, people, investors, fundingInvestors] = await Promise.all([
-                    fetchFromSupabase('companies', '?select=*'),
-                    fetchFromSupabase('funding_rounds', '?select=*'),
-                    fetchFromSupabase('sectors', '?select=*'),
-                    fetchFromSupabase('company_sectors', '?select=*'),
-                    fetchFromSupabase('company_people', '?select=*'),
-                    fetchFromSupabase('people', '?select=*'),
-                    fetchFromSupabase('investors', '?select=*'),
-                    fetchFromSupabase('funding_round_investors', '?select=*')
+                    fetchFromSupabase('companies', '?select=*&limit=10000'),
+                    fetchFromSupabase('funding_rounds', '?select=*&limit=10000'),
+                    fetchFromSupabase('sectors', '?select=*&limit=10000'),
+                    fetchFromSupabase('company_sectors', '?select=*&limit=10000'),
+                    fetchFromSupabase('company_people', '?select=*&limit=10000'),
+                    fetchFromSupabase('people', '?select=*&limit=10000'),
+                    fetchFromSupabase('investors', '?select=*&limit=10000'),
+                    fetchFromSupabase('funding_round_investors', '?select=*&limit=10000')
                 ]);
 
                 // Build lookup maps
@@ -1385,7 +1392,8 @@
                         investors: investorNames.join(', '),
                         founders: founders.map(f => f.full_name).join(', '),
                         foundersData: founders,
-                        news: latestRound?.news_url || ''
+                        news: latestRound?.news_url || '',
+                        newsDescription: latestRound?.notes || ''
                     };
                 }).filter(c => c.amount > 0); // Only show companies with funding
 
@@ -1658,6 +1666,17 @@
                     `;
                 }
 
+                // Build news description HTML (from notes field when no URL available)
+                let newsDescHTML = '';
+                if (!deal.news && deal.newsDescription) {
+                    newsDescHTML = `
+                        <div class="card-section">
+                            <div class="card-section-title">News</div>
+                            <div class="card-news-desc">${deal.newsDescription}</div>
+                        </div>
+                    `;
+                }
+
                 // Build action buttons
                 let actionsHTML = '<div class="card-actions">';
                 if (deal.website) {
@@ -1686,6 +1705,7 @@
                         </div>
                         ${foundersHTML}
                         ${investorsHTML}
+                        ${newsDescHTML}
                         ${(deal.website || deal.news) ? actionsHTML : ''}
                     </div>
                 `;
