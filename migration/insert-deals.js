@@ -58,14 +58,13 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 // Replace this array with new deals each time you run the script.
 
 const DEALS = [
-    // Example deal (remove or replace before running):
-    // {
+    {
   company: "Pennylane",
   description: "Pennylane is a unified financial and accounting operating system for accounting firms and their SME clients, combining accounting production, financial management, electronic invoicing, and integrated financial services. Founded in 2020, the platform positions itself as a sovereign, product-led alternative to legacy accounting software, increasingly powered by AI.",
   hq: "Paris",
   round: "Growth",
   amount: 175,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["Fintech", "AI & Machine Learning"],
   investors: [
@@ -94,7 +93,7 @@ const DEALS = [
   hq: "Paris",
   round: "Series C",
   amount: 20,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["Cybersecurity", "AI & Machine Learning"],
   investors: [
@@ -119,7 +118,7 @@ const DEALS = [
   hq: "New York City, Paris",
   round: "Seed",
   amount: 10,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["Cybersecurity", "AI & Machine Learning"],
   investors: [
@@ -143,7 +142,7 @@ const DEALS = [
   hq: "Lorient",
   round: "Crowdfunding",
   amount: 6.9,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["CleanTech & Energy", "AgriTech & FoodTech"],
   investors: [
@@ -163,7 +162,7 @@ const DEALS = [
   hq: "Paris",
   round: "Growth",
   amount: 4.7,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["E-commerce & Retail"],
   investors: [
@@ -186,7 +185,7 @@ const DEALS = [
   hq: "Caen",
   round: "Series A",
   amount: 3.6,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["E-commerce & Retail"],
   investors: [
@@ -207,7 +206,7 @@ const DEALS = [
   hq: "Grenoble",
   round: "Seed",
   amount: 2.5,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["DeepTech", "CleanTech & Energy"],
   investors: [
@@ -232,7 +231,7 @@ const DEALS = [
   hq: "Saint-Ouen",
   round: "Seed",
   amount: 2,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["AI & Machine Learning"],
   investors: [
@@ -256,8 +255,8 @@ const DEALS = [
   hq: "Lorient",
   round: "Crowdfunding",
   amount: 1.4,
-  month: "December",
-  year: 2025,
+  month: "January",
+  year: 2026,
   sectors: ["CleanTech & Energy"],
   investors: [
     "Crowdfunding"
@@ -282,7 +281,7 @@ const DEALS = [
   hq: "Paris",
   round: "Seed",
   amount: 1.2,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["CleanTech & Energy", "AI & Machine Learning", "PropTech & Real Estate"],
   investors: [
@@ -303,7 +302,7 @@ const DEALS = [
   hq: "Biot",
   round: "Seed",
   amount: 5,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["AI & Machine Learning"],
   investors: [
@@ -326,7 +325,7 @@ const DEALS = [
   hq: "Laval",
   round: "Seed",
   amount: 0.5,
-  month: 01,
+  month: January,
   year: 2026,
   sectors: ["Fintech", "AI & Machine Learning"],
   investors: [
