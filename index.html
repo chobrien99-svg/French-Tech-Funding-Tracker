@@ -1113,7 +1113,7 @@
             <!-- Companies Grid -->
             <section class="companies-section">
                 <div class="section-header">
-                    <h2 class="section-title"><span class="icon">💼</span> Funded Companies</h2>
+                    <h2 class="section-title"><span class="icon">💼</span> Funding Deals</h2>
                     <div class="sort-controls">
                         <label>Sort:</label>
                         <select class="filter-select" id="sort-by" style="min-width: 180px;">
@@ -1335,6 +1335,7 @@
                 const sectorsMap = new Map(sectors.map(s => [s.id, s]));
                 const peopleMap = new Map(people.map(p => [p.id, p]));
                 const investorsMap = new Map(investors.map(i => [i.id, i]));
+                const companiesMap = new Map(companies.map(c => [c.id, c]));
 
                 // Group data by company
                 const companySectorsMap = new Map();
@@ -1351,12 +1352,6 @@
                     if (person) companyPeopleMap.get(cp.company_id).push(person);
                 });
 
-                const fundingRoundsMap = new Map();
-                fundingRounds.forEach(fr => {
-                    if (!fundingRoundsMap.has(fr.company_id)) fundingRoundsMap.set(fr.company_id, []);
-                    fundingRoundsMap.get(fr.company_id).push(fr);
-                });
-
                 const fundingInvestorsMap = new Map();
                 fundingInvestors.forEach(fi => {
                     if (!fundingInvestorsMap.has(fi.funding_round_id)) fundingInvestorsMap.set(fi.funding_round_id, []);
@@ -1364,38 +1359,37 @@
                     if (investor) fundingInvestorsMap.get(fi.funding_round_id).push(investor.name);
                 });
 
-                // Build unified company objects
-                allCompanies = companies.map(company => {
-                    const rounds = fundingRoundsMap.get(company.id) || [];
-                    const latestRound = rounds.sort((a, b) => (b.amount_eur || 0) - (a.amount_eur || 0))[0];
+                // Build deal objects — one entry per funding round
+                // This allows companies with multiple rounds (e.g. Pennylane
+                // 2025 + 2026) to each appear as separate deal cards.
+                allCompanies = fundingRounds.map(round => {
+                    const company = companiesMap.get(round.company_id);
+                    if (!company) return null;
 
-                    let investorNames = [];
-                    if (latestRound) {
-                        investorNames = fundingInvestorsMap.get(latestRound.id) || [];
-                    }
-
+                    const investorNames = fundingInvestorsMap.get(round.id) || [];
                     const founders = companyPeopleMap.get(company.id) || [];
 
                     return {
-                        id: company.id,
+                        id: round.id,
+                        companyId: company.id,
                         company: company.name,
                         description: company.description,
                         website: company.website,
                         hq: company.hq_city_name,
                         sectors: companySectorsMap.get(company.id) || [],
-                        amount: latestRound?.amount_eur || 0,
-                        round: latestRound?.round_type || '',
-                        month: latestRound?.announced_month || '',
-                        year: latestRound?.announced_year || 2025,
-                        announcedDate: latestRound?.announced_date || null,
-                        createdAt: latestRound?.created_at || company.created_at,
+                        amount: round.amount_eur || 0,
+                        round: round.round_type || '',
+                        month: round.announced_month || '',
+                        year: round.announced_year || 2025,
+                        announcedDate: round.announced_date || null,
+                        createdAt: round.created_at || company.created_at,
                         investors: investorNames.join(', '),
                         founders: founders.map(f => f.full_name).join(', '),
                         foundersData: founders,
-                        news: latestRound?.news_url || '',
-                        newsDescription: latestRound?.notes || ''
+                        news: round.news_url || '',
+                        newsDescription: round.notes || ''
                     };
-                }).filter(c => c.amount > 0); // Only show companies with funding
+                }).filter(d => d && d.amount > 0); // Only show deals with funding amounts
 
                 filteredCompanies = [...allCompanies];
 
@@ -1585,12 +1579,13 @@
         function updateStats() {
             const totalFunding = filteredCompanies.reduce((sum, c) => sum + (c.amount || 0), 0);
             const avgFunding = filteredCompanies.length > 0 ? totalFunding / filteredCompanies.length : 0;
+            const uniqueCompanies = new Set(filteredCompanies.map(c => c.companyId)).size;
 
-            document.getElementById('stat-companies').textContent = filteredCompanies.length;
+            document.getElementById('stat-companies').textContent = uniqueCompanies;
             document.getElementById('stat-funding').textContent = formatCurrency(totalFunding);
             document.getElementById('stat-average').textContent = formatCurrency(avgFunding);
 
-            document.getElementById('results-info').innerHTML = `Showing <strong>${filteredCompanies.length}</strong> of ${allCompanies.length} companies`;
+            document.getElementById('results-info').innerHTML = `Showing <strong>${filteredCompanies.length}</strong> deals from ${uniqueCompanies} companies`;
         }
 
         function updateLatestDeals() {
