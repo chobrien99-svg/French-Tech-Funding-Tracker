@@ -83,262 +83,33 @@ const DEALS = [
     { name: "Édouard Mascré" },
     { name: "Quentin de Metz" }
   ],
-  news_url: "",
+  news_url: "https://www.eu-startups.com/2026/01/sequoia-backed-french-accounting-unicorn-pennylane-secures-e175-million-as-it-approaches-profitability/?ref=frenchtechjournal.com",
   news_summary: "Pennylane raised €175M in a growth round led by TCV, with participation from Blackstone Growth and all major historical investors. The round was completed with limited dilution and a strict governance charter ensuring founder control, pricing stability, and product continuity. The capital will support AI-driven product development, European expansion, electronic invoicing infrastructure, and the expansion of embedded financial services, as Pennylane aims to become the European leader in financial and accounting operating systems for SMEs and their advisors.",
   website: "https://www.pennylane.com"
 },
     {
-  company: "Stoïk",
-  description: "Stoïk is a European cyber insurtech combining cyber insurance, proactive security software, and 24/7 incident response into a single integrated offering. Founded in 2021, the company targets SMEs and mid-sized enterprises with an AI-powered, full-stack cyber risk model covering prevention, detection, insurance coverage, and post-incident recovery, positioning itself as the embedded “CISO of Europe.”",
-  hq: "Paris",
-  round: "Series C",
-  amount: 20,
-  month: "January",
-  year: 2026,
-  sectors: ["Cybersecurity", "AI & Machine Learning"],
-  investors: [
-    "Impala",
-    "Opera Tech Ventures",
-    "Alven",
-    "Andreessen Horowitz (a16z)"
-  ],
-  founders: [
-    { name: "Jules Veyrat" },
-    { name: "Alexandre Andreini" },
-    { name: "Nicolas Sayer" },
-    { name: "Philippe Mangematin" }
-  ],
-  news_url: "",
-  news_summary: "Stoïk raised a €20M Series C to accelerate European expansion and deepen its AI-driven cyber prevention, detection, and incident response capabilities. The company now insures more than 10,000 businesses across six European countries and generated nearly €50M in gross written premiums in 2025, growing over 200% year-on-year. The funding will support team expansion and reinforce Stoïk’s ambition to become a continent-wide cyber risk operating partner rather than a pure insurance provider.",
-  website: "https://www.stoik.io"
-},
-{
-  company: "Symbiotic Security",
-  description: "Symbiotic Security is building the world’s first AI code generation agent designed to produce secure code by default. Its flagship product, Symbiotic Code, embeds security directly into the code generation process through enforced prehooks, automated verification, and agentic remediation, eliminating security debt at the moment code is written. The platform is model-agnostic and supports leading LLMs across cloud and on-prem environments.",
-  hq: "New York City, Paris",
-  round: "Seed",
-  amount: 10,
-  month: "January",
-  year: 2026,
-  sectors: ["Cybersecurity", "AI & Machine Learning"],
-  investors: [
-    "Alven",
-    "Drysdale Ventures",
-    "Lerer Hippeau",
-    "Axeleo Capital",
-    "Factorial Capital"
-  ],
-  founders: [
-    { name: "Jérôme Robert" },
-    { name: "Édouard Viot" }
-  ],
-  news_url: "",
-  news_summary: "Symbiotic Security announced the launch of Symbiotic Code alongside a $10M Seed round led by Alven. The platform addresses rising enterprise risk from AI-generated code, which research shows contains vulnerabilities in a majority of cases. Funding will support product acceleration, go-to-market expansion, and the commercial rollout ahead of a full launch in March.",
-  website: "https://www.symbiotic.security"
-},
-{
-  company: "Eclaircie",
-  description: "Eclaircie is a developer and installer of agricultural photovoltaic power plants, specializing in rooftop solar installations for agricultural buildings. The company designs, finances, builds, and operates solar-equipped farm infrastructure, supporting agricultural modernization while enabling long-term renewable energy production.",
-  hq: "Lorient",
-  round: "Crowdfunding",
-  amount: 6.9,
-  month: "January",
-  year: 2026,
-  sectors: ["CleanTech & Energy", "AgriTech & FoodTech"],
-  investors: [
-    "Arkéa Banque Entreprises et Institutionnels (ABEI)",
-    "Enerfip"
-  ],
-  founders: [
-    { name: "Nicolas Bergeron" }
-  ],
-  news_url: "",
-  news_summary: "Eclaircie secured €6.9M to launch its first photovoltaic construction program, Caliaco 1, combining senior bank debt from Arkéa Banque Entreprises et Institutionnels with participatory financing via Enerfip. The funding will support the construction of 17 rooftop solar plants across agricultural sites in western France, totaling 5.8 MW of capacity, with long-term operation and eventual ownership transfer to farmers.",
-  website: "https://www.eclaircie.fr"
-},
-{
-  company: "The Sanctuary Group",
-  description: "The Sanctuary Group is a French studio-based fitness platform operating discipline-specific, immersive sports studios. Through branded concepts such as Le Cercle (boxing), Poses (yoga), and Decibel (dance), the group delivers curated coaching experiences combining music, lighting, and scenography within purpose-built environments.",
-  hq: "Paris",
-  round: "Growth",
-  amount: 4.7,
-  month: "January",
-  year: 2026,
-  sectors: ["E-commerce & Retail"],
-  investors: [
-    "Blast",
-    "Seventure Partners",
-    "M Capital",
-    "Smalt Capital"
-  ],
-  founders: [
-    { name: "Renaud Nataf" },
-    { name: "Alexandre Wilhem" }
-  ],
-  news_url: "",
-  news_summary: "The Sanctuary Group raised €4.7M in a growth round led by Blast, with participation from existing investors Seventure Partners, M Capital, and Smalt Capital. The funding will support expansion across France and internationally, the rollout of new studios, and the launch of a selective franchise model as the group accelerates European growth.",
-  website: "https://www.thesanctuarygroup.com"
-},
-{
-  company: "Neo Xperiences",
-  description: "Neo Xperiences is a technology scale-up specializing in immersive and interactive leisure experiences. Its proprietary technology transforms walls into interactive play surfaces, combining physical activity, gaming, and phygital experiences. The company is expanding beyond entertainment into health and rehabilitation use cases.",
-  hq: "Caen",
+  company: "ErVimmune",
+  description: "ErVimmune is an immuno-oncology biotech developing off-the-shelf cancer vaccines and cell therapies targeting so-called cold tumors that do not respond to existing immunotherapies. Leveraging proprietary antigen discovery based on human endogenous retroviruses (HERVs), the company designs shared, non-personalised vaccines for broad patient populations, with a lead candidate targeting triple-negative breast cancer and ovarian cancer.",
+  hq: "Lyon",
   round: "Series A",
-  amount: 3.6,
+  amount: 17,
   month: "January",
   year: 2026,
-  sectors: ["E-commerce & Retail"],
+  sectors: ["HealthTech & BioTech"],
   investors: [
-    "Go Capital",
+    "Seventure Partners",
+    "SPRIM Global Investments",
     "Bpifrance",
-    "Normandy Development Agency"
+    "France 2030"
   ],
   founders: [
-    { name: "Boris Courté" }
+    { name: "Stéphane Depil" },
+    { name: "Nathalie Donne" },
+    { name: "Eric Halioua" }
   ],
-  news_url: "",
-  news_summary: "Neo Xperiences raised €3.6M to accelerate its expansion in France and internationally across indoor leisure and immersive entertainment markets. The funding will support product industrialization, increased R&D, and team expansion as the company targets rapid growth and broader adoption across leisure, tourism, and health sectors.",
-  website: "https://www.neoxperiences.com"
-},
-{
-  company: "Anodine",
-  description: "Anodine is an industrial deeptech startup developing rechargeable catalytic coatings for mixed metal oxide (MMO) electrodes used in electrolysis systems. Originating from over ten years of academic research at Université Grenoble Alpes and CNRS, the company has developed a patented technology that reduces the use of critical metals by more than 50% while enabling electrode reuse and recharging, supporting eco-design, circularity, and European industrial sovereignty.",
-  hq: "Grenoble",
-  round: "Seed",
-  amount: 2.5,
-  month: "January",
-  year: 2026,
-  sectors: ["DeepTech", "CleanTech & Energy"],
-  investors: [
-    "Sowefund",
-    "Grenoble Angels",
-    "Business Angels",
-    "Bpifrance",
-    "Banque Populaire Auvergne-Rhône-Alpes",
-    "Crédit Agricole Sud Rhône Alpes",
-    "SATT Linksium"
-  ],
-  founders: [
-    { name: "Damien Mouchel dit Leguerrier" }
-  ],
-  news_url: "",
-  news_summary: "Anodine raised €2.5M to prepare its industrial scale-up phase and accelerate commercial deployment of its rechargeable MMO electrode technology. The round was led by Sowefund and Grenoble Angels alongside business angels and public partners. The funding will support industrialization of a proprietary dip-coating process enabling electrode rechargeability while reducing reliance on critical metals for strategic applications such as water treatment, electrolysis, nuclear infrastructure, and PFAS depollution.",
-  website: "https://www.anodine.tech"
-},
-{
-  company: "Notom",
-  description: "Notom is an industrial software startup developing a platform that modernizes legacy factory automation systems without replacing existing machines. The solution connects industrial equipment to modern IT systems, enabling data exploitation and the gradual integration of AI to improve production efficiency across industrial environments.",
-  hq: "Saint-Ouen",
-  round: "Seed",
-  amount: 2,
-  month: "January",
-  year: 2026,
-  sectors: ["AI & Machine Learning"],
-  investors: [
-    "SistaFund",
-    "Kima Ventures",
-    "Olympe Capital",
-    "Business Angels",
-    "Aude Guo"
-  ],
-  founders: [
-    { name: "Paola Fedou" },
-    { name: "Jean-Philippe Gross" }
-  ],
-  news_url: "",
-  news_summary: "Founded in 2025 by former Innovafeed engineers, Notom raised €2M just months after launch to accelerate development of its industrial automation platform. The funding will support product development, team expansion, and deployments with early industrial clients, primarily in the agri-food sector, positioning Notom as an enabler of AI adoption in factories without costly equipment replacement.",
-  website: "https://www.notom.ai"
-},
-{
-  company: "Windcoop",
-  description: "Windcoop is a maritime freight cooperative structured as a Société Coopérative d’Intérêt Collectif (SCIC), developing low-carbon container shipping services powered by wind propulsion. The cooperative brings together citizens, companies, and partners under a shared-governance model applied to maritime logistics.",
-  hq: "Lorient",
-  round: "Crowdfunding",
-  amount: 1.4,
-  month: "January",
-  year: 2026,
-  sectors: ["CleanTech & Energy"],
-  investors: [
-    "Crowdfunding"
-  ],
-  founders: [
-    { name: "Alice de Cointet de Fillain" },
-    { name: "Matthieu Brunet-Kimmel" },
-    { name: "Nils Joyeux-Zylberman" },
-    { name: "Francois Harary" },
-    { name: "Victor Depoers" },
-    { name: "Julien Noe" },
-    { name: "Amaury Bolvin" },
-    { name: "Louise Chopinet" }
-  ],
-  news_url: "",
-  news_summary: "Windcoop closed its third citizen funding round by raising €1.4M, significantly exceeding its initial target. The funding coincides with the start of construction of its first wind-powered container ship, Miaraka, which will operate a direct shipping route between France and Madagascar from 2027, delivering an estimated 60% reduction in CO₂ emissions compared to conventional maritime transport.",
-  website: "https://www.wind.coop"
-},
-{
-  company: "checkDPE",
-  description: "checkDPE is a digital platform designed to improve the reliability and usability of the Diagnostic de Performance Énergétique (DPE), a key regulatory metric impacting real estate value and compliance. Built on proprietary AI modules, the platform analyzes existing DPEs, simulates post-renovation performance, and helps prioritize and manage energy renovation actions for individuals and professionals.",
-  hq: "Paris",
-  round: "Seed",
-  amount: 1.2,
-  month: "January",
-  year: 2026,
-  sectors: ["CleanTech & Energy", "AI & Machine Learning", "PropTech & Real Estate"],
-  investors: [
-    "Demea Sustainable Investment",
-    "Bpifrance"
-  ],
-  founders: [
-    { name: "Emmanuel Blanchet" },
-    { name: "Germain Blanchet" }
-  ],
-  news_url: "",
-  news_summary: "checkDPE raised €1.2M in a funding round led by Demea Sustainable Investment to deploy its platform to the general public, initiate B2B market entry, and accelerate product development. Positioned at the intersection of regulation, AI, and energy efficiency, the company targets the fast-growing residential renovation market driven by tightening climate regulations.",
-  website: "https://www.checkdpe.fr"
-}, 
-{
-  company: "AI Verse",
-  description: "AI Verse is a deeptech company specializing in the generation of high-fidelity synthetic datasets for training computer vision models. Its proprietary platform procedurally creates fully annotated, photorealistic image datasets with pixel-level precision, enabling AI development in environments where real-world data is scarce, costly, or impossible to collect.",
-  hq: "Biot",
-  round: "Seed",
-  amount: 5,
-  month: "January",
-  year: 2026,
-  sectors: ["AI & Machine Learning"],
-  investors: [
-    "Supernova Invest",
-    "Creazur",
-    "Innovacom",
-    "Bpifrance"
-  ],
-  founders: [
-    { name: "Benoît Morisset" },
-    { name: "Arnauld Lamorlette" }
-  ],
-  news_url: "",
-  news_summary: "AI Verse raised €5M to support its next phase of growth, strengthening technical, product, and commercial teams while accelerating platform deployment and international expansion. The company targets mission-critical AI use cases across defence, robotics, industrial inspection, smart cities, and autonomous systems.",
-  website: "https://www.aiverse.ai"
-}, 
-{
-  company: "Obside",
-  description: "Obside is a fintech platform that democratizes algorithmic trading by allowing users to create and execute automated trading strategies using natural language. Through a multi-agent AI system, the platform translates plain-language instructions into executable trading logic across stocks, forex, and crypto, removing the need for coding or complex configuration.",
-  hq: "Laval",
-  round: "Seed",
-  amount: 0.5,
-  month: "January",
-  year: 2026,
-  sectors: ["Fintech", "AI & Machine Learning"],
-  investors: [
-    "Business Angels"
-  ],
-  founders: [
-    { name: "Thibaud Sultan" },
-    { name: "Benjamin Sultan" },
-    { name: "Florent Poux" }
-  ],
-  news_url: "",
-  news_summary: "Obside raised €500K from private investors, bringing total seed funding to €515K and valuing the company at €2.5M. The funding will be used to expand the engineering team and accelerate international growth as Obside positions itself as a natural-language-driven trading automation platform accessible beyond professional trading desks.",
-  website: "https://www.obside.ai"
+  news_url: "https://www.eu-startups.com/2026/01/french-biotech-company-ervimmune-raises-e17-million-to-tackle-hard-to-treat-cancers/?ref=frenchtechjournal.com",
+  news_summary: "ErVimmune announced the first closing of its €17M Series A to advance its lead cancer vaccine, ErVac01, into first-in-human clinical trials. Founded in 2019 as a spin-off from Centre Léon Bérard, the company develops HERV-derived tumor antigens designed as ready-to-use vaccines covering a majority of global HLA alleles. The funding will support clinical development in triple-negative breast cancer and ovarian cancer, strengthen governance, and validate ErVimmune’s broader immuno-oncology platform.",
+  website: "https://www.ervimmune.com"
 }
 ];
 // =============================================
