@@ -58,288 +58,360 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 // Replace this array with new deals each time you run the script.
 
 const DEALS = [
-    {
-  company: "Pennylane",
-  description: "Pennylane is a unified financial and accounting operating system for accounting firms and their SME clients, combining accounting production, financial management, electronic invoicing, and integrated financial services. Founded in 2020, the platform positions itself as a sovereign, product-led alternative to legacy accounting software, increasingly powered by AI.",
+   {
+  company: "Harmattan AI",
+  description: "Defense technology company developing vertically integrated autonomous systems, including AI-enabled ISR and strike UAVs, layered air-defense solutions, drone interception, electronic warfare platforms, and C2 systems. Harmattan AI focuses on sovereign, controlled autonomy deployed at scale for NATO and allied forces.",
   hq: "Paris",
-  round: "Growth",
-  amount: 175,
+  round: "Series B",
+  amount: 200,
   month: "January",
   year: 2026,
-  sectors: ["Fintech", "AI & Machine Learning"],
-  investors: [
-    "TCV",
-    "Blackstone Growth",
-    "Sequoia Capital",
-    "DST Global",
-    "CapitalG",
-    "Meritech Capital"
-  ],
+  sectors: ["DefenseTech", "AI & Machine Learning", "Aerospace"],
+  investors: ["Dassault Aviation"],
   founders: [
-    { name: "Arthur Waller" },
-    { name: "Tancrède Besnard" },
-    { name: "Félix Blossier" },
-    { name: "Thierry Déo" },
-    { name: "Édouard Mascré" },
-    { name: "Quentin de Metz" }
+    { name: "Mouad M’Ghari" },
+    { name: "Martin de Gourcuff" },
+    { name: "Edouard Rosset" }
   ],
   news_url: "",
-  news_summary: "Pennylane raised €175M in a growth round led by TCV, with participation from Blackstone Growth and all major historical investors. The round was completed with limited dilution and a strict governance charter ensuring founder control, pricing stability, and product continuity. The capital will support AI-driven product development, European expansion, electronic invoicing infrastructure, and the expansion of embedded financial services, as Pennylane aims to become the European leader in financial and accounting operating systems for SMEs and their advisors.",
-  website: "https://www.pennylane.com"
+  news_summary: "Harmattan AI raised a $200M Series B led by Dassault Aviation as part of a strategic partnership to integrate controlled, sovereign AI into next-generation combat aviation systems, including Rafale F5 and future UCAS programs.",
+  website: "https://www.harmattan.ai"
 },
-    {
-  company: "Stoïk",
-  description: "Stoïk is a European cyber insurtech combining cyber insurance, proactive security software, and 24/7 incident response into a single integrated offering. Founded in 2021, the company targets SMEs and mid-sized enterprises with an AI-powered, full-stack cyber risk model covering prevention, detection, insurance coverage, and post-incident recovery, positioning itself as the embedded “CISO of Europe.”",
-  hq: "Paris",
+
+{
+  company: "FineHeart",
+  description: "FineHeart is a clinical-stage medical technology company developing next-generation Active Implantable Medical Devices for advanced heart failure. Its flagship product, FlowMaker®, is the world’s first fully implantable cardiac output accelerator.",
+  hq: "Bordeaux",
   round: "Series C",
-  amount: 20,
+  amount: 35,
   month: "January",
   year: 2026,
-  sectors: ["Cybersecurity", "AI & Machine Learning"],
+  sectors: ["HealthTech & BioTech"],
   investors: [
-    "Impala",
-    "Opera Tech Ventures",
-    "Alven",
-    "Andreessen Horowitz (a16z)"
+    "Groupe Pasteur Mutualité",
+    "Groupe Etchart",
+    "European Innovation Council",
+    "EIB Fund",
+    "FH Founders",
+    "Lurra",
+    "IRDI Capital Investment",
+    "Groupe Doliam",
+    "NACO",
+    "Aquiti Gestion",
+    "Galia Gestion",
+    "Broadview Ventures",
+    "M Capital",
+    "UI Investment",
+    "Verve Capital"
   ],
   founders: [
-    { name: "Jules Veyrat" },
-    { name: "Alexandre Andreini" },
-    { name: "Nicolas Sayer" },
-    { name: "Philippe Mangematin" }
+    { name: "Arnaud Mascarell" },
+    { name: "Dr. Stéphane Garrigue" },
+    { name: "Dr. Philippe Ritter" }
   ],
   news_url: "",
-  news_summary: "Stoïk raised a €20M Series C to accelerate European expansion and deepen its AI-driven cyber prevention, detection, and incident response capabilities. The company now insures more than 10,000 businesses across six European countries and generated nearly €50M in gross written premiums in 2025, growing over 200% year-on-year. The funding will support team expansion and reinforce Stoïk’s ambition to become a continent-wide cyber risk operating partner rather than a pure insurance provider.",
-  website: "https://www.stoik.io"
+  news_summary: "FineHeart secured €83M in combined private and public funding, including a €35M Series C and €48M in non-dilutive IPCEI Tech4Cure grants, to accelerate the clinical and industrial development of its FlowMaker® device.",
+  website: "https://www.fineheart.fr"
 },
+
 {
-  company: "Symbiotic Security",
-  description: "Symbiotic Security is building the world’s first AI code generation agent designed to produce secure code by default. Its flagship product, Symbiotic Code, embeds security directly into the code generation process through enforced prehooks, automated verification, and agentic remediation, eliminating security debt at the moment code is written. The platform is model-agnostic and supports leading LLMs across cloud and on-prem environments.",
-  hq: "New York City, Paris",
+  company: "SunLib",
+  description: "SunLib is a French solar autoconsumption startup offering residential photovoltaic installations through a subscription model, removing upfront investment and credit constraints.",
+  hq: "Aix-en-Provence",
+  round: "Series A",
+  amount: 25,
+  month: "January",
+  year: 2026,
+  sectors: ["CleanTech & Energy", "Fintech"],
+  investors: ["Epopée Gestion"],
+  founders: [
+    { name: "Arnaud Langlois" }
+  ],
+  news_url: "",
+  news_summary: "Founded 18 months ago, SunLib raised €25M in a Series A fully subscribed by Epopée Gestion to scale residential solar subscriptions, targeting 100,000 subscribers and 1.5 GW of installed capacity by 2030.",
+  website: "https://www.sunlib.fr"
+},
+
+{
+  company: "Enodia Therapeutics",
+  description: "Biotech company developing small-molecule drugs that trigger degradation of disease-causing proteins as they are being synthesized, using a platform combining proteomics and machine learning.",
+  hq: "Paris",
   round: "Seed",
-  amount: 10,
+  amount: 20.7,
   month: "January",
   year: 2026,
-  sectors: ["Cybersecurity", "AI & Machine Learning"],
+  sectors: ["AI & Machine Learning", "HealthTech & BioTech"],
   investors: [
-    "Alven",
-    "Drysdale Ventures",
-    "Lerer Hippeau",
-    "Axeleo Capital",
-    "Factorial Capital"
+    "Elaia",
+    "Pfizer Ventures",
+    "Bpifrance",
+    "Sambrinvest",
+    "MACSF",
+    "Investsud",
+    "Argobio",
+    "Institut Pasteur",
+    "Wallonie Entreprendre"
   ],
   founders: [
-    { name: "Jérôme Robert" },
-    { name: "Édouard Viot" }
+    { name: "Caroline Demangel" },
+    { name: "Yves Ribeill" }
   ],
   news_url: "",
-  news_summary: "Symbiotic Security announced the launch of Symbiotic Code alongside a $10M Seed round led by Alven. The platform addresses rising enterprise risk from AI-generated code, which research shows contains vulnerabilities in a majority of cases. Funding will support product acceleration, go-to-market expansion, and the commercial rollout ahead of a full launch in March.",
-  website: "https://www.symbiotic.security"
+  news_summary: "Enodia Therapeutics will advance its lead program toward preclinical candidate selection, with ambitions across inflammatory, autoimmune, and viral diseases.",
+  website: ""
 },
+
 {
-  company: "Eclaircie",
-  description: "Eclaircie is a developer and installer of agricultural photovoltaic power plants, specializing in rooftop solar installations for agricultural buildings. The company designs, finances, builds, and operates solar-equipped farm infrastructure, supporting agricultural modernization while enabling long-term renewable energy production.",
-  hq: "Lorient",
-  round: "Crowdfunding",
-  amount: 6.9,
+  company: "MYCOPHYTO",
+  description: "MYCOPHYTO is a French pioneer in mycorrhizal biostimulants and soil regeneration, developing nature-inspired solutions that improve crop resilience, water retention, and yields.",
+  hq: "Grasse",
+  round: "Series A",
+  amount: 16,
   month: "January",
   year: 2026,
-  sectors: ["CleanTech & Energy", "AgriTech & FoodTech"],
+  sectors: ["AgriTech & FoodTech", "CleanTech & Energy"],
   investors: [
-    "Arkéa Banque Entreprises et Institutionnels (ABEI)",
-    "Enerfip"
+    "Innovacom",
+    "BNP Paribas",
+    "Bpifrance",
+    "CDG Invest",
+    "Noshaq",
+    "RSI",
+    "Crédit Agricole"
   ],
   founders: [
-    { name: "Nicolas Bergeron" }
+    { name: "Justine Lipuma" }
   ],
   news_url: "",
-  news_summary: "Eclaircie secured €6.9M to launch its first photovoltaic construction program, Caliaco 1, combining senior bank debt from Arkéa Banque Entreprises et Institutionnels with participatory financing via Enerfip. The funding will support the construction of 17 rooftop solar plants across agricultural sites in western France, totaling 5.8 MW of capacity, with long-term operation and eventual ownership transfer to farmers.",
-  website: "https://www.eclaircie.fr"
+  news_summary: "The Series A will fund MYCOPHYTO’s international expansion, the scaling of production through its first manufacturing plant, and the broader deployment of its mycorrhizal solutions across agriculture segments.",
+  website: ""
 },
+
 {
-  company: "The Sanctuary Group",
-  description: "The Sanctuary Group is a French studio-based fitness platform operating discipline-specific, immersive sports studios. Through branded concepts such as Le Cercle (boxing), Poses (yoga), and Decibel (dance), the group delivers curated coaching experiences combining music, lighting, and scenography within purpose-built environments.",
+  company: "Equitable Earth",
+  description: "Certification platform for nature-based carbon removal projects focused on transparency, community impact, and ecological integrity, with one of the fastest certification processes in the market.",
   hq: "Paris",
   round: "Growth",
-  amount: 4.7,
+  amount: 12.6,
   month: "January",
   year: 2026,
-  sectors: ["E-commerce & Retail"],
-  investors: [
-    "Blast",
-    "Seventure Partners",
-    "M Capital",
-    "Smalt Capital"
-  ],
+  sectors: ["AgriTech & FoodTech"],
+  investors: ["US Family Office", "AENU", "noa", "Localglobe"],
   founders: [
-    { name: "Renaud Nataf" },
-    { name: "Alexandre Wilhem" }
+    { name: "Priscille Raynaud" },
+    { name: "Thibault Sorret" }
   ],
   news_url: "",
-  news_summary: "The Sanctuary Group raised €4.7M in a growth round led by Blast, with participation from existing investors Seventure Partners, M Capital, and Smalt Capital. The funding will support expansion across France and internationally, the rollout of new studios, and the launch of a selective franchise model as the group accelerates European growth.",
-  website: "https://www.thesanctuarygroup.com"
+  news_summary: "Equitable Earth secured €5M in a seed-extension round to scale certification capacity and develop new methodologies for additional nature-based carbon removal project types.",
+  website: ""
 },
+
 {
-  company: "Neo Xperiences",
-  description: "Neo Xperiences is a technology scale-up specializing in immersive and interactive leisure experiences. Its proprietary technology transforms walls into interactive play surfaces, combining physical activity, gaming, and phygital experiences. The company is expanding beyond entertainment into health and rehabilitation use cases.",
-  hq: "Caen",
-  round: "Series A",
-  amount: 3.6,
-  month: "January",
-  year: 2026,
-  sectors: ["E-commerce & Retail"],
-  investors: [
-    "Go Capital",
-    "Bpifrance",
-    "Normandy Development Agency"
-  ],
-  founders: [
-    { name: "Boris Courté" }
-  ],
-  news_url: "",
-  news_summary: "Neo Xperiences raised €3.6M to accelerate its expansion in France and internationally across indoor leisure and immersive entertainment markets. The funding will support product industrialization, increased R&D, and team expansion as the company targets rapid growth and broader adoption across leisure, tourism, and health sectors.",
-  website: "https://www.neoxperiences.com"
-},
-{
-  company: "Anodine",
-  description: "Anodine is an industrial deeptech startup developing rechargeable catalytic coatings for mixed metal oxide (MMO) electrodes used in electrolysis systems. Originating from over ten years of academic research at Université Grenoble Alpes and CNRS, the company has developed a patented technology that reduces the use of critical metals by more than 50% while enabling electrode reuse and recharging, supporting eco-design, circularity, and European industrial sovereignty.",
-  hq: "Grenoble",
-  round: "Seed",
-  amount: 2.5,
-  month: "January",
-  year: 2026,
-  sectors: ["DeepTech", "CleanTech & Energy"],
-  investors: [
-    "Sowefund",
-    "Grenoble Angels",
-    "Business Angels",
-    "Bpifrance",
-    "Banque Populaire Auvergne-Rhône-Alpes",
-    "Crédit Agricole Sud Rhône Alpes",
-    "SATT Linksium"
-  ],
-  founders: [
-    { name: "Damien Mouchel dit Leguerrier" }
-  ],
-  news_url: "",
-  news_summary: "Anodine raised €2.5M to prepare its industrial scale-up phase and accelerate commercial deployment of its rechargeable MMO electrode technology. The round was led by Sowefund and Grenoble Angels alongside business angels and public partners. The funding will support industrialization of a proprietary dip-coating process enabling electrode rechargeability while reducing reliance on critical metals for strategic applications such as water treatment, electrolysis, nuclear infrastructure, and PFAS depollution.",
-  website: "https://www.anodine.tech"
-},
-{
-  company: "Notom",
-  description: "Notom is an industrial software startup developing a platform that modernizes legacy factory automation systems without replacing existing machines. The solution connects industrial equipment to modern IT systems, enabling data exploitation and the gradual integration of AI to improve production efficiency across industrial environments.",
-  hq: "Saint-Ouen",
-  round: "Seed",
-  amount: 2,
-  month: "January",
-  year: 2026,
-  sectors: ["AI & Machine Learning"],
-  investors: [
-    "SistaFund",
-    "Kima Ventures",
-    "Olympe Capital",
-    "Business Angels",
-    "Aude Guo"
-  ],
-  founders: [
-    { name: "Paola Fedou" },
-    { name: "Jean-Philippe Gross" }
-  ],
-  news_url: "",
-  news_summary: "Founded in 2025 by former Innovafeed engineers, Notom raised €2M just months after launch to accelerate development of its industrial automation platform. The funding will support product development, team expansion, and deployments with early industrial clients, primarily in the agri-food sector, positioning Notom as an enabler of AI adoption in factories without costly equipment replacement.",
-  website: "https://www.notom.ai"
-},
-{
-  company: "Windcoop",
-  description: "Windcoop is a maritime freight cooperative structured as a Société Coopérative d’Intérêt Collectif (SCIC), developing low-carbon container shipping services powered by wind propulsion. The cooperative brings together citizens, companies, and partners under a shared-governance model applied to maritime logistics.",
-  hq: "Lorient",
-  round: "Crowdfunding",
-  amount: 1.4,
-  month: "January",
-  year: 2026,
-  sectors: ["CleanTech & Energy"],
-  investors: [
-    "Crowdfunding"
-  ],
-  founders: [
-    { name: "Alice de Cointet de Fillain" },
-    { name: "Matthieu Brunet-Kimmel" },
-    { name: "Nils Joyeux-Zylberman" },
-    { name: "Francois Harary" },
-    { name: "Victor Depoers" },
-    { name: "Julien Noe" },
-    { name: "Amaury Bolvin" },
-    { name: "Louise Chopinet" }
-  ],
-  news_url: "",
-  news_summary: "Windcoop closed its third citizen funding round by raising €1.4M, significantly exceeding its initial target. The funding coincides with the start of construction of its first wind-powered container ship, Miaraka, which will operate a direct shipping route between France and Madagascar from 2027, delivering an estimated 60% reduction in CO₂ emissions compared to conventional maritime transport.",
-  website: "https://www.wind.coop"
-},
-{
-  company: "checkDPE",
-  description: "checkDPE is a digital platform designed to improve the reliability and usability of the Diagnostic de Performance Énergétique (DPE), a key regulatory metric impacting real estate value and compliance. Built on proprietary AI modules, the platform analyzes existing DPEs, simulates post-renovation performance, and helps prioritize and manage energy renovation actions for individuals and professionals.",
-  hq: "Paris",
-  round: "Seed",
-  amount: 1.2,
-  month: "January",
-  year: 2026,
-  sectors: ["CleanTech & Energy", "AI & Machine Learning", "PropTech & Real Estate"],
-  investors: [
-    "Demea Sustainable Investment",
-    "Bpifrance"
-  ],
-  founders: [
-    { name: "Emmanuel Blanchet" },
-    { name: "Germain Blanchet" }
-  ],
-  news_url: "",
-  news_summary: "checkDPE raised €1.2M in a funding round led by Demea Sustainable Investment to deploy its platform to the general public, initiate B2B market entry, and accelerate product development. Positioned at the intersection of regulation, AI, and energy efficiency, the company targets the fast-growing residential renovation market driven by tightening climate regulations.",
-  website: "https://www.checkdpe.fr"
-}, 
-{
-  company: "AI Verse",
-  description: "AI Verse is a deeptech company specializing in the generation of high-fidelity synthetic datasets for training computer vision models. Its proprietary platform procedurally creates fully annotated, photorealistic image datasets with pixel-level precision, enabling AI development in environments where real-world data is scarce, costly, or impossible to collect.",
-  hq: "Biot",
+  company: "Kepplair Evolution",
+  description: "Kepplair Evolution develops a multi-role firefighting aircraft by converting the ATR 72 into the KEPPLAIR 72, addressing wildfire response, cargo transport, and medical evacuation needs.",
+  hq: "Toulouse",
   round: "Seed",
   amount: 5,
   month: "January",
   year: 2026,
-  sectors: ["AI & Machine Learning"],
-  investors: [
-    "Supernova Invest",
-    "Creazur",
-    "Innovacom",
-    "Bpifrance"
-  ],
+  sectors: ["Aerospace", "ClimateTech", "DefenseTech"],
+  investors: ["Groupe AVICO", "ORA"],
   founders: [
-    { name: "Benoît Morisset" },
-    { name: "Arnauld Lamorlette" }
+    { name: "David Joubert" }
   ],
   news_url: "",
-  news_summary: "AI Verse raised €5M to support its next phase of growth, strengthening technical, product, and commercial teams while accelerating platform deployment and international expansion. The company targets mission-critical AI use cases across defence, robotics, industrial inspection, smart cities, and autonomous systems.",
-  website: "https://www.aiverse.ai"
-}, 
+  news_summary: "Kepplair Evolution closed €5M to support final design and EASA certification of the KEPPLAIR 72, with first deliveries planned before the 2027 wildfire season.",
+  website: ""
+},
+
 {
-  company: "Obside",
-  description: "Obside is a fintech platform that democratizes algorithmic trading by allowing users to create and execute automated trading strategies using natural language. Through a multi-agent AI system, the platform translates plain-language instructions into executable trading logic across stocks, forex, and crypto, removing the need for coding or complex configuration.",
-  hq: "Laval",
+  company: "Cementic",
+  description: "Cementic develops a nanomaterial for root canal fillings that eliminates 99.99% of lingering bacteria, reducing post-treatment infections and antibiotic use.",
+  hq: "Paris",
   round: "Seed",
-  amount: 0.5,
+  amount: 4,
   month: "January",
   year: 2026,
-  sectors: ["Fintech", "AI & Machine Learning"],
+  sectors: ["HealthTech & BioTech"],
+  investors: ["Blast", "Business Angels", "Dental Professionals"],
+  founders: [
+    { name: "Samir Raddi" }
+  ],
+  news_url: "",
+  news_summary: "Cementic is preparing to launch clinical trials in French dental clinics, with a U.S. market entry targeted within six months.",
+  website: ""
+},
+
+{
+  company: "Revox",
+  description: "Revox builds a developer-first API enabling reliable, production-grade outbound AI calling at scale, addressing infrastructure failures that have limited real-world voice AI deployments.",
+  hq: "Paris",
+  round: "Pre-Seed",
+  amount: 3,
+  month: "January",
+  year: 2026,
+  sectors: ["AI & Machine Learning"],
   investors: [
+    "Seedcamp",
+    "Weekend Fund",
+    "Drysdale",
+    "Purple",
+    "OPRTRS CLUB",
+    "Firedrop",
+    "Kima Ventures",
+    "Tiny VC",
     "Business Angels"
   ],
   founders: [
-    { name: "Thibaud Sultan" },
-    { name: "Benjamin Sultan" },
-    { name: "Florent Poux" }
+    { name: "Aric Lasry" },
+    { name: "Jean-Baptiste de La Fage" }
   ],
   news_url: "",
-  news_summary: "Obside raised €500K from private investors, bringing total seed funding to €515K and valuing the company at €2.5M. The funding will be used to expand the engineering team and accelerate international growth as Obside positions itself as a natural-language-driven trading automation platform accessible beyond professional trading desks.",
-  website: "https://www.obside.ai"
-}
+  news_summary: "Revox raised a $3M pre-seed led by Seedcamp to scale its voice AI infrastructure platform, initially targeting high-trust U.S. use cases such as debt collection and hiring.",
+  website: ""
+},
+
+{
+  company: "Sweetech",
+  description: "Sweetech develops fermentation-based processes to produce rare sugars used in pharmaceuticals, cosmetics, and nutraceuticals as a sustainable alternative to synthetic chemistry.",
+  hq: "Toulouse",
+  round: "Seed",
+  amount: 2.25,
+  month: "January",
+  year: 2026,
+  sectors: ["HealthTech & BioTech"],
+  investors: ["Iron Hands Capital", "Bpifrance"],
+  founders: [
+    { name: "Julien Durand" },
+    { name: "Yannick Malbert" }
+  ],
+  news_url: "",
+  news_summary: "Sweetech will use the funding to support pilot production, customer acquisition, and R&D as it scales its sustainable rare sugar platform.",
+  website: ""
+},
+
+{
+  company: "Viti-Tunnel",
+  description: "Viti-Tunnel develops a retractable physical protection system for row crops, shielding vineyards and other agricultural productions from climatic hazards while reducing chemical inputs.",
+  hq: "Le Haillan",
+  round: "Seed",
+  amount: 2,
+  month: "January",
+  year: 2026,
+  sectors: ["AgriTech & FoodTech", "CleanTech & Energy"],
+  investors: [
+    "Parnass",
+    "Crédit Agricole Aquitaine Expansion",
+    "Sowefund",
+    "Demea Invest"
+  ],
+  founders: [
+    { name: "Patrick Delmarre" }
+  ],
+  news_url: "",
+  news_summary: "Viti-Tunnel closed a €2M funding round to accelerate commercial rollout in France and internationally across multiple crop categories.",
+  website: ""
+},
+
+{
+  company: "Campsider",
+  description: "Campsider is a curated marketplace for second-hand technical sports equipment, managing product qualification, pricing, logistics, delivery, and expert advice.",
+  hq: "Lyon",
+  round: "Seed",
+  amount: 1.5,
+  month: "January",
+  year: 2026,
+  sectors: ["Recommerce", "SportsTech", "Circular Economy"],
+  investors: ["Founders Future", "50Partners Impact", "Sowefund"],
+  founders: [
+    { name: "Thomas Gounot" },
+    { name: "Arthur Rocle" }
+  ],
+  news_url: "",
+  news_summary: "Nearly profitable in France, Campsider raised €1.5M to fund European expansion, targeting Germany and Italy as it scales toward category leadership.",
+  website: ""
+},
+
+{
+  company: "Gamevestor",
+  description: "Gamevestor is a regulated crowdinvesting platform dedicated to video game projects, enabling milestone-based investment while preserving studio independence.",
+  hq: "Annecy",
+  round: "Seed",
+  amount: 0.55,
+  month: "January",
+  year: 2026,
+  sectors: ["Gaming", "Fintech", "Creator Economy"],
+  investors: [
+    "ForsVC",
+    "LeanSquare",
+    "Noshaq",
+    "Bpifrance",
+    "Région Auvergne–Rhône-Alpes",
+    "Business Angels"
+  ],
+  founders: [
+    { name: "Ivan Marchand" },
+    { name: "Arthur Van Clap" }
+  ],
+  news_url: "",
+  news_summary: "Gamevestor secured AMF approval and ORIAS registration, enabling EU-wide operations ahead of a public launch scheduled for early 2026.",
+  website: ""
+},
+
+{
+  company: "Smartphone iD",
+  description: "French startup reinventing identity photo and remote identity verification using AI-based biometric technology combined with human verification.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 0.2,
+  month: "January",
+  year: 2026,
+  sectors: ["Cybersecurity", "AI & Machine Learning"],
+  investors: ["QVEMA", "Kelly Massol", "Anthony Bourbon"],
+  founders: [
+    { name: "Émile Menetrey" }
+  ],
+  news_url: "",
+  news_summary: "Following its appearance on M6, Smartphone iD secured €200K in funding and is targeting €5M in revenue by 2026.",
+  website: ""
+},
+
+{
+  company: "BW Ideol",
+  description: "BW Ideol is a pioneer in floating offshore wind foundation technology, developing scalable concrete solutions to unlock deep-water wind resources.",
+  hq: "La Ciotat",
+  round: "Growth",
+  amount: null,
+  month: "January",
+  year: 2026,
+  sectors: ["CleanTech & Energy"],
+  investors: ["Holcim"],
+  founders: [
+    { name: "Paul de la Guérivière" },
+    { name: "Pierre Coulombeau" }
+  ],
+  news_url: "",
+  news_summary: "Holcim acquired a minority stake in BW Ideol and entered a strategic partnership to supply low-carbon concrete materials for floating offshore wind foundations.",
+  website: ""
+},
+{
+  company: "Abbelight",
+  description: "Abbelight is a pioneer in super-resolution microscopy, delivering end-to-end nanoscopy solutions combining chemistry, optics, and data analysis.",
+  hq: "Paris",
+  round: "Series B",
+  amount: null,
+  month: "January",
+  year: 2026,
+  sectors: ["HealthTech & BioTech"],
+  investors: ["AVANT BIO"],
+  founders: [
+    { name: "Jean-Baptiste Marie" },
+    { name: "Nicolas Bourg" }
+  ],
+  news_url: "",
+  news_summary: "Abbelight closed a Series B led by AVANT BIO to accelerate imaging innovation and scale adoption beyond academic research into biopharma and CROs.",
+  website: ""
+},
 ];
 // =============================================
 // SECTOR UTILITIES
