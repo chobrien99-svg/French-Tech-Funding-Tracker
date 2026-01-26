@@ -64,7 +64,7 @@ const DEALS = [
   hq: "Paris",
   round: "Growth",
   amount: 175,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["Fintech", "AI & Machine Learning"],
   investors: [
@@ -93,7 +93,7 @@ const DEALS = [
   hq: "Paris",
   round: "Series C",
   amount: 20,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["Cybersecurity", "AI & Machine Learning"],
   investors: [
@@ -118,7 +118,7 @@ const DEALS = [
   hq: "New York City, Paris",
   round: "Seed",
   amount: 10,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["Cybersecurity", "AI & Machine Learning"],
   investors: [
@@ -142,7 +142,7 @@ const DEALS = [
   hq: "Lorient",
   round: "Crowdfunding",
   amount: 6.9,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["CleanTech & Energy", "AgriTech & FoodTech"],
   investors: [
@@ -162,7 +162,7 @@ const DEALS = [
   hq: "Paris",
   round: "Growth",
   amount: 4.7,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["E-commerce & Retail"],
   investors: [
@@ -185,7 +185,7 @@ const DEALS = [
   hq: "Caen",
   round: "Series A",
   amount: 3.6,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["E-commerce & Retail"],
   investors: [
@@ -206,7 +206,7 @@ const DEALS = [
   hq: "Grenoble",
   round: "Seed",
   amount: 2.5,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["DeepTech", "CleanTech & Energy"],
   investors: [
@@ -231,7 +231,7 @@ const DEALS = [
   hq: "Saint-Ouen",
   round: "Seed",
   amount: 2,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["AI & Machine Learning"],
   investors: [
@@ -281,7 +281,7 @@ const DEALS = [
   hq: "Paris",
   round: "Seed",
   amount: 1.2,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["CleanTech & Energy", "AI & Machine Learning", "PropTech & Real Estate"],
   investors: [
@@ -302,7 +302,7 @@ const DEALS = [
   hq: "Biot",
   round: "Seed",
   amount: 5,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["AI & Machine Learning"],
   investors: [
@@ -325,7 +325,7 @@ const DEALS = [
   hq: "Laval",
   round: "Seed",
   amount: 0.5,
-  month: January,
+  month: "January",
   year: 2026,
   sectors: ["Fintech", "AI & Machine Learning"],
   investors: [
