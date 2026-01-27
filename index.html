@@ -1316,21 +1316,43 @@
             return response.json();
         }
 
+        // Fetch ALL rows from a Supabase table using pagination.
+        // The PostgREST default row limit (typically 1000) can silently
+        // truncate large tables like funding_round_investors, causing
+        // newer records (e.g. 2026 deals) to be missing.
+        async function fetchAllRows(table) {
+            const pageSize = 1000;
+            let allRows = [];
+            let offset = 0;
+
+            while (true) {
+                const data = await fetchFromSupabase(table,
+                    `?select=*&order=id&limit=${pageSize}&offset=${offset}`);
+                allRows = allRows.concat(data);
+                if (data.length < pageSize) break;
+                offset += pageSize;
+            }
+
+            return allRows;
+        }
+
         async function loadData() {
             try {
                 console.log('[Supabase] Loading data...');
                 const startTime = performance.now();
 
-                // Fetch all data in parallel
+                // Fetch all data in parallel with pagination to ensure
+                // every row is retrieved (tables like funding_round_investors
+                // can exceed the default PostgREST row limit)
                 const [companies, fundingRounds, sectors, companySectors, companyPeople, people, investors, fundingInvestors] = await Promise.all([
-                    fetchFromSupabase('companies', '?select=*&limit=10000'),
-                    fetchFromSupabase('funding_rounds', '?select=*&limit=10000'),
-                    fetchFromSupabase('sectors', '?select=*&limit=10000'),
-                    fetchFromSupabase('company_sectors', '?select=*&limit=10000'),
-                    fetchFromSupabase('company_people', '?select=*&limit=10000'),
-                    fetchFromSupabase('people', '?select=*&limit=10000'),
-                    fetchFromSupabase('investors', '?select=*&limit=10000'),
-                    fetchFromSupabase('funding_round_investors', '?select=*&limit=10000')
+                    fetchAllRows('companies'),
+                    fetchAllRows('funding_rounds'),
+                    fetchAllRows('sectors'),
+                    fetchAllRows('company_sectors'),
+                    fetchAllRows('company_people'),
+                    fetchAllRows('people'),
+                    fetchAllRows('investors'),
+                    fetchAllRows('funding_round_investors')
                 ]);
 
                 // Build lookup maps
