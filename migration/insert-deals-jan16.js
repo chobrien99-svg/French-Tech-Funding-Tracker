@@ -86,7 +86,7 @@ const DEALS = [
   amount: 35,
   month: "January",
   year: 2026,
-  sectors: ["HealthTech & BioTech"],
+  sectors: ["HealthTech", "BioTech"],
   investors: [
     "Groupe Pasteur Mutualité",
     "Groupe Etchart",
@@ -122,7 +122,7 @@ const DEALS = [
   amount: 25,
   month: "January",
   year: 2026,
-  sectors: ["CleanTech & Energy", "Fintech"],
+  sectors: ["CleanTech", "Energy", "FinTech"],
   investors: ["Epopée Gestion"],
   founders: [
     { name: "Arnaud Langlois" }
@@ -140,7 +140,7 @@ const DEALS = [
   amount: 20.7,
   month: "January",
   year: 2026,
-  sectors: ["AI & Machine Learning", "HealthTech & BioTech"],
+  sectors: ["AI & Machine Learning", "HealthTech", "BioTech"],
   investors: [
     "Elaia",
     "Pfizer Ventures",
@@ -169,7 +169,7 @@ const DEALS = [
   amount: 16,
   month: "January",
   year: 2026,
-  sectors: ["AgriTech & FoodTech", "CleanTech & Energy"],
+  sectors: ["AgriTech", "FoodTech", "CleanTech", "Energy"],
   investors: [
     "Innovacom",
     "BNP Paribas",
@@ -195,7 +195,7 @@ const DEALS = [
   amount: 12.6,
   month: "January",
   year: 2026,
-  sectors: ["AgriTech & FoodTech"],
+  sectors: ["AgriTech", "FoodTech"],
   investors: ["US Family Office", "AENU", "noa", "Localglobe"],
   founders: [
     { name: "Priscille Raynaud" },
@@ -232,7 +232,7 @@ const DEALS = [
   amount: 4,
   month: "January",
   year: 2026,
-  sectors: ["HealthTech & BioTech"],
+  sectors: ["HealthTech", "BioTech"],
   investors: ["Blast", "Business Angels", "Dental Professionals"],
   founders: [
     { name: "Samir Raddi" }
@@ -279,7 +279,7 @@ const DEALS = [
   amount: 2.25,
   month: "January",
   year: 2026,
-  sectors: ["HealthTech & BioTech"],
+  sectors: ["HealthTech", "BioTech"],
   investors: ["Iron Hands Capital", "Bpifrance"],
   founders: [
     { name: "Julien Durand" },
@@ -298,7 +298,7 @@ const DEALS = [
   amount: 2,
   month: "January",
   year: 2026,
-  sectors: ["AgriTech & FoodTech", "CleanTech & Energy"],
+  sectors: ["AgriTech", "FoodTech", "CleanTech", "Energy"],
   investors: [
     "Parnass",
     "Crédit Agricole Aquitaine Expansion",
@@ -384,7 +384,7 @@ const DEALS = [
   amount: null,
   month: "January",
   year: 2026,
-  sectors: ["CleanTech & Energy"],
+  sectors: ["CleanTech", "Energy"],
   investors: ["Holcim"],
   founders: [
     { name: "Paul de la Guérivière" },
@@ -402,7 +402,7 @@ const DEALS = [
   amount: null,
   month: "January",
   year: 2026,
-  sectors: ["HealthTech & BioTech"],
+  sectors: ["HealthTech", "BioTech"],
   investors: ["AVANT BIO"],
   founders: [
     { name: "Jean-Baptiste Marie" },
@@ -422,17 +422,25 @@ const SECTOR_COLORS = {
     'SaaS & Enterprise': '#3b82f6',
     'FinTech': '#eab308',
     'HealthTech': '#10b981',
+    'BioTech': '#10b981',
     'HealthTech & BioTech': '#10b981',
+    'CleanTech': '#84cc16',
+    'Energy': '#facc15',
     'CleanTech & Energy': '#84cc16',
     'Cybersecurity': '#f43f5e',
     'E-commerce & Retail': '#f59e0b',
+    'FoodTech': '#22c55e',
+    'AgriTech': '#16a34a',
     'FoodTech & AgriTech': '#22c55e',
     'AgriTech & FoodTech': '#22c55e',
     'PropTech & Real Estate': '#06b6d4',
     'EdTech': '#14b8a6',
     'Mobility & Logistics': '#3b82f6',
     'Mobility & Transportation': '#3b82f6',
+    'DeepTech': '#a855f7',
+    'Hardware': '#6366f1',
     'DeepTech & Hardware': '#6366f1',
+    'Web3': '#fb923c',
     'Media & Entertainment': '#ec4899',
     'BioTech & Pharma': '#10b981',
     'HRTech': '#8b5cf6',
