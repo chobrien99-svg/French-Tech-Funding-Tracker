@@ -48,7 +48,7 @@ const deals = [
         amount: 35,
         investors: ["Groupe Pasteur Mutualit\u00e9", "Groupe Etchart", "European Innovation Council", "EIB Fund", "FH Founders", "Lurra", "IRDI Capital Investment", "Groupe Doliam", "NACO", "Aquiti Gestion", "Galia Gestion", "Broadview Ventures", "M Capital", "UI Investment", "Verve Capital"],
         founders: ["Arnaud Mascarell", "Dr. St\u00e9phane Garrigue", "Dr. Philippe Ritter"],
-        sectors: ["HealthTech & BioTech"],
+        sectors: ["HealthTech", "BioTech"],
         month: "January"
     },
     {
@@ -60,7 +60,7 @@ const deals = [
         amount: 25,
         investors: ["Epop\u00e9e Gestion"],
         founders: ["Arnaud Langlois"],
-        sectors: ["CleanTech & Energy", "FinTech"],
+        sectors: ["CleanTech", "Energy", "FinTech"],
         month: "January"
     },
     {
@@ -72,7 +72,7 @@ const deals = [
         amount: 20.7,
         investors: ["Elaia", "Pfizer Ventures", "Bpifrance", "Sambrinvest", "MACSF", "Investsud", "Argobio", "Institut Pasteur", "Wallonie Entreprendre"],
         founders: ["Caroline Demangel", "Yves Ribeill"],
-        sectors: ["AI & Machine Learning", "HealthTech & BioTech"],
+        sectors: ["AI & Machine Learning", "HealthTech", "BioTech"],
         month: "January"
     },
     {
@@ -84,7 +84,7 @@ const deals = [
         amount: 16,
         investors: ["Innovacom", "BNP Paribas", "Bpifrance", "CDG Invest", "Noshaq", "RSI", "Cr\u00e9dit Agricole"],
         founders: ["Justine Lipuma"],
-        sectors: ["AgriTech & FoodTech", "CleanTech & Energy"],
+        sectors: ["AgriTech", "FoodTech", "CleanTech", "Energy"],
         month: "January"
     },
     {
@@ -96,7 +96,7 @@ const deals = [
         amount: 12.6,
         investors: ["US family office", "AENU", "noa", "Localglobe"],
         founders: ["Priscille Raynaud", "Thibault Sorret"],
-        sectors: ["AgriTech & FoodTech"],
+        sectors: ["AgriTech", "FoodTech"],
         month: "January"
     },
     {
@@ -120,7 +120,7 @@ const deals = [
         amount: 4,
         investors: ["Blast", "Business Angels", "dental professionals"],
         founders: ["Samir Raddi"],
-        sectors: ["HealthTech & BioTech"],
+        sectors: ["HealthTech", "BioTech"],
         month: "January"
     },
     {
@@ -144,7 +144,7 @@ const deals = [
         amount: 2.25,
         investors: ["Iron Hands Capital", "Bpifrance"],
         founders: ["Julien Durand", "Yannick Malbert"],
-        sectors: ["HealthTech & BioTech"],
+        sectors: ["HealthTech", "BioTech"],
         month: "January"
     },
     {
@@ -156,7 +156,7 @@ const deals = [
         amount: 2,
         investors: ["Parnass", "Cr\u00e9dit Agricole Aquitaine Expansion", "Sowefund", "Demea Invest"],
         founders: ["Patrick Delmarre"],
-        sectors: ["AgriTech & FoodTech", "CleanTech & Energy"],
+        sectors: ["AgriTech", "FoodTech", "CleanTech", "Energy"],
         month: "January"
     },
     {
@@ -204,7 +204,7 @@ const deals = [
         amount: null,
         investors: ["Holcim"],
         founders: ["Paul de la Gu\u00e9rivi\u00e8re", "Pierre Coulombeau"],
-        sectors: ["CleanTech & Energy"],
+        sectors: ["CleanTech", "Energy"],
         month: "January"
     },
     {
@@ -216,7 +216,7 @@ const deals = [
         amount: null,
         investors: ["AVANT BIO"],
         founders: ["Jean-Baptiste Marie", "Nicolas Bourg"],
-        sectors: ["HealthTech & BioTech"],
+        sectors: ["HealthTech", "BioTech"],
         month: "January"
     }
 ];
@@ -225,17 +225,28 @@ const deals = [
 // KNOWN SECTOR IDs (from existing Supabase data)
 // =============================================
 
+// Note: Individual sector IDs will be created by update-sectors-db.js migration.
+// For new deals, use insert-deals.js which upserts sectors by name.
 const SECTOR_IDS = {
     "AI & Machine Learning": "957f88d4-cef3-434f-9e97-d32430a0b3d1",
+    "HealthTech": "2dea7360-f624-422e-a622-3b1dbc52da02",
+    "BioTech": "2dea7360-f624-422e-a622-3b1dbc52da02",
     "HealthTech & BioTech": "2dea7360-f624-422e-a622-3b1dbc52da02",
+    "CleanTech": "fe555b51-b028-4b3f-b224-236f995e29de",
+    "Energy": "fe555b51-b028-4b3f-b224-236f995e29de",
     "CleanTech & Energy": "fe555b51-b028-4b3f-b224-236f995e29de",
     "FinTech": "4a3bb002-bae4-453b-9b37-db710032443a",
+    "AgriTech": "b68c35c3-f137-4411-a909-727287a218ce",
+    "FoodTech": "b68c35c3-f137-4411-a909-727287a218ce",
     "AgriTech & FoodTech": "b68c35c3-f137-4411-a909-727287a218ce",
     "SpaceTech & Aerospace": "c9460d00-f17f-49ba-8562-721d8ff30daf",
     "E-commerce & Retail": "bd5b2291-c1ee-4c6a-94ce-854ac35c98d1",
     "Cybersecurity": "85d97fce-0fdc-4d77-8495-306739ee2718",
     "Gaming": "c0bf8c8f-e7ac-4501-9637-01137b9cbae4",
+    "DeepTech": "c54d430a-bb85-4716-a9dc-5bd8c77c3890",
+    "Hardware": "c54d430a-bb85-4716-a9dc-5bd8c77c3890",
     "DeepTech & Hardware": "c54d430a-bb85-4716-a9dc-5bd8c77c3890",
+    "Web3": "d91b44f7-3a42-44a2-8a24-ad8145f2e637",
     "SaaS & Enterprise": "50d276bc-d0d5-4c1b-812d-8d2a1bbb2662",
     "PropTech & Real Estate": "a88ce2c8-7544-4d71-b774-6b82805b7070",
     "Mobility & Transportation": "71f8d11b-5caf-4af1-86ef-6bfb9d81272c",
