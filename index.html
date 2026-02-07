@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>French Tech Funding 2025 - The French Tech Journal</title>
+    <title>French Tech Funding Tracker - The French Tech Journal</title>
 
     <!-- Chrome Performance Optimization Meta Tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -488,7 +488,7 @@
         .sector-fintech { background: rgba(234,179,8,0.15); color: #fde047; border: 1px solid rgba(234,179,8,0.3); }
         .sector-healthtech { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
         .sector-cleantech { background: rgba(132,204,22,0.15); color: #bef264; border: 1px solid rgba(132,204,22,0.3); }
-        .sector-energy { background: rgba(251,191,36,0.15); color: #fcd34d; border: 1px solid rgba(251,191,36,0.3); }
+        .sector-energy { background: rgba(250,204,21,0.15); color: #fef08a; border: 1px solid rgba(250,204,21,0.3); }
         .sector-cybersecurity { background: rgba(244,63,94,0.15); color: #fda4af; border: 1px solid rgba(244,63,94,0.3); }
         .sector-ecommerce { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
         .sector-foodtech { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
@@ -497,10 +497,10 @@
         .sector-edtech { background: rgba(20,184,166,0.15); color: #5eead4; border: 1px solid rgba(20,184,166,0.3); }
         .sector-mobility { background: rgba(99,102,241,0.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
         .sector-deeptech { background: rgba(168,85,247,0.15); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.3); }
-        .sector-hardware { background: rgba(107,114,128,0.15); color: #d1d5db; border: 1px solid rgba(107,114,128,0.3); }
-        .sector-web3 { background: rgba(236,72,153,0.15); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.3); }
-        .sector-media { background: rgba(249,115,22,0.15); color: #fdba74; border: 1px solid rgba(249,115,22,0.3); }
-        .sector-biotech { background: rgba(14,165,233,0.15); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.3); }
+        .sector-hardware { background: rgba(99,102,241,0.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
+        .sector-web3 { background: rgba(251,146,60,0.15); color: #fdba74; border: 1px solid rgba(251,146,60,0.3); }
+        .sector-media { background: rgba(236,72,153,0.15); color: #f9a8d4; border: 1px solid rgba(236,72,153,0.3); }
+        .sector-biotech { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
         .sector-hrtech { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); }
         .sector-legaltech { background: rgba(100,116,139,0.15); color: #cbd5e1; border: 1px solid rgba(100,116,139,0.3); }
         .sector-default { background: rgba(100,116,139,0.15); color: #cbd5e1; border: 1px solid rgba(100,116,139,0.3); }
@@ -592,6 +592,13 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
             line-height: 1.5;
+        }
+
+        .card-news-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            font-style: italic;
         }
 
         .card-actions {
@@ -1011,7 +1018,7 @@
                     <div class="brand-icon">🇫🇷</div>
                     <div class="brand-text">
                         <span class="brand-label">The French Tech Journal</span>
-                        <span class="brand-title">Funding Tracker 2025</span>
+                        <span class="brand-title">French Tech Funding Tracker</span>
                     </div>
                 </div>
                 <div class="header-stats">
@@ -1110,12 +1117,14 @@
             <!-- Companies Grid -->
             <section class="companies-section">
                 <div class="section-header">
-                    <h2 class="section-title"><span class="icon">💼</span> Funded Companies</h2>
+                    <h2 class="section-title"><span class="icon">💼</span> Funding Deals</h2>
                     <div class="sort-controls">
                         <label>Sort:</label>
                         <select class="filter-select" id="sort-by" style="min-width: 180px;">
                             <option value="amount-desc">Highest Amount</option>
                             <option value="amount-asc">Lowest Amount</option>
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
                             <option value="name-asc">Name A-Z</option>
                             <option value="name-desc">Name Z-A</option>
                         </select>
@@ -1186,7 +1195,7 @@
         <div class="container">
             <p class="footer-text">
                 Data tracked by <a href="https://thefrenchtechjournal.com" class="footer-link" target="_blank">The French Tech Journal</a> ·
-                Updated January 2025
+                Updated January 2026
             </p>
         </div>
     </footer>
@@ -1273,22 +1282,24 @@
                 'HealthTech': 'sector-healthtech',
                 'CleanTech': 'sector-cleantech',
                 'Energy': 'sector-energy',
-                'CleanTech & Energy': 'sector-cleantech', // legacy support
+                'CleanTech & Energy': 'sector-cleantech',
                 'Cybersecurity': 'sector-cybersecurity',
                 'E-commerce & Retail': 'sector-ecommerce',
                 'FoodTech': 'sector-foodtech',
                 'AgriTech': 'sector-agritech',
-                'FoodTech & AgriTech': 'sector-foodtech', // legacy support
+                'FoodTech & AgriTech': 'sector-foodtech',
+                'AgriTech & FoodTech': 'sector-agritech',
                 'PropTech & Real Estate': 'sector-proptech',
                 'EdTech': 'sector-edtech',
                 'Mobility & Logistics': 'sector-mobility',
                 'DeepTech': 'sector-deeptech',
                 'Hardware': 'sector-hardware',
-                'DeepTech & Hardware': 'sector-deeptech', // legacy support
+                'DeepTech & Hardware': 'sector-deeptech',
                 'Web3': 'sector-web3',
                 'Media & Entertainment': 'sector-media',
                 'BioTech': 'sector-biotech',
-                'BioTech & Pharma': 'sector-biotech', // legacy support
+                'BioTech & Pharma': 'sector-biotech',
+                'HealthTech & BioTech': 'sector-healthtech',
                 'HRTech': 'sector-hrtech',
                 'LegalTech': 'sector-legaltech'
             };
@@ -1319,27 +1330,50 @@
             return response.json();
         }
 
+        // Fetch ALL rows from a Supabase table using pagination.
+        // The PostgREST default row limit (typically 1000) can silently
+        // truncate large tables like funding_round_investors, causing
+        // newer records (e.g. 2026 deals) to be missing.
+        async function fetchAllRows(table) {
+            const pageSize = 1000;
+            let allRows = [];
+            let offset = 0;
+
+            while (true) {
+                const data = await fetchFromSupabase(table,
+                    `?select=*&order=id&limit=${pageSize}&offset=${offset}`);
+                allRows = allRows.concat(data);
+                if (data.length < pageSize) break;
+                offset += pageSize;
+            }
+
+            return allRows;
+        }
+
         async function loadData() {
             try {
                 console.log('[Supabase] Loading data...');
                 const startTime = performance.now();
 
-                // Fetch all data in parallel
+                // Fetch all data in parallel with pagination to ensure
+                // every row is retrieved (tables like funding_round_investors
+                // can exceed the default PostgREST row limit)
                 const [companies, fundingRounds, sectors, companySectors, companyPeople, people, investors, fundingInvestors] = await Promise.all([
-                    fetchFromSupabase('companies', '?select=*'),
-                    fetchFromSupabase('funding_rounds', '?select=*'),
-                    fetchFromSupabase('sectors', '?select=*'),
-                    fetchFromSupabase('company_sectors', '?select=*'),
-                    fetchFromSupabase('company_people', '?select=*'),
-                    fetchFromSupabase('people', '?select=*'),
-                    fetchFromSupabase('investors', '?select=*'),
-                    fetchFromSupabase('funding_round_investors', '?select=*')
+                    fetchAllRows('companies'),
+                    fetchAllRows('funding_rounds'),
+                    fetchAllRows('sectors'),
+                    fetchAllRows('company_sectors'),
+                    fetchAllRows('company_people'),
+                    fetchAllRows('people'),
+                    fetchAllRows('investors'),
+                    fetchAllRows('funding_round_investors')
                 ]);
 
                 // Build lookup maps
                 const sectorsMap = new Map(sectors.map(s => [s.id, s]));
                 const peopleMap = new Map(people.map(p => [p.id, p]));
                 const investorsMap = new Map(investors.map(i => [i.id, i]));
+                const companiesMap = new Map(companies.map(c => [c.id, c]));
 
                 // Group data by company
                 const companySectorsMap = new Map();
@@ -1356,12 +1390,6 @@
                     if (person) companyPeopleMap.get(cp.company_id).push(person);
                 });
 
-                const fundingRoundsMap = new Map();
-                fundingRounds.forEach(fr => {
-                    if (!fundingRoundsMap.has(fr.company_id)) fundingRoundsMap.set(fr.company_id, []);
-                    fundingRoundsMap.get(fr.company_id).push(fr);
-                });
-
                 const fundingInvestorsMap = new Map();
                 fundingInvestors.forEach(fi => {
                     if (!fundingInvestorsMap.has(fi.funding_round_id)) fundingInvestorsMap.set(fi.funding_round_id, []);
@@ -1369,37 +1397,37 @@
                     if (investor) fundingInvestorsMap.get(fi.funding_round_id).push(investor.name);
                 });
 
-                // Build unified company objects
-                allCompanies = companies.map(company => {
-                    const rounds = fundingRoundsMap.get(company.id) || [];
-                    const latestRound = rounds.sort((a, b) => (b.amount_eur || 0) - (a.amount_eur || 0))[0];
+                // Build deal objects — one entry per funding round
+                // This allows companies with multiple rounds (e.g. Pennylane
+                // 2025 + 2026) to each appear as separate deal cards.
+                allCompanies = fundingRounds.map(round => {
+                    const company = companiesMap.get(round.company_id);
+                    if (!company) return null;
 
-                    let investorNames = [];
-                    if (latestRound) {
-                        investorNames = fundingInvestorsMap.get(latestRound.id) || [];
-                    }
-
+                    const investorNames = fundingInvestorsMap.get(round.id) || [];
                     const founders = companyPeopleMap.get(company.id) || [];
 
                     return {
-                        id: company.id,
+                        id: round.id,
+                        companyId: company.id,
                         company: company.name,
                         description: company.description,
                         website: company.website,
                         hq: company.hq_city_name,
                         sectors: companySectorsMap.get(company.id) || [],
-                        amount: latestRound?.amount_eur || 0,
-                        round: latestRound?.round_type || '',
-                        month: latestRound?.announced_month || '',
-                        year: latestRound?.announced_year || 2025,
-                        announcedDate: latestRound?.announced_date || null,
-                        createdAt: latestRound?.created_at || company.created_at,
+                        amount: Number(round.amount_eur) || 0,
+                        round: round.round_type || '',
+                        month: round.announced_month || '',
+                        year: Number(round.announced_year) || 2025,
+                        announcedDate: round.announced_date || null,
+                        createdAt: round.created_at || company.created_at,
                         investors: investorNames.join(', '),
                         founders: founders.map(f => f.full_name).join(', '),
                         foundersData: founders,
-                        news: latestRound?.news_url || ''
+                        news: round.news_url || '',
+                        newsDescription: round.notes || ''
                     };
-                }).filter(c => c.amount > 0); // Only show companies with funding
+                }).filter(d => d && d.amount > 0); // Only show deals with funding amounts
 
                 filteredCompanies = [...allCompanies];
 
@@ -1410,8 +1438,7 @@
                 initializeCharts();
                 initializeMap();
                 updateLatestDeals();
-                updateDisplay();
-                updateStats();
+                applyFilters();
 
             } catch (error) {
                 console.error('[Supabase] Error loading data:', error);
@@ -1589,12 +1616,13 @@
         function updateStats() {
             const totalFunding = filteredCompanies.reduce((sum, c) => sum + (c.amount || 0), 0);
             const avgFunding = filteredCompanies.length > 0 ? totalFunding / filteredCompanies.length : 0;
+            const uniqueCompanies = new Set(filteredCompanies.map(c => c.companyId)).size;
 
-            document.getElementById('stat-companies').textContent = filteredCompanies.length;
+            document.getElementById('stat-companies').textContent = uniqueCompanies;
             document.getElementById('stat-funding').textContent = formatCurrency(totalFunding);
             document.getElementById('stat-average').textContent = formatCurrency(avgFunding);
 
-            document.getElementById('results-info').innerHTML = `Showing <strong>${filteredCompanies.length}</strong> of ${allCompanies.length} companies`;
+            document.getElementById('results-info').innerHTML = `Showing <strong>${filteredCompanies.length}</strong> deals from ${uniqueCompanies} companies`;
         }
 
         function updateLatestDeals() {
@@ -1670,6 +1698,17 @@
                     `;
                 }
 
+                // Build news description HTML (from notes field when no URL available)
+                let newsDescHTML = '';
+                if (!deal.news && deal.newsDescription) {
+                    newsDescHTML = `
+                        <div class="card-section">
+                            <div class="card-section-title">News</div>
+                            <div class="card-news-desc">${deal.newsDescription}</div>
+                        </div>
+                    `;
+                }
+
                 // Build action buttons
                 let actionsHTML = '<div class="card-actions">';
                 if (deal.website) {
@@ -1698,6 +1737,7 @@
                         </div>
                         ${foundersHTML}
                         ${investorsHTML}
+                        ${newsDescHTML}
                         ${(deal.website || deal.news) ? actionsHTML : ''}
                     </div>
                 `;
@@ -1710,6 +1750,8 @@
                 switch (sortBy) {
                     case 'amount-desc': return (b.amount || 0) - (a.amount || 0);
                     case 'amount-asc': return (a.amount || 0) - (b.amount || 0);
+                    case 'date-desc': return (b.year || 0) - (a.year || 0) || (b.amount || 0) - (a.amount || 0);
+                    case 'date-asc': return (a.year || 0) - (b.year || 0) || (a.amount || 0) - (b.amount || 0);
                     case 'name-asc': return (a.company || '').localeCompare(b.company || '');
                     case 'name-desc': return (b.company || '').localeCompare(a.company || '');
                     default: return 0;

@@ -57,7 +57,8 @@
     "news": "https://www.fusacq.com/buzz/le-groupe-hexalean-accueille-a-son-capital-origine-partners-a250750_ca_",
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -177,7 +178,8 @@
     "news": "https://www.meridiam.com/news/evergaz-completed-capital-increase/#:~:text=Evergaz%2C%20an%20independent%20player%20in,transition%20and%20longstanding%20Evergaz%20shareholders.",
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -207,7 +209,8 @@
     "news": "https://pulse2.com/skyvisor-e1-2-million-raised-for-enhancing-drone-based-inspection-software/",
     "month": "January",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -222,7 +225,8 @@
     "news": "https://carbonherald.com/ers-to-scale-operations-with-new-5m-funding-in-answer-to-rising-certification-demand/",
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -237,7 +241,8 @@
     "news": "https://forextv.com/coave-therapeutics-secures-e32-million-33-million-in-series-a-financing-to-advance-its-next-generation-genetic-medicines/",
     "month": "January",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -297,7 +302,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -344,7 +350,8 @@
     "month": "January",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -495,7 +502,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -525,7 +533,8 @@
     "news": "https://www.lsa-conso.fr/seb-investit-encore-sur-le-marche-des-professionnels-cette-fois-dans-les-machines-a-cocktails,458813",
     "month": "January",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -570,7 +579,8 @@
     "news": "https://www.lesechos.fr/industrie-services/energie-environnement/la-start-up-hexana-le-nouveau-pari-de-paris-mouratoglou-dans-le-nucleaire-2144217",
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -585,7 +595,8 @@
     "news": "https://www.linkedin.com/posts/mob-energy_levaeze-scaleup-tech-activity-7288140397749395456-Ib7E?utm_source=share&utm_medium=member_desktop",
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -615,7 +626,8 @@
     "news": "https://www.frenchweb.fr/aisprid-leve-10-millions-deuros-pour-transformer-lagriculture-sous-serre/450803",
     "month": "January",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -660,7 +672,8 @@
     "news": "https://www.lesechos.fr/pme-regions/centre-val-de-loire/adechotech-leve-4-millions-pour-deployer-son-robot-de-tele-echographie-2129619",
     "month": "January",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -675,7 +688,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -705,7 +719,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -750,7 +765,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -810,7 +826,8 @@
     "news": "https://tech.eu/2025/01/28/keey-aerogel-raises-18m-series-a-to-scale-europe-s-first-green-aerogel/",
     "month": "January",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -856,7 +873,8 @@
     "month": "January",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -871,7 +889,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -886,7 +905,8 @@
     "news": "https://www.frenchweb.fr/le-fourgon-leve-82-millions-deuros-pour-accelerer-sa-plateforme-de-gestion-de-consigne/451014",
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -931,7 +951,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -961,7 +982,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7290640287226372096/",
     "month": "January",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -976,7 +998,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -991,7 +1014,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -1006,7 +1030,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -1021,7 +1046,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -1051,7 +1077,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -1067,7 +1094,8 @@
     "news": null,
     "month": "January",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1127,7 +1155,8 @@
     "news": "https://www.linkedin.com/posts/superbranche_superbranche-clos-une-s%C3%A9rie-a-de-13m-deuros-activity-7292454774912782336-rUV4?utm_source=share&utm_medium=member_desktop",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1142,7 +1171,8 @@
     "news": "https://siliconcanals.com/frances-reev-raises-8-8m/",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -1158,7 +1188,8 @@
     "news": "https://carbonherald.com/ers-to-scale-operations-with-new-5m-funding-in-answer-to-rising-certification-demand/",
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1173,7 +1204,8 @@
     "news": "https://www.lesechos.fr/pme-regions/innovateurs/cardiologie-circle-safe-leve-8-millions-deuros-pour-son-catheter-20-2146796",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1188,7 +1220,8 @@
     "news": "https://www.brefeco.com/actualite/innovation/netri-inaugure-son-usine-dorganes-sur-puce-et-leve-nouveau-des-fonds",
     "month": "February",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -1219,7 +1252,8 @@
     "month": "February",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1294,7 +1328,8 @@
     "news": "https://sifted.eu/articles/natural-hydrogen-mantle8-bill-gates",
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1324,7 +1359,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7292456110823747585/",
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1339,7 +1375,8 @@
     "news": "https://www.maddyness.com/2025/02/04/lyv-healthcare-leve-pres-de-3-millions-deuros-avec-sa-solution-en-ligne-de-lutte-contre-lendometriose/",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1460,7 +1497,8 @@
     "news": "https://www.eu-startups.com/2025/02/germitec-raises-e28-8-million-for-uv-c-high-level-disinfection-in-ultrasounds/",
     "month": "February",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -1505,7 +1543,8 @@
     "news": "https://alterdiag.com/news/seed-funding-alterdiag-forepont/",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -1536,7 +1575,8 @@
     "news": null,
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1566,7 +1606,8 @@
     "news": null,
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1581,7 +1622,8 @@
     "news": "https://www.linkedin.com/posts/toumai-voice-analytics_morocco-senegal-malta-activity-7294641276707086336-Z64h?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1596,7 +1638,8 @@
     "news": "https://www.agrilableverage.com/2024/11/24/seed-round-investment/",
     "month": "February",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -1626,7 +1669,8 @@
     "news": "https://newfoodfinance.com/2025/01/29/u-s-ag-robotics-poised-to-gain-from-tighter-immigration/",
     "month": "February",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -1641,7 +1685,8 @@
     "news": null,
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -1657,7 +1702,8 @@
     "news": null,
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1702,7 +1748,8 @@
     "news": "https://www.fusacq.com/buzz/meanings-capital-investit-dans-la-societe-d-energie-du-bois-inoe-a251688_fr_",
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1732,7 +1779,8 @@
     "news": "https://www.benzinga.com/pressreleases/25/02/g43839638/eg-427-raises-27-million-in-successful-series-b-co-led-by-andera-partners-and-bpifrance-to-finance",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1762,7 +1810,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7298285861459144704/",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1777,7 +1826,8 @@
     "news": "https://www.usine-digitale.fr/article/dametis-leve-7-millions-d-euros-pour-son-logiciel-d-optimisation-de-la-consommation-energetique.N2227794",
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1822,7 +1872,8 @@
     "news": "https://www.lejournaldesentreprises.com/article/seaweed-concept-leve-2-millions-deuros-pour-accroitre-sa-production-dalgues-utilisees-dans-2113991",
     "month": "February",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -1882,7 +1933,8 @@
     "news": null,
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -1927,7 +1979,8 @@
     "news": "https://www.linkedin.com/posts/kais-tahri_qvema-naali-qvema-activity-7295702004297793536-u_rS?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1942,7 +1995,8 @@
     "news": null,
     "month": "February",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -1957,7 +2011,8 @@
     "news": "https://pulsesight.com/2025/02/13/pulsesight-therapeutics-announces-first-close-of-its-series-a-financing-to-fund-clinical-development-of-pst-611-in-dry-amd/",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -1972,7 +2027,8 @@
     "news": "https://www.businesswire.com/news/home/20250225496539/en/ADOCIA-Announces-the-Successful-Completion-of-a-%E2%82%AC9.7-Million-Private-Placement-Extending-its-Cash-Runway-to-Q2-2026",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -2002,7 +2058,8 @@
     "news": "https://nutraceuticalbusinessreview.com/aquiti-and-bpifrance-renew-their-support-for-activ-inside",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -2048,7 +2105,8 @@
     "news": "https://igrownews.com/bioceanor-latest-news/",
     "month": "February",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2063,7 +2121,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7301166170445869056/",
     "month": "February",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -2108,7 +2167,8 @@
     "news": "https://www.voxelmatters.com/mb-therapeutics-raises-e2-million-for-pharmacy-based-3d-printing-of-pharmaceuticals/",
     "month": "February",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -2123,7 +2183,8 @@
     "news": "https://www.linkedin.com/posts/bpifrance-smallcap_cp-bpifrance-small-cap-x-akira-20250212-ugcPost-7295721527377821696-uAoP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "February",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -2168,7 +2229,8 @@
     "news": "https://financialpost.com/pmn/business-wire-news-releases-pmn/netforce-secures-e45-million-investment-commitment-from-gem-global-yield-llc-scs-to-support-growth-and-innovation-in-law-enforcement-technology",
     "month": "March",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -2183,7 +2245,8 @@
     "news": "https://www.startupecosystem.ca/news/renaissance-fusion-secures-e32m-to-innovate-fusion-reactor-design/",
     "month": "March",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2213,7 +2276,8 @@
     "news": "https://osivax.com/osivax-seriesb/",
     "month": "March",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -2258,7 +2322,8 @@
     "news": "https://www.journaldunet.com/start-up/1539645-faks-leve-5-millions-d-euros-pour-simplifier-la-gestion-commerciale-des-pharmaciens/",
     "month": "March",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -2303,7 +2368,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7302651507605164032/",
     "month": "March",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -2318,7 +2384,8 @@
     "news": "https://www.jaimelesstartups.fr/news/aquassay-leve-14-me-pour-sa-solution-de-gestion-de-leau/",
     "month": "March",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2333,7 +2400,8 @@
     "news": "https://www.packaging-gateway.com/news/fedrigoni-acquires-stake-papkot/",
     "month": "March",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2348,7 +2416,8 @@
     "news": null,
     "month": "March",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -2363,7 +2432,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7304908907435442176/",
     "month": "March",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2393,7 +2463,8 @@
     "news": "https://presse.bpifrance.fr/ostrea-leve-5-millions-deuros-pour-passer-a-lindustrialisation",
     "month": "March",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2408,7 +2479,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7305852697352556544/",
     "month": "March",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -2469,7 +2541,8 @@
     "news": "https://www.eu-startups.com/2025/03/msinsight-secures-e1-6-million-to-redefine-msi-cancer-diagnosis/",
     "month": "March",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -2485,7 +2558,8 @@
     "news": "https://www.linkedin.com/posts/beyond-green-les-marques-alimentaires-de-la-transition-agricole_1-500-000-de-lev%C3%A9s-on-peut-aujourd-activity-7305964841930764291-SdTf?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "March",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -2560,7 +2634,8 @@
     "news": null,
     "month": "March",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2575,7 +2650,8 @@
     "news": "https://www.frenchweb.fr/siteflow-leve-7-millions-deuro-pour-transformer-les-industries-sensibles/452154",
     "month": "March",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -2680,7 +2756,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7294408090936901633/",
     "month": "March",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -2696,7 +2773,8 @@
     "news": "https://www.eu-startups.com/2025/03/producing-an-eiffel-tower-a-day-gravithy-secures-e60-million-to-power-green-steel-revolution/",
     "month": "March",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -2816,7 +2894,8 @@
     "news": "https://www.linkedin.com/company/luchrome/posts/?feedView=all",
     "month": "March",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -2861,7 +2940,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7310940895770542081/",
     "month": "April",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -2968,7 +3048,8 @@
     "news": "https://lyonbiopole.com/actualites/maat-pharma-completes-a-capital-increase-of-e13-million",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3030,7 +3111,8 @@
     "month": "April",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3150,7 +3232,8 @@
     "news": "https://www.lesechos.fr/start-up/ecosysteme/okeiro-la-start-up-qui-met-lia-au-service-des-organes-transplantes-2159222",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3225,7 +3308,8 @@
     "news": "https://www.linkedin.com/posts/nowos_economiecirculaire-mobiliteelectrique-reparation-activity-7315720323369164800-WrWj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "April",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -3420,7 +3504,8 @@
     "news": "https://webdisclosure.com/article/eurazeo-invests-in-ekoscan-integrity-for-global-expansion-0KgXcqWPWTs",
     "month": "April",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -3451,7 +3536,8 @@
     "news": "https://www.linkedin.com/posts/paul-de-preville-ba405b65_solaire-startup-energie-activity-7317848435892637696-IvSq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "April",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -3466,7 +3552,8 @@
     "news": "https://www.linkedin.com/posts/dolphin-semiconductor_deeptech-semicon-ic-activity-7317803920318218240-bA8p?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "April",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -3481,7 +3568,8 @@
     "news": "https://www.febus-optics.com/en/actualites/febus-optics-secures-a-4-million-funding-round-151",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3496,7 +3584,8 @@
     "news": "https://www.frenchweb.fr/brink-therapeutics-securise-35-millions-deuros-pour-une-alternative-a-crispr-plus-sure-et-plus-precise/453522",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3511,7 +3600,8 @@
     "news": "https://www.linkedin.com/posts/circularing_circularring2-smartring-kickstarter-activity-7318604227570733056-tcTH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3541,7 +3631,8 @@
     "news": "https://www.plugandplaytechcenter.com/venture-capital/investment-announcements/celest-science-investment",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3571,7 +3662,8 @@
     "news": "https://www.lesechos.fr/start-up/impact/ecklo-la-start-up-qui-veut-eradiquer-le-film-plastique-industriel-2160265",
     "month": "April",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -3586,7 +3678,8 @@
     "news": "https://www.linkedin.com/posts/h-ability_hability-l%C3%A8ve-12-million-deuros-activity-7318187638438432769-Bkyc?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3601,7 +3694,8 @@
     "news": "https://www.linkedin.com/posts/clikodoc_clikodoc-levaezedefonds-santaez-activity-7318220077479124992-XMPm?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "April",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3616,7 +3710,8 @@
     "news": "https://www.linkedin.com/posts/elie-zerbib-b669a981_netgem-x-bary-un-investissement-strat%C3%A9gique-activity-7312391212009689088-zMD6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "April",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -3646,7 +3741,8 @@
     "news": null,
     "month": "April",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -3661,7 +3757,8 @@
     "news": "https://www.th-groupe.com/wp-content/uploads/2025/04/250414-CF-News-Levee-de-fonds-1.pdf",
     "month": "April",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -3676,7 +3773,8 @@
     "news": "https://techfundingnews.com/e5m-for-digital-dyslexia-therapy-for-children-heres-how-french-poppins-is-transforming-the-medtech-sector/",
     "month": "April",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -3691,7 +3789,8 @@
     "news": "https://www.linkedin.com/posts/yaconco_j-5-100-atteints-et-%C3%A7a-continue-activity-7318161634093387778-Eew6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "April",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -3721,7 +3820,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7310957936707555328/",
     "month": "April",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -3751,7 +3851,8 @@
     "news": "https://techfundingnews.com/exclusive-french-nature-tech-startup-versant-grabs-e500k-from-antler-to-restore-europes-biodiversity/",
     "month": "April",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -3811,7 +3912,8 @@
     "news": "https://markets.financialcontent.com/pennwell.laserfocusworld/article/bizwire-2025-4-30-safeheal-closes-oversubscribed-35-million-series-c-equity-financing",
     "month": "May",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -3826,7 +3928,8 @@
     "news": "https://www.maddyness.com/2025/04/28/via-sana-leve-16-millions-deuros-pour-developper-le-coworking-medical/",
     "month": "May",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -3841,7 +3944,8 @@
     "news": "https://www.maddyness.com/2025/04/30/chipiron-leve-15-millions-deuros-pour-developper-son-irm-plus-petit-et-moins-cher/",
     "month": "May",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -3901,7 +4005,8 @@
     "news": "https://www.edf.fr/en/pulse/ventures-news-investment-inicio",
     "month": "May",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -3916,7 +4021,8 @@
     "news": null,
     "month": "May",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4051,7 +4157,8 @@
     "news": "https://www.fusacq.com/buzz/bain-capital-entre-au-capital-de-softway-medical-a252992_fr_",
     "month": "May",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4096,7 +4203,8 @@
     "news": "https://www.maddyness.com/2025/05/15/riverse-leve-5-millions-deuros-pour-epauler-les-industriels-sur-le-marche-des-credits-carbone/",
     "month": "May",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -4172,7 +4280,8 @@
     "month": "May",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4232,7 +4341,8 @@
     "news": null,
     "month": "May",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -4277,7 +4387,8 @@
     "news": "https://www.frenchweb.fr/telemedecine-active-ensweet-leve-3-millions-deuros-pour-readapter-60-000-patients-par-an-dici-5-ans/454635",
     "month": "May",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4322,7 +4433,8 @@
     "news": "https://www.esgtoday.com/clean-energy-producer-solveo-raises-e98-million/",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -4337,7 +4449,8 @@
     "news": "https://quobly.io/news/a-new-e21m-funding-round-for-quoblys-q100t-quantum-technology-project/",
     "month": "June",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -4367,7 +4480,8 @@
     "news": "https://hemerion.com/press-releases/new-cancer-treatments-hemerion-secures-euros-6-5-million-sets-sights-on-next-fundraising-push/",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4382,7 +4496,8 @@
     "news": "https://www.frenchweb.fr/kyron-bio-leve-55-millions-deuros-pour-industrialiser-la-glyco-ingenierie-therapeutique/454897",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4412,7 +4527,8 @@
     "news": "https://www.linkedin.com/posts/bpifrance-smallcap_bpifrance-small-cap-x-ecomer-cp-20250520-ugcPost-7330590337582657538-uBRG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -4427,7 +4543,8 @@
     "news": "https://www.lyon-entreprises.com/actualites/article/novem-leve-638-000-euros-avec-grenoble-angels-pour-valoriser-la-noix-de-grenoble-en-cosmetique",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -4473,7 +4590,8 @@
     "news": null,
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4563,7 +4681,8 @@
     "news": "https://setventures.com/set-invests-in-enrise/",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -4593,7 +4712,8 @@
     "news": "https://www.retaildetail.eu/news/food/spadel-invests-in-startup-that-extracts-drinking-water-from-the-air/?ref=frenchtechjournal.com",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -4608,7 +4728,8 @@
     "news": "https://media.licdn.com/dms/document/media/v2/D4E1FAQGJmrMMo-3ZNw/feedshare-document-pdf-analyzed/B4EZc1kIb3HsAc-/0/1748950356570?e=1750291200&v=beta&t=NBQKheci0uC_coMihAgCWT5-tJKBRr1lOrlLr6T76lY",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4654,7 +4775,8 @@
     "month": "June",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4669,7 +4791,8 @@
     "news": "https://www.frenchweb.fr/dependance-zenior-veut-devenir-le-reflexe-des-familles-et-leve-15-million-deuros/455058",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -4700,7 +4823,8 @@
     "news": "https://insidetx.com/news/inside-therapeutics-raises-e1m-to-accelerate-its-growth/",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4715,7 +4839,8 @@
     "news": "https://capitalfinance.lesechos.fr/deals/capital-developpement/knave-obtient-pres-de-100-meur-aupres-dinvestisseurs-chinois-2169334",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -4730,7 +4855,8 @@
     "news": "https://www.medicaldevice-network.com/news/wandercraft-75m-exoskeleton/",
     "month": "June",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -4760,7 +4886,8 @@
     "news": "https://www.usinenouvelle.com/article/le-fabricant-francais-de-sieges-d-avion-expliseat-leve-36-millions-d-euros-pour-se-developper-en-amerique-du-nord.N2233599",
     "month": "June",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -4775,7 +4902,8 @@
     "news": "https://www.finsmes.com/2025/06/elkedonia-closes-eur-11m-in-seed-funding.html",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4790,7 +4918,8 @@
     "news": "https://www.thepharmaletter.com/biotechnology/enterome-financing-oncomimics",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4820,7 +4949,8 @@
     "news": null,
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4865,7 +4995,8 @@
     "news": "https://www.linkedin.com/posts/steps-ortho_lev%C3%A9e-de-fonds-steps-ortho-mai-25-activity-7334133981564522497-y1Jl?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -4911,7 +5042,8 @@
     "month": "June",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5016,7 +5148,8 @@
     "news": "https://www.frenchweb.fr/funguit-leve-4-millions-deuros-pour-reinventer-les-aromes-grace-a-la-fermentation-fongique/455506",
     "month": "June",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -5123,7 +5256,8 @@
     "month": "June",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5138,7 +5272,8 @@
     "news": null,
     "month": "June",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -5153,7 +5288,8 @@
     "news": "https://renewablesnow.com/news/reed-societe-generale-invests-in-french-battery-maker-olenergies-1276917/",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5213,7 +5349,8 @@
     "news": "https://presse.bpifrance.fr/melvan-leve-25-millions-deuros-pour-accelerer-son-developpement-en-france-286473",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5258,7 +5395,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7343561904587485184/",
     "month": "June",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -5303,7 +5441,8 @@
     "news": "https://www.maddyness.com/2025/06/26/vehicules-electriques-deux-anciens-de-lyft-levent-52-millions-deuros-pour-leur-solution-de-recharge/",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5319,7 +5458,8 @@
     "month": "June",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5349,7 +5489,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7341362322210181120/",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5379,7 +5520,8 @@
     "news": "https://www.maddyness.com/2025/06/25/des-anciens-de-sorare-et-dalgolia-lancent-une-startup-pour-repenser-le-data-stack-des-entreprises-a-laide-de-lia/",
     "month": "June",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5394,7 +5536,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:activity:7343999050410541057/",
     "month": "June",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5454,7 +5597,8 @@
     "news": "https://fuelcellsworks.com/2025/07/03/green-investment/khimod-secures-23-million-to-industrialise-hydrogen-based-power-to-x-technologies",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5469,7 +5613,8 @@
     "news": "https://www.h2-view.com/story/atawey-raises-e22m-to-accelerate-european-hydrogen-refuelling-effort/2128644.article/",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5559,7 +5704,8 @@
     "news": "https://tech.eu/2025/06/30/cosma-raises-eur25m-to-map-deep-sea-ecosystems-with-autonomous-robots/",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5589,7 +5735,8 @@
     "news": "https://movalife.sharepoint.com/sites/MovaLife/Documents%20partages/Forms/AllItems.aspx?id=%2Fsites%2FMovaLife%2FDocuments%20partages%2FCommunication%2FCP%2FCP%20Kadmos%2Epdf&parent=%2Fsites%2FMovaLife%2FDocuments%20partages%2FCommunication%2FCP&p=true&ga=1",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5605,7 +5752,8 @@
     "month": "July",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5620,7 +5768,8 @@
     "news": "https://business-angels.info/actualites/communiques-de-presse/listid-48/mailid-1548-les-business-angels-des-grandes-ecoles-badge-investissent-dans-la-start-up-optipus-pv",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5680,7 +5829,8 @@
     "news": "https://www.cfnews.net/L-actualite/Capital-innovation/Operations/2nd-tour/Olimpe-Technology-s-entoure-de-premiers-fonds-535525",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5695,7 +5845,8 @@
     "news": "https://www.leprogres.fr/economie/2025/06/30/les-business-angels-ligeriens-ont-concretise-leurs-deux-premieres-levees-de-fonds",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5710,7 +5861,8 @@
     "news": "https://www.leprogres.fr/economie/2025/06/30/les-business-angels-ligeriens-ont-concretise-leurs-deux-premieres-levees-de-fonds",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5756,7 +5908,8 @@
     "month": "July",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5786,7 +5939,8 @@
     "news": "https://www.lesechos.fr/industrie-services/air-defense/turbotech-le-petit-poucet-francais-qui-veut-revolutionner-laviation-legere-mondiale-2172891",
     "month": "July",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -5801,7 +5955,8 @@
     "news": "https://hiqute-diamond.com/insights/hiqute-diamond-raises-75-million-to-bring-technological-diam",
     "month": "July",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -5816,7 +5971,8 @@
     "news": "https://tech.eu/2025/07/03/solarock-raises-eur7m-to-expand-decentralised-solar-model-across-france/?utm_source=chatgpt.com",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5831,7 +5987,8 @@
     "news": "https://www.eu-startups.com/2025/07/french-scale-up-ciloa-raises-e6-5-million-to-advance-exosome-therapy-for-metabolic-diseases/",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5906,7 +6063,8 @@
     "news": "https://seaturns.com/seaturns-leve-245-me-pour-accelerer-son-deploiement-a-grande-echelle/",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -5936,7 +6094,8 @@
     "news": "https://tech.eu/2025/07/10/solence-closes-eur16m-seed-round-to-rethink-pcos-care/",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -5952,7 +6111,8 @@
     "news": "https://www.irdi.fr/wp-content/uploads/2025/07/Byorna-CP.pdf",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -5967,7 +6127,8 @@
     "news": "https://www.lejournaldesentreprises.com/article/justclip-leve-des-fonds-pour-ses-modules-electriques-clipser-2123398",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -6058,7 +6219,8 @@
     "news": "https://pulse2.com/one-biosciences-e15-million-series-a-closed-for-advancing-clinical-single-cell-profiling/",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6073,7 +6235,8 @@
     "news": "https://lyonbiopole.com/actualites/dillico-announces-the-closing-of-a-e7-5-million-financing-round-to-launch-the-commercialization-of-its-innovative-solution-for-the-manufacturing-of-messenger-rna-vaccines-and-therapies",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -6104,7 +6267,8 @@
     "news": "https://finance.minyanville.com/minyanville/article/bizwire-2025-7-14-summit-partners-announces-growth-investment-in-dreampath-diagnostics-to-accelerate-digital-transformation-in-anatomical-pathology",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6134,7 +6298,8 @@
     "news": "https://presseagence.fr/paris-le-fonds-ile-de-france-decarbonation-investit-35-m-de-dans-elum-energy/",
     "month": "July",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -6149,7 +6314,8 @@
     "news": "https://www.naco-invest.fr/la-societe-praysbee-leve-3-me-aupres-de-demeter-accompagnee-du-fonds-naco-pour-accelerer-le-deploiement-de-sa-technologie-de-pulverisation-viticole-innovante-reduisant-drastiquement-lemprun/",
     "month": "July",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -6164,7 +6330,8 @@
     "news": "https://www.jaimelesstartups.fr/news/greenphage-leve-19-me-pour-developper-ses-virus-anti-bacteries/",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6225,7 +6392,8 @@
     "news": "https://bigideaventures.com/big-idea-ventures-announces-seven-innovative-startups-in-latest-global-food-innovation-fund-ii-cohort/",
     "month": "July",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -6255,7 +6423,8 @@
     "news": "https://www.linkedin.com/posts/in-brain-pharma_france-parkinsoninbrain-pharma-activity-7353352128632889345-NIhW?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "July",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -6286,7 +6455,8 @@
     "news": "https://siliconafrica.com/2025/08/28/koolboks-secures-11m-to-power-african-solar-refrigerators/?utm_source=chatgpt.com",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -6302,7 +6472,8 @@
     "month": "September",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6347,7 +6518,8 @@
     "news": "https://www.personalcaremagazine.com/story/49232/byome-labs-raises-3-6m-to-market-skin-microbiome-test",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -6363,7 +6535,8 @@
     "news": "https://www.lesechos.fr/start-up/deals/flagcat-ce-petit-studio-francais-qui-veut-simposer-dans-lunivers-du-webtoon-2183624",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -6379,7 +6552,8 @@
     "month": "September",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6409,7 +6583,8 @@
     "news": "https://www.frenchtechbordeaux.com/nos-actualites/microalgues-neoearth-boucle-son-premier-tour-de-table",
     "month": "September",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -6454,7 +6629,8 @@
     "news": "https://www.linkedin.com/feed/update/urn:li:share:7354217950985297920/",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -6620,7 +6796,8 @@
     "news": "https://smb.thewashingtondailynews.com/article/Scintil-Photonics-Raises-dollar58M-to-Scale-Integrated-Photonics-for-AI-Factories?storyId=68bffb7e7dff95573a341792",
     "month": "September",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -6635,7 +6812,8 @@
     "news": "https://igrownews.com/neofarm-latest-news/",
     "month": "September",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -6650,7 +6828,8 @@
     "news": "https://www.globenewswire.com/news-release/2025/09/10/3147506/0/en/Asabys-Partners-Leads-10-Million-Extension-of-SafeHeal-s-Oversubscribed-Series-C-Financing-to-Accelerate-Commercialization-of-Colovac.html",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6665,7 +6844,8 @@
     "news": "https://www.linkedin.com/posts/dianosic_press-release-dianosic-activity-7369724211151527940-G_A2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6741,7 +6921,8 @@
     "month": "September",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6771,7 +6952,8 @@
     "news": "https://www.linkedin.com/posts/nrgysnantes_%F0%9D%90%94%F0%9D%90%A7%F0%9D%90%9E-%F0%9D%90%A7%F0%9D%90%A8%F0%9D%90%AE%F0%9D%90%AF%F0%9D%90%9E%F0%9D%90%A5%F0%9D%90%A5%F0%9D%90%9E-%F0%9D%90%9E%F0%9D%90%AD%F0%9D%90%9A%F0%9D%90%A9%F0%9D%90%9E-%F0%9D%90%9D%F0%9D%90%9A%F0%9D%90%A7%F0%9D%90%AC-activity-7371097544384487424-M5S9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -6801,7 +6983,8 @@
     "news": "https://sifted.eu/articles/genomines-45m-series-a-farm-nickel",
     "month": "September",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -6816,7 +6999,8 @@
     "news": "https://www.maddyness.com/2025/09/16/la-fourche-leve-plus-de-31-millions-deuros-et-vise-la-rentabilite",
     "month": "September",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -6876,7 +7060,8 @@
     "news": "https://www.eu-startups.com/2025/09/french-biotech-startup-tafalgie-therapeutics-locks-in-e12-million-to-tackle-the-opioid-crisis-with-non-opioid-drugs/",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -6907,7 +7092,8 @@
     "news": "https://www.lesechos.fr/start-up/deals/telemedecine-rofim-leve-10-millions-pour-etendre-son-reseau-2186394",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -6937,7 +7123,8 @@
     "news": null,
     "month": "September",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -6952,7 +7139,8 @@
     "news": "https://www.lesechos.fr/pme-regions/innovateurs/load-stations-finance-ses-solutions-de-gestion-de-bornes-de-recharge-electrique-2186395",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -6967,7 +7155,8 @@
     "news": "https://www.frenchweb.fr/juisci-leve-55-millions-deuros-pour-developper-son-ia-dediee-aux-publications-scientifiques/457105",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7013,7 +7202,8 @@
     "month": "September",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7028,7 +7218,8 @@
     "news": "https://www.brefeco.com/actualite/innovation/deeptech-la-start-grenobloise-moiz-leve-3-meu-pour-ses-capteurs-industriels",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -7088,7 +7279,8 @@
     "news": "https://www.lesechos.fr/pme-regions/innovateurs/load-stations-finance-ses-solutions-de-gestion-de-bornes-de-recharge-electrique-2186395",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -7103,7 +7295,8 @@
     "news": "https://www.lefigaro.fr/societes/waat-leve-100-millions-d-euros-pour-ses-bornes-de-recharge-20250925",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -7118,7 +7311,8 @@
     "news": "https://www.maddyness.com/2025/09/19/alternatives-vegetales-nxtfood-leve-49-millions-deuros/",
     "month": "September",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -7133,7 +7327,8 @@
     "news": "https://mx.advfn.com/bolsa-de-valores/noticias/96857866/arverne-group-announces-the-success-of-the-series",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -7164,7 +7359,8 @@
     "news": "https://www.mypharma-editions.com/steminov-leve-106-millions-deuros-pour-soutenir-son-developpement-industriel-et-clinique",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7179,7 +7375,8 @@
     "news": "https://www.inter-invest.fr/communiques/capital-investissement/00582/le-groupe-akacia-realise-une-levee-de-8-millions-d-euros-aupres-d-elevation-capital-partners-et-de-partenaires-bancaires",
     "month": "September",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -7210,7 +7407,8 @@
     "month": "September",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7226,7 +7424,8 @@
     "month": "September",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7301,7 +7500,8 @@
     "news": "https://www.pharmiweb.com/press-release/2025-09-24/sonomind-secures-3-million-to-advance-its-novel-neuromodulation-ultrasound-device-and-opens-a-new-t",
     "month": "September",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -7332,7 +7532,8 @@
     "news": null,
     "month": "September",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -7453,7 +7654,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7514,7 +7716,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -7544,7 +7747,8 @@
     "news": "https://www.linkedin.com/posts/thm-capital-advisory_plasana-medical-press-release-thmca-2025-activity-7378710200775647232-rnOJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -7560,7 +7764,8 @@
     "news": "https://nextmove.fr/blog/levee-de-fonds-la-promesse-de-up-and-charge-recharger-sa-voiture-comme-on-se-gare-bientot-a-grande-echelle",
     "month": "October",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -7636,7 +7841,8 @@
     "news": "https://www.eu-startups.com/2025/10/french-biotech-developer-seabelife-raises-e2-million-to-tackle-dry-amd-and-severe-acute-hepatitis/",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7652,7 +7858,8 @@
     "month": "October",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7667,7 +7874,8 @@
     "news": "https://www.lejournaldesentreprises.com/breve/kapsera-accueille-seventure-partners-son-capital-2126822",
     "month": "October",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -7818,7 +8026,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -7894,7 +8103,8 @@
     "month": "October",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7909,7 +8119,8 @@
     "news": "https://www.linkedin.com/posts/yomi-pharma_cest-avec-beaucoup-de-fiert%C3%A9-que-activity-7379455615640961024-PMA-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -7924,7 +8135,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -7969,7 +8181,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -7985,7 +8198,8 @@
     "news": "https://firstwordpharma.com/story/6228364",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -8001,7 +8215,8 @@
     "news": "https://www.eu-startups.com/2025/10/with-its-notable-e105-million-raise-french-biotech-startup-adcytherix-looks-to-tackle-cancer-with-novel-adc/",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8016,7 +8231,8 @@
     "news": "https://www.maddyness.com/2025/10/15/la-biotech-step-pharma-leve-38-millions-deuros-pour-affiner-le-ciblage-du-traitement-contre-le-cancer/",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8046,7 +8262,8 @@
     "news": "https://www.linkedin.com/pulse/scap-hologram-reaches-new-milestone-scap-hologram-sas-w9mwf/?trackingId=bzOTv1DckVkvChC%2Fkp7hMw%3D%3D",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8061,7 +8278,8 @@
     "news": "https://www.benzinga.com/pressreleases/25/10/g48190577/everzom-raises-10m-to-develop-exosome-based-biotherapies-for-inflammatory-diseases",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8092,7 +8310,8 @@
     "news": "https://www.eetimes.eu/isentroniq-raises-e7-5m-to-solve-wiring-bottleneck-in-quantum-computers/",
     "month": "October",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -8107,7 +8326,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -8122,7 +8342,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8182,7 +8403,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8244,7 +8466,8 @@
     "news": "https://www.frenchweb.fr/du-cancer-au-tissu-la-medecine-regenerative-passe-a-lechelle-avec-lattice-medical/458115",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8304,7 +8527,8 @@
     "news": "https://techfundingnews.com/lisaqua-raises-9m-eco-friendly-shrimp-farming-europe/",
     "month": "October",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -8319,7 +8543,8 @@
     "news": null,
     "month": "October",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -8380,7 +8605,8 @@
     "news": "https://www.eu-startups.com/2025/10/french-startup-exeliom-biosciences-boosts-funding-with-e2-85-million-to-accelerate-immunotherapy-for-cancer/",
     "month": "October",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -8395,7 +8621,8 @@
     "news": "https://www.linkedin.com/posts/ui-investissement_une-nouvelle-p%C3%A9pite-bretonne-accompagn%C3%A9e-activity-7387405289077043200-g57t/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "October",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -8455,7 +8682,8 @@
     "news": "https://infonet.fr/actualite/nouveautes/tibeka-protections-gilet-feminin/",
     "month": "October",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -8500,7 +8728,8 @@
     "news": "https://regeneration.eu/actualites/10-millions-deuros-pour-accelerer-la-transition-agroecologique-avec-regeneration-mirova-realise-son-premier-investissement-carbone-en-france/",
     "month": "November",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -8575,7 +8804,8 @@
     "news": null,
     "month": "November",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -8635,7 +8865,8 @@
     "news": "https://feedplanetmagazine.com/blog/nextprotein-gains-18m-funding-to-open-second-insect-protein-facility-4929",
     "month": "November",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -8695,7 +8926,8 @@
     "news": "https://www.linkedin.com/posts/cws-morel_a-new-chapter-for-cws-from-idea-to-industry-activity-7391036476509175808-dG7k?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "November",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -8710,7 +8942,8 @@
     "news": null,
     "month": "November",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -8756,7 +8989,8 @@
     "news": "https://www.atlanpole.fr/cgreen-leve-pres-de-2me-pour-decarboner-la-fabrication-de-la-fibre-de-carbone/",
     "month": "November",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -8831,7 +9065,8 @@
     "news": "https://agence-api.ouest-france.fr/pays-de-la-loire/loire-atlantique/sante-nouvelle-levee-de-fonds-pour-goud-sur-le-marche-de-la-prevention-sante-des-dirigeants-ea9b75ad-34e3-45b5-8d88-10f30b2c9e1d",
     "month": "November",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -8923,7 +9158,8 @@
     "news": "https://www.linkedin.com/posts/daphni_what-is-the-link-between-marie-curie-and-activity-7394297654123446272-Vbhb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "November",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -8987,7 +9223,8 @@
     "month": "November",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9047,7 +9284,8 @@
     "news": null,
     "month": "November",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -9123,7 +9361,8 @@
     "news": "https://techfundingnews.com/exclusive-hummink-secures-e15m-to-cut-waste-in-chip-manufacturing-and-oled-display-production/",
     "month": "November",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9138,7 +9377,8 @@
     "news": "https://www.maatpharma.com/november-14-2025-maat-pharma-successful-completion-of-global-offering-of-9million/",
     "month": "November",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9198,7 +9438,8 @@
     "news": null,
     "month": "November",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9213,7 +9454,8 @@
     "news": "https://www.pv-magazine.fr/2025/11/17/interview-les-dessous-de-la-levee-de-fonds-de-3-millions-deuros-de-revolt-eco/",
     "month": "November",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -9229,7 +9471,8 @@
     "month": "November",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9274,7 +9517,8 @@
     "news": "https://techfundingnews.com/exwayz-raises-1m-euro-to-advance-autonomous-robot-navigation/",
     "month": "November",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9304,7 +9548,8 @@
     "news": "https://www.linkedin.com/posts/elefantia_elefantia-r%C3%A9alise-sa-premi%C3%A8re-lev%C3%A9e-de-fonds-activity-7396111700032397312-l-Ue?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "November",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -9320,7 +9565,8 @@
     "news": "https://eic.ec.europa.eu/news/first-eic-step-scale-investments-disbursed-2025-11-24_en",
     "month": "December",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9351,7 +9597,8 @@
     "month": "December",
     "sectors": [
       "Gaming",
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9366,7 +9613,8 @@
     "news": "https://www.banquedesterritoires.fr/water-horizon-leve-18-millions-deuros-pour-accelerer-son-developpement-et-renforcer-ses-synergies",
     "month": "December",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -9396,7 +9644,8 @@
     "news": "https://www.banquedesterritoires.fr/vesto-leve-64-meu-aupres-de-citizen-capital-de-la-banque-des-territoires-et-de-inco-ventures-pour",
     "month": "December",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9411,7 +9660,8 @@
     "news": "https://www.linkedin.com/posts/alkion-bioinnovations-sas_big-step-for-alkion-weve-just-raised44m-activity-7398005377793118209-Be6Z?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -9427,7 +9677,8 @@
     "news": "https://ventuno-biotech.com/news/e3m-seed-financing/",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9443,7 +9694,8 @@
     "month": "December",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9458,7 +9710,8 @@
     "news": "https://www.urbanairmobilitynews.com/fixed-wing-low-zero-emissions/edf-increases-its-shareholding-in-electric-general-aviation-regional-aircraft-developer-aura-aero/?utm_source=rss&utm_medium=rss&utm_campaign=edf-increases-its-shareholding-in-electric-general-aviation-regional-aircraft-developer-aura-aero",
     "month": "December",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9488,7 +9741,8 @@
     "news": "https://www.linkedin.com/posts/aberactives-sas_communiqu%C3%A9-de-presse-activity-7400119857176010752-S7y-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9518,7 +9772,8 @@
     "news": "https://www.linkedin.com/posts/provence-business-angels_%F0%9D%97%9F%F0%9D%97%B2%F0%9D%98%83%F0%9D%97%B2%F0%9D%97%B2-%F0%9D%97%B1%F0%9D%97%B2-%F0%9D%97%B3%F0%9D%97%BC%F0%9D%97%BB%F0%9D%97%B1%F0%9D%98%80-voilachef-activity-7396132513544290304-loU_?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "December",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -9533,7 +9788,8 @@
     "news": "https://www.algenscribe.com/post/algenscribe-secures-equity-financing-and-signs-collaboration-agreement-on-base-editing",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -9549,7 +9805,8 @@
     "news": "https://www.lejournaldesentreprises.com/article/la-start-up-nantaise-ivyspec-debloque-300-000-euros-pour-son-drone-rampant-2130256",
     "month": "December",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
     ]
   },
   {
@@ -9565,7 +9822,8 @@
     "month": "December",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9580,7 +9838,8 @@
     "news": "https://www.axoltis.com/wp-content/uploads/2025/12/251202-Axoltis-Pharma-funding-EN.pdf",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech",
+      "HealthTech",
+      "BioTech",
       "AI & Machine Learning"
     ]
   },
@@ -9596,7 +9855,8 @@
     "news": null,
     "month": "December",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -9611,7 +9871,8 @@
     "news": "https://www.eu-startups.com/2025/12/paris-innerskin-lands-e12-8-million-to-grow-its-network-of-aesthetics-centres-and-integrated-skin-health-services/",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9641,7 +9902,8 @@
     "news": "https://www.ray-studios.com/",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9671,7 +9933,8 @@
     "news": "https://www.eu-startups.com/2025/12/as-electricity-and-gas-prices-climb-ecair-secures-e11-million-to-ease-financing-for-solar-and-home-renovations/",
     "month": "December",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -9686,7 +9949,8 @@
     "news": "https://www.normandie-incubation.com/veragrow-leve-45-millions-deuros/",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9716,7 +9980,8 @@
     "news": "https://www.maddyness.com/2025/12/03/resoil-leve-4-millions-deuros-pour-aider-les-agriculteurs-a-mesurer-leur-impact-carbone/",
     "month": "December",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -9731,7 +9996,8 @@
     "news": "https://www.linkedin.com/posts/kimialys_communiqu%C3%A9-de-presse-kimialys-lev%C3%A9e-de-activity-7402664749823442944-7zOQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9777,7 +10043,8 @@
     "news": "https://www.eu-startups.com/2025/12/addressing-europes-obesity-burden-french-medtech-startup-annette-closes-e2-million-round-for-structured-glp-1-support/",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9792,7 +10059,8 @@
     "news": "https://www.linkedin.com/posts/n%C3%A9osylva_n%C3%A9osylva-l%C3%A8ve-15-million-deuros-pour-acc%C3%A9l%C3%A9rer-activity-7399718815053275136-nUk8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "December",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -9822,7 +10090,8 @@
     "news": "https://www.pharmiweb.com/press-release/2025-12-02/biper-therapeutics-secures-1m-investment-to-advance-first-in-class-cancer-therapy-into-clinical-tri",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9838,7 +10107,8 @@
     "month": "December",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9913,7 +10183,8 @@
     "news": "https://infonet.fr/actualite/levees-de-fonds/monomeris-financement-recyclage/",
     "month": "December",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -9928,7 +10199,8 @@
     "news": "https://www.linkedin.com/posts/hocoia_hocoia-l%C3%A8ve-3-millions-activity-7402644048118927360-FSbv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "December",
     "sectors": [
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -9958,7 +10230,8 @@
     "news": null,
     "month": "December",
     "sectors": [
-      "CleanTech & Energy"
+      "CleanTech",
+      "Energy"
     ]
   },
   {
@@ -10065,7 +10338,8 @@
     "month": "December",
     "sectors": [
       "AI & Machine Learning",
-      "HealthTech & BioTech"
+      "HealthTech",
+      "BioTech"
     ]
   },
   {
@@ -10080,7 +10354,8 @@
     "news": "https://www.eu-startups.com/2025/12/french-startup-agreenculture-raises-e6-million-to-grow-its-autonomous-farming-technology/",
     "month": "December",
     "sectors": [
-      "AgriTech & FoodTech"
+      "AgriTech",
+      "FoodTech"
     ]
   },
   {
@@ -10170,7 +10445,267 @@
     "news": "https://www.maddyness.com/2025/12/19/c12-obtient-14-millions-deuros-de-financement-public-pour-accelerer-lindustrialisation-de-lordinateur-quantique/",
     "month": "December",
     "sectors": [
-      "DeepTech & Hardware"
+      "DeepTech",
+      "Hardware"
+    ]
+  },
+  {
+    "company": "Harmattan AI",
+    "description": "Defense technology company developing vertically integrated autonomous systems, including AI-enabled ISR and strike UAVs, layered air-defense solutions, drone interception, electronic warfare platforms, and C2 systems. Harmattan AI focuses on sovereign, controlled autonomy deployed at scale for NATO and allied forces.",
+    "website": "https://www.harmattan.ai",
+    "hq": "Paris",
+    "round": "Series B",
+    "amount": 181.82,
+    "investors": "Dassault Aviation",
+    "founders": "Mouad M'Ghari, Martin de Gourcuff, Edouard Rosset",
+    "news": "Harmattan AI raised a $200M Series B led by Dassault Aviation as part of a strategic partnership to integrate controlled, sovereign AI into next-generation combat aviation systems. The funding will support global scaling, expansion into new operational domains, and industrial-scale manufacturing of AI-enabled ISR, electronic warfare, and autonomous defense platforms, with applications across Rafale F5 and future UCAS programs. | Les Echos, Reuters",
+    "month": "January",
+    "sectors": [
+      "AI & Machine Learning",
+      "SpaceTech & Aerospace"
+    ]
+  },
+  {
+    "company": "FineHeart",
+    "description": "FineHeart is a clinical-stage medical technology company developing next-generation Active Implantable Medical Devices (AIMDs) for advanced heart failure. Its flagship product, FlowMaker®, is the world's first fully implantable cardiac output accelerator, designed to work in synergy with natural heart contractions while minimizing energy consumption and infection risk.",
+    "website": null,
+    "hq": "Bordeaux",
+    "round": "Series C",
+    "amount": 35,
+    "investors": "Groupe Pasteur Mutualité, Groupe Etchart, European Innovation Council, EIB Fund, FH Founders, Lurra, IRDI Capital Investment, Groupe Doliam, NACO, Aquiti Gestion, Galia Gestion, Broadview Ventures, M Capital, UI Investment, Verve Capital",
+    "founders": "Arnaud Mascarell, Dr. Stéphane Garrigue, Dr. Philippe Ritter",
+    "news": "FineHeart secured €83M in combined private and public funding to accelerate the clinical and industrial development of its FlowMaker® device and to help structure the European Active Implantable Medical Devices (AIMD) sector. The €35M Series C first closing secures €48M in non-dilutive grants from the IPCEI Tech4Cure program, positioning FineHeart as a cornerstone of Europe’s healthcare-sovereignty strategy in advanced implantable cardiology devices. | Les Echos",
+    "month": "January",
+    "sectors": [
+      "HealthTech",
+      "BioTech"
+    ]
+  },
+  {
+    "company": "SunLib",
+    "description": "SunLib is a French solar autoconsumption startup offering residential photovoltaic installations through a subscription model, removing upfront investment and credit constraints. The company installs and owns solar panels, allowing households to access clean energy for a monthly fee while accelerating the adoption of distributed solar in France.",
+    "website": null,
+    "hq": "Aix-en-Provence",
+    "round": "Series A",
+    "amount": 25,
+    "investors": "Epopée Gestion",
+    "founders": "Arnaud Langlois",
+    "news": "Founded just 18 months ago, SunLib raised €25 million in a round fully subscribed by regional investment fund Epopée Gestion, while retaining founder control. The funding follows a €3.2 million seed round in 2024 from business angels that helped validate the model with ~500 customers. SunLib plans to equip 4,000–6,000 additional clients in 2026 and targets 100,000 subscribers representing 1.5 GW of installed capacity by 2030, leveraging bank financing from Bpifrance, Cepac, and Société Générale. | Les Echos",
+    "month": "January",
+    "sectors": [
+      "CleanTech",
+      "Energy",
+      "FinTech"
+    ]
+  },
+  {
+    "company": "Enodia Therapeutics",
+    "description": "Develops small-molecule drugs that trigger the degradation of disease-causing proteins as they are being synthesized, using a platform combining proteomics and machine learning.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Seed",
+    "amount": 20.7,
+    "investors": "Elaia, Pfizer Ventures, Bpifrance, Sambrinvest, MACSF, Investsud, Argobio, Institut Pasteur, Wallonie Entreprendre",
+    "founders": "Caroline Demangel, Yves Ribeill",
+    "news": "Enodia will advance its lead program toward preclinical candidate selection, with ambitions across inflammatory, autoimmune, and viral diseases. | Endpoint News",
+    "month": "January",
+    "sectors": [
+      "AI & Machine Learning",
+      "HealthTech",
+      "BioTech"
+    ]
+  },
+  {
+    "company": "MYCOPHYTO",
+    "description": "MYCOPHYTO is a French pioneer in mycorrhizal biostimulants and soil regeneration, developing nature-inspired solutions that improve crop resilience, water retention, and yields. Leveraging a proprietary R&D platform, protected biobank, and AI-driven formulation adapted to local soil and climate conditions, the company supports farmers' transition to agroecology while addressing climate-driven stress such as drought.",
+    "website": null,
+    "hq": "Grasse",
+    "round": "Series A",
+    "amount": 16,
+    "investors": "Innovacom, BNP Paribas, Bpifrance, CDG Invest, Noshaq, RSI, Crédit Agricole",
+    "founders": "Justine Lipuma",
+    "news": "The Series A will fund MYCOPHYTO’s international expansion (Spain, Morocco, Benelux, Côte d’Ivoire), the scaling of production through its first manufacturing plant—integrating sustainable technologies under France 2030—and the broader deployment of its mycorrhizal solutions across key segments including market gardening, viticulture, green spaces, and aromatic and medicinal plants. | Bpifrance",
+    "month": "January",
+    "sectors": [
+      "AgriTech",
+      "FoodTech",
+      "CleanTech",
+      "Energy"
+    ]
+  },
+  {
+    "company": "Equitable Earth",
+    "description": "Builds a certification platform for nature-based carbon projects focused on transparency, community impact, and ecological integrity. Certification standard specializing in nature-based carbon removal projects, particularly afforestation, reforestation, and revegetation (ARR). Leveraging advanced remote sensing, data science, and expert-led methodologies, ERS offers one of the fastest certification processes in the market—up to four times quicker than comparable standards—serving project developers and end buyers across more than 20 countries.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Growth",
+    "amount": 12.6,
+    "investors": "US family office, AENU, noa, Localglobe",
+    "founders": "Priscille Raynaud, Thibault Sorret",
+    "news": "Equitable Earth secured €5 million in a seed-extension round to scale its certification capacity amid surging demand for nature-based CO₂ removal credits. The funding will support team expansion, particularly within certification, to maintain rapid turnaround times and reliability. EE will also develop new methodologies to certify additional project types, including mangrove and multi-strata agroforestry initiatives, strengthening its role as a key market gateway for transparent, high-integrity carbon removal projects. | PR",
+    "month": "January",
+    "sectors": [
+      "AgriTech",
+      "FoodTech"
+    ]
+  },
+  {
+    "company": "Kepplair Evolution",
+    "description": "Kepplair Evolution develops a multi-role firefighting aircraft by converting the ATR 72 into a next-generation water bomber, the KEPPLAIR 72 \"Forest Keeper\". By leveraging an existing aircraft platform, the company cuts time-to-market to three years and significantly reduces development and operating costs. The aircraft is designed for aerial firefighting as well as cargo transport and medical evacuation, addressing the rapidly growing risk of wildfires driven by climate change and the critical shortage of modern firefighting fleets in Europe and globally.",
+    "website": null,
+    "hq": "Toulouse",
+    "round": "Seed",
+    "amount": 5,
+    "investors": "Groupe AVICO, ORA",
+    "founders": "David Joubert",
+    "news": "Kepplair Evolution has successfully closed a €3M ORA round (November 2025) alongside a €2M pre-Series A, including Groupe AVICO, France’s leading aviation broker. The funding supports final design and EASA certification of the KEPPLAIR 72, with first deliveries targeted before the 2027 wildfire season. The project has received strong institutional backing, including a letter of interest from France’s Civil Security authority and official support from national firefighter federations, positioning Kepplair as a strategic player in Europe’s sovereign firefighting and civil protection capabilities. | Aerospace Valley",
+    "month": "January",
+    "sectors": [
+      "SpaceTech & Aerospace"
+    ]
+  },
+  {
+    "company": "Cementic",
+    "description": "Develops a nanomaterial for root canal fillings that eliminates 99.99% of lingering bacteria, aiming to reduce post-treatment infections and antibiotic use.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Seed",
+    "amount": 4,
+    "investors": "Blast, Business Angels, dental professionals",
+    "founders": "Samir Raddi",
+    "news": "Cementic is preparing to launch clinical trials in French dental clinics, with a U.S. market entry targeted within six months. | Maddyness",
+    "month": "January",
+    "sectors": [
+      "HealthTech",
+      "BioTech"
+    ]
+  },
+  {
+    "company": "Revox",
+    "description": "Revox builds a developer-first API that enables reliable, production-grade outbound AI calling at scale. Its platform addresses critical infrastructure challenges that have hindered voice agents in real-world deployments, including voicemail detection, IVR navigation, call drops, latency, and edge-case orchestration. Revox combines low-latency voice models, resilient call orchestration, and self-improving agents with humans-in-the-loop to unlock high-trust, real-world voice AI use cases.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Pre-Seed",
+    "amount": 2.73,
+    "investors": "Seedcamp, Weekend Fund, Drysdale, Purple, OPRTRS CLUB, Firedrop, Kima Ventures, Tiny VC, Business Angels, Stanislas Polu, Gabriel Hubert, Alex Yazdi",
+    "founders": "Aric Lasry, Jean-Baptiste de La Fage",
+    "news": "Revox raised a $3M pre-seed round led by Seedcamp to scale its voice AI infrastructure platform. Initially focused on the U.S. market, the company targets trust-sensitive, high-impact use cases such as debt collection, lead qualification, and hiring pre-screening. The founding team brings deep agent-building experience from Dust and PLUME (YC), having developed Revox after encountering persistent failures in existing voice AI stacks during prior consulting work. | Seedcamp, Frenchweb",
+    "month": "January",
+    "sectors": [
+      "AI & Machine Learning"
+    ]
+  },
+  {
+    "company": "Sweetech",
+    "description": "Develops a fermentation-based process to produce rare sugars used in pharmaceuticals, cosmetics, and nutraceuticals, offering a green alternative to synthetic sugar chemistry.",
+    "website": null,
+    "hq": "Toulouse",
+    "round": "Seed",
+    "amount": 2.25,
+    "investors": "Iron Hands Capital, Bpifrance",
+    "founders": "Julien Durand, Yannick Malbert",
+    "news": "Sweetech will use the funding to support pilot production, customer acquisition, and R&D as it scales its sustainable rare sugar platform.",
+    "month": "January",
+    "sectors": [
+      "HealthTech",
+      "BioTech"
+    ]
+  },
+  {
+    "company": "Viti-Tunnel",
+    "description": "Viti-Tunnel develops a retractable physical protection system for row crops, designed to shield vineyards and other agricultural productions from climatic hazards while reducing reliance on chemical inputs. Industrialized and cost-optimized, the solution secures yields, preserves farm value, and supports resilient, pesticide-free farming systems.",
+    "website": null,
+    "hq": "Le Haillan",
+    "round": "Seed",
+    "amount": 2,
+    "investors": "Parnass, Crédit Agricole Aquitaine Expansion, Sowefund, Demea Invest",
+    "founders": "Patrick Delmarre",
+    "news": "Viti-Tunnel closed a €2M funding round to accelerate commercial rollout in new French wine regions and expand internationally (Europe, U.S., Australia). The capital will also support diversification beyond viticulture into arboriculture, market gardening, red fruits, and agrivoltaics. After two years of industrial scaling and a 40% reduction in production costs, the company has already deployed over 7 km of installations at prestigious estates, including Petrus, Château Lafite Rothschild, and Cognac Hennessy. | Journal des Enterprises",
+    "month": "January",
+    "sectors": [
+      "AgriTech",
+      "FoodTech",
+      "CleanTech",
+      "Energy"
+    ]
+  },
+  {
+    "company": "Campsider",
+    "description": "Campsider is a curated marketplace for second-hand technical sports equipment, often described as the \"Back Market of used bikes and skis.\" The platform digitalizes professional sports retailers' second-hand inventories and manages the full value chain—product qualification, pricing, logistics, delivery, and expert advice—positioning itself as a trusted intermediary for high-performance and safety-critical gear.",
+    "website": null,
+    "hq": "Lyon",
+    "round": "Seed",
+    "amount": 1.5,
+    "investors": "Founders Future, 50Partners Impact, Sowefund",
+    "founders": "Thomas Gounot, Arthur Rocle",
+    "news": "Nearly profitable on its home market, Campsider raised €1.5M to fund its European expansion, targeting Germany and Italy. With €10M in GMV in 2025 and a network of 600 partner stores (60% outside France), the company plans to reach €17M in revenue by the end of 2026 and €24M by 2027, aiming to become the leading European platform for second-hand technical sports equipment. | Groupe Ecomedia, Maddyness",
+    "month": "January",
+    "sectors": [
+      "E-commerce & Retail"
+    ]
+  },
+  {
+    "company": "Gamevestor",
+    "description": "Gamevestor is a regulated crowdinvesting platform dedicated to video game projects. It enables individuals to invest in game development through a secure, transparent, and milestone-based funding model, while allowing studios to retain their creative and strategic independence. All projects are vetted by an independent committee of gaming and finance experts, with staged fund releases and full risk disclosure.",
+    "website": null,
+    "hq": "Annecy",
+    "round": "Seed",
+    "amount": 0.55,
+    "investors": "ForsVC, LeanSquare, Noshaq, Ben Fiquet, Business Angels, Bpifrance, Région Auvergne–Rhône-Alpes, Initiative Grand Annecy",
+    "founders": "Ivan Marchand, Arthur Van Clap",
+    "news": "Gamevestor has secured AMF approval and ORIAS registration, enabling it to operate across the EU for investments and internationally for donations. The funding will support a pan-European rollout and a public launch scheduled for early 2026, alongside marketing initiatives and selective team expansion.",
+    "month": "January",
+    "sectors": [
+      "Gaming",
+      "FinTech"
+    ]
+  },
+  {
+    "company": "Smartphone iD",
+    "description": "French startup reinventing identity photo and remote identity verification using a proprietary AI-based biometric technology combined with human verification. Smartphone iD aims to become the standard for secure remote identification, replacing physical photo booths in a €5B legacy market. The solution is compliant with ISO 30107 standards, integrates \"liveness detection\" patents, and is already deployed in more than 190 countries.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Seed",
+    "amount": 0.2,
+    "investors": "QVEMA, Kelly Massol, Anthony Bourbon",
+    "founders": "Émile Menetrey",
+    "news": "Following its appearance on Qui veut être mon associé ? (M6) on January 8, Smartphone iD secured €200K in funding. The startup is already profitable, generated €1.7M in revenue in 2024, and is targeting €5M by 2026. The funds will support international expansion and continued development of its mobile biometric verification technology. | Maddyness",
+    "month": "January",
+    "sectors": [
+      "Cybersecurity",
+      "AI & Machine Learning"
+    ]
+  },
+  {
+    "company": "BW Ideol",
+    "description": "BW Ideol is a pioneer in floating offshore wind foundation technology, with over 15 years of experience in the design, engineering, and fabrication of concrete floating foundations. The company develops scalable, cost-competitive solutions to unlock deep-water wind resources and accelerate the global energy transition.",
+    "website": null,
+    "hq": "La Ciotat",
+    "round": "Growth",
+    "amount": 0,
+    "investors": "Holcim",
+    "founders": "Paul de la Guérivière, Pierre Coulombeau",
+    "news": "Holcim has taken a minority stake in BW Ideol and entered into a strategic partnership to supply innovative low-carbon concrete materials for floating offshore wind foundations. The collaboration will support two fabrication lines in Southern France and Northeast Scotland and aligns with Holcim’s NextGen Growth 2030 strategy. BW Ideol also holds equity stakes in two large floating wind projects—960 MW in Northeast Scotland and 270 MW off the southern coast of France—highlighting the industrial scale and maturity of its technology. | PR",
+    "month": "January",
+    "sectors": [
+      "CleanTech",
+      "Energy"
+    ]
+  },
+  {
+    "company": "Abbelight",
+    "description": "Abbelight is a pioneer in super-resolution microscopy, delivering end-to-end nanoscopy (SMLM) solutions that combine advanced chemistry, optics, and data analysis. Its platforms enable researchers to visualize, quantify, and interpret complex intracellular mechanisms at the nanoscale, supporting applications ranging from fundamental research to drug discovery and single-cell phenotyping.",
+    "website": null,
+    "hq": "Paris",
+    "round": "Series B",
+    "amount": 0,
+    "investors": "AVANT BIO",
+    "founders": "Jean-Baptiste Marie, Nicolas Bourg",
+    "news": "Abbelight closed a Series B round led by AVANT BIO to accelerate imaging innovation and scale commercial adoption beyond academic research into biopharma, biotech, and CROs. The funding will support international commercial expansion, product development, and continued support of its 100+ installed customer base, reinforcing Abbelight’s position as a key enabling technology provider in life sciences research and drug discovery.",
+    "month": "January",
+    "sectors": [
+      "HealthTech",
+      "BioTech"
     ]
   }
 ]
