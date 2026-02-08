@@ -170,7 +170,7 @@ RECATEGORIZATIONS = [
     ("Inside Therapeutics", ["BioTech"]),
     ("Cellura", ["BioTech"]),
     ("Novem", ["BioTech"]),
-    ("Naali", ["Consumer Wellness"]),
+    ("Naali", ["HealthTech"]),
     ("VBTech", ["HealthTech", "AI & Machine Learning"]),
     ("Vulgaroo", ["HealthTech", "AI & Machine Learning"]),
     ("AlgenScribe", ["BioTech"]),

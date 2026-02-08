@@ -175,7 +175,7 @@ const RECATEGORIZATIONS = [
     { company: 'Inside Therapeutics', sectors: ['BioTech'] },
     { company: 'Cellura', sectors: ['BioTech'] },
     { company: 'Novem', sectors: ['BioTech'] },
-    { company: 'Naali', sectors: ['Consumer Wellness'] },
+    { company: 'Naali', sectors: ['HealthTech'] },
     { company: 'VBTech', sectors: ['HealthTech', 'AI & Machine Learning'] },
     { company: 'Vulgaroo', sectors: ['HealthTech', 'AI & Machine Learning'] },
     { company: 'AlgenScribe', sectors: ['BioTech'] },
@@ -201,7 +201,6 @@ const SECTOR_COLORS = {
     'AI & Machine Learning': '#8b5cf6',
     'HealthTech': '#10b981',
     'Hardware': '#6366f1',
-    'Consumer Wellness': '#f472b6',
 };
 
 function slugify(str) {
