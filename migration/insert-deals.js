@@ -58,34 +58,192 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 // Replace this array with new deals each time you run the script.
 
 const DEALS = [
-    {
-  company: "Pennylane",
-  description: "Pennylane is a unified financial and accounting operating system for accounting firms and their SME clients, combining accounting production, financial management, electronic invoicing, and integrated financial services. Founded in 2020, the platform positions itself as a sovereign, product-led alternative to legacy accounting software, increasingly powered by AI.",
-  hq: "Paris",
-  round: "Growth",
-  amount: 175,
+   {
+  company: "Aviwell",
+  description: "Aviwell is a deep-tech animal nutrition company developing AI-driven, microbiome-based solutions to improve animal health, growth, and resilience. Built on decades of microbiome research, the company leverages its proprietary Aneto™ platform to design native bacterial ecologies with defined modes of action, enabling antibiotic-free, sustainable nutrition for poultry and aquaculture.",
+  hq: "Toulouse",
+  round: "Series A",
+  amount: 11,
   month: "January",
   year: 2026,
-  sectors: ["Fintech", "AI & Machine Learning"],
-  investors: [
-    "TCV",
-    "Blackstone Growth",
-    "Sequoia Capital",
-    "DST Global",
-    "CapitalG",
-    "Meritech Capital"
-  ],
+  sectors: ["AgriTech", "FoodTech", "HealthTech", "BioTech", "AI & Machine Learning"],
+  investors: ["Blue Revolution Fund", "Blast.Club", "SWEN Capital Partners", "Elaia", "MFS Investment Management"],
   founders: [
-    { name: "Arthur Waller" },
-    { name: "Tancrède Besnard" },
-    { name: "Félix Blossier" },
-    { name: "Thierry Déo" },
-    { name: "Édouard Mascré" },
-    { name: "Quentin de Metz" }
+    { name: "Rémy Burcelin" },
+    { name: "Mouli Ramani" }
   ],
-  news_url: "https://www.eu-startups.com/2026/01/sequoia-backed-french-accounting-unicorn-pennylane-secures-e175-million-as-it-approaches-profitability/?ref=frenchtechjournal.com",
-  news_summary: "Pennylane raised €175M in a growth round led by TCV, with participation from Blackstone Growth and all major historical investors. The round was completed with limited dilution and a strict governance charter ensuring founder control, pricing stability, and product continuity. The capital will support AI-driven product development, European expansion, electronic invoicing infrastructure, and the expansion of embedded financial services, as Pennylane aims to become the European leader in financial and accounting operating systems for SMEs and their advisors.",
-  website: "https://www.pennylane.com"
+  news_url: "https://www.linkedin.com/posts/aviwell_aviwell-welcomes-brf-blast-and-swen-to-our-activity-7420485842999164928-55SB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
+  news_summary: "Aviwell closed an €11M Series A led by Blue Revolution Fund to scale its AI-powered Aneto™ microbiome discovery platform and advance nature-based biological solutions for antibiotic-free animal nutrition, supporting validation and industrial scale-up for poultry and aquaculture.",
+  website: "https://www.aviwell.fr/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "Twin",
+  description: "Twin is an AI platform that lets non-technical users build fully autonomous agents capable of running entire businesses end-to-end — from planning and decision-making to execution. Using browser control, self-correction, long-term memory, and a hybrid model stack, Twin enables complex operational workflows to be created in minutes without writing code.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 8.4,
+  month: "January",
+  year: 2026,
+  sectors: ["AI & Machine Learning"],
+  investors: ["LocalGlobe", "Kima Ventures", "betaworks", "Irregular Expressions", "Motier Ventures", "Andrena Ventures", "Drysdale Ventures"],
+  founders: [
+    { name: "Hugo Mercier" },
+    { name: "João Justi" }
+  ],
+  news_url: "https://www.linkedin.com/posts/hugomercier_what-a-ride-after-2-months-of-beta-and-activity-7422211846599880704-9SSI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
+  news_summary: "Twin publicly launched on January 27 after a one-month beta in which users deployed 100,000+ autonomous agents, and announced a $10M seed round led by LocalGlobe to build an “AI company builder” enabling self-sufficient AI-run businesses.",
+  website: "https://builder.twin.so/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "Atlas V Group",
+  description: "Atlas V is a European leader in VR and immersive content, known for premium narrative experiences developed with top-tier creative talent and global entertainment IPs. The studio is diversifying into free-to-play immersive gaming and location-based VR, building a vertically integrated model spanning creation, production, and publishing of scalable XR experiences.",
+  hq: "Paris",
+  round: "Series A",
+  amount: 5,
+  month: "January",
+  year: 2026,
+  sectors: ["Gaming"],
+  investors: ["HTC"],
+  founders: [
+    { name: "Antoine Cayrol" },
+    { name: "Arnaud Colinart" }
+  ],
+  news_url: "https://variety.com/2026/digital/global/atlas-v-raise-6-million-diversify-gaming-location-based-vr-1236642469/?ref=frenchtechjournal.com",
+  news_summary: "Atlas V raised €5M led by strategic investor HTC to accelerate diversification into social and casual free-to-play VR gaming and location-based immersive experiences, leveraging its premium XR track record and HTC’s ecosystem to scale distribution.",
+  website: "https://atlasv.io/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "Recupere Metals",
+  description: "Recupere Metals is a French industrial startup developing a patented mechanical process to transform copper waste directly into high-performance copper wires without melting or refining, offering a low-carbon alternative for industrial copper supply.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 5,
+  month: "January",
+  year: 2026,
+  sectors: ["DeepTech", "Hardware", "CleanTech", "Energy"],
+  investors: ["SistaFund", "Endgame Capital", "Ring Capital", "Triple Impact Ventures", "Business Angels", "Sake Bosch"],
+  founders: [
+    { name: "Katie Marsh" },
+    { name: "Julien Vaïssette" }
+  ],
+  news_url: "https://www.maddyness.com/2026/01/30/face-a-une-demande-de-cuivre-qui-explose-recupere-metals-leve-5-millions-deuros/?ref=frenchtechjournal.com",
+  news_summary: "Founded in March 2025, Recupere Metals raised €5M to move from R&D to industrial production and scale manufacturing capacity for its low-carbon copper wire process, targeting applications in electric motors, data centers, and digital infrastructure.",
+  website: "https://www.recupere-metals.com/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "AYAQ",
+  description: "AYAQ is a French technical apparel brand focused on high-performance outdoor clothing, built on field-tested functionality, durability, and a long-term product vision. Founded by Olympic gold medalist Vincent Defrasne, AYAQ combines elite performance standards with premium positioning.",
+  hq: "Paris",
+  round: "Growth",
+  amount: 3.2,
+  month: "January",
+  year: 2026,
+  sectors: ["E-commerce & Retail"],
+  investors: ["Mike Horn"],
+  founders: [
+    { name: "Vincent Defrasne" }
+  ],
+  news_url: "https://www.sporteco.com/une-augmentation-de-capital-chez-ayaq/?ref=frenchtechjournal.com",
+  news_summary: "AYAQ raised €3.2M in equity (plus non-dilutive financing) to accelerate international expansion and its product roadmap, welcoming explorer Mike Horn as a shareholder while management retains majority ownership; the brand entered Japan in September 2025 and is preparing broader rollout.",
+  website: "https://ayaq.com/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "GoCanopy",
+  description: "GoCanopy is an AI-native operating system for institutional real estate investors, transforming fragmented internal data into compounding institutional intelligence via human-in-the-loop agentic workflows that ingest unstructured documents into a single system of record.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 2.1,
+  month: "January",
+  year: 2026,
+  sectors: ["PropTech & Real Estate", "AI & Machine Learning"],
+  investors: ["ISAI", "BNP Paribas Développement", "Yellow", "Andrew Baum", "Ludovic Jacquot"],
+  founders: [
+    { name: "William He" },
+    { name: "Yash Pabbisetti" }
+  ],
+  news_url: "https://www.eu-startups.com/2026/01/gocanopy-ends-bootstrapping-streak-and-raises-e2-1-million-to-build-ai-operating-system-for-institutional-real-estate-investors/?ref=frenchtechjournal.com",
+  news_summary: "GoCanopy raised €2.1M in seed funding to build an AI operating system for institutional real estate investors, expanding enterprise-grade product development and international growth across Paris and London; users include major asset managers such as Brookfield and certain Apollo-managed funds.",
+  website: "https://www.gocanopy.tech/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "Radiant",
+  description: "Radiant is an industrial climate tech startup developing high-temperature solar thermal solutions to decarbonise industrial heat, combining next-generation heliostats, a proprietary receiver, and thermal energy storage to replace fossil-fuel-based equipment.",
+  hq: "Massy",
+  round: "Seed",
+  amount: 2,
+  month: "January",
+  year: 2026,
+  sectors: ["Energy", "CleanTech"],
+  investors: ["Tiresias Angels", "Selim Cherif", "Business Angels", "Hexa"],
+  founders: [
+    { name: "Thomas Delhon" },
+    { name: "Alexandre Meurisse" }
+  ],
+  news_url: "https://tech.eu/2026/01/27/radiant-joins-hexas-carbon-zero-programme-and-raises-eur2m-to-decarbonise-industrial-heat/?ref=frenchtechjournal.com",
+  news_summary: "Selected for Hexa’s Carbon Zero program, Radiant closed a €2M round to industrialize its solar thermal technology and finance a first industrial demonstrator in Le Mans, targeting 200°C–1,000°C heat for sectors such as cement, glass, and asphalt.",
+  website: "https://www.radiant-energy.eu/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "Evolutive Agronomy",
+  description: "Evolutive Agronomy develops biological crop protection solutions that are high-performance and easy to deploy, focusing on soil pests and beneficial organisms to reduce reliance on chemical inputs while improving agronomic outcomes.",
+  hq: "Sophia Antipolis",
+  round: "Pre-Seed",
+  amount: 1.8,
+  month: "January",
+  year: 2026,
+  sectors: ["AgriTech", "BioTech"],
+  investors: ["50 Partners", "Business Angels"],
+  founders: [
+    { name: "Antoine Pasquier" },
+    { name: "Lucie Monticelli" }
+  ],
+  news_url: "https://www.nicematin.com/economie/avec-ses-acariens-predateurs-cette-starup-azureenne-a-un-plan-sans-pesticide-pour-aider-les-agriculteurs-a-lutter-contre-les-ravageurs-des-sols-10664758?ref=frenchtechjournal.com",
+  news_summary: "Evolutive Agronomy raised €1.8M to accelerate field deployment of ByeNematode®, a biological solution based on predatory mites targeting root-knot nematodes, while scaling production and continuing farm-aligned R&D.",
+  website: "https://evolutiveagronomy.com/solution-bye-nematode/?ref=frenchtechjournal.com"
+},
+
+{
+  company: "Dowgo",
+  description: "Dowgo is a French fintech building blockchain-based investment infrastructure to finance private impact assets, connecting professional and institutional investors with project developers across the investment lifecycle from issuance to secondary trading.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 2,
+  month: "January",
+  year: 2026,
+  sectors: ["FinTech", "Web3"],
+  investors: ["Bpifrance", "50 Partners", "Cube Accelerator", "Emmanuel Picot", "Damien Guermonprez"],
+  founders: [
+    { name: "Oscar Dumant" },
+    { name: "Romain Menetrier" }
+  ],
+  news_url: "https://finyear.com/dowgo-leve-2-millions-deuros?ref=frenchtechjournal.com",
+  news_summary: "Dowgo announced a €2M seed round to finalize deployment of its regulated-grade blockchain platform for impact private assets, including primary issuance and a secondary market for liquidity; its regulatory application is under review by French authorities under the EU Pilot Regime framework.",
+  website: "https://www.dowgo.com/en?ref=frenchtechjournal.com"
+},
+
+{
+  company: "ATOBA Energy",
+  description: "ATOBA Energy is a midstream Sustainable Aviation Fuel aggregator designed to unlock industrial-scale growth of SAF by resolving the financial deadlock between airlines and producers through aggregated offtake portfolios and optimized pricing indexes.",
+  hq: "Lyon",
+  round: "Pre-Seed",
+  amount: 1.265,
+  month: "January",
+  year: 2026,
+  sectors: ["ClimateTech", "SpaceTech & Aerospace"],
+  investors: [],
+  founders: [
+    { name: "Arnaud Namer" }
+  ],
+  news_url: "https://atoba.energy/blog/atoba-raises-1.5m-pre-seed-round-to-unlock-scaling-of-sustainable-aviation-fuel?ref=frenchtechjournal.com",
+  news_summary: "ATOBA Energy raised an oversubscribed $1.5M pre-seed to scale its SAF aggregation platform and expand offtake agreements with producers, airlines, and resellers, enabling bankable long-term SAF contracts to accelerate industrial deployment.",
+  website: "https://www.atoba.energy/?ref=frenchtechjournal.com"
 }
 ];
 // =============================================
