@@ -117,7 +117,7 @@ RECATEGORIZATIONS = [
     ("Sirius NeoSight", ["HealthTech", "AI & Machine Learning"]),
     ("Alkion BioInnovations", ["BioTech"]),
     ("Febus Optics", ["Hardware"]),
-    ("Activ'Inside", ["HealthTech", "FoodTech"]),
+    ("Activ\u2019Inside", ["HealthTech", "FoodTech"]),
     ("Fizimed", ["HealthTech"]),
     ("Plasana Medical", ["HealthTech", "Hardware"]),
     ("AdEchoTech", ["HealthTech"]),
@@ -161,14 +161,14 @@ RECATEGORIZATIONS = [
     ("bYoRNA", ["BioTech"]),
     ("Goud", ["HealthTech"]),
     ("KLODIOS", ["HealthTech", "AI & Machine Learning"]),
-    ("H'ability", ["HealthTech", "Hardware"]),
+    ("H\u2019ability", ["HealthTech", "Hardware"]),
     ("Yomi Pharma", ["BioTech"]),
     ("Clikodoc", ["HealthTech"]),
     ("Elefantia", ["AI & Machine Learning"]),
     ("BiPER Therapeutics", ["BioTech"]),
     ("AberActives", ["BioTech"]),
     ("Inside Therapeutics", ["BioTech"]),
-    ("Cellura (ex-SoftCell Therapeutics)", ["BioTech", "Hardware"]),
+    ("Cellura (formerly SoftCell Therapeutics)", ["BioTech", "Hardware"]),
     ("Novem", ["BioTech"]),
     ("Naali", ["HealthTech"]),
     ("VBTech", ["HealthTech", "AI & Machine Learning"]),
@@ -288,42 +288,51 @@ def main():
             not_found += 1
             continue
 
-        company_id = data[0]["id"]
-        actual_name = data[0]["name"]
+        if len(data) > 1:
+            print(f"  NOTE: {len(data)} matches for \"{company_name}\" - updating all")
 
-        # Delete existing sector associations
-        _, del_status = api_call(
-            "DELETE", "company_sectors",
-            query_params=f"?company_id=eq.{company_id}"
-        )
+        # Update ALL matching companies (handles duplicates)
+        all_ok = True
+        for comp in data:
+            company_id = comp["id"]
 
-        if del_status < 200 or del_status >= 300:
-            print(f"  ERROR deleting sectors for \"{actual_name}\"")
+            # Delete existing sector associations
+            _, del_status = api_call(
+                "DELETE", "company_sectors",
+                query_params=f"?company_id=eq.{company_id}"
+            )
+
+            if del_status < 200 or del_status >= 300:
+                print(f"  ERROR deleting sectors for \"{comp['name']}\" ({company_id})")
+                all_ok = False
+                continue
+
+            # Insert new sector associations
+            records = []
+            for i, sector_name in enumerate(new_sectors):
+                sector_id = sector_map.get(sector_name)
+                if not sector_id:
+                    print(f"  ERROR: sector \"{sector_name}\" not found")
+                    continue
+                records.append({
+                    "company_id": company_id,
+                    "sector_id": sector_id,
+                    "is_primary": i == 0,
+                })
+
+            if records:
+                _, ins_status = api_call("POST", "company_sectors", records)
+                if ins_status < 200 or ins_status >= 300:
+                    print(f"  ERROR inserting sectors for \"{comp['name']}\" ({company_id})")
+                    all_ok = False
+
+        if not all_ok:
             errors += 1
             continue
 
-        # Insert new sector associations
-        records = []
-        for i, sector_name in enumerate(new_sectors):
-            sector_id = sector_map.get(sector_name)
-            if not sector_id:
-                print(f"  ERROR: sector \"{sector_name}\" not found")
-                continue
-            records.append({
-                "company_id": company_id,
-                "sector_id": sector_id,
-                "is_primary": i == 0,
-            })
-
-        if records:
-            _, ins_status = api_call("POST", "company_sectors", records)
-            if ins_status < 200 or ins_status >= 300:
-                print(f"  ERROR inserting sectors for \"{actual_name}\"")
-                errors += 1
-                continue
-
+        suffix = f" (x{len(data)})" if len(data) > 1 else ""
         sector_str = ", ".join(new_sectors)
-        print(f"  OK: {actual_name} -> {sector_str}")
+        print(f"  OK: {data[0]['name']}{suffix} -> {sector_str}")
         success += 1
 
     print()

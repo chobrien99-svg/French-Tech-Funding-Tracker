@@ -122,7 +122,7 @@ const RECATEGORIZATIONS = [
     { company: 'Sirius NeoSight', sectors: ['HealthTech', 'AI & Machine Learning'] },
     { company: 'Alkion BioInnovations', sectors: ['BioTech'] },
     { company: 'Febus Optics', sectors: ['Hardware'] },
-    { company: "Activ'Inside", sectors: ['HealthTech', 'FoodTech'] },
+    { company: "Activ\u2019Inside", sectors: ['HealthTech', 'FoodTech'] },
     { company: 'Fizimed', sectors: ['HealthTech'] },
     { company: 'Plasana Medical', sectors: ['HealthTech', 'Hardware'] },
     { company: 'AdEchoTech', sectors: ['HealthTech'] },
@@ -166,14 +166,14 @@ const RECATEGORIZATIONS = [
     { company: 'bYoRNA', sectors: ['BioTech'] },
     { company: 'Goud', sectors: ['HealthTech'] },
     { company: 'KLODIOS', sectors: ['HealthTech', 'AI & Machine Learning'] },
-    { company: "H'ability", sectors: ['HealthTech', 'Hardware'] },
+    { company: "H\u2019ability", sectors: ['HealthTech', 'Hardware'] },
     { company: 'Yomi Pharma', sectors: ['BioTech'] },
     { company: 'Clikodoc', sectors: ['HealthTech'] },
     { company: 'Elefantia', sectors: ['AI & Machine Learning'] },
     { company: 'BiPER Therapeutics', sectors: ['BioTech'] },
     { company: 'AberActives', sectors: ['BioTech'] },
     { company: 'Inside Therapeutics', sectors: ['BioTech'] },
-    { company: 'Cellura (ex-SoftCell Therapeutics)', sectors: ['BioTech', 'Hardware'] },
+    { company: 'Cellura (formerly SoftCell Therapeutics)', sectors: ['BioTech', 'Hardware'] },
     { company: 'Novem', sectors: ['BioTech'] },
     { company: 'Naali', sectors: ['HealthTech'] },
     { company: 'VBTech', sectors: ['HealthTech', 'AI & Machine Learning'] },
@@ -295,42 +295,49 @@ async function recategorizeCompanies() {
         }
 
         if (companies.length > 1) {
-            console.warn(`  WARNING: Multiple matches for "${company}" - using first match: "${companies[0].name}"`);
+            console.warn(`  NOTE: ${companies.length} matches for "${company}" - updating all`);
         }
 
-        const companyId = companies[0].id;
-        const companyName = companies[0].name;
+        // Update ALL matching companies (handles duplicates)
+        let allOk = true;
+        for (const comp of companies) {
+            const companyId = comp.id;
 
-        // Delete existing sector associations
-        const { error: deleteError } = await supabase
-            .from('company_sectors')
-            .delete()
-            .eq('company_id', companyId);
+            // Delete existing sector associations
+            const { error: deleteError } = await supabase
+                .from('company_sectors')
+                .delete()
+                .eq('company_id', companyId);
 
-        if (deleteError) {
-            console.error(`  ERROR deleting sectors for "${companyName}":`, deleteError.message);
+            if (deleteError) {
+                console.error(`  ERROR deleting sectors for "${comp.name}" (${companyId}):`, deleteError.message);
+                allOk = false;
+                continue;
+            }
+
+            // Insert new sector associations
+            const newAssociations = sectors.map((sectorName, index) => ({
+                company_id: companyId,
+                sector_id: sectorIdMap[sectorName],
+                is_primary: index === 0,
+            }));
+
+            const { error: insertError } = await supabase
+                .from('company_sectors')
+                .insert(newAssociations);
+
+            if (insertError) {
+                console.error(`  ERROR inserting sectors for "${comp.name}" (${companyId}):`, insertError.message);
+                allOk = false;
+            }
+        }
+
+        if (!allOk) {
             errorCount++;
             continue;
         }
 
-        // Insert new sector associations
-        const newAssociations = sectors.map((sectorName, index) => ({
-            company_id: companyId,
-            sector_id: sectorIdMap[sectorName],
-            is_primary: index === 0, // First sector is primary
-        }));
-
-        const { error: insertError } = await supabase
-            .from('company_sectors')
-            .insert(newAssociations);
-
-        if (insertError) {
-            console.error(`  ERROR inserting sectors for "${companyName}":`, insertError.message);
-            errorCount++;
-            continue;
-        }
-
-        console.log(`  ✓ ${companyName}: ${sectors.join(', ')}`);
+        console.log(`  ✓ ${companies[0].name}${companies.length > 1 ? ` (x${companies.length})` : ''}: ${sectors.join(', ')}`);
         successCount++;
     }
 
