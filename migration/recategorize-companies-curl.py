@@ -182,6 +182,10 @@ RECATEGORIZATIONS = [
     ("Carthera", ["HealthTech", "Hardware"]),
     ("SOFTWAY MEDICAL", ["HealthTech"]),
     ("PulseSight Therapeutics", ["BioTech"]),
+    ("Elum Energy", ["CleanTech", "Energy"]),
+    ("Leanspace", ["SpaceTech & Aerospace"]),
+    ("Melvan", ["Energy", "FinTech"]),
+    ("Maki", ["SaaS & Enterprise"]),
 ]
 
 

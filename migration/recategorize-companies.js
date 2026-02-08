@@ -187,6 +187,10 @@ const RECATEGORIZATIONS = [
     { company: 'Carthera', sectors: ['HealthTech', 'Hardware'] },
     { company: 'SOFTWAY MEDICAL', sectors: ['HealthTech'] },
     { company: 'PulseSight Therapeutics', sectors: ['BioTech'] },
+    { company: 'Elum Energy', sectors: ['CleanTech', 'Energy'] },
+    { company: 'Leanspace', sectors: ['SpaceTech & Aerospace'] },
+    { company: 'Melvan', sectors: ['Energy', 'FinTech'] },
+    { company: 'Maki', sectors: ['SaaS & Enterprise'] },
 ];
 
 // Sector colors for any sectors that might need to be created
