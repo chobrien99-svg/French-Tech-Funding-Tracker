@@ -7,13 +7,12 @@
  * Prerequisites:
  *   1. Create an account at https://api.insee.fr/
  *   2. Create an application and subscribe to "API Sirene" (free tier)
- *   3. Set your credentials in environment variables
+ *   3. Copy your API key and set it in environment variables
  *
  * Usage:
  *   export SUPABASE_URL="https://your-project.supabase.co"
  *   export SUPABASE_SERVICE_KEY="your-service-role-key"
- *   export INSEE_CONSUMER_KEY="your-consumer-key"
- *   export INSEE_CONSUMER_SECRET="your-consumer-secret"
+ *   export INSEE_API_KEY="your-api-key"
  *   node match-siren.js
  *
  * Options:
@@ -31,11 +30,9 @@ const { createClient } = require('@supabase/supabase-js');
 
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://tlwqkglfyjydwsgjrclx.supabase.co';
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const INSEE_CONSUMER_KEY = process.env.INSEE_CONSUMER_KEY;
-const INSEE_CONSUMER_SECRET = process.env.INSEE_CONSUMER_SECRET;
+const INSEE_API_KEY = process.env.INSEE_API_KEY;
 
-// INSEE API endpoints
-const INSEE_TOKEN_URL = 'https://api.insee.fr/token';
+// INSEE API endpoint
 const INSEE_SIRENE_URL = 'https://api.insee.fr/entreprises/sirene/V3.11/siret';
 
 // Rate limiting: INSEE free tier allows 30 requests/minute
@@ -67,11 +64,8 @@ function validateConfig() {
     if (!SUPABASE_SERVICE_KEY) {
         errors.push('SUPABASE_SERVICE_KEY environment variable is required');
     }
-    if (!INSEE_CONSUMER_KEY) {
-        errors.push('INSEE_CONSUMER_KEY environment variable is required');
-    }
-    if (!INSEE_CONSUMER_SECRET) {
-        errors.push('INSEE_CONSUMER_SECRET environment variable is required');
+    if (!INSEE_API_KEY) {
+        errors.push('INSEE_API_KEY environment variable is required');
     }
 
     if (errors.length > 0) {
@@ -86,39 +80,6 @@ function validateConfig() {
 // INSEE API CLIENT
 // =============================================
 
-let accessToken = null;
-let tokenExpiresAt = 0;
-
-async function getAccessToken() {
-    // Return cached token if still valid (with 60s buffer)
-    if (accessToken && Date.now() < tokenExpiresAt - 60000) {
-        return accessToken;
-    }
-
-    const credentials = Buffer.from(`${INSEE_CONSUMER_KEY}:${INSEE_CONSUMER_SECRET}`).toString('base64');
-
-    const response = await fetch(INSEE_TOKEN_URL, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Basic ${credentials}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'grant_type=client_credentials'
-    });
-
-    if (!response.ok) {
-        const text = await response.text();
-        throw new Error(`INSEE token request failed: ${response.status} ${text}`);
-    }
-
-    const data = await response.json();
-    accessToken = data.access_token;
-    tokenExpiresAt = Date.now() + (data.expires_in * 1000);
-
-    console.log('  INSEE API token acquired');
-    return accessToken;
-}
-
 /**
  * Search the Sirene API for a company
  * @param {string} companyName - Company name to search
@@ -126,8 +87,6 @@ async function getAccessToken() {
  * @returns {Promise<Array>} - Array of matching establishments
  */
 async function searchSirene(companyName, city = null) {
-    const token = await getAccessToken();
-
     // Build search query
     // denominationUniteLegale: company legal name
     // libelleCommuneEtablissement: city of establishment
@@ -145,7 +104,7 @@ async function searchSirene(companyName, city = null) {
 
     const response = await fetch(url, {
         headers: {
-            'Authorization': `Bearer ${token}`,
+            'X-INSEE-Api-Key-Integration': INSEE_API_KEY,
             'Accept': 'application/json'
         }
     });
@@ -416,9 +375,7 @@ async function main() {
         process.exit(0);
     }
 
-    // Get initial token
-    console.log('\n--- Authenticating with INSEE API ---');
-    await getAccessToken();
+    console.log('\n--- Using INSEE API key authentication ---');
 
     // Process companies
     console.log('\n--- Processing companies ---');
