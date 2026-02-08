@@ -62,6 +62,14 @@ const RECATEGORIZATIONS = [
     { company: 'Aberyne', sectors: ['FoodTech'] },
     { company: 'Neo Earth', sectors: ['AgriTech', 'BioTech'] },
     { company: 'Amatera', sectors: ['AgriTech'] },
+    { company: 'Intact', sectors: ['AgriTech'] },
+    { company: 'NeoFarm', sectors: ['AgriTech'] },
+    { company: 'nextProtein', sectors: ['AgriTech'] },
+    { company: 'MYCOPHYTO', sectors: ['AgriTech', 'BioTech'] },
+    { company: 'Equitable Earth', sectors: ['AgriTech', 'CleanTech'] },
+    { company: 'ReGeneration', sectors: ['AgriTech'] },
+    { company: 'Lisaqua', sectors: ['AgriTech', 'CleanTech'] },
+    { company: 'Nutropy', sectors: ['FoodTech', 'BioTech'] },
 ];
 
 // Sector colors for any sectors that might need to be created

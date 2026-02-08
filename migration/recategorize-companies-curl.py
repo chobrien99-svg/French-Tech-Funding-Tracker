@@ -57,6 +57,14 @@ RECATEGORIZATIONS = [
     ("Aberyne", ["FoodTech"]),
     ("Neo Earth", ["AgriTech", "BioTech"]),
     ("Amatera", ["AgriTech"]),
+    ("Intact", ["AgriTech"]),
+    ("NeoFarm", ["AgriTech"]),
+    ("nextProtein", ["AgriTech"]),
+    ("MYCOPHYTO", ["AgriTech", "BioTech"]),
+    ("Equitable Earth", ["AgriTech", "CleanTech"]),
+    ("ReGeneration", ["AgriTech"]),
+    ("Lisaqua", ["AgriTech", "CleanTech"]),
+    ("Nutropy", ["FoodTech", "BioTech"]),
 ]
 
 
