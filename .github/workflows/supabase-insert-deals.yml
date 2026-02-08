@@ -38,5 +38,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run insert script
-        run: node "${{ github.event.inputs.script }}"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run migration script
+        run: |
+          SCRIPT="${{ github.event.inputs.script }}"
+          if [[ "$SCRIPT" == *.py ]]; then
+            python3 "$SCRIPT"
+          else
+            node "$SCRIPT"
+          fi
