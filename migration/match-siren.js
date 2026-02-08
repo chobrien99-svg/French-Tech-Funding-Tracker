@@ -22,6 +22,7 @@
  *   --force         Re-match companies that already have a SIREN
  */
 
+require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 
 // =============================================
