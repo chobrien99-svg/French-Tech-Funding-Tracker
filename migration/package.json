@@ -5,7 +5,10 @@
   "main": "migrate.js",
   "scripts": {
     "migrate": "node migrate.js",
-    "migrate:dry-run": "DRY_RUN=true node migrate.js"
+    "migrate:dry-run": "DRY_RUN=true node migrate.js",
+    "match-siren": "node match-siren.js",
+    "match-siren:dry-run": "node match-siren.js --dry-run",
+    "match-siren:test": "node match-siren.js --dry-run --limit 5"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0"
