@@ -88,14 +88,18 @@ function validateConfig() {
  * @returns {Promise<Array>} - Array of matching establishments
  */
 async function searchSirene(companyName, city = null) {
-    // Build search query
+    // Normalize the company name for search
+    const normalizedName = escapeQuery(companyName).toUpperCase();
+
+    // Build search query using wildcard for partial matching
     // denominationUniteLegale: company legal name
     // libelleCommuneEtablissement: city of establishment
     // etatAdministratifUniteLegale: A = active, C = closed
-    let query = `denominationUniteLegale:"${escapeQuery(companyName)}"`;
+    let query = `denominationUniteLegale:*${normalizedName}*`;
 
     if (city) {
-        query += ` AND libelleCommuneEtablissement:"${escapeQuery(city)}"`;
+        const normalizedCity = escapeQuery(city).toUpperCase();
+        query += ` AND libelleCommuneEtablissement:*${normalizedCity}*`;
     }
 
     // Only search active companies
