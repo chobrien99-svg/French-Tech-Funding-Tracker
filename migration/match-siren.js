@@ -107,12 +107,23 @@ async function searchSirene(companyName, city = null) {
 
     const url = `${INSEE_SIRENE_URL}?q=${encodeURIComponent(query)}&nombre=10`;
 
+    // Debug logging
+    if (process.env.DEBUG) {
+        console.log(`    DEBUG Query: ${query}`);
+        console.log(`    DEBUG URL: ${url}`);
+    }
+
     const response = await fetch(url, {
         headers: {
             'X-INSEE-Api-Key-Integration': INSEE_API_KEY,
             'Accept': 'application/json'
         }
     });
+
+    // Debug logging
+    if (process.env.DEBUG) {
+        console.log(`    DEBUG Status: ${response.status}`);
+    }
 
     if (response.status === 404) {
         // No results found
@@ -125,10 +136,16 @@ async function searchSirene(companyName, city = null) {
 
     if (!response.ok) {
         const text = await response.text();
+        if (process.env.DEBUG) {
+            console.log(`    DEBUG Error: ${text}`);
+        }
         throw new Error(`Sirene search failed: ${response.status} ${text}`);
     }
 
     const data = await response.json();
+    if (process.env.DEBUG) {
+        console.log(`    DEBUG Results: ${data.etablissements?.length || 0} found`);
+    }
     return data.etablissements || [];
 }
 
