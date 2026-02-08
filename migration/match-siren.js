@@ -91,15 +91,15 @@ async function searchSirene(companyName, city = null) {
     // Normalize the company name for search
     const normalizedName = escapeQuery(companyName).toUpperCase();
 
-    // Build search query using wildcard for partial matching
+    // Build search query - use trailing wildcard only (leading wildcards often disabled)
     // denominationUniteLegale: company legal name
     // libelleCommuneEtablissement: city of establishment
     // etatAdministratifUniteLegale: A = active, C = closed
-    let query = `denominationUniteLegale:*${normalizedName}*`;
+    let query = `denominationUniteLegale:${normalizedName}*`;
 
     if (city) {
         const normalizedCity = escapeQuery(city).toUpperCase();
-        query += ` AND libelleCommuneEtablissement:*${normalizedCity}*`;
+        query += ` AND libelleCommuneEtablissement:${normalizedCity}*`;
     }
 
     // Only search active companies
