@@ -237,7 +237,7 @@ const DEALS = [
   month: "January",
   year: 2026,
   sectors: ["ClimateTech", "SpaceTech & Aerospace"],
-  investors: [],
+  investors: ["Undisclosed"],
   founders: [
     { name: "Arnaud Namer" }
   ],
