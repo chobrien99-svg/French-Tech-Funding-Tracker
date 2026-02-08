@@ -33,8 +33,8 @@ const SUPABASE_URL = process.env.SUPABASE_URL || 'https://tlwqkglfyjydwsgjrclx.s
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const INSEE_API_KEY = process.env.INSEE_API_KEY;
 
-// INSEE API endpoint
-const INSEE_SIRENE_URL = 'https://api.insee.fr/entreprises/sirene/V3.11/siret';
+// INSEE API endpoint (new portal URL)
+const INSEE_SIRENE_URL = 'https://api.insee.fr/api-sirene/3.11/siret';
 
 // Rate limiting: INSEE free tier allows 30 requests/minute
 const RATE_LIMIT_DELAY_MS = 2100; // ~28 requests/minute to stay safe
