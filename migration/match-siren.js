@@ -91,15 +91,26 @@ async function searchSirene(companyName, city = null) {
     // Normalize the company name for search
     const normalizedName = escapeQuery(companyName).toUpperCase();
 
-    // Build search query - use trailing wildcard only (leading wildcards often disabled)
+    // Build search query - quote multi-word names for phrase matching
     // denominationUniteLegale: company legal name
     // libelleCommuneEtablissement: city of establishment
     // etatAdministratifUniteLegale: A = active, C = closed
-    let query = `denominationUniteLegale:${normalizedName}*`;
+    let query;
+    if (normalizedName.includes(' ')) {
+        // Use quoted phrase for multi-word names
+        query = `denominationUniteLegale:"${normalizedName}"`;
+    } else {
+        // Use wildcard for single-word names
+        query = `denominationUniteLegale:${normalizedName}*`;
+    }
 
     if (city) {
         const normalizedCity = escapeQuery(city).toUpperCase();
-        query += ` AND libelleCommuneEtablissement:${normalizedCity}*`;
+        if (normalizedCity.includes(' ')) {
+            query += ` AND libelleCommuneEtablissement:"${normalizedCity}"`;
+        } else {
+            query += ` AND libelleCommuneEtablissement:${normalizedCity}*`;
+        }
     }
 
     // Only search active companies
@@ -284,8 +295,12 @@ function findBestMatch(companyName, city, results) {
     if (!bestMatch) return null;
 
     // Determine confidence level
+    // Perfect name match (>=0.98) is HIGH even without city match
+    // (city data in funding tracker may be inaccurate)
     let confidence;
-    if (bestMatch.nameSimilarity >= 0.95 && bestMatch.cityMatch) {
+    if (bestMatch.nameSimilarity >= 0.98) {
+        confidence = CONFIDENCE.HIGH;
+    } else if (bestMatch.nameSimilarity >= 0.95 && bestMatch.cityMatch) {
         confidence = CONFIDENCE.HIGH;
     } else if (bestMatch.nameSimilarity >= 0.8 || (bestMatch.nameSimilarity >= 0.6 && bestMatch.cityMatch)) {
         confidence = CONFIDENCE.MEDIUM;
