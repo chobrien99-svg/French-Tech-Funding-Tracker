@@ -49,6 +49,7 @@ const CONFIDENCE = {
 // Parse CLI arguments
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
+const CONFIRM = args.includes('--confirm'); // Show results first, then ask to apply
 const FORCE = args.includes('--force');
 const limitIndex = args.indexOf('--limit');
 const LIMIT = limitIndex !== -1 ? parseInt(args[limitIndex + 1], 10) : null;
@@ -473,8 +474,12 @@ async function main() {
 
                 // Update database for high confidence matches
                 if (match.confidence === CONFIDENCE.HIGH) {
-                    const updated = await updateCompanySiren(company.id, match);
-                    console.log(`    Database: ${DRY_RUN ? 'SKIPPED (dry run)' : (updated ? 'UPDATED' : 'FAILED')}`);
+                    if (!DRY_RUN && !CONFIRM) {
+                        const updated = await updateCompanySiren(company.id, match);
+                        console.log(`    Database: ${updated ? 'UPDATED' : 'FAILED'}`);
+                    } else {
+                        console.log(`    Database: PENDING (will confirm later)`);
+                    }
                     results.high.push(record);
                 } else if (match.confidence === CONFIDENCE.MEDIUM) {
                     results.medium.push(record);
@@ -496,10 +501,64 @@ async function main() {
 
     // Print summary
     printSummary(results);
+
+    // Handle --confirm mode: ask user if they want to apply high confidence matches
+    if (CONFIRM && results.high.length > 0) {
+        console.log('\n--- HIGH CONFIDENCE MATCHES TO APPLY ---');
+        for (const r of results.high) {
+            console.log(`  ${r.companyName} -> ${r.denominationOfficielle} (SIREN: ${r.siren})`);
+        }
+
+        const confirmed = await askConfirmation(`\nApply these ${results.high.length} high confidence matches? (y/n): `);
+        if (confirmed) {
+            await applyHighConfidenceMatches(results.high);
+        } else {
+            console.log('\nNo changes made.');
+        }
+    }
 }
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/**
+ * Prompt user for confirmation
+ */
+function askConfirmation(question) {
+    const readline = require('readline');
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    return new Promise(resolve => {
+        rl.question(question, answer => {
+            rl.close();
+            resolve(answer.toLowerCase().startsWith('y'));
+        });
+    });
+}
+
+/**
+ * Apply high confidence matches to database
+ */
+async function applyHighConfidenceMatches(matches) {
+    console.log('\n--- Applying high confidence matches ---');
+    let successCount = 0;
+
+    for (const match of matches) {
+        const updated = await updateCompanySiren(match.companyId, match);
+        if (updated) {
+            console.log(`  ✓ ${match.companyName} -> ${match.siren}`);
+            successCount++;
+        } else {
+            console.log(`  ✗ ${match.companyName} -> FAILED`);
+        }
+    }
+
+    console.log(`\nUpdated ${successCount}/${matches.length} companies.`);
+    return successCount;
 }
 
 function printSummary(results) {
@@ -539,7 +598,7 @@ function printSummary(results) {
 
     if (DRY_RUN) {
         console.log('\n[DRY RUN] No database updates were made.');
-        console.log('Run without --dry-run to apply high-confidence matches.');
+        console.log('Run with --confirm to review and apply high-confidence matches.');
     }
 
     console.log('\n=================================================');
