@@ -1427,7 +1427,7 @@
                         news: round.news_url || '',
                         newsDescription: round.notes || ''
                     };
-                }).filter(d => d && d.amount > 0); // Only show deals with funding amounts
+                }).filter(Boolean); // Exclude rounds with no matching company
 
                 filteredCompanies = [...allCompanies];
 
