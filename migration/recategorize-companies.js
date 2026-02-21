@@ -205,6 +205,7 @@ const SECTOR_COLORS = {
     'AI & Machine Learning': '#8b5cf6',
     'HealthTech': '#10b981',
     'Hardware': '#6366f1',
+    'Robotics': '#e11d48',
 };
 
 function slugify(str) {
