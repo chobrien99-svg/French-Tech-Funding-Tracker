@@ -1,0 +1,561 @@
+{
+  "metadata": {
+    "generated_on": "2026-02-26",
+    "description": "Comprehensive catalog of all datasets and APIs related to the France 2030 investment program found on the French national Open Data platform (data.gouv.fr) and related portals.",
+    "sources_searched": [
+      "https://www.data.gouv.fr/api/1/datasets/?q=france+2030&page_size=20",
+      "https://www.data.gouv.fr/api/1/datasets/?q=france2030&page_size=20",
+      "https://www.data.gouv.fr/fr/datasets/?q=france+2030",
+      "https://data.ademe.fr",
+      "https://opendata.caissedesdepots.fr",
+      "https://api.gouv.fr",
+      "https://www.data.gouv.fr/dataservices"
+    ],
+    "note": "The data.gouv.fr API returned HTTP 403 during direct fetch attempts. All dataset information was compiled via web search and cross-referenced across multiple sources. Resource counts reflect best available information from search snippets and cross-portal references.",
+    "france_2030_program_overview": {
+      "total_budget_euros": "54,000,000,000",
+      "duration_years": 5,
+      "announced": "2021-10-12",
+      "pilot_agency": "Secrétariat général pour l'investissement (SGPI)",
+      "operators": [
+        "ADEME (Agence de la Transition Écologique) — €7.3 billion managed",
+        "Bpifrance (Banque publique d'investissement)",
+        "Caisse des Dépôts / Banque des Territoires",
+        "Agence nationale de la recherche (ANR)"
+      ],
+      "objectives": [
+        "Innovation and ecological transition",
+        "Reindustrialization of France",
+        "Industrial decarbonization",
+        "Renewable energy and sustainable mobility",
+        "Recycling and circular economy",
+        "Hydrogen and nuclear (SMR)",
+        "Semi-conductors and AI",
+        "Sustainable cities"
+      ]
+    }
+  },
+  "datasets": [
+    {
+      "id": 1,
+      "title": "France 2030 - Projets financés par l'ADEME",
+      "title_en": "France 2030 - Projects financed by ADEME",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/ademe",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/france-2030-projets-finances-par-lademe-1/",
+      "data_gouv_url_alt": "https://www.data.gouv.fr/fr/datasets/680a328ec64e27a0e09bf66f/",
+      "ademe_portal_url": "https://data.ademe.fr/datasets/france-2030-projets-finances-par-lademe",
+      "description": "Ce jeu de données recense les projets soutenus par l'ADEME dans le cadre du plan d'investissement France 2030. Ce plan, doté de 54 milliards d'euros sur cinq ans, est piloté par le Secrétariat général pour l'investissement (SGPI) et vise à favoriser l'innovation, la transition écologique et la réindustrialisation de la France. L'ADEME, en tant qu'opérateur de l'État, gère 7,3 milliards d'euros alloués à dix thématiques stratégiques, notamment la décarbonation de l'industrie, le recyclage, les énergies renouvelables et la mobilité durable. Les projets sont sélectionnés via des appels à projets validés par des comités interministériels mensuels. Ce jeu de données offre une vue d'ensemble des initiatives soutenues, incluant des informations descriptives, leur localisation, ainsi que les aides dont ils ont bénéficié.",
+      "description_en": "This dataset lists the projects supported by ADEME within the France 2030 investment plan (€54 billion over 5 years). ADEME manages €7.3 billion allocated to 10 strategic themes. The dataset provides descriptive information about the projects, their location, and the aid received.",
+      "data_type": [
+        "Project names and descriptions",
+        "Geographic location of projects",
+        "Funding amounts and aid type (grants, repayable advances)",
+        "Strategic themes / sectors",
+        "Calls for projects (appels à projets) references",
+        "Project status"
+      ],
+      "strategic_themes_covered": [
+        "Décarbonation de l'industrie",
+        "Recyclage et économie circulaire",
+        "Énergies renouvelables",
+        "Mobilité durable",
+        "Hydrogène",
+        "Bâtiment",
+        "Agriculture écoefficients",
+        "Numérique responsable"
+      ],
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "update_frequency": "Bimensuelle (twice monthly)",
+      "estimated_resources": 4,
+      "resource_formats": ["CSV", "JSON", "XLSX", "Page web"],
+      "tags": ["aides", "financement", "france-2030", "ADEME", "investissements"],
+      "temporal_coverage": "2021 onwards",
+      "spatial_coverage": "France métropolitaine et Outre-mer",
+      "api_access": {
+        "data_gouv_api": "https://www.data.gouv.fr/api/1/datasets/france-2030-projets-finances-par-lademe-1/",
+        "ademe_explore_api": "https://data.ademe.fr/api/explore/v2.1/",
+        "note": "Accessible via data.gouv.fr REST API v1 and ADEME's Opendatasoft Explore API v2.1"
+      }
+    },
+    {
+      "id": 2,
+      "title": "France 2030 - Partenaires des projets financés par l'ADEME",
+      "title_en": "France 2030 - Partners of projects financed by ADEME",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/ademe",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/france-2030-partenaires-des-projets-finances-par-lademe-1/",
+      "data_gouv_url_en": "https://www.data.gouv.fr/en/datasets/france-2030-partenaires-des-projets-finances-par-lademe/",
+      "data_gouv_url_alt": "https://www.data.gouv.fr/fr/datasets/680a32f4507374944e69e842/",
+      "ademe_portal_url": "https://data.ademe.fr/datasets/france-2030-partenaires-des-projets-finances-par-lademe-2",
+      "description": "Ce jeu de données recense les partenaires des projets soutenus par l'ADEME dans le cadre du plan d'investissement France 2030. Il offre une vue d'ensemble des partenaires des initiatives soutenues, incluant des informations descriptives sur les projets, des précisions sur les partenaires (catégorie, localisation), ainsi que les aides dont ils ont bénéficié.",
+      "description_en": "This dataset lists the partners of projects supported by ADEME under France 2030. It provides descriptive information about the projects, details on the partners (their category and location), and the aid they received.",
+      "data_type": [
+        "Partner organization names",
+        "Partner categories (large company, SME, startup, research lab, local authority, etc.)",
+        "Partner geographic location (department, region)",
+        "Associated project references",
+        "Funding amounts per partner",
+        "Aid type received"
+      ],
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "update_frequency": "Bihebdomadaire (twice weekly) / Bimensuelle",
+      "estimated_resources": 4,
+      "resource_formats": ["CSV", "JSON", "XLSX", "Page web"],
+      "tags": ["aides", "financement", "france-2030", "partenaires", "ADEME"],
+      "temporal_coverage": "2021 onwards",
+      "spatial_coverage": "France métropolitaine et Outre-mer",
+      "api_access": {
+        "data_gouv_api": "https://www.data.gouv.fr/api/1/datasets/france-2030-partenaires-des-projets-finances-par-lademe-1/",
+        "ademe_explore_api": "https://data.ademe.fr/api/explore/v2.1/",
+        "note": "Accessible via data.gouv.fr REST API v1 and ADEME's Opendatasoft Explore API v2.1"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Les sites clés en main - France 2030",
+      "title_en": "Turnkey Industrial Sites - France 2030",
+      "organization": "ANCT (Agence nationale de la cohésion des territoires) / DGE (Direction générale des Entreprises)",
+      "co_organizations": [
+        "ANCT",
+        "DGE",
+        "DGALN",
+        "DGITM",
+        "Banque des Territoires",
+        "Business France",
+        "Cerema",
+        "ADEME"
+      ],
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/les-sites-cles-en-main-france-2030",
+      "data_gouv_url_en": "https://www.data.gouv.fr/en/datasets/les-sites-cles-en-main-france-2030/",
+      "hugging_face_mirror": "https://huggingface.co/datasets/data-gouv-fr/les-sites-cles-en-main-france-2030",
+      "anct_page": "https://anct.gouv.fr/programmes-dispositifs/territoires-d-industrie/sites-cles-en-main",
+      "description": "Présenté le 11 mai 2023 par le président de la République, dans le cadre du projet de loi Industrie verte, le dispositif « sites clés en main France 2030 » vise à accélérer la mobilisation d'un foncier industriel de qualité, dans un contexte de sobriété foncière. Ce dispositif vise à identifier et labelliser des sites à fort potentiel de développement industriel, mais aussi à les accompagner pour assurer leur caractère clés en main. En 2023, la délégation aux Territoires d'industrie (co-portée par ANCT et DGE) a sélectionné 55 sites.",
+      "description_en": "Presented on May 11, 2023 as part of the Industrie Verte bill. This initiative aims to identify and label industrial sites with strong development potential and make them fully 'turnkey' — ready for immediate industrial investment. 55 sites were selected in 2023.",
+      "data_type": [
+        "List of labeled turnkey industrial sites",
+        "Site names and geographic location",
+        "Site status (in process, labeled)",
+        "Industrial sector / type",
+        "Surface area and characteristics",
+        "Procedures and pre-development status",
+        "Contact organizations per site"
+      ],
+      "initiative_budget": "Part of France 2030 / Loi Industrie Verte",
+      "sites_labeled_2023": 55,
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "update_frequency": "As new sites are labeled",
+      "estimated_resources": 3,
+      "resource_formats": ["CSV", "GeoJSON", "XLSX"],
+      "tags": ["france-2030", "industrie-verte", "foncier-industriel", "territoires-d-industrie", "ANCT", "DGE"],
+      "temporal_coverage": "2023 onwards",
+      "spatial_coverage": "France métropolitaine"
+    },
+    {
+      "id": 4,
+      "title": "Liste des lauréats \"Démonstrateurs ville durable\" - France 2030",
+      "title_en": "List of Laureates - Sustainable City Demonstrators - France 2030",
+      "organization": "Caisse des Dépôts / Banque des Territoires",
+      "co_organizations": [
+        "Banque des Territoires",
+        "ANRU (Agence nationale pour la rénovation urbaine)",
+        "Ministère du Logement",
+        "Ministère de la Cohésion des territoires",
+        "SGPI"
+      ],
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/caisse-des-depots-1",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/liste-des-laureats-demonstrateurs-ville-durable-france-2030/",
+      "data_gouv_url_en": "https://www.data.gouv.fr/en/datasets/liste-des-laureats-demonstrateurs-ville-durable-france-2030/",
+      "original_source_url": "https://opendata.caissedesdepots.fr/explore/dataset/liste-des-laureats/",
+      "data_europa_url": "https://data.europa.eu/data/datasets/https-opendata-caissedesdepots-fr-explore-dataset-liste-des-laureats-",
+      "description": "Dans le cadre de France 2030 et du 4e Programme d'investissements d'avenir (PIA4), le Ministère du Logement, le Ministère de la Cohésion des territoires, le SGPI et la Banque des Territoires, en partenariat avec l'ANRU, ont lancé en mai 2021 l'AMI « Démonstrateurs de la ville durable », doté de 305 millions d'euros. Les 9 lauréats de la première vague ont été annoncés le 10 janvier 2022, et les 30 lauréats de la seconde vague le 18 mars 2022. 15 des 39 démonstrateurs sont entrés en phase de réalisation.",
+      "description_en": "Lists the 39 laureate projects from the 'Sustainable City Demonstrators' AMI (call for interest) launched under France 2030 / PIA4 with €305 million endowment. Wave 1: 9 laureates (January 2022), Wave 2: 30 laureates (March 2022). Projects receive up to €500,000 in incubation subsidies and up to €10M over 10 years.",
+      "data_type": [
+        "Project names and descriptions",
+        "Laureate organizations (local authorities and consortia)",
+        "Geographic location (city, region)",
+        "Selection wave (wave 1 or 2)",
+        "Subsidy amounts",
+        "Project status (incubation / realization)",
+        "Urban context (metropolis, small city, rural, priority neighborhood)"
+      ],
+      "program_budget_euros": "305,000,000",
+      "total_laureates": 39,
+      "wave_1_laureates": 9,
+      "wave_1_announced": "2022-01-10",
+      "wave_2_laureates": 30,
+      "wave_2_announced": "2022-03-18",
+      "projects_in_realization": 15,
+      "max_subsidy_per_project_euros": "10,000,000",
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "update_frequency": "When new waves are announced",
+      "estimated_resources": 1,
+      "resource_formats": ["CSV", "JSON", "GeoJSON"],
+      "tags": ["france-2030", "dvd", "pia", "ville-durable", "investissement-territoire", "laureats"],
+      "temporal_coverage": "2022 onwards",
+      "spatial_coverage": "France métropolitaine",
+      "api_access": {
+        "caisse_des_depots_explore_api": "https://opendata.caissedesdepots.fr/api/explore/v2.1/console",
+        "api_dataset_endpoint": "https://opendata.caissedesdepots.fr/api/explore/v2.1/catalog/datasets/liste-des-laureats/",
+        "note": "Hosted on Caisse des Dépôts OpenDataSoft portal; accessible via Explore API v2.1"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Démonstrateurs ville durable (filtre)",
+      "title_en": "Sustainable City Demonstrators - Filtered View",
+      "organization": "Caisse des Dépôts / Banque des Territoires",
+      "data_gouv_url": "https://www.data.gouv.fr/en/datasets/demonstrateurs-ville-durable-filtre/",
+      "original_source_url": "https://opendata.caissedesdepots.fr/explore/dataset/dvd_filtres/",
+      "description": "Jeu de données complémentaire à la liste des lauréats des Démonstrateurs de la ville durable, présentant une vue filtrée et enrichie des données de projets dans le cadre de l'AMI France 2030 / PIA4. Permet de croiser les données selon différents critères (thématique, territoire, statut).",
+      "description_en": "Complementary filtered/enriched view of the Sustainable City Demonstrators dataset, enabling cross-referencing by theme, territory, and project status.",
+      "data_type": [
+        "Filtered project listings",
+        "Thematic cross-references",
+        "Territorial breakdowns",
+        "Project status filters"
+      ],
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "resource_formats": ["CSV", "JSON"],
+      "tags": ["france-2030", "dvd", "ville-durable", "filtre"],
+      "api_access": {
+        "caisse_des_depots_explore_api": "https://opendata.caissedesdepots.fr/api/explore/v2.1/catalog/datasets/dvd_filtres/",
+        "note": "Accessible via Caisse des Dépôts Explore API v2.1"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Fond de carte consolidé - France et Outre-Mers (Réalisation pour France 2030)",
+      "title_en": "Consolidated Base Map - France and Overseas Territories (Created for France 2030)",
+      "organization": "Unknown / SGPI or DINUM (created for France 2030 program visualization)",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/fond-de-carte-consolide-france-et-outre-mers-realisation-pour-france-2030",
+      "data_gouv_url_alt": "https://data.gouv.fr/en/datasets/fond-de-carte-consolide-france-et-outre-mers",
+      "description": "Les fonds de cartes de la France métropolitaine et des Outre-mer sous format JSON permettent d'intégrer des données dans les bonnes limites géographiques (régionale, départementale). Ce jeu de données a été réalisé spécifiquement pour les besoins de visualisation du programme France 2030.",
+      "description_en": "Geographic base maps (JSON format) for metropolitan France and overseas territories, enabling correct integration of data at regional and departmental levels. Created specifically for France 2030 program data visualization needs.",
+      "data_type": [
+        "Geographic boundary files (GeoJSON)",
+        "Regional limits",
+        "Departmental limits",
+        "Overseas territories limits"
+      ],
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "update_frequency": "Static / As administrative boundaries change",
+      "estimated_resources": 2,
+      "resource_formats": ["JSON", "GeoJSON"],
+      "tags": ["france-2030", "cartographie", "geographie", "fond-de-carte", "outre-mer"],
+      "spatial_coverage": "France métropolitaine et Outre-mer"
+    },
+    {
+      "id": 7,
+      "title": "Investissements d'Avenir - Projets financés par l'ADEME",
+      "title_en": "Future Investments Program (PIA) - Projects financed by ADEME",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/ademe",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/investissements-davenir-projets-finances-par-lademe-1/",
+      "data_gouv_url_alt": "https://www.data.gouv.fr/fr/datasets/680a330ac4419cd26aa2c57e/",
+      "ademe_portal_url": "https://data.ademe.fr/datasets/investissements-davenir-projets-finances-par-lademe-2",
+      "description": "Ce jeu de données recense les projets soutenus par l'ADEME dans le cadre du Programme d'investissements d'avenir (PIA 1, 2, 3), lancé en 2010 pour stimuler l'innovation, la recherche et la compétitivité dans les secteurs stratégiques. L'ADEME a accompagné plus d'un millier de projets pour un montant total de 2,8 milliards d'euros, sous forme de subventions ou d'avances remboursables. Ce programme est le précurseur de France 2030 (PIA4).",
+      "description_en": "Lists projects supported by ADEME under the earlier Investment for the Future Programs (PIA 1, 2, 3) — the predecessor to France 2030 (PIA4). ADEME supported over 1,000 projects for a total of €2.8 billion.",
+      "data_type": [
+        "Project names and descriptions",
+        "Geographic location",
+        "Funding amounts (grants and repayable advances)",
+        "Sectors (renewable energy, sustainable mobility, circular economy, etc.)",
+        "PIA program version (PIA1, PIA2, PIA3)"
+      ],
+      "total_projects": "Over 1,000",
+      "total_funding_euros": "2,800,000,000",
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "update_frequency": "Bimensuelle",
+      "resource_formats": ["CSV", "JSON", "XLSX"],
+      "tags": ["aides", "financement", "investissements-davenir", "PIA", "ADEME"],
+      "temporal_coverage": "2010-2021",
+      "note": "Predecessor to France 2030 datasets; covers PIA1, PIA2, PIA3 programs"
+    },
+    {
+      "id": 8,
+      "title": "Investissements d'Avenir - Partenaires des projets financés par l'ADEME",
+      "title_en": "Future Investments Program (PIA) - Partners of projects financed by ADEME",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/ademe",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/investissements-davenir-partenaires-des-projets-finances-par-lademe-1/",
+      "data_gouv_url_alt": "https://www.data.gouv.fr/fr/datasets/680a32f4507374944e69e842/",
+      "description": "Ce jeu de données recense les partenaires des projets soutenus par l'ADEME dans le cadre du Programme d'investissements d'avenir (PIA 1, 2, 3). Les partenaires représentent une diversité d'acteurs : entreprises (grands groupes, PME, start-ups), laboratoires de recherche, collectivités territoriales, etc.",
+      "description_en": "Lists the partners of PIA 1/2/3 projects supported by ADEME. Partners include large corporations, SMEs, startups, research labs, and local authorities.",
+      "data_type": [
+        "Partner organization names and categories",
+        "Partner geographic location",
+        "Project references",
+        "Funding amounts per partner"
+      ],
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "update_frequency": "Bihebdomadaire",
+      "resource_formats": ["CSV", "JSON", "XLSX"],
+      "tags": ["aides", "financement", "investissements-davenir", "partenaires", "ADEME"],
+      "temporal_coverage": "2010-2021"
+    },
+    {
+      "id": 9,
+      "title": "Investissements d'avenir - Appels à projets (ADEME)",
+      "title_en": "Future Investments Program - Calls for Projects (ADEME)",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/ademe",
+      "data_gouv_url": "https://www.data.gouv.fr/en/datasets/investissements-davenir-appels-a-projets/",
+      "ademe_portal_url": "https://data.ademe.fr/datasets/investissements-d'avenir-appels-a-projets",
+      "description": "L'ADEME concentre son soutien sur des projets innovants portés par des entreprises dans les secteurs : énergies renouvelables, efficacité énergétique et vecteurs énergétiques, stockage de l'énergie, réseaux électriques intelligents, bâtiment, industrie et agriculture écoefficientes, chimie verte, économie circulaire, l'eau, biodiversité, transports et mobilité durables.",
+      "description_en": "Lists the calls for projects (appels à projets) managed by ADEME under the Investment for the Future Program, covering renewable energy, energy efficiency, green chemistry, circular economy, and sustainable transport.",
+      "data_type": [
+        "Call for project names",
+        "Call descriptions and themes",
+        "Eligibility criteria",
+        "Deadlines",
+        "Budget per call",
+        "Sector / thematic area"
+      ],
+      "last_known_update": "2023-07-05",
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "resource_formats": ["CSV", "JSON", "XLSX"],
+      "tags": ["investissements-davenir", "appels-a-projets", "ADEME", "innovation"]
+    },
+    {
+      "id": 10,
+      "title": "Investissements d'avenir - Partenaires (ADEME, vue globale)",
+      "title_en": "Future Investments Program - Partners (ADEME, global view)",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "data_gouv_url": "https://www.data.gouv.fr/en/datasets/investissements-davenir-partenaires/",
+      "ademe_portal_url": "https://data.ademe.fr/datasets/investissements-d'avenir-projets",
+      "description": "Vue globale des partenaires de l'ensemble des projets d'investissements d'avenir accompagnés par l'ADEME, couvrant les secteurs innovants liés à la transition écologique et environnementale.",
+      "description_en": "Global view of partners across all Investment for the Future projects accompanied by ADEME, covering innovation sectors related to ecological and environmental transition.",
+      "data_type": [
+        "Partner organizations",
+        "Project associations",
+        "Sector classifications",
+        "Geographic distribution"
+      ],
+      "last_known_update": "2023-07-05",
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "resource_formats": ["CSV", "JSON"]
+    },
+    {
+      "id": 11,
+      "title": "PCRI - Informations sur les projets lauréats",
+      "title_en": "PCRI - Information on Laureate Projects (Collaborative R&D Projects)",
+      "organization": "Bpifrance (Banque publique d'investissement)",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/pcri-informations-sur-les-projets-laureats",
+      "description": "Jeu de données publié par Bpifrance dans le cadre du Programme de Projets Collaboratifs de Recherche et d'Innovation (PCRI). Contient des informations sur les projets lauréats des concours d'innovation opérés par Bpifrance (i-Lab, i-Nov, i-PhD) financés via France 2030.",
+      "description_en": "Dataset published by Bpifrance covering laureate projects from the Collaborative R&D and Innovation (PCRI) program. Covers France 2030-funded innovation contests operated by Bpifrance: i-Lab, i-Nov, and i-PhD.",
+      "data_type": [
+        "Project names and descriptions",
+        "Laureate company names",
+        "Grant amounts",
+        "Innovation contest type (i-Lab, i-Nov, i-PhD)",
+        "Project themes/sectors",
+        "Geographic location"
+      ],
+      "programs_covered": ["i-Lab", "i-Nov", "i-PhD"],
+      "note": "Bpifrance operates France 2030 innovation contests on behalf of the State; 4,893 laureates since 1999 total across i-Lab, i-Nov, i-PhD programs; 147 laureates in 2024/2025 edition; 177 laureates in 2023/2024 edition",
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "resource_formats": ["CSV", "XLSX"]
+    },
+    {
+      "id": 12,
+      "title": "Projets de Recherche ADEME - Vue détaillée depuis 2021",
+      "title_en": "ADEME Research Projects - Detailed View (2021 onwards)",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "organization_page_data_gouv": "https://www.data.gouv.fr/organizations/ademe",
+      "data_gouv_url": "https://www.data.gouv.fr/en/datasets/projets-de-recherche-ademe-vue-detaillee-depuis-2021/",
+      "description": "Contrats d'aide d'un montant supérieur à 10 k€ dans le cadre du budget R&D de l'ADEME, engagés juridiquement postérieurement au 01/01/2021, date de mise en service de l'outil de gestion OPALE. Note du 02 décembre 2024 : certaines données sont en phase de test ou de formalisation, notamment les champs descriptifs du contexte du projet ou de l'appel à projets, ainsi que les informations de localisation.",
+      "description_en": "Aid contracts over €10k under ADEME's R&D budget, legally committed after 01/01/2021 (when the OPALE management tool was deployed). Some data fields are still in test phase as of December 2024.",
+      "data_type": [
+        "Research project names",
+        "Primary beneficiary (project coordinator)",
+        "Aid amounts (>€10k)",
+        "Project context and description (some fields in test phase)",
+        "Call for projects references",
+        "Geographic location (in progress)"
+      ],
+      "note": "As of December 2, 2024, some fields (project context description, calls for projects info, location data) are still being finalized. Covers post-2021 R&D budget, partially overlapping with France 2030.",
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "resource_formats": ["CSV", "XLSX", "JSON"],
+      "tags": ["recherche", "ADEME", "R&D", "innovation", "france-2030"]
+    },
+    {
+      "id": 13,
+      "title": "Projets de Recherche ADEME - Vue agrégée depuis 2021",
+      "title_en": "ADEME Research Projects - Aggregated View (2021 onwards)",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "data_gouv_url": "https://www.data.gouv.fr/en/datasets/projets-de-recherche-ademe-vue-agregee-depuis-2021/",
+      "description": "Vue agrégée des contrats d'aide d'un montant supérieur à 10 k€ dans le cadre du budget R&D de l'ADEME engagés depuis 2021. Le nom du signataire principal correspond au coordinateur du projet de recherche. Pour voir l'ensemble des partenaires, consulter la vue détaillée.",
+      "description_en": "Aggregated view of ADEME R&D aid contracts over €10k since 2021. Shows primary project coordinator only; see the detailed view for all partners.",
+      "data_type": [
+        "Research project names",
+        "Primary coordinator names",
+        "Total aid amounts",
+        "Sector classifications"
+      ],
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "resource_formats": ["CSV", "XLSX", "JSON"]
+    },
+    {
+      "id": 14,
+      "title": "Projets de Recherche ADEME - Vue détaillée 2014-2020",
+      "title_en": "ADEME Research Projects - Detailed View (2014-2020)",
+      "organization": "ADEME (Agence de la Transition Écologique)",
+      "data_gouv_url": "https://www.data.gouv.fr/en/datasets/projets-de-recherche-ademe-vue-detaillee-2014-2020/",
+      "description": "Aide engagée juridiquement entre le 01/01/2014 et le 31/12/2020. Un même projet de recherche peut apparaître sous autant de codes projets différents que de conventions d'aide avec les différents partenaires.",
+      "description_en": "Aid contracts committed between 01/01/2014 and 31/12/2020. A single research project may appear multiple times if it has multiple partner agreements. Historical PIA data preceding France 2030.",
+      "data_type": [
+        "Research project names",
+        "Partner organizations",
+        "Aid amounts",
+        "Time period (2014-2020)"
+      ],
+      "license": "Licence Ouverte / Open Licence version 2.0 (Etalab)",
+      "resource_formats": ["CSV", "XLSX"],
+      "temporal_coverage": "2014-2020"
+    }
+  ],
+  "apis_and_dataservices": [
+    {
+      "id": "api-1",
+      "title": "Explore API v2 — opendata.caissedesdepots.fr",
+      "title_en": "Explore API v2 — Caisse des Dépôts Open Data Portal",
+      "type": "REST API (Opendatasoft Explore API v2.1)",
+      "publisher": "Caisse des Dépôts",
+      "data_gouv_dataservice_url": "https://www.data.gouv.fr/en/dataservices/explore-api-v2-30/",
+      "api_console_url": "https://opendata.caissedesdepots.fr/api/explore/v2.1/console",
+      "base_url": "https://opendata.caissedesdepots.fr/api/explore/v2.1/",
+      "portal_url": "https://opendata.caissedesdepots.fr",
+      "description": "API REST de type Opendatasoft Explore v2.1 exposant l'ensemble des jeux de données publiés par la Caisse des Dépôts sur son portail open data. Donne accès notamment aux données sur les Démonstrateurs Ville Durable (France 2030 / PIA4), aux données financières et ressources humaines.",
+      "description_en": "OpenDataSoft Explore API v2.1 exposing all datasets published by the Caisse des Dépôts on its open data portal. Provides access to France 2030 datasets including Sustainable City Demonstrators laureates.",
+      "france_2030_datasets_accessible": [
+        "liste-des-laureats (Démonstrateurs Ville Durable laureates)",
+        "dvd_filtres (Démonstrateurs Ville Durable filtered view)"
+      ],
+      "supported_api_versions": ["v1", "v2.0", "v2.1"],
+      "authentication": "None required for public datasets",
+      "output_formats": ["JSON", "CSV", "GeoJSON", "XLSX"],
+      "api_endpoints_examples": [
+        "GET https://opendata.caissedesdepots.fr/api/explore/v2.1/catalog/datasets/ — List all datasets",
+        "GET https://opendata.caissedesdepots.fr/api/explore/v2.1/catalog/datasets/liste-des-laureats/records/ — Get laureate records",
+        "GET https://opendata.caissedesdepots.fr/api/explore/v2.1/catalog/datasets/dvd_filtres/records/ — Get filtered demonstrators data"
+      ]
+    },
+    {
+      "id": "api-2",
+      "title": "ADEME Open Data API (Opendatasoft Explore API)",
+      "type": "REST API (Opendatasoft Explore API v2.1)",
+      "publisher": "ADEME",
+      "portal_url": "https://data.ademe.fr",
+      "api_doc_url": "https://data.ademe.fr/catalog-api-doc",
+      "base_url": "https://data.ademe.fr/api/explore/v2.1/",
+      "description": "API REST de type Opendatasoft Explore v2.1 exposant l'ensemble des jeux de données publiés par l'ADEME sur son portail open data (data.ademe.fr). Donne accès aux datasets France 2030 et Investissements d'Avenir.",
+      "description_en": "OpenDataSoft Explore API v2.1 for the ADEME open data portal. Provides programmatic access to all ADEME datasets including France 2030 and PIA project data.",
+      "france_2030_datasets_accessible": [
+        "france-2030-projets-finances-par-lademe",
+        "france-2030-partenaires-des-projets-finances-par-lademe-2",
+        "investissements-davenir-projets-finances-par-lademe-2",
+        "investissements-d'avenir-appels-a-projets",
+        "investissements-d'avenir-projets"
+      ],
+      "authentication": "None required for public datasets",
+      "output_formats": ["JSON", "CSV", "XLSX"],
+      "note": "Some dataset pages on data.ademe.fr may return 404 if restructured; use data.gouv.fr references as fallback"
+    },
+    {
+      "id": "api-3",
+      "title": "data.gouv.fr REST API v1",
+      "type": "REST API",
+      "publisher": "Direction interministérielle du numérique (DINUM) / Etalab",
+      "api_base_url": "https://www.data.gouv.fr/api/1/",
+      "datasets_search_endpoint": "https://www.data.gouv.fr/api/1/datasets/?q=france+2030&page_size=20",
+      "documentation_url": "https://doc.data.gouv.fr/api/intro/",
+      "description": "API REST officielle de la plateforme data.gouv.fr permettant de rechercher, lister et accéder aux métadonnées de tous les jeux de données publiés sur la plateforme nationale des données publiques françaises.",
+      "description_en": "Official REST API of the data.gouv.fr platform for searching, listing, and accessing metadata of all datasets published on France's national open data platform.",
+      "france_2030_query_endpoints": [
+        "GET https://www.data.gouv.fr/api/1/datasets/?q=france+2030&page_size=20",
+        "GET https://www.data.gouv.fr/api/1/datasets/?q=france2030&page_size=20",
+        "GET https://www.data.gouv.fr/api/1/datasets/france-2030-projets-finances-par-lademe-1/",
+        "GET https://www.data.gouv.fr/api/1/datasets/france-2030-partenaires-des-projets-finances-par-lademe-1/",
+        "GET https://www.data.gouv.fr/api/1/organizations/ademe/datasets.csv"
+      ],
+      "authentication": "None required for public data; API key for write operations",
+      "output_formats": ["JSON", "CSV (organization exports)"],
+      "note": "Direct API access returned HTTP 403 during this research session, possibly due to rate limiting or geographic IP restrictions"
+    },
+    {
+      "id": "api-4",
+      "title": "API Entreprise",
+      "type": "REST API (restricted access)",
+      "publisher": "DINUM (Direction interministérielle du numérique)",
+      "api_gouv_url": "https://entreprise.api.gouv.fr",
+      "data_gouv_dataservice_url": "https://www.data.gouv.fr/dataservices/api-entreprise",
+      "description": "API permettant aux administrations et collectivités d'accéder aux données d'entreprises dans le cadre de la délivrance d'aides publiques, subventions, et fonds (dont France 2030). Permet le pré-remplissage de formulaires via SIRET/RNA et la récupération de justificatifs.",
+      "description_en": "API enabling public administrations to access company data when processing public aid applications, grants, and funds including France 2030. Enables form pre-filling via SIRET and automated justification retrieval.",
+      "relevance_to_france_2030": "Used by public operators (ADEME, Bpifrance, Banque des Territoires) and regional authorities to process France 2030 grant applications and verify applicant eligibility",
+      "use_cases": [
+        "Aides publiques / subventions",
+        "Marchés publics",
+        "Démarches entreprises"
+      ],
+      "authentication": "Access moderated and regulated by DINUM; authorization required based on use case",
+      "note": "Not an open API — restricted to authorized public administrations"
+    }
+  ],
+  "related_programs_and_external_sources": [
+    {
+      "name": "Aides Entreprises Open Data",
+      "url": "https://data.aides-entreprises.fr/",
+      "data_gouv_url": "https://www.data.gouv.fr/datasets/aides-entreprises",
+      "description": "Base de données de référence sur les aides publiques aux entreprises, incluant les dispositifs France 2030 opérés par Bpifrance.",
+      "type": "Dataset + Open Data portal"
+    },
+    {
+      "name": "Aides-Territoires — Bpifrance",
+      "url": "https://aides-territoires.beta.gouv.fr/partenaires/416-bpi-france/",
+      "description": "Référencement des aides Bpifrance sur la plateforme Aides-territoires, incluant les dispositifs France 2030.",
+      "type": "Portal / Dataset"
+    },
+    {
+      "name": "info.gouv.fr — Lauréats France 2030",
+      "url": "https://www.info.gouv.fr/grand-dossier/france-2030/laureats",
+      "description": "Cartographie officielle des projets lauréats du programme France 2030 sur le portail du gouvernement.",
+      "type": "Web portal (not a structured dataset)"
+    },
+    {
+      "name": "Agence Nationale de la Recherche (ANR) on data.gouv.fr",
+      "url": "https://www.data.gouv.fr/organizations/agence-nationale-de-la-recherche",
+      "description": "Organisation page for ANR (principal PIA operator for higher education and research). Datasets available in XLSX, CSV (UTF-8), and JSON formats. ANR datasets cover PIA-funded research projects which include France 2030 research programs.",
+      "type": "Organization / Datasets"
+    }
+  ],
+  "summary_statistics": {
+    "total_datasets_identified": 14,
+    "datasets_directly_titled_france_2030": 4,
+    "datasets_related_pia_predecessor": 5,
+    "datasets_geographic_support": 1,
+    "datasets_research_projects": 3,
+    "total_apis_identified": 4,
+    "public_open_apis": 3,
+    "restricted_apis": 1,
+    "main_publishers": [
+      "ADEME — 9 datasets",
+      "Caisse des Dépôts / Banque des Territoires — 2 datasets",
+      "ANCT / DGE — 1 dataset",
+      "Bpifrance — 1 dataset",
+      "SGPI / DINUM — 1 dataset"
+    ],
+    "data_types_summary": {
+      "funding_amounts": true,
+      "laureates_lists": true,
+      "project_descriptions": true,
+      "partner_organizations": true,
+      "geographic_location": true,
+      "calls_for_projects": true,
+      "research_contracts": true,
+      "industrial_sites": true
+    },
+    "license": "All datasets under Licence Ouverte / Open Licence version 2.0 (Etalab)"
+  }
+}
