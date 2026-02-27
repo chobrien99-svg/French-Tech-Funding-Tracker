@@ -57,216 +57,247 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 // =============================================
 // Replace this array with new deals each time you run the script.
 
-const DEALS = [
-  {
-    "company": "newcleo",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["Energy", "CleanTech"],
-    "description": "European developer of advanced nuclear technologies focused on lead-cooled fast reactors (LFRs) powered by fuel derived from recycled nuclear waste.",
-    "website_url": "https://www.newcleo.com",
-    "hq": "Paris",
-    "round": "Series B",
-    "amount_raised_eur": 75.0,
-    "investors": ["Kairos", "Indaco Ventures", "Azimut Investments", "CERN Pension Fund", "Walter Tosto", "Danieli & C.", "Cementir Holding", "Orion Valves", "NextChem", "Family Offices"],
-    "founders": [{ "name": "Stefano Buono" }],
-    "news_summary": "newcleo closed a €75M financing round, bringing capital raised over the past 12 months to more than €105M and total funding since 2021 to €645M. Proceeds support R&D infrastructure in Europe (including PRECURSOR) and expansion in the US.",
-    "news_source": ["Marketscreener", "PR"],
-    "news_url": ["https://www.marketscreener.com", null]
-  },
-  {
-    "company": "Hublo",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["HealthTech", "SaaS & Enterprise"],
-    "description": "Workforce management SaaS platform for healthcare institutions covering recruitment, scheduling, internal mobility, and communication.",
-    "website_url": "https://www.hublo.com",
-    "hq": "Paris",
-    "round": "Growth",
-    "amount_raised_eur": 40.0,
-    "investors": ["Revaia"],
-    "founders": [{ "name": "Antoine Loron" }],
-    "news_summary": "Revaia committed €40M via a reinvestment vehicle to continue supporting Hublo following its 2025 sale to Five Arrows. Hublo is used by 22,000+ managers across 5,000+ healthcare facilities.",
-    "news_source": ["EU Startups"],
-    "news_url": ["https://www.eu-startups.com"]
-  },
-  {
-    "company": "MyC",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["HealthTech", "SaaS & Enterprise"],
-    "description": "B2B SaaS platform for managing employee health in industrial and multi-site environments, centralizing medical data for compliance and coordination.",
-    "website_url": "https://www.myc.ai",
-    "hq": "Paris",
-    "round": "Series A",
-    "amount_raised_eur": 10.0,
-    "investors": ["Hi Inov", "IXO", "Elaia", "OSS Ventures"],
-    "founders": [{ "name": "Laurent Bonnardot" }, { "name": "Benjamin Crevant" }],
-    "news_summary": "MyC raised €10M to accelerate product development (including AI-driven analysis and automation) and scale its international commercial footprint.",
-    "news_source": ["Tech.eu"],
-    "news_url": ["https://tech.eu"]
-  },
-  {
-    "company": "Apmonia Therapeutics",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["BioTech"],
-    "description": "Clinical-stage biotech developing targeted cancer therapies by addressing the extracellular matrix (ECM) in solid tumors.",
-    "website_url": "https://www.apmonia-therapeutics.com",
-    "hq": "Reims",
-    "round": "Series A",
-    "amount_raised_eur": 10.0,
-    "investors": ["Capital Grand Est", "Finovam Gestion", "Fondation Fournier-Majoie", "Angels Santé", "Capital Cell"],
-    "founders": [{ "name": "Albin Jeanne" }],
-    "news_summary": "Apmonia raised €10M to advance lead asset TAX2 into first-in-human clinical development and finance a Phase I trial in France and Belgium.",
-    "news_source": ["Journal des Entreprises"],
-    "news_url": ["https://www.lejournaldesentreprises.com"]
-  },
-  {
-    "company": "Linkup",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["AI & Machine Learning"],
-    "description": "API-first real-time search infrastructure for AI models and autonomous agents, creating an AI-native index optimized for machine consumption.",
-    "website_url": "https://www.linkup.so",
-    "hq": "Paris",
-    "round": "Seed",
-    "amount_raised_eur": 10.0,
-    "investors": ["Gradient", "Elaia", "Leblon Capital", "Weekend Fund", "Seedcamp", "Axeleo Capital", "OPRTRS Club", "Motier Ventures", "Business Angels", "Arthur Mensch", "Florian Douetteau", "Olivier Pomel"],
-    "founders": [{ "name": "Philippe Mizrahi" }, { "name": "Boris Toledano" }, { "name": "Denis Charrier" }],
-    "news_summary": "After a €3M seed round (Nov 2024), Linkup raised an additional $10M to scale its teams across Paris, New York, and San Francisco and expand partnerships with trusted media publishers.",
-    "news_source": ["Maddyness", "Linkup"],
-    "news_url": ["https://www.maddyness.com", "https://www.linkup.so"]
-  },
-  {
-    "company": "UBEES",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["AgriTech"],
-    "description": "Regenerative pollination provider combining professional apiculture, connected beehives with sensors, agronomic data, and on-the-ground support.",
-    "website_url": "https://www.ubees.com",
-    "hq": "Paris",
-    "round": "Series A",
-    "amount_raised_eur": 8,
-    "investors": ["Starquest", "Capagro", "Newtree Impact"],
-    "founders": [{ "name": "Louis Delelis-Fanien" }],
-    "news_summary": "UBEES raised €8M Series A to accelerate international expansion (Latin America and Africa), develop connected hive technologies, and strengthen impact measurement capabilities.",
-    "news_source": ["Les Echos"],
-    "news_url": ["https://www.lesechos.fr"]
-  },
-  {
-    "company": "Bobine",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["CleanTech"],
-    "description": "Industrial cleantech developing electricity-based chemical recycling for non-recyclable plastics using heterogeneous catalysis and electromagnetic induction.",
-    "website_url": "https://www.bobine.tech",
-    "hq": "Lyon",
-    "round": "Series A",
-    "amount_raised_eur": 7.5,
-    "investors": ["Axeleo Capital", "UI Investissement", "Angelor", "CA Création", "CACF Capital Innovation", "C.A.V.", "Quest Investment"],
-    "founders": [{ "name": "Vincent Simonneau" }],
-    "news_summary": "Bobine raised €13M total including €7.5M equity to industrialize its chemical recycling process, with a pilot at Michelin’s materials center and plans to scale to a 1-ton/day demonstrator.",
-    "news_source": ["Les Echos"],
-    "news_url": ["https://www.lesechos.fr"]
-  },
-  {
-    "company": "Dionymer",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["CleanTech", "BioTech"],
-    "description": "Industrial biotech converting food waste into bio-based polymers (PHA) via sugar extraction and bacterial fermentation.",
-    "website_url": "https://www.dionymer.com",
-    "hq": "Pessac",
-    "round": "Series A",
-    "amount_raised_eur": 7.0,
-    "investors": ["UI Investissement", "BNP Paribas Développement", "Bpifrance", "Naco", "Irdi", "Aquiti", "AFI Ventures", "Resilience"],
-    "founders": [{ "name": "Thomas Hennebel" }, { "name": "Guillaume Charbonnier" }, { "name": "Antoine Brege" }],
-    "news_summary": "Dionymer raised €7M to finance a 100-ton/year industrial demonstrator planned for 2026, expand commercial traction into plastics and textiles, and prepare for a larger factory by 2030.",
-    "news_source": ["Les Echos"],
-    "news_url": ["https://www.lesechos.fr"]
-  },
-  {
-    "company": "Geolinks Services",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["DeepTech", "Energy"],
-    "description": "Passive seismic subsurface monitoring and dynamic modeling solution (FlowTerra™) for mining, CO₂ storage, natural hydrogen, and geothermal applications.",
-    "website_url": "https://www.geolinks-services.com",
-    "hq": "Paris",
-    "round": "Seed",
-    "amount_raised_eur": 3.4,
-    "investors": ["Calderion", "Bpifrance", "BRGM Invest", "InnoEnergy"],
-    "founders": [{ "name": "Jean-Charles Ferran" }],
-    "news_summary": "Raised funding to support commercial launch of FlowTerra™ in 2026 and strengthen AI/geoscience/modeling teams; also mentions €2.6M additional financing for €6M total support.",
-    "news_source": ["Bpifrance", "LinkedIn"],
-    "news_url": ["https://www.bpifrance.fr", "https://www.linkedin.com"]
-  },
-  {
-    "company": "DermaScan",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["MedTech", "AI & Machine Learning"],
-    "description": "Healthtech building specialized early-stage skin cancer screening centers combining advanced imaging, AI, and optimized workflows.",
-    "website_url": "https://www.dermascan.fr",
-    "hq": "Paris",
-    "round": "Seed",
-    "amount_raised_eur": 2.5,
-    "investors": ["Ring Capital", "Techmind", "Kima Ventures", "199 Ventures", "Hexa", "Business Angels", "Céline Lazorthes", "Jean-Charles Samuelian"],
-    "founders": [{ "name": "Florian Legris" }, { "name": "Hadrien Lepage" }],
-    "news_summary": "DermaScan raised €2.5M after opening two Paris screening centers, with plans to expand to major French cities.",
-    "news_source": ["Maddyness"],
-    "news_url": ["https://www.maddyness.com"]
-  },
-  {
-    "company": "Entent",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["CleanTech", "DeepTech", "Industrial Decarbonization", "Energy Hardware"],
-    "description": "Heat-to-power solution converting low-temperature industrial waste heat (from ~60°C) into electricity using a thermo-acoustic cycle.",
-    "website_url": "https://www.entent.io",
-    "hq": "Aix-en-Provence",
-    "round": "Seed",
-    "amount_raised_eur": 2.4,
-    "investors": ["Team For The Planet", "CAAP Création", "Sowefund"],
-    "founders": [{ "name": "Mathias Fonlupt" }],
-    "news_summary": "Entent raised €2.4M to launch first commercial deployments of its Pulse machines, including an installation at a Michelin site starting in Q1 2026.",
-    "news_source": ["Mesinfos"],
-    "news_url": ["https://www.mesinfos.fr"]
-  },
-  {
-    "company": "PRESAGE",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["AI & Machine Learning"],
-    "description": "AI-driven world models that simulate cloud infrastructure causality to enable predictive operations and reduce incident risk.",
-    "website_url": "https://www.presage.ai",
-    "hq": "Paris",
-    "round": "Seed",
-    "amount_raised_eur": 1.2,
-    "investors": ["welovefounders", "Kima Ventures", "Boost10x"],
-    "founders": [{ "name": "Arthur Chevalier" }, { "name": "Annah Augier" }, { "name": "Hamza Aassif" }],
-    "news_summary": "PRESAGE raised €1.2M to accelerate product development and initiate first deployments of its AI world models for cloud infrastructure teams.",
-    "news_source": ["LinkedIn"],
-    "news_url": ["https://www.linkedin.com"]
-  },
-  {
-    "company": "Sailiz",
-    "month": "February",
-    "year": 2026,
-    "sectors": ["E-commerce & Retail"],
-    "description": "Women-focused technical nautical apparel brand emphasizing recyclable, PFC-free mono-material garments and repairability.",
-    "website_url": "https://www.sailiz.com",
-    "hq": "Lorient",
-    "round": "Pre-Seed",
-    "amount_raised_eur": 0.2,
-    "investors": ["Bretagne Sud Angels", "Michel Le Bars", "Philippe Guidoux", "Business Angels"],
-    "founders": [{ "name": "Solène Saclier" }],
-    "news_summary": "Sailiz raised €200K (two tranches: €150K closed, €50K open) to expand product development, hire a textile engineer, and expand in Europe.",
-    "news_source": ["Boat Industry", "LinkedIn"],
-    "news_url": ["https://www.boatindustry.fr", "https://www.linkedin.com"]
-  }
-];
+const DEALS = {
+  company: "newcleo",
+  description: "newcleo is a European developer of advanced nuclear technologies focused on lead-cooled fast reactors (LFRs) powered by fuel derived from recycled nuclear waste. By combining proven reactor physics with next-generation fuel cycles, newcleo aims to deliver steady, competitive, low-carbon electricity and industrial heat for energy-intensive industries such as steel, chemicals, cement, shipping, and offshore infrastructure.",
+  hq: "Paris, Turin",
+  round: "Series B",
+  amount: 75,
+  month: "January",
+  year: 2026,
+  sectors: ["Energy", "CleanTech"],
+  investors: ["Kairos", "Indaco Ventures", "Azimut Investments", "CERN Pension Fund", "Walter Tosto", "Danieli & C.", "Cementir Holding", "Orion Valves", "NextChem", "Family Offices"],
+  founders: [
+    { name: "Stefano Buono" }
+  ],
+  news_url: "https://www.marketscreener.com/news/newcleo-secures-eur75-million-funding-round-with-cementir-among-investors-ce7e5bd3d189f427?ref=frenchtechjournal.com",
+  news_summary: "newcleo closed a €75M round, bringing total funding since 2021 to €645M, with continued financial backing and new industrial investors across steel, cement, valves, engineering, and energy-adjacent sectors. Proceeds will fund European R&D infrastructure including the 10 MW non-nuclear lead-cooled PRECURSOR test reactor and support expansion in the US, while advancing licensing and siting in France and large-scale facilities in Italy.",
+  website: "https://www.newcleo.com/"
+},
+
+{
+  company: "Hublo",
+  description: "Hublo is a workforce management SaaS platform dedicated to healthcare institutions, enabling hospitals, clinics, nursing homes, and providers to manage staffing end-to-end—from recruitment and scheduling to internal mobility and communication—centralising both ad-hoc and recurring staffing needs.",
+  hq: "Paris",
+  round: "Growth",
+  amount: 40,
+  month: "January",
+  year: 2026,
+  sectors: ["HealthTech", "SaaS & Enterprise"],
+  investors: ["Revaia"],
+  founders: [
+    { name: "Antoine Loron" }
+  ],
+  news_url: "https://www.eu-startups.com/2026/02/healthtech-platform-hublo-secures-e40-million-revaia-reinvestment-to-support-post-exit-growth-phase/?ref=frenchtechjournal.com",
+  news_summary: "Revaia committed €40M via a reinvestment vehicle to continue supporting Hublo after its 2025 sale to Five Arrows. Hublo is used by 22,000+ managers across 5,000+ facilities, supports ~1M healthcare professionals, and has quadrupled ARR since 2021 while reaching break-even and expanding into a full workforce and talent management suite.",
+  website: "https://www.hublo.com/"
+},
+
+{
+  company: "MyC",
+  description: "MyC is a B2B SaaS platform for managing employee health in industrial, multi-site, and high-risk environments. The cloud solution centralizes medical data to help medical teams, HR, and compliance functions coordinate care and meet regulatory obligations across complex, low-connectivity settings.",
+  hq: "Paris",
+  round: "Series A",
+  amount: 10,
+  month: "January",
+  year: 2026,
+  sectors: ["HealthTech", "SaaS & Enterprise"],
+  investors: ["Hi inov", "IXO", "Elaia", "OSS Ventures"],
+  founders: [
+    { name: "Laurent Bonnardot" },
+    { name: "Benjamin Crevant" }
+  ],
+  news_url: "https://tech.eu/2026/02/03/french-healthtech-myc-secures-eur10m-to-digitise-medical-operations-for-complex-worksites/?ref=frenchtechjournal.com",
+  news_summary: "MyC raised €10M to accelerate product development—especially AI-driven analysis and automation—and scale internationally. Founded in 2020, it is deployed across ~400 sites in 60+ countries, serving 500,000+ beneficiaries in regulated sectors such as energy, industry, maritime, defense, and specialized medical services.",
+  website: "https://www.myc.doctor/"
+},
+
+{
+  company: "Apmonia Therapeutics",
+  description: "Apmonia Therapeutics is a clinical-stage biotech developing targeted cancer therapies by addressing the extracellular matrix (ECM), modeling protein–protein interactions to generate therapeutic candidates aimed at improving drug penetration and efficacy in solid tumors.",
+  hq: "Reims",
+  round: "Series A",
+  amount: 10,
+  month: "January",
+  year: 2026,
+  sectors: ["BioTech"],
+  investors: ["Capital Grand Est", "Finovam Gestion", "Fondation Fournier-Majoie", "Angels Santé", "Capital Cell"],
+  founders: [
+    { name: "Albin Jeanne" }
+  ],
+  news_url: "https://www.lejournaldesentreprises.com/article/apmonia-therapeutics-boucle-une-levee-de-fonds-pour-accelerer-le-developpement-de-ses-therapies-2136072?ref=frenchtechjournal.com#selection-3047.149-3089.659",
+  news_summary: "Apmonia Therapeutics raised €10M to take its lead asset TAX2 into first-in-human development, financing a Phase I trial in France and Belgium across multiple solid tumor indications. Total funding since 2019 is ~€21M including €9.5M from the EIC in 2024, and the company is strengthening governance and its ECM-focused discovery platform.",
+  website: "https://apmonia-therapeutics.com/"
+},
+
+{
+  company: "Linkup",
+  description: "Linkup is building a real-time search engine designed specifically for AI systems via an API-first architecture, enabling AI models and agents to search, retrieve, and validate web information in real time using an AI-native index built from fine-grained “atoms of information.”",
+  hq: "Paris",
+  round: "Seed",
+  amount: 8.46,
+  month: "January",
+  year: 2026,
+  sectors: ["AI & Machine Learning"],
+  investors: ["Gradient", "Elaia", "Leblon Capital", "Weekend Fund", "Seedcamp", "Axeleo Capital", "OPRTRS Club", "Motier Ventures", "Business Angels", "Arthur Mensch", "Florian Douetteau", "Olivier Pomel"],
+  founders: [
+    { name: "Philippe Mizrahi" },
+    { name: "Boris Toledano" },
+    { name: "Denis Charrier" }
+  ],
+  news_url: "https://www.maddyness.com/2026/02/03/des-anciens-de-spotify-lyft-et-carrefour-levent-10-millions-de-dollars-pour-batir-le-google-search-de-lia/?ref=frenchtechjournal.com",
+  news_summary: "After closing a €3M seed in November 2024, Linkup raised an additional $10M to scale its real-time web search API for AI agents, addressing reliability risks such as misinformation and bot-generated content. The company will expand teams across Paris, New York, and San Francisco and deepen partnerships with trusted publishers.",
+  website: "https://www.linkup.so/"
+},
+
+{
+  company: "UBEES",
+  description: "UBEES provides scalable regenerative pollination programs combining professional apiculture, connected beehives with sensors, agronomic data, and field support to help farmers and brands monitor ecosystem health, improve practices, protect biodiversity, and increase smallholder incomes.",
+  hq: "Paris",
+  round: "Series A",
+  amount: 8,
+  month: "January",
+  year: 2026,
+  sectors: ["AgriTech"],
+  investors: ["Starquest", "Capagro", "Newtree Impact"],
+  founders: [
+    { name: "Louis Delelis-Fanien" }
+  ],
+  news_url: "https://www.lesechos.fr/start-up/impact/ubees-la-start-up-qui-fait-ami-avec-les-abeilles-2213535?ref=frenchtechjournal.com",
+  news_summary: "UBEES raised €8M to accelerate international expansion—especially in Latin America and Africa—advance its connected hive technologies, strengthen impact measurement, and build a global community of farmers generating additional income through apiculture.",
+  website: "https://www.ubees.com/"
+},
+
+{
+  company: "Bobine",
+  description: "Bobine is an industrial cleantech startup developing an electricity-based chemical recycling technology for non-recyclable plastics. Its process combines heterogeneous catalysis and electromagnetic induction to produce polymers equivalent to virgin plastic without relying on pyrolysis.",
+  hq: "Lyon",
+  round: "Series A",
+  amount: 7.5,
+  month: "January",
+  year: 2026,
+  sectors: ["CleanTech"],
+  investors: ["Axeleo Capital", "UI Investissement", "Angelor", "CA Création", "CACF Capital Innovation", "C.A.V.", "Quest Investment"],
+  founders: [
+    { name: "Vincent Simonneau" }
+  ],
+  news_url: "https://www.lesechos.fr/start-up/impact/bobine-la-start-up-qui-innove-dans-le-recyclage-chimique-des-plastiques-2213803?ref=frenchtechjournal.com",
+  news_summary: "Bobine raised €13M to accelerate industrialisation of its chemical recycling technology, including €7.5M in equity led by Axeleo Capital. The company claims major efficiency gains versus conventional approaches and is running an industrial pilot at Michelin’s materials center, aiming to scale from 100 kg/day to a 1 ton/day demonstrator.",
+  website: "https://bobine-chemistry.com/"
+},
+
+{
+  company: "Dionymer",
+  description: "Dionymer develops an industrial biotech process converting food waste into bio-based PHA polymers via a two-step approach—sugar extraction followed by bacterial fermentation—enabling consistent, high-quality biopolymers for multiple industrial applications.",
+  hq: "Pessac",
+  round: "Series A",
+  amount: 7,
+  month: "January",
+  year: 2026,
+  sectors: ["CleanTech", "BioTech"],
+  investors: ["UI Investissement", "BNP Paribas Développement", "Bpifrance", "Naco", "Irdi", "Aquiti", "AFI Ventures", "Resilience"],
+  founders: [
+    { name: "Thomas Hennebel" },
+    { name: "Guillaume Charbonnier" },
+    { name: "Antoine Brege" }
+  ],
+  news_url: "https://www.lesechos.fr/start-up/deals/dionymer-la-start-up-qui-veut-convertir-nos-dechets-alimentaires-en-bioplastique-2213674?ref=frenchtechjournal.com",
+  news_summary: "Dionymer raised €7M to scale production of PHA biopolymers from food waste, financing a 100-ton/year demonstrator planned for 2026 and preparing for a 1,000-ton/year factory by 2030. The technology is validated at pilot scale with early cosmetic customers and expansion planned into plastics and textiles.",
+  website: "https://www.dionymer.com/"
+},
+
+{
+  company: "Geolinks Services",
+  description: "Geolinks Services develops passive-seismic subsurface monitoring and modeling solutions. Its FlowTerra™ product enables near–real-time dynamic subsurface modeling to visualize underground fluid movements, improving safety for mining, CO₂ storage, and exploration of natural hydrogen and next-generation geothermal resources.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 3.4,
+  month: "January",
+  year: 2026,
+  sectors: ["DeepTech", "Energy"],
+  investors: ["Calderion", "Bpifrance", "BRGM Invest", "InnoEnergy"],
+  founders: [
+    { name: "Jean-Charles Ferran" }
+  ],
+  news_url: "https://presse.bpifrance.fr/geolinks-services-leve-6-meur-aupres-de-calderion-du-fonds-french-tech-seed-gere-pour-le-compte-de-letat-par-bpifrance-dans-le-cadre-de-france-2030-brgm-invest-et-innoenergy-pour-industrialiser-flowt?ref=frenchtechjournal.com",
+  news_summary: "Geolinks Services raised €3.4M, alongside €2.6M in additional financing (total €6M), to support the 2026 commercial launch of FlowTerra™ for mining, CCS, and natural hydrogen markets, strengthening teams in AI, geosciences, and modeling and scaling industrial operations.",
+  website: "https://geolinks-services.com/"
+},
+
+{
+  company: "DermaScan",
+  description: "DermaScan builds specialized centers for early-stage skin cancer screening, combining advanced medical technologies including total-body mapping and AI with optimized workflows to speed diagnosis and reduce pressure on dermatologists.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 2.5,
+  month: "January",
+  year: 2026,
+  sectors: ["MedTech", "AI & Machine Learning"],
+  investors: ["Ring Capital", "Techmind", "Kima Ventures", "199 Ventures", "Hexa", "Business Angels", "Céline Lazorthes", "Jean-Charles Samuelian"],
+  founders: [
+    { name: "Florian Legris" },
+    { name: "Hadrien Lepage" }
+  ],
+  news_url: "https://www.maddyness.com/2026/02/02/sante-celine-lazorthes-jean-charles-samuelian-kima-et-hexa-misent-sur-une-pepite-specialisee-dans-le-depistage-du-cancer-de-la-peau/",
+  news_summary: "DermaScan raised €2.5M to expand its network of skin cancer screening centers across major French cities after opening two Paris sites and reporting early detection outcomes at scale, with only ~10% of patients referred onward to dermatologists.",
+  website: "https://www.dermascan.fr/"
+},
+
+{
+  company: "Entent",
+  description: "Entent develops Heat-to-Power solutions converting low-temperature industrial waste heat into electricity. Its patented Pulse machine uses a thermo-acoustic cycle capable of valorising heat from as low as 60°C to improve energy efficiency and support industrial decarbonisation.",
+  hq: "Aix-en-Provence",
+  round: "Seed",
+  amount: 2.4,
+  month: "January",
+  year: 2026,
+  sectors: ["CleanTech", "DeepTech", "Industrial Decarbonization", "Energy Hardware"],
+  investors: ["Team For The Planet", "CAAP Création", "Sowefund"],
+  founders: [
+    { name: "Mathias Fonlupt" }
+  ],
+  news_url: "https://mesinfos.fr/13080-aix-en-provence/aix-en-provence-entent-leve-24-millions-d-euros-pour-decarboner-l-industrie-238905.html?ref=frenchtechjournal.com",
+  news_summary: "Entent raised €2.4M to launch first commercial deployments of its Pulse machines and prepare a future Series A, with a first industrial installation planned at a Michelin site starting in Q1 2026 and ambitions to deploy dozens of machines within three years.",
+  website: "https://entent.fr/"
+},
+
+{
+  company: "PRESAGE",
+  description: "PRESAGE develops AI-driven world models designed to capture the causal behavior of cloud infrastructures, simulating the impact of actions before deployment so teams can shift from reactive incident management to predictive operations.",
+  hq: "Paris",
+  round: "Seed",
+  amount: 1.2,
+  month: "January",
+  year: 2026,
+  sectors: ["AI & Machine Learning"],
+  investors: ["welovefounders", "Kima Ventures", "Boost10x"],
+  founders: [
+    { name: "Arthur Chevalier" },
+    { name: "Annah Augier" },
+    { name: "Hamza Aassif" }
+  ],
+  news_url: "https://www.linkedin.com/posts/benjamin-rey3_presage-l%C3%A8ve-12-m-presage-raises-12m-activity-7424746500116877313-Fah8?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
+  news_summary: "PRESAGE raised €1.2M to accelerate product development and begin first deployments of its causal world models for cloud infrastructure, shaped by feedback from 100+ senior engineering leaders across companies such as Front, Doctolib, Voodoo, Heetch, Nodle, and FlexAI.",
+  website: "https://presagelabs.ai/"
+},
+
+{
+  company: "Sailiz",
+  description: "Sailiz designs technical nautical clothing specifically adapted to women, focusing on performance-driven design and eco-responsibility through recyclable, PFC-free mono-material garments and strong repairability.",
+  hq: "Lorient",
+  round: "Pre-Seed",
+  amount: 0.2,
+  month: "January",
+  year: 2026,
+  sectors: ["E-commerce & Retail"],
+  investors: ["Bretagne Sud Angels", "Michel Le Bars", "Philippe Guidoux", "Business Angels"],
+  founders: [
+    { name: "Solène Saclier" }
+  ],
+  news_url: "https://www.boatindustry.com/news/51188/sailiz-strengthens-its-development-with-a-200000-fundraising-round?ref=frenchtechjournal.com",
+  news_summary: "Sailiz raised €200K in a first round (two tranches: €150K closed, €50K still open) to expand its women-focused technical sailing apparel line, recruit a textile engineer, and pursue European expansion targeting the UK, Spain, and Scandinavia.",
+  website: "https://sailiz.fr/"
+};
 // =============================================
 // SECTOR UTILITIES
 // =============================================
