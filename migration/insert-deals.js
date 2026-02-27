@@ -58,193 +58,188 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 // Replace this array with new deals each time you run the script.
 
 const DEALS = [
-   {
-  company: "Aviwell",
-  description: "Aviwell is a deep-tech animal nutrition company developing AI-driven, microbiome-based solutions to improve animal health, growth, and resilience. Built on decades of microbiome research, the company leverages its proprietary Aneto™ platform to design native bacterial ecologies with defined modes of action, enabling antibiotic-free, sustainable nutrition for poultry and aquaculture.",
-  hq: "Toulouse",
-  round: "Series A",
-  amount: 11,
-  month: "January",
-  year: 2026,
-  sectors: ["AgriTech", "FoodTech", "HealthTech", "BioTech", "AI & Machine Learning"],
-  investors: ["Blue Revolution Fund", "Blast.Club", "SWEN Capital Partners", "Elaia", "MFS Investment Management"],
-  founders: [
-    { name: "Rémy Burcelin" },
-    { name: "Mouli Ramani" }
-  ],
-  news_url: "https://www.linkedin.com/posts/aviwell_aviwell-welcomes-brf-blast-and-swen-to-our-activity-7420485842999164928-55SB?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
-  news_summary: "Aviwell closed an €11M Series A led by Blue Revolution Fund to scale its AI-powered Aneto™ microbiome discovery platform and advance nature-based biological solutions for antibiotic-free animal nutrition, supporting validation and industrial scale-up for poultry and aquaculture.",
-  website: "https://www.aviwell.fr/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "Twin",
-  description: "Twin is an AI platform that lets non-technical users build fully autonomous agents capable of running entire businesses end-to-end — from planning and decision-making to execution. Using browser control, self-correction, long-term memory, and a hybrid model stack, Twin enables complex operational workflows to be created in minutes without writing code.",
-  hq: "Paris",
-  round: "Seed",
-  amount: 8.4,
-  month: "January",
-  year: 2026,
-  sectors: ["AI & Machine Learning"],
-  investors: ["LocalGlobe", "Kima Ventures", "betaworks", "Irregular Expressions", "Motier Ventures", "Andrena Ventures", "Drysdale Ventures"],
-  founders: [
-    { name: "Hugo Mercier" },
-    { name: "João Justi" }
-  ],
-  news_url: "https://www.linkedin.com/posts/hugomercier_what-a-ride-after-2-months-of-beta-and-activity-7422211846599880704-9SSI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
-  news_summary: "Twin publicly launched on January 27 after a one-month beta in which users deployed 100,000+ autonomous agents, and announced a $10M seed round led by LocalGlobe to build an “AI company builder” enabling self-sufficient AI-run businesses.",
-  website: "https://builder.twin.so/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "Atlas V Group",
-  description: "Atlas V is a European leader in VR and immersive content, known for premium narrative experiences developed with top-tier creative talent and global entertainment IPs. The studio is diversifying into free-to-play immersive gaming and location-based VR, building a vertically integrated model spanning creation, production, and publishing of scalable XR experiences.",
-  hq: "Paris",
-  round: "Series A",
-  amount: 5,
-  month: "January",
-  year: 2026,
-  sectors: ["Gaming"],
-  investors: ["HTC"],
-  founders: [
-    { name: "Antoine Cayrol" },
-    { name: "Arnaud Colinart" }
-  ],
-  news_url: "https://variety.com/2026/digital/global/atlas-v-raise-6-million-diversify-gaming-location-based-vr-1236642469/?ref=frenchtechjournal.com",
-  news_summary: "Atlas V raised €5M led by strategic investor HTC to accelerate diversification into social and casual free-to-play VR gaming and location-based immersive experiences, leveraging its premium XR track record and HTC’s ecosystem to scale distribution.",
-  website: "https://atlasv.io/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "Recupere Metals",
-  description: "Recupere Metals is a French industrial startup developing a patented mechanical process to transform copper waste directly into high-performance copper wires without melting or refining, offering a low-carbon alternative for industrial copper supply.",
-  hq: "Paris",
-  round: "Seed",
-  amount: 5,
-  month: "January",
-  year: 2026,
-  sectors: ["DeepTech", "Hardware", "CleanTech", "Energy"],
-  investors: ["SistaFund", "Endgame Capital", "Ring Capital", "Triple Impact Ventures", "Business Angels", "Sake Bosch"],
-  founders: [
-    { name: "Katie Marsh" },
-    { name: "Julien Vaïssette" }
-  ],
-  news_url: "https://www.maddyness.com/2026/01/30/face-a-une-demande-de-cuivre-qui-explose-recupere-metals-leve-5-millions-deuros/?ref=frenchtechjournal.com",
-  news_summary: "Founded in March 2025, Recupere Metals raised €5M to move from R&D to industrial production and scale manufacturing capacity for its low-carbon copper wire process, targeting applications in electric motors, data centers, and digital infrastructure.",
-  website: "https://www.recupere-metals.com/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "AYAQ",
-  description: "AYAQ is a French technical apparel brand focused on high-performance outdoor clothing, built on field-tested functionality, durability, and a long-term product vision. Founded by Olympic gold medalist Vincent Defrasne, AYAQ combines elite performance standards with premium positioning.",
-  hq: "Paris",
-  round: "Growth",
-  amount: 3.2,
-  month: "January",
-  year: 2026,
-  sectors: ["E-commerce & Retail"],
-  investors: ["Mike Horn"],
-  founders: [
-    { name: "Vincent Defrasne" }
-  ],
-  news_url: "https://www.sporteco.com/une-augmentation-de-capital-chez-ayaq/?ref=frenchtechjournal.com",
-  news_summary: "AYAQ raised €3.2M in equity (plus non-dilutive financing) to accelerate international expansion and its product roadmap, welcoming explorer Mike Horn as a shareholder while management retains majority ownership; the brand entered Japan in September 2025 and is preparing broader rollout.",
-  website: "https://ayaq.com/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "GoCanopy",
-  description: "GoCanopy is an AI-native operating system for institutional real estate investors, transforming fragmented internal data into compounding institutional intelligence via human-in-the-loop agentic workflows that ingest unstructured documents into a single system of record.",
-  hq: "Paris",
-  round: "Seed",
-  amount: 2.1,
-  month: "January",
-  year: 2026,
-  sectors: ["PropTech & Real Estate", "AI & Machine Learning"],
-  investors: ["ISAI", "BNP Paribas Développement", "Yellow", "Andrew Baum", "Ludovic Jacquot"],
-  founders: [
-    { name: "William He" },
-    { name: "Yash Pabbisetti" }
-  ],
-  news_url: "https://www.eu-startups.com/2026/01/gocanopy-ends-bootstrapping-streak-and-raises-e2-1-million-to-build-ai-operating-system-for-institutional-real-estate-investors/?ref=frenchtechjournal.com",
-  news_summary: "GoCanopy raised €2.1M in seed funding to build an AI operating system for institutional real estate investors, expanding enterprise-grade product development and international growth across Paris and London; users include major asset managers such as Brookfield and certain Apollo-managed funds.",
-  website: "https://www.gocanopy.tech/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "Radiant",
-  description: "Radiant is an industrial climate tech startup developing high-temperature solar thermal solutions to decarbonise industrial heat, combining next-generation heliostats, a proprietary receiver, and thermal energy storage to replace fossil-fuel-based equipment.",
-  hq: "Massy",
-  round: "Seed",
-  amount: 2,
-  month: "January",
-  year: 2026,
-  sectors: ["Energy", "CleanTech"],
-  investors: ["Tiresias Angels", "Selim Cherif", "Business Angels", "Hexa"],
-  founders: [
-    { name: "Thomas Delhon" },
-    { name: "Alexandre Meurisse" }
-  ],
-  news_url: "https://tech.eu/2026/01/27/radiant-joins-hexas-carbon-zero-programme-and-raises-eur2m-to-decarbonise-industrial-heat/?ref=frenchtechjournal.com",
-  news_summary: "Selected for Hexa’s Carbon Zero program, Radiant closed a €2M round to industrialize its solar thermal technology and finance a first industrial demonstrator in Le Mans, targeting 200°C–1,000°C heat for sectors such as cement, glass, and asphalt.",
-  website: "https://www.radiant-energy.eu/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "Evolutive Agronomy",
-  description: "Evolutive Agronomy develops biological crop protection solutions that are high-performance and easy to deploy, focusing on soil pests and beneficial organisms to reduce reliance on chemical inputs while improving agronomic outcomes.",
-  hq: "Sophia Antipolis",
-  round: "Pre-Seed",
-  amount: 1.8,
-  month: "January",
-  year: 2026,
-  sectors: ["AgriTech", "BioTech"],
-  investors: ["50 Partners", "Business Angels"],
-  founders: [
-    { name: "Antoine Pasquier" },
-    { name: "Lucie Monticelli" }
-  ],
-  news_url: "https://www.nicematin.com/economie/avec-ses-acariens-predateurs-cette-starup-azureenne-a-un-plan-sans-pesticide-pour-aider-les-agriculteurs-a-lutter-contre-les-ravageurs-des-sols-10664758?ref=frenchtechjournal.com",
-  news_summary: "Evolutive Agronomy raised €1.8M to accelerate field deployment of ByeNematode®, a biological solution based on predatory mites targeting root-knot nematodes, while scaling production and continuing farm-aligned R&D.",
-  website: "https://evolutiveagronomy.com/solution-bye-nematode/?ref=frenchtechjournal.com"
-},
-
-{
-  company: "Dowgo",
-  description: "Dowgo is a French fintech building blockchain-based investment infrastructure to finance private impact assets, connecting professional and institutional investors with project developers across the investment lifecycle from issuance to secondary trading.",
-  hq: "Paris",
-  round: "Seed",
-  amount: 2,
-  month: "January",
-  year: 2026,
-  sectors: ["FinTech", "Web3"],
-  investors: ["Bpifrance", "50 Partners", "Cube Accelerator", "Emmanuel Picot", "Damien Guermonprez"],
-  founders: [
-    { name: "Oscar Dumant" },
-    { name: "Romain Menetrier" }
-  ],
-  news_url: "https://finyear.com/dowgo-leve-2-millions-deuros?ref=frenchtechjournal.com",
-  news_summary: "Dowgo announced a €2M seed round to finalize deployment of its regulated-grade blockchain platform for impact private assets, including primary issuance and a secondary market for liquidity; its regulatory application is under review by French authorities under the EU Pilot Regime framework.",
-  website: "https://www.dowgo.com/en?ref=frenchtechjournal.com"
-},
-
-{
-  company: "ATOBA Energy",
-  description: "ATOBA Energy is a midstream Sustainable Aviation Fuel aggregator designed to unlock industrial-scale growth of SAF by resolving the financial deadlock between airlines and producers through aggregated offtake portfolios and optimized pricing indexes.",
-  hq: "Lyon",
-  round: "Pre-Seed",
-  amount: 1.265,
-  month: "January",
-  year: 2026,
-  sectors: ["ClimateTech", "SpaceTech & Aerospace"],
-  investors: ["Undisclosed"],
-  founders: [
-    { name: "Arnaud Namer" }
-  ],
-  news_url: "https://atoba.energy/blog/atoba-raises-1.5m-pre-seed-round-to-unlock-scaling-of-sustainable-aviation-fuel?ref=frenchtechjournal.com",
-  news_summary: "ATOBA Energy raised an oversubscribed $1.5M pre-seed to scale its SAF aggregation platform and expand offtake agreements with producers, airlines, and resellers, enabling bankable long-term SAF contracts to accelerate industrial deployment.",
-  website: "https://www.atoba.energy/?ref=frenchtechjournal.com"
-}
+  {
+    "company_name": "newcleo",
+    "sectors": ["Energy", "CleanTech"],
+    "description": "European developer of advanced nuclear technologies focused on lead-cooled fast reactors (LFRs) powered by recycled nuclear waste-derived fuel.",
+    "website_url": "https://www.newcleo.com",
+    "hq_city": ["Paris", "Turin"],
+    "round": "Series B",
+    "amount_raised_eur": 75000000,
+    "investors": ["Kairos", "Indaco Ventures", "Azimut Investments", "CERN Pension Fund", "Walter Tosto", "Danieli & C.", "Cementir Holding", "Orion Valves", "NextChem", "Family Offices"],
+    "founders": ["Stefano Buono"],
+    "news_summary": "Closed €75M round supporting R&D infrastructure including PRECURSOR reactor and accelerating US expansion. Total funding since 2021 reaches €645M.",
+    "news_source": ["Marketscreener", "PR"],
+    "news_url": ["https://www.marketscreener.com"]
+  },
+  {
+    "company_name": "Hublo",
+    "sectors": ["HealthTech", "SaaS & Enterprise"],
+    "description": "Workforce management SaaS platform for healthcare institutions managing staffing, recruitment, scheduling and internal mobility.",
+    "website_url": "https://www.hublo.com",
+    "hq_city": ["Paris"],
+    "round": "Growth",
+    "amount_raised_eur": 40000000,
+    "investors": ["Revaia"],
+    "founders": ["Antoine Loron"],
+    "news_summary": "€40M reinvestment vehicle from Revaia following sale to Five Arrows. Hublo now serves 22,000 managers across 5,000 healthcare facilities.",
+    "news_source": ["EU Startups"],
+    "news_url": ["https://www.eu-startups.com"]
+  },
+  {
+    "company_name": "MyC",
+    "sectors": ["HealthTech", "SaaS & Enterprise"],
+    "description": "B2B SaaS platform managing employee health in industrial and high-risk environments with centralized and compliant medical data systems.",
+    "website_url": "https://www.myc.ai",
+    "hq_city": ["Paris"],
+    "round": "Series A",
+    "amount_raised_eur": 10000000,
+    "investors": ["Hi Inov", "IXO", "Elaia", "OSS Ventures"],
+    "founders": ["Laurent Bonnardot", "Benjamin Crevant"],
+    "news_summary": "€10M Series A to accelerate AI-driven data analysis and expand international footprint across regulated occupational health markets.",
+    "news_source": ["Tech EU"],
+    "news_url": ["https://tech.eu"]
+  },
+  {
+    "company_name": "Apmonia Therapeutics",
+    "sectors": ["BioTech"],
+    "description": "Clinical-stage biotech developing ECM-targeted cancer therapies to improve drug penetration in solid tumors.",
+    "website_url": "https://www.apmonia-therapeutics.com",
+    "hq_city": ["Reims"],
+    "round": "Series A",
+    "amount_raised_eur": 10000000,
+    "investors": ["Capital Grand Est", "Finovam Gestion", "Fondation Fournier-Majoie", "Angels Santé", "Capital Cell"],
+    "founders": ["Albin Jeanne"],
+    "news_summary": "€10M to advance TAX2 into Phase I clinical trials targeting ovarian, colorectal, pancreatic cancers and melanoma.",
+    "news_source": ["Journal des Entreprises"],
+    "news_url": ["https://www.lejournaldesentreprises.com"]
+  },
+  {
+    "company_name": "Linkup",
+    "sectors": ["AI & Machine Learning"],
+    "description": "Real-time search engine infrastructure built specifically for AI agents through API-first architecture and AI-native indexing.",
+    "website_url": "https://www.linkup.so",
+    "hq_city": ["Paris"],
+    "round": "Seed",
+    "amount_raised_eur": 8460000,
+    "investors": ["Gradient", "Elaia", "Leblon Capital", "Weekend Fund", "Seedcamp", "Axeleo Capital", "OPRTRS Club", "Motier Ventures", "Business Angels", "Arthur Mensch", "Florian Douetteau", "Olivier Pomel"],
+    "founders": ["Philippe Mizrahi", "Boris Toledano", "Denis Charrier"],
+    "news_summary": "Raised additional $10M following €3M seed to become core search infrastructure for AI systems, expanding in Paris, NYC, and SF.",
+    "news_source": ["Maddyness", "Linkup"],
+    "news_url": ["https://www.maddyness.com", "https://www.linkup.so"]
+  },
+  {
+    "company_name": "UBEES",
+    "sectors": ["AgriTech"],
+    "description": "Regenerative pollination company combining professional apiculture, connected beehives, and agronomic data.",
+    "website_url": "https://www.ubees.com",
+    "hq_city": ["Paris"],
+    "round": "Series A",
+    "amount_raised_eur": 8000000,
+    "investors": ["Starquest", "Capagro", "Newtree Impact"],
+    "founders": ["Louis Delelis-Fanien"],
+    "news_summary": "€8M Series A to expand internationally and develop connected hive technologies across Latin America and Africa.",
+    "news_source": ["Les Echos"],
+    "news_url": ["https://www.lesechos.fr"]
+  },
+  {
+    "company_name": "Bobine",
+    "sectors": ["CleanTech"],
+    "description": "Industrial cleantech developing electricity-based chemical recycling for non-recyclable plastics.",
+    "website_url": "https://www.bobine.tech",
+    "hq_city": ["Lyon"],
+    "round": "Series A",
+    "amount_raised_eur": 7500000,
+    "investors": ["Axeleo Capital", "UI Investissement", "Angelor", "CA Création", "CACF Capital Innovation", "C.A.V.", "Quest Investment"],
+    "founders": ["Vincent Simonneau"],
+    "news_summary": "€7.5M equity as part of €13M round to industrialize chemical recycling pilot with Michelin and scale to 1-ton/day demonstrator.",
+    "news_source": ["Les Echos"],
+    "news_url": ["https://www.lesechos.fr"]
+  },
+  {
+    "company_name": "Dionymer",
+    "sectors": ["CleanTech", "BioTech"],
+    "description": "Industrial biotech converting food waste into bio-based polymers (PHA) via sugar extraction and fermentation.",
+    "website_url": "https://www.dionymer.com",
+    "hq_city": ["Pessac"],
+    "round": "Series A",
+    "amount_raised_eur": 7000000,
+    "investors": ["UI Investissement", "BNP Paribas Développement", "Bpifrance", "Naco", "Irdi", "Aquiti", "AFI Ventures", "Resilience"],
+    "founders": ["Thomas Hennebel", "Guillaume Charbonnier", "Antoine Brege"],
+    "news_summary": "€7M to build 100-ton/year demonstrator in 2026 and expand into plastics and textiles markets.",
+    "news_source": ["Les Echos"],
+    "news_url": ["https://www.lesechos.fr"]
+  },
+  {
+    "company_name": "Geolinks Services",
+    "sectors": ["DeepTech", "Energy"],
+    "description": "Passive seismic-based subsurface monitoring and modeling solutions for mining, CCS, and natural hydrogen.",
+    "website_url": "https://www.geolinks-services.com",
+    "hq_city": ["Paris"],
+    "round": "Seed",
+    "amount_raised_eur": 3400000,
+    "investors": ["Calderion", "Bpifrance", "BRGM Invest", "InnoEnergy"],
+    "founders": ["Jean-Charles Ferran"],
+    "news_summary": "Seed round to commercialize FlowTerra™ in 2026 and expand AI and geoscience teams.",
+    "news_source": ["Bpifrance", "LinkedIn"],
+    "news_url": ["https://www.bpifrance.fr", "https://www.linkedin.com"]
+  },
+  {
+    "company_name": "DermaScan",
+    "sectors": ["MedTech", "AI & Machine Learning"],
+    "description": "AI-enabled skin cancer screening centers combining total-body mapping and optimized clinical workflows.",
+    "website_url": "https://www.dermascan.fr",
+    "hq_city": ["Paris"],
+    "round": "Seed",
+    "amount_raised_eur": 2500000,
+    "investors": ["Ring Capital", "Techmind", "Kima Ventures", "199 Ventures", "Hexa", "Business Angels", "Céline Lazorthes", "Jean-Charles Samuelian"],
+    "founders": ["Florian Legris", "Hadrien Lepage"],
+    "news_summary": "€2.5M to expand screening centers nationally after diagnosing 50 early-stage cancers since launch.",
+    "news_source": ["Maddyness"],
+    "news_url": ["https://www.maddyness.com"]
+  },
+  {
+    "company_name": "Entent",
+    "sectors": ["CleanTech", "DeepTech", "Energy Hardware", "Industrial Decarbonization"],
+    "description": "Heat-to-Power deeptech converting low-temperature industrial waste heat into electricity using thermo-acoustic cycles.",
+    "website_url": "https://www.entent.io",
+    "hq_city": ["Aix-en-Provence"],
+    "round": "Seed",
+    "amount_raised_eur": 2400000,
+    "investors": ["Team For The Planet", "CAAP Création", "Sowefund"],
+    "founders": ["Mathias Fonlupt"],
+    "news_summary": "€2.4M to launch first commercial deployments including Michelin site installation in 2026.",
+    "news_source": ["Mesinfos"],
+    "news_url": ["https://www.mesinfos.fr"]
+  },
+  {
+    "company_name": "PRESAGE",
+    "sectors": ["AI & Machine Learning"],
+    "description": "AI-driven world models simulating causal behavior of cloud infrastructure to enable predictive operations.",
+    "website_url": "https://www.presage.ai",
+    "hq_city": ["Paris"],
+    "round": "Seed",
+    "amount_raised_eur": 1200000,
+    "investors": ["welovefounders", "Kima Ventures", "Boost10x"],
+    "founders": ["Arthur Chevalier", "Annah Augier", "Hamza Aassif"],
+    "news_summary": "€1.2M to accelerate deployments of AI world models for cloud engineering teams.",
+    "news_source": ["LinkedIn"],
+    "news_url": ["https://www.linkedin.com"]
+  },
+  {
+    "company_name": "Sailiz",
+    "sectors": ["E-commerce & Retail"],
+    "description": "Sustainable nautical clothing brand designing technical maritime apparel specifically for women.",
+    "website_url": "https://www.sailiz.com",
+    "hq_city": ["Lorient"],
+    "round": "Pre-Seed",
+    "amount_raised_eur": 200000,
+    "investors": ["Bretagne Sud Angels", "Michel Le Bars", "Philippe Guidoux", "Business Angels"],
+    "founders": ["Solène Saclier"],
+    "news_summary": "€200K to expand product line and launch European expansion after early product-market validation.",
+    "news_source": ["Boat Industry", "LinkedIn"],
+    "news_url": ["https://www.boatindustry.fr", "https://www.linkedin.com"]
+  }
 ];
 // =============================================
 // SECTOR UTILITIES
