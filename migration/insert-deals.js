@@ -298,7 +298,8 @@ const DEALS = [
   news_url: "https://www.boatindustry.com/news/51188/sailiz-strengthens-its-development-with-a-200000-fundraising-round?ref=frenchtechjournal.com",
   news_summary: "Sailiz raised €200K in a first round (two tranches: €150K closed, €50K still open) to expand its women-focused technical sailing apparel line, recruit a textile engineer, and pursue European expansion targeting the UK, Spain, and Scandinavia.",
   website: "https://sailiz.fr/"
-};
+},
+];
 // =============================================
 // SECTOR UTILITIES
 // =============================================
