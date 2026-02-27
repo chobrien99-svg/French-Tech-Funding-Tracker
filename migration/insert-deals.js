@@ -57,7 +57,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
 // =============================================
 // Replace this array with new deals each time you run the script.
 
-const DEALS = {
+const DEALS = [
+ {
   company: "newcleo",
   description: "newcleo is a European developer of advanced nuclear technologies focused on lead-cooled fast reactors (LFRs) powered by fuel derived from recycled nuclear waste. By combining proven reactor physics with next-generation fuel cycles, newcleo aims to deliver steady, competitive, low-carbon electricity and industrial heat for energy-intensive industries such as steel, chemicals, cement, shipping, and offshore infrastructure.",
   hq: "Paris, Turin",
