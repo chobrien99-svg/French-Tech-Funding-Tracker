@@ -22,5 +22,8 @@
     "type": "git",
     "url": "https://github.com/[your-username]/french-tech-funding-2025.git"
   },
-  "homepage": "https://funding.frenchtechjournal.com"
+  "homepage": "https://funding.frenchtechjournal.com",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.99.3"
+  }
 }
