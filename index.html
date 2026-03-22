@@ -1069,6 +1069,9 @@
                     <select class="filter-select" id="filter-year">
                         <option value="">All Years</option>
                     </select>
+                    <select class="filter-select" id="filter-investor">
+                        <option value="">All Investors</option>
+                    </select>
                 </div>
                 <div class="active-filters" id="active-filters"></div>
                 <div class="results-info" id="results-info"></div>
@@ -1461,12 +1464,19 @@
             const allRounds = new Set();
             const allCities = new Set();
             const allYears = new Set();
+            const allInvestors = new Set();
 
             allCompanies.forEach(c => {
                 c.sectors.forEach(s => allSectors.add(s));
                 if (c.round) allRounds.add(c.round);
                 if (c.hq) allCities.add(c.hq);
                 if (c.year) allYears.add(c.year);
+                if (c.investors) {
+                    c.investors.split(',').forEach(inv => {
+                        const name = inv.trim();
+                        if (name) allInvestors.add(name);
+                    });
+                }
             });
 
             // Populate sector filter
@@ -1506,6 +1516,15 @@
                 yearSelect.appendChild(option);
             });
 
+            // Populate investor filter
+            const investorSelect = document.getElementById('filter-investor');
+            Array.from(allInvestors).sort((a, b) => a.localeCompare(b)).forEach(investor => {
+                const option = document.createElement('option');
+                option.value = investor;
+                option.textContent = investor;
+                investorSelect.appendChild(option);
+            });
+
             // Event listeners with debouncing
             const debouncedFilter = debounce(applyFilters, 300);
             document.getElementById('search').addEventListener('input', debouncedFilter);
@@ -1514,6 +1533,7 @@
             document.getElementById('filter-city').addEventListener('change', applyFilters);
             document.getElementById('filter-size').addEventListener('change', applyFilters);
             document.getElementById('filter-year').addEventListener('change', applyFilters);
+            document.getElementById('filter-investor').addEventListener('change', applyFilters);
             document.getElementById('sort-by').addEventListener('change', () => { currentPage = 1; updateDisplay(); });
 
             // Chart toggles
@@ -1531,6 +1551,7 @@
             const cityFilter = document.getElementById('filter-city').value;
             const sizeFilter = document.getElementById('filter-size').value;
             const yearFilter = document.getElementById('filter-year').value;
+            const investorFilter = document.getElementById('filter-investor').value;
 
             let sizeMin = 0, sizeMax = Infinity;
             if (sizeFilter) {
@@ -1557,6 +1578,7 @@
                 if (cityFilter && company.hq !== cityFilter) return false;
                 if (sizeFilter && (company.amount < sizeMin || company.amount > sizeMax)) return false;
                 if (yearFilter && company.year !== parseInt(yearFilter)) return false;
+                if (investorFilter && !(company.investors || '').split(',').map(i => i.trim()).includes(investorFilter)) return false;
 
                 return true;
             });
@@ -1577,7 +1599,8 @@
                 { id: 'filter-round', label: 'Round' },
                 { id: 'filter-city', label: 'City' },
                 { id: 'filter-size', label: 'Size' },
-                { id: 'filter-year', label: 'Year' }
+                { id: 'filter-year', label: 'Year' },
+                { id: 'filter-investor', label: 'Investor' }
             ];
 
             filters.forEach(filter => {
