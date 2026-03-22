@@ -1575,8 +1575,7 @@
     "news": null,
     "month": "February",
     "sectors": [
-      "HealthTech",
-      "BioTech"
+      "MedTech"
     ]
   },
   {
@@ -3339,6 +3338,8 @@
     "news": "https://www.linkedin.com/posts/sim-cure_neurovascular-medtech-healthcareinnovation-activity-7313802533527797760-Kj4y?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAE0kG8BObj6r7nc5sfWRNVZaz22BQG3gmI",
     "month": "April",
     "sectors": [
+      "MedTech",
+      "HealthTech",
       "AI & Machine Learning"
     ]
   },
@@ -6268,7 +6269,8 @@
     "month": "July",
     "sectors": [
       "HealthTech",
-      "BioTech"
+      "MedTech",
+      "SaaS & Enterprise"
     ]
   },
   {
@@ -6423,9 +6425,8 @@
     "news": "https://www.linkedin.com/posts/in-brain-pharma_france-parkinsoninbrain-pharma-activity-7353352128632889345-NIhW?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAADtQEBK2cPoar2fKhYuhhp-DyTx_pSNBI",
     "month": "July",
     "sectors": [
-      "HealthTech",
       "BioTech",
-      "AI & Machine Learning"
+      "DeepTech"
     ]
   },
   {
@@ -8187,20 +8188,18 @@
     ]
   },
   {
-    "company": "Biomunex Pharmaceuticals",
-    "description": "Paris- and Cambridge-based biopharmaceutical company pioneering a new generation of bi- and multi-specific antibodies for cancer immunotherapy. Its proprietary BiXAb® “Plug-and-Play” platform enables the rapid development of bispecific antibodies with strong druglike properties. Biomunex is the first to develop MAIT-engagers—bispecific antibodies designed to identify, mobilize, and activate MAIT cells, a subpopulation of T cells capable of killing cancer cells.",
-    "website": "https://www.biomunex.com",
-    "hq": "Paris",
-    "round": "Growth",
-    "amount": 0.001,
-    "investors": "New shareholders, including private investors, family offices, and Eurobail, investing alongside existing shareholders and management",
-    "founders": "Dr. Pierre-Emmanuel Gerard (Founding President & CEO); Dr. Simon Plyte (CSO)",
-    "news": "https://firstwordpharma.com/story/6228364",
-    "month": "October",
-    "sectors": [
-      "HealthTech",
-      "BioTech",
-      "AI & Machine Learning"
+    “company”: “Biomunex Pharmaceuticals”,
+    “description”: “Paris- and Cambridge-based biopharmaceutical company pioneering a new generation of bi- and multi-specific antibodies for cancer immunotherapy. Its proprietary BiXAb® “Plug-and-Play” platform enables the rapid development of bispecific antibodies with strong druglike properties. Biomunex is the first to develop MAIT-engagers—bispecific antibodies designed to identify, mobilize, and activate MAIT cells, a subpopulation of T cells capable of killing cancer cells.”,
+    “website”: “https://www.biomunex.com”,
+    “hq”: “Paris”,
+    “round”: “Growth”,
+    “amount”: 0.001,
+    “investors”: “New shareholders, including private investors, family offices, and Eurobail, investing alongside existing shareholders and management”,
+    “founders”: “Dr. Pierre-Emmanuel Gerard (Founding President & CEO); Dr. Simon Plyte (CSO)”,
+    “news”: “https://firstwordpharma.com/story/6228364”,
+    “month”: “October”,
+    “sectors”: [
+      “BioTech”
     ]
   },
   {
@@ -9693,9 +9692,9 @@
     "news": "https://sim-and-cure.com/simcure-secures-10-m-series-extension-to-revolutionize-neurovascular-procedures/",
     "month": "December",
     "sectors": [
-      "AI & Machine Learning",
+      "MedTech",
       "HealthTech",
-      "BioTech"
+      "AI & Machine Learning"
     ]
   },
   {
@@ -10704,8 +10703,8 @@
     "news": "Abbelight closed a Series B round led by AVANT BIO to accelerate imaging innovation and scale commercial adoption beyond academic research into biopharma, biotech, and CROs. The funding will support international commercial expansion, product development, and continued support of its 100+ installed customer base, reinforcing Abbelight’s position as a key enabling technology provider in life sciences research and drug discovery.",
     "month": "January",
     "sectors": [
-      "HealthTech",
-      "BioTech"
+      "BioTech",
+      "DeepTech"
     ]
   }
 ]
