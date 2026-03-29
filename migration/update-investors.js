@@ -45,7 +45,7 @@ const INVESTOR_UPDATES = [
     },
     {
         company: 'PulseSight Therapeutics',
-        investors: ['Korea Investment Partners', 'Pureos Bioventures', '+ND Capital'],
+        investors: ['Pureos Bioventures', 'Korea Investment Partners', 'ND Capital'],
     },
     {
         company: 'DareWin Evolution',
@@ -130,6 +130,38 @@ const INVESTOR_UPDATES = [
     {
         company: 'BiPER Therapeutics',
         investors: ['France 2030', 'Bpifrance', 'MEDIN Fund Management Company'],
+    },
+    {
+        company: 'GenoMines',
+        investors: ['Prospect Innovation', 'AlphaTech Investment Group', 'Lowercarbon Capital', 'Raise Phiture', 'Elemental Impact', 'Hyundai Motor Company', 'Forbion BioEconomy', 'Wind Capital', 'Teampact Ventures', 'Salida B.V.', 'Engine Ventures', 'Entrepreneurs First'],
+    },
+    {
+        company: 'My Auto Specialist',
+        investors: ['UI Investissement', 'IRD INVEST'],
+    },
+    {
+        company: 'Biomunex Pharmaceuticals',
+        investors: ['Family Offices'],
+    },
+    {
+        company: 'OLENERGIES',
+        investors: ['Reed - Societe Generale Group'],
+    },
+    {
+        company: 'KaraFun Group',
+        investors: ['Vendis Capital', 'Verlinvest'],
+    },
+    {
+        company: 'Easy Cash',
+        investors: ['Ouest Croissance', 'Multicroissance', 'Océan Participations'],
+    },
+    {
+        company: 'InBrain Pharma',
+        investors: ['France Parkinson'],
+    },
+    {
+        company: 'Adcytherix',
+        investors: ['Andera Partners', 'Angelini Ventures', 'Bpifrance', 'Kurma Partners', 'Surveyor Capital', 'aMoon', 'Pontifax', 'Dawn Biopharma', 'Pureos Bioventures', 'RA Capital'],
     },
 ];
 
