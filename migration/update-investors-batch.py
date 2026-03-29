@@ -69,15 +69,26 @@ def link_investor(round_id, investor_id, is_lead=False):
 
 # ── Company → investor list ──────────────────────────────────────────────────
 UPDATES = [
-    ('Waat',                ['RAISE Impact', 'DWS Group', 'Bpifrance']),
-    ('Vibe',                ['QuantumLight', 'Elaia', 'Singular']),
-    ('Lattice Medical',     ['Captech Santé', 'Bpifrance', 'Blast Club', 'TIDJEE',
-                              'EIC Fund', 'FIRA Nord Est', 'France 2030']),
-    ('Dracula Technologies', ['France 2030', 'European Innovation Council (EIC) Fund',
-                               'MGI Digital Technology Group', 'Banque des Territoires']),
-    ('La Fourche',          ['Bpifrance', 'Astanor']),
-    ('Zadient Technologies', ['European Innovation Council Fund (EIC Fund)',
-                               'Crédit Mutuel Impact']),
+    ('SCAP Hologram',       ['eCential Robotics', 'Stéphane Lavallée', 'Delphine Henry',
+                              'Haventure', 'Bpifrance', 'BNP Paribas', 'Surosh',
+                              'MinMaxMedical', "Caisse d'Épargne Rhône-Alpes Auvergne"]),
+    ('Stellaria',           ['Schneider Electric', 'CEA Investissement', 'Orano',
+                              'Supernova Invest', 'Technip Energies', 'Audacia',
+                              'France 2030']),
+    ('AFYREN',              ['Bpifrance']),
+    ('RockFi',              ['Félix Blossier', 'Varsity', 'Arthur Waller',
+                              'Business Angels', 'Partech', 'Mark Ransford']),
+    ('KEEY AEROGEL',        ['NCI', 'Bpifrance', 'Wind Capital', 'Capital Grand Est']),
+    ('Axoltis Pharma',      ['Simba Santé 2', 'Business Angels', 'Capital Cell',
+                              'Fonds Régional Avenir Industrie Auvergne-Rhône-Alpes',
+                              'FaDièse 3', 'Le Cercle de Chiron', 'Norfoalk',
+                              'FIDAT Ventures', 'Cenitz']),
+    ('Lexip (formerly Pixminds)', ['Undisclosed']),
+    ('Spiko',               ['Harsh Sinh', 'Index Ventures', 'Business Angels',
+                              'Nik Storonsky']),
+    ('Tafalgie Therapeutics', ['Bpifrance', 'European Innovation Council (EIC)']),
+    ('NcodiN',              ['Elaia', 'Maverick Silicon', 'MIG Capital',
+                              'Verve Ventures', 'OVNI', 'PhotonVentures', 'Earlybird']),
 ]
 
 # ── Main ─────────────────────────────────────────────────────────────────────
