@@ -61,30 +61,39 @@ def lookup_investor(name):
 
 
 def get_round_links(investor_id):
-    """Return list of {funding_round_id, is_lead} for an investor."""
+    """Return list of {funding_round_id, is_lead, investment_amount_eur} for an investor."""
     results = api_request(
         'GET',
-        f'funding_round_investors?select=funding_round_id,is_lead&investor_id=eq.{investor_id}'
+        f'funding_round_investors?select=funding_round_id,is_lead,investment_amount_eur&investor_id=eq.{investor_id}'
     )
     return results or []
 
 
-def link_exists(funding_round_id, investor_id):
+def get_existing_link(funding_round_id, investor_id):
+    """Return existing link row {is_lead, investment_amount_eur} or None."""
     results = api_request(
         'GET',
-        f'funding_round_investors?select=funding_round_id'
+        f'funding_round_investors?select=is_lead,investment_amount_eur'
         f'&funding_round_id=eq.{funding_round_id}&investor_id=eq.{investor_id}'
     )
-    return bool(results)
+    return results[0] if results else None
 
 
-def insert_link(funding_round_id, investor_id, is_lead):
+def promote_lead(funding_round_id, investor_id):
+    """Set is_lead=true on an existing link."""
     api_request(
-        'POST',
-        'funding_round_investors',
-        body={'funding_round_id': funding_round_id, 'investor_id': investor_id, 'is_lead': is_lead},
+        'PATCH',
+        f'funding_round_investors?funding_round_id=eq.{funding_round_id}&investor_id=eq.{investor_id}',
+        body={'is_lead': True},
         prefer='return=minimal',
     )
+
+
+def insert_link(funding_round_id, investor_id, is_lead, investment_amount_eur=None):
+    body = {'funding_round_id': funding_round_id, 'investor_id': investor_id, 'is_lead': is_lead}
+    if investment_amount_eur is not None:
+        body['investment_amount_eur'] = investment_amount_eur
+    api_request('POST', 'funding_round_investors', body=body, prefer='return=minimal')
 
 
 def delete_links_for_investor(investor_id):
@@ -106,8 +115,13 @@ def merge_investor(dirty_id, clean_id, dirty_name):
     links = get_round_links(dirty_id)
     for link in links:
         rid = link['funding_round_id']
-        if not link_exists(rid, clean_id):
-            insert_link(rid, clean_id, link['is_lead'])
+        existing = get_existing_link(rid, clean_id)
+        if existing is None:
+            insert_link(rid, clean_id, link['is_lead'], link.get('investment_amount_eur'))
+        else:
+            # Clean link already present — promote to lead if dirty link was lead and clean isn't
+            if link['is_lead'] and not existing['is_lead']:
+                promote_lead(rid, clean_id)
     delete_links_for_investor(dirty_id)
     delete_investor_record(dirty_id)
 

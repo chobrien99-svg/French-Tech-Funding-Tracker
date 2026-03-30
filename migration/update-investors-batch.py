@@ -43,6 +43,11 @@ def find_company(name):
 def get_rounds(company_id):
     return req('GET', f'funding_rounds?select=id&company_id=eq.{company_id}') or []
 
+def get_round_investor_amounts(round_id):
+    """Return {investor_id: investment_amount_eur} for existing links (None values excluded)."""
+    rows = req('GET', f'funding_round_investors?select=investor_id,investment_amount_eur&funding_round_id=eq.{round_id}') or []
+    return {r['investor_id']: r['investment_amount_eur'] for r in rows if r['investment_amount_eur'] is not None}
+
 def clear_round_investors(round_id):
     req('DELETE', f'funding_round_investors?funding_round_id=eq.{round_id}', prefer='return=minimal')
 
@@ -62,9 +67,11 @@ def upsert_investor(name):
             return rows[0]['id'] if rows else None
         raise
 
-def link_investor(round_id, investor_id, is_lead=False):
-    req('POST', 'funding_round_investors',
-        body={'funding_round_id': round_id, 'investor_id': investor_id, 'is_lead': is_lead},
+def link_investor(round_id, investor_id, is_lead=False, investment_amount_eur=None):
+    body = {'funding_round_id': round_id, 'investor_id': investor_id, 'is_lead': is_lead}
+    if investment_amount_eur is not None:
+        body['investment_amount_eur'] = investment_amount_eur
+    req('POST', 'funding_round_investors', body=body,
         prefer='resolution=ignore-duplicates,return=minimal')
 
 # ── Company → investor list ──────────────────────────────────────────────────
@@ -150,6 +157,9 @@ def main():
             if not rounds:
                 print(f'  NO ROUNDS: "{company_name}"'); err += 1; continue
 
+            # Snapshot per-round amounts before clearing, keyed by investor_id
+            round_amounts = {rnd['id']: get_round_investor_amounts(rnd['id']) for rnd in rounds}
+
             # Clear all existing investor links across all rounds
             for rnd in rounds:
                 clear_round_investors(rnd['id'])
@@ -163,8 +173,10 @@ def main():
                 investor_ids.append((inv_name, inv_id))
 
             for rnd in rounds:
+                amounts = round_amounts[rnd['id']]
                 for i, (inv_name, inv_id) in enumerate(investor_ids):
-                    link_investor(rnd['id'], inv_id, is_lead=(i == 0))
+                    link_investor(rnd['id'], inv_id, is_lead=(i == 0),
+                                  investment_amount_eur=amounts.get(inv_id))
 
             suffix = f' (×{len(rounds)} rounds)' if len(rounds) > 1 else ''
             print(f'  ✓ {comp["name"]}{suffix}: {", ".join(investors)}')
