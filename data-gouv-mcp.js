@@ -189,6 +189,13 @@ async function main() {
 
   // 4. Targeted lookup by SIREN (example: Doctolib – 794 914 762)
   await enrichCompanyBySiren(tabulaResource.id, "794914762");
+
+  // 5. Lookup for SIREN 994 675 254
+  console.log("=".repeat(60));
+  console.log("  Looking up SIREN 994 675 254");
+  console.log("=".repeat(60));
+  console.log();
+  await enrichCompanyBySiren(tabulaResource.id, "994675254");
 }
 
 main().catch(console.error);
