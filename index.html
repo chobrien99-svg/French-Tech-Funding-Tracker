@@ -1077,19 +1077,6 @@
                 <div class="results-info" id="results-info"></div>
             </section>
 
-            <!-- Latest Deals -->
-            <section class="latest-deals-section">
-                <div class="section-header">
-                    <h2 class="section-title"><span class="icon">🆕</span> Latest Deals</h2>
-                </div>
-                <div class="latest-deals-grid" id="latest-deals-grid">
-                    <div class="loading">
-                        <div class="loading-spinner"></div>
-                        Loading latest deals...
-                    </div>
-                </div>
-            </section>
-
             <!-- Analytics -->
             <section class="analytics-section">
                 <div class="section-header">
@@ -1113,6 +1100,19 @@
                         <div class="chart-container">
                             <canvas id="roundsChart"></canvas>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Deals -->
+            <section class="latest-deals-section">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="icon">🆕</span> Latest Deals</h2>
+                </div>
+                <div class="latest-deals-grid" id="latest-deals-grid">
+                    <div class="loading">
+                        <div class="loading-spinner"></div>
+                        Loading latest deals...
                     </div>
                 </div>
             </section>
@@ -2002,7 +2002,8 @@
         const chartColors = [
             '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ef4444',
             '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1',
-            '#14b8a6', '#a855f7'
+            '#14b8a6', '#a855f7', '#e11d48', '#0ea5e9', '#22c55e',
+            '#d97706', '#7c3aed', '#db2777', '#0891b2', '#65a30d',
         ];
 
         function initializeCharts() {
@@ -2065,8 +2066,7 @@
             });
 
             const sortedSectors = Object.entries(sectorData)
-                .sort((a, b) => sectorChartMode === 'funding' ? b[1].funding - a[1].funding : b[1].count - a[1].count)
-                .slice(0, 10);
+                .sort((a, b) => sectorChartMode === 'funding' ? b[1].funding - a[1].funding : b[1].count - a[1].count);
 
             sectorChart.data.labels = sortedSectors.map(([s]) => s);
             sectorChart.data.datasets[0].data = sortedSectors.map(([, d]) => sectorChartMode === 'funding' ? d.funding : d.count);
