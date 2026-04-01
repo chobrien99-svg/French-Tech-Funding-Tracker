@@ -71,6 +71,10 @@ def link_founder(company_id, person_id):
 # ── Batch 3 ───────────────────────────────────────────────────────────────────
 # Naali, Spring, Veragrow, alltheway, Sootenir, Dylogy, Allergen Alert,
 # BuyCo, Karavela, Enakl, BiOceanOr
+# ── Batch 4 ───────────────────────────────────────────────────────────────────
+# Tandem, Biomunex Pharmaceuticals, Kotcha, CGREEN, Karbikes, Delpha,
+# Edumapper, Feedae, MoEa, Mirabelle, KaraFun Group, Thunder Code,
+# Extensee, Underdog, Retab, AITHRA, Sim&Cure, Nutropy, ClearDrop
 
 UPDATES = [
     # Batch 1
@@ -111,6 +115,26 @@ UPDATES = [
     ('Karavela',       ['Charles Maussion', 'Alexis Thual', 'Bertrand Thirion']),
     ('Enakl',          ['Charles Pommarede', 'Ahmed Omrane', 'Samir Bennani']),
     ('BiOceanOr',      ['Charlotte Dupont', 'Samuel Dupont']),
+    # Batch 4
+    ('Tandem',                   ['Christophe Barre', 'Manuel Darcemont']),
+    ('Biomunex Pharmaceuticals', ['Pierre-Emmanuel Gerard', 'Simon Plyte']),
+    ('Kotcha',                   ['Michel-André Chirita', 'Eliud Kipchoge', 'Ben Dupont', 'Dimitri Dor']),
+    ('CGREEN',                   ['Gaëlle Guyader', 'Céline Largeau']),
+    ('Karbikes',                 ['Gaëlle Richard', 'Lucas Vançon']),
+    ('Delpha',                   ['Germain Bourgeois', 'Bryce Jones', 'Paul Santini']),
+    ('Edumapper',                ['Sébastien de Lafond', 'Julien Cheyssial', 'Jordan Sanial', 'Valentine Mandon']),
+    ('Feedae',                   ['Célia Chambellan', 'Sylvain de Ly', 'Jérôme Benois', 'Cédric Couton']),
+    ('MoEa',                     ['Achille Gazagnes', 'Benoit Habfast']),
+    ('Mirabelle',                ['Hugo Jenny', 'Bastien Davalos']),
+    ('KaraFun Group',            ['Jean-Baptiste Defossez', 'Bart Defossez']),
+    ('Thunder Code',             ['Karim Jouini', 'Jihed Othmani']),
+    ('Extensee',                 ['Kevin Cheronet', 'Éric Le Moulec', 'Jean-Baptiste Olry']),
+    ('Underdog',                 ['Laura Chavigny', 'Léa de Fierkowsky']),
+    ('Retab',                    ['Victor Plaisance', 'Louis de Benoist', 'Sacha Ichbiah']),
+    ('AITHRA',                   ['Marine Bertucchi', 'Cédric Neuville']),
+    ('Sim&Cure',                 ['Mathieu Sanchez']),
+    ('Nutropy',                  ['Nathalie Rolland', 'Maya Bendifallah']),
+    ('ClearDrop',                ['Nikos Christopoulos', 'Michael Baudoin']),
 ]
 
 # ── Main ─────────────────────────────────────────────────────────────────────
