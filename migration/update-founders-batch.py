@@ -68,6 +68,9 @@ def link_founder(company_id, person_id):
 # ── Batch 2 ───────────────────────────────────────────────────────────────────
 # ScorePlay, Diffusely (ex-Meero), Qovery, Evertrust, Tsuga, Flowdesk,
 # EG 427, Quobly, NcodiN, Solence, Probabl
+# ── Batch 3 ───────────────────────────────────────────────────────────────────
+# Naali, Spring, Veragrow, alltheway, Sootenir, Dylogy, Allergen Alert,
+# BuyCo, Karavela, Enakl, BiOceanOr
 
 UPDATES = [
     # Batch 1
@@ -96,6 +99,18 @@ UPDATES = [
     ('NcodiN',         ['Fabrice Raineri', 'Bruno Garbin', 'Francesco Manegatti']),
     ('Solence',        ['Clara Stephenson', 'Mael Mertad']),
     ('Probabl',        ['Yann Lechelle', 'Gaël Varoquaux']),
+    # Batch 3
+    ('Naali',          ['Abderhaman Nour Ebad', 'Hilal Tagaroun', 'Nadir Tayach']),
+    ('Spring',         ['Philippe Cantet', 'Ben Guerville', 'Laure Favre']),
+    ('Veragrow',       ['Alexandre Bocage']),
+    ('alltheway',      ['Anouar Zbaida', 'Émilie Gazeau', 'Julien de Colfmacker']),
+    ('Sootenir',       ['Antoine Coudert', 'Baptiste Bech']),
+    ('Dylogy',         ['Aurélien Couloumy', 'Loris Chiapparo']),
+    ('Allergen Alert', ['Bénédicte Astier']),
+    ('BuyCo',          ['Carl Lauron']),
+    ('Karavela',       ['Charles Maussion', 'Alexis Thual', 'Bertrand Thirion']),
+    ('Enakl',          ['Charles Pommarede', 'Ahmed Omrane', 'Samir Bennani']),
+    ('BiOceanOr',      ['Charlotte Dupont', 'Samuel Dupont']),
 ]
 
 # ── Main ─────────────────────────────────────────────────────────────────────
