@@ -38,6 +38,10 @@ def req(method, path, body=None, prefer=None):
 def find_company(name):
     enc = urllib.parse.quote(name, safe='')
     rows = req('GET', f'companies?select=id,name&name=ilike.{enc}')
+    if rows: return rows[0]
+    # Fallback: prefix match for companies with suffixes like "(ex-Meero)"
+    enc2 = urllib.parse.quote(f'{name}%', safe='')
+    rows = req('GET', f'companies?select=id,name&name=ilike.{enc2}')
     return rows[0] if rows else None
 
 def get_or_create_person(full_name):
@@ -57,21 +61,41 @@ def link_founder(company_id, person_id):
               'role': 'founder', 'is_current': True},
         prefer='return=minimal')
 
-# ── Company → founder list ───────────────────────────────────────────────────
+# ── Batch 1 ───────────────────────────────────────────────────────────────────
+# Adcytherix, Upway, Vibe, Pelico, Onepark, Step Pharma, Maki, Spiko,
+# Formance, nextProtein, Axoltis Pharma, Epsor, Memority
+
+# ── Batch 2 ───────────────────────────────────────────────────────────────────
+# ScorePlay, Diffusely (ex-Meero), Qovery, Evertrust, Tsuga, Flowdesk,
+# EG 427, Quobly, NcodiN, Solence, Probabl
+
 UPDATES = [
-    ('Adcytherix',    ['Carsten Dehning', 'Xavier Preville', 'Jack Elands']),
-    ('Upway',         ['Stéphane Ficaja', 'Toussaint Wattinne']),
-    ('Vibe',          ['Franck Tetzlaff', 'Arthur Querou']),
-    ('Pelico',        ['Tarik Benabdallah', 'Mamoun Alaoui']),
-    ('Onepark',       ['David Vanden Born']),
-    ('Step Pharma',   ['Alain Fischer', 'Sylvain Latour']),
-    ('Maki',          ['Maxime Legardez', 'Paul-Louis Caylar', 'Benjamin Chino']),
-    ('Spiko',         ['Antoine Michon', 'Paul\u2011Adrien Hyppolite']),
-    ('Formance',      ['Anne-Sybille Pradelles', 'Clément Salaün']),
-    ('nextProtein',   ['Mohamed Gastli', 'Syrine Chaalala']),
-    ('Axoltis Pharma',['Yann Godfrin']),
-    ('Epsor',         ['Julien Niquet', 'Benjamin Pedrini']),
-    ('Memority',      ['Gilles Castéran', 'Francis Grégoire']),
+    # Batch 1
+    ('Adcytherix',     ['Carsten Dehning', 'Xavier Preville', 'Jack Elands']),
+    ('Upway',          ['Stéphane Ficaja', 'Toussaint Wattinne']),
+    ('Vibe',           ['Franck Tetzlaff', 'Arthur Querou']),
+    ('Pelico',         ['Tarik Benabdallah', 'Mamoun Alaoui']),
+    ('Onepark',        ['David Vanden Born']),
+    ('Step Pharma',    ['Alain Fischer', 'Sylvain Latour']),
+    ('Maki',           ['Maxime Legardez', 'Paul-Louis Caylar', 'Benjamin Chino']),
+    ('Spiko',          ['Antoine Michon', 'Paul\u2011Adrien Hyppolite']),
+    ('Formance',       ['Anne-Sybille Pradelles', 'Clément Salaün']),
+    ('nextProtein',    ['Mohamed Gastli', 'Syrine Chaalala']),
+    ('Axoltis Pharma', ['Yann Godfrin']),
+    ('Epsor',          ['Julien Niquet', 'Benjamin Pedrini']),
+    ('Memority',       ['Gilles Castéran', 'Francis Grégoire']),
+    # Batch 2
+    ('ScorePlay',      ['Victorien Tixier', 'Xavier Green']),
+    ('Diffusely',      ['Thomas Rebaud', 'Gaétan Rougevin-Baville', 'Guillaume Lestrade']),
+    ('Qovery',         ['Romaric Philogène']),
+    ('Evertrust',      ['Kamel Ferchouche', 'Jean-Julien Alvado', 'Étienne Laviolette']),
+    ('Tsuga',          ['Gabriel-James Safar', 'Sébastien Deprez']),
+    ('Flowdesk',       ['François Cluzeau', 'Guilhem Chaumont', 'Paul Bugnot', 'Balthazar Giraux']),
+    ('EG 427',         ['François Giuliano', 'Philippe Chambon']),
+    ('Quobly',         ['François Perruchot', 'Maud Vinet', 'Tristan Meunier']),
+    ('NcodiN',         ['Fabrice Raineri', 'Bruno Garbin', 'Francesco Manegatti']),
+    ('Solence',        ['Clara Stephenson', 'Mael Mertad']),
+    ('Probabl',        ['Yann Lechelle', 'Gaël Varoquaux']),
 ]
 
 # ── Main ─────────────────────────────────────────────────────────────────────
