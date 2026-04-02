@@ -138,6 +138,20 @@ UPDATES = [
     ('Ciloa',               ['France 2030', 'Bpifrance']),
     ('Primaa',              ['SWEN Capital Partners', 'Super Capital', "MH Innov'",
                               'Elaia']),
+    # Batch 6
+    ('Cementic',               ['Blast Club', 'Business Angels']),
+    ('Igonogo',                ['Family Offices']),
+    ('Dialog',                 ['Galion.exe', 'Kima Ventures', 'Weaving Group', 'Business Angels', 'Hexa']),
+    ('Reekom',                 ['Kimpa', 'Business Angels', 'Alpha Star', 'Super Capital']),
+    ('Green Spot Technologies',['Business Angels', 'EIC Accelerator', 'Team For The Planet']),
+    ('Volta Software',         ['Robin Capital', 'Emblem', 'Pascal Houillon', 'Founders Future', 'RTP Global', 'Business Angels']),
+    ('Playse',                 ['Sowefund', 'Seventure Partners', 'Business Angels']),
+    ('hummingbirds',           ['British International Investment', 'Sowefund', 'Proparco']),
+    ('Wilgo',                  ['Kima Ventures', 'Amaury Sepulchre', 'Epsilon Venture Partners',
+                                 'Thibaud Hug de Larauze', 'daphni', 'Better Angle', 'Founders Future',
+                                 'Nathalie Balla', 'Sequoia', 'Simon Dawlat', 'Business Angels']),
+    ('Lemrock',                ['Frédéric Halley', 'Emmanuelle Brizay', 'Antoine Lizée',
+                                 'Gary Anssens', 'Michaël Benabou', 'Galion.exe', 'Business Angels']),
 ]
 
 # ── Main ─────────────────────────────────────────────────────────────────────
