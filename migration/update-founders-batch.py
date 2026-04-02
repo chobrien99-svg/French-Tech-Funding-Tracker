@@ -75,6 +75,9 @@ def link_founder(company_id, person_id):
 # Tandem, Biomunex Pharmaceuticals, Kotcha, CGREEN, Karbikes, Delpha,
 # Edumapper, Feedae, MoEa, Mirabelle, KaraFun Group, Thunder Code,
 # Extensee, Underdog, Retab, AITHRA, Sim&Cure, Nutropy, ClearDrop
+# ── Batch 5 ───────────────────────────────────────────────────────────────────
+# Sounduct, NOLT, SeaBeLife, Skyld AI, RSight, Ewake, Popsink, Flagcat,
+# REasy, Retab, Tibeka Protections, Waypoint AI, ROB'OCC, MNGRS.AI, Kikleo, WeWard
 
 UPDATES = [
     # Batch 1
@@ -135,6 +138,23 @@ UPDATES = [
     ('Sim&Cure',                 ['Mathieu Sanchez']),
     ('Nutropy',                  ['Nathalie Rolland', 'Maya Bendifallah']),
     ('ClearDrop',                ['Nikos Christopoulos', 'Michael Baudoin']),
+    # Batch 5
+    ('Sounduct',                 ['Olivier Gauthier', 'Philippe Marie de Chastenay']),
+    ('NOLT',                     ['Paul Guinard', 'Olivier Guigonis']),
+    ('SeaBeLife',                ['Morgane Rousselot', 'Marie-Thérèse Dimanche-Boitrel', 'Claire Delehouzé']),
+    ('Skyld AI',                 ['Marie Paindavoine']),
+    ('RSight',                   ['Philippe Beucher']),
+    ('Ewake',                    ['Pooné Mokari', 'Omid Gosha']),
+    ('Popsink',                  ['Alexandre Colella', 'Benjamin Djidi']),
+    ('Flagcat',                  ['Quentin Malguy', 'Rémi Juhé', 'Jeff Biart']),
+    ('REasy',                    ['Richard Kue', 'Stéphane Meng', 'Brice Mba', 'Mathieu Wing']),
+    ('Retab',                    ['Victor Plaisance', 'Louis de Benoist', 'Sacha Ichbiah']),
+    ('Tibeka Protections',       ['Stéphane Belamy', 'Mulat Alubel Abtew', 'Bertrand Meslier']),
+    ('Waypoint AI',              ['Steve Boogar', 'Liam Boogar-Azoulay', 'Tomas Polivka']),
+    # ROB\u2019OCC: matched by ID (curly apostrophe in name); Patrick Dehlinger
+    ('MNGRS.AI',                 ['Alexandre Deniot', 'Thomas Quenoil']),
+    ('Kikleo',                   ['Vincent Garcia', 'Jean Dussaix', "Martin d'Agay"]),
+    ('WeWard',                   ['Yves Benchimol', 'Tanguy de La Villegeorges', 'Nicolas Hardy']),
 ]
 
 # ── Main ─────────────────────────────────────────────────────────────────────
