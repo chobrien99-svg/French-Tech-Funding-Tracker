@@ -598,15 +598,23 @@
 
   // ─── Chart builders ──────────────────────────────────────────────────────────
 
+  // Normalise announced_month to a number 1/2/3 regardless of storage format
+  function normalizeMonth(m) {
+    if (m === 1 || m === '1' || m === 'January')  return 1;
+    if (m === 2 || m === '2' || m === 'February') return 2;
+    if (m === 3 || m === '3' || m === 'March')    return 3;
+    return null;
+  }
+
   function buildMonthlyChart(deals) {
     const months = [1, 2, 3];
     const labels = months.map(m => MONTH_NAMES[m]);
     const amountData = months.map(m =>
-      deals.filter(d => d.round.announced_month === m && d.round.amount_eur != null)
+      deals.filter(d => normalizeMonth(d.round.announced_month) === m && d.round.amount_eur != null)
            .reduce((s, d) => s + d.round.amount_eur, 0)
     );
     const dealsData = months.map(m =>
-      deals.filter(d => d.round.announced_month === m).length
+      deals.filter(d => normalizeMonth(d.round.announced_month) === m).length
     );
 
     const ctx = document.getElementById('chart-monthly').getContext('2d');
@@ -924,7 +932,7 @@
         ? `<a class="deal-link" href="${d.round.news_url}" target="_blank" rel="noopener noreferrer" title="Read news">↗</a>`
         : '';
 
-      const monthLabel = MONTH_NAMES[d.round.announced_month] || '';
+      const monthLabel = MONTH_NAMES[normalizeMonth(d.round.announced_month)] || d.round.announced_month || '';
       const roundType = d.round.round_type || 'Undisclosed';
       const amount = d.round.amount_eur != null ? formatEur(d.round.amount_eur) : 'Undisclosed';
 
@@ -981,10 +989,14 @@
   async function loadData() {
     try {
       // 1. Funding rounds for Q1 2026
-      const rounds = await fetchAll(
+      // announced_month is stored inconsistently ('1'/'2'/'3' and 'January'/'February'/'March')
+      // so we fetch all 2026 rounds and filter in JS to catch all variants.
+      const Q1_MONTHS = new Set(['1','2','3',1,2,3,'January','February','March']);
+      const allRounds = await fetchAll(
         'funding_rounds',
-        '?select=*&announced_year=eq.2026&announced_month=in.(1,2,3)&order=amount_eur.desc.nullslast'
+        '?select=*&announced_year=eq.2026&order=amount_eur.desc.nullslast'
       );
+      const rounds = allRounds.filter(r => Q1_MONTHS.has(r.announced_month));
 
       if (!rounds.length) {
         document.getElementById('loading-state').style.display = 'none';
