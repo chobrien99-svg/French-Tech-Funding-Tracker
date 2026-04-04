@@ -451,6 +451,226 @@ DEALS = [
         }],
         'founders': ['Boris Pourreau'],
     },
+    # ── Batch 2 ─────────────────────────────────────────────────────────────
+    {
+        'company': {
+            'name': 'Standing Ovation',
+            'hq_city_name': 'Paris',
+            'hq_country': 'France',
+            'website': 'https://standing-ovation.co/',
+            'status': 'active',
+            'description': (
+                'Standing Ovation is a French foodtech startup producing animal-free dairy proteins '
+                'using precision fermentation. Its core innovation enables the production of casein—the '
+                'key protein in milk—without livestock, allowing manufacturers to recreate dairy products '
+                'such as cheese, yogurt, and cream with identical functional properties while significantly '
+                'reducing environmental impact. The company operates a B2B model, supplying food, nutrition, '
+                'and future health/cosmetics players with sustainable protein ingredients.'
+            ),
+        },
+        'sectors': ['FoodTech', 'ClimateTech', 'BioTech'],
+        'rounds': [{
+            'round_type': 'Series B',
+            'amount_eur': 25,
+            'announced_date': '2026-03-01',
+            'announced_month': '3',
+            'announced_year': 2026,
+            'is_verified': True,
+            'source': 'ftj',
+            'news_url': 'https://www.lesechos.fr/start-up/ecosysteme/on-va-ouvrir-la-voie-avec-standing-ovation-la-foodtech-reprend-des-couleurs-2224029',
+            'notes': (
+                'Standing Ovation raised \u20ac30M in a Series B round, including \u20ac25M in equity, '
+                'to scale the industrial production and commercialization of its precision-fermented casein.'
+            ),
+            'investors': ['Danone Ventures', 'Cr\u00e9dit Mutuel', 'Angelor', 'Bel Group',
+                          'Bpifrance', 'Astanor', 'Seventure Partners', 'Good Startup', 'Big Idea Ventures'],
+        }],
+        'founders': ['Romain Chayot', 'Yvan Chardonnens'],
+    },
+    {
+        'company': {
+            'name': 'SCorp-io',
+            'hq_city_name': 'Paris',
+            'hq_country': 'France',
+            'website': 'https://www.scorp-io.com/',
+            'status': 'active',
+            'description': (
+                'SCorp-io is a French startup developing an intelligent building management system (BMS/GTB) '
+                'for mid-sized tertiary buildings. Its solution combines plug-and-play hardware with AI-driven '
+                'software to connect, model, and optimize existing building equipment.'
+            ),
+        },
+        'sectors': ['ClimateTech', 'PropTech', 'AI & Machine Learning', 'SaaS & Enterprise'],
+        'rounds': [{
+            'round_type': 'Seed',
+            'amount_eur': 5,
+            'announced_date': '2026-03-01',
+            'announced_month': '3',
+            'announced_year': 2026,
+            'is_verified': True,
+            'source': 'ftj',
+            'news_url': 'https://www.frenchweb.fr/scorp-io-leve-5-millions-deuros-pour-industrialiser-la-decarbonation-des-batiments-intermediaires/461083',
+            'notes': (
+                'SCorp-io raised \u20ac5M to accelerate deployment of its AI-powered BMS targeting '
+                'mid-sized commercial buildings. Deployed across 250+ sites, enabling 20\u201340% energy savings.'
+            ),
+            'investors': ['\u00cele-de-France D\u00e9carbonation Fund'],
+        }],
+        'founders': ['Jean-Romain Bardet', 'C\u00e9dric Godefroy', 'Bastien Robinot'],
+    },
+    {
+        'company': {
+            'name': 'AI6 Technologies',
+            'hq_city_name': 'Paris',
+            'hq_country': 'France',
+            'website': 'https://ai6technologies.fr/',
+            'status': 'active',
+            'description': (
+                'AI6 Technologies is a French assurtech startup developing AI- and big-data-powered solutions '
+                'for risk prevention and claims management in the insurance sector.'
+            ),
+        },
+        'sectors': ['AI & Machine Learning', 'ClimateTech', 'SaaS & Enterprise'],
+        'rounds': [{
+            'round_type': 'Seed',
+            'amount_eur': 4,
+            'announced_date': '2026-03-30',
+            'announced_month': '3',
+            'announced_year': 2026,
+            'is_verified': True,
+            'source': 'ftj',
+            'news_url': 'https://tribune-assurance.optionfinance.fr/depeches/d/2026-03-30-generali-france-et-socadif-entrent-au-capital-dai6-technologies.html',
+            'notes': (
+                'AI6 Technologies raised nearly \u20ac4M from Generali France and SOCADIF Capital '
+                'Investissement to develop AI-based insurance tools for climate risk prevention and claims automation.'
+            ),
+            'investors': ['Generali France', 'SOCADIF Capital Investissement'],
+        }],
+        'founders': ['Alain Tabatabai', 'S\u00e9bastien Drouyer'],
+    },
+    {
+        'company': {
+            'name': 'Kestra',
+            'hq_city_name': 'Paris',
+            'hq_country': 'France',
+            'website': 'https://kestra.io/',
+            'status': 'active',
+            'description': (
+                'Kestra is an open-source orchestration platform enabling enterprises to coordinate data '
+                'pipelines, AI workflows, infrastructure automation, and business processes within a unified '
+                'control plane across cloud, on-premises, and AI systems.'
+            ),
+        },
+        'sectors': ['AI & Machine Learning', 'SaaS & Enterprise'],
+        'rounds': [{
+            'round_type': 'Series A',
+            'amount_eur': 23,
+            'announced_date': '2026-03-31',
+            'announced_month': '3',
+            'announced_year': 2026,
+            'is_verified': True,
+            'source': 'ftj',
+            'news_url': 'https://tech.eu/2026/03/31/kestra-raises-25m-series-a-to-build-the-enterprise-orchestration-standard/',
+            'notes': (
+                'Kestra raised $25M (\u20ac23M) in a Series A led by RTP Global to accelerate its enterprise '
+                'orchestration platform. Over 30,000 organizations use its open-source solution.'
+            ),
+            'investors': ['RTP Global', 'Alven', 'ISAI', 'Axeleo'],
+        }],
+        'founders': ['Emmanuel Darras', 'Ludovic Dehon'],
+    },
+    {
+        'company': {
+            'name': 'Loamics',
+            'hq_city_name': 'Boulogne-Billancourt',
+            'hq_country': 'France',
+            'website': 'http://loamics.com/',
+            'status': 'active',
+            'description': (
+                'Loamics is the healthcare data subsidiary of Energisme, focused on leveraging data analytics '
+                'to support healthcare systems and improve decision-making across medical, operational, and '
+                'research use cases.'
+            ),
+        },
+        'sectors': ['HealthTech', 'MedTech', 'SaaS & Enterprise'],
+        'rounds': [{
+            'round_type': 'Growth',
+            'amount_eur': 3,
+            'announced_date': '2026-03-01',
+            'announced_month': '3',
+            'announced_year': 2026,
+            'is_verified': True,
+            'source': 'ftj',
+            'news_url': 'https://webdisclosure.com/article/energisme-epa-alnrg-5-million-investment-for-energismes-healthcare-subsidiary-GOgfVjYqnfz',
+            'notes': (
+                'Energisme secured \u20ac5M for Loamics from Vatel Capital: \u20ac3M equity + \u20ac2M '
+                'convertible bonds. Loamics generated its first revenues in 2025 via the P4DP consortium.'
+            ),
+            'investors': ['Vatel Capital'],
+        }],
+        'founders': [],
+    },
+    {
+        'company': {
+            'name': 'Lifebloom',
+            'hq_country': 'France',
+            'website': 'https://www.lifebloom.eu/',
+            'status': 'active',
+            'description': (
+                'Lifebloom is a French medtech startup developing an integrated exoskeleton-based therapy '
+                'to restore autonomous walking for patients with mobility impairments, combining a '
+                'chair-exoskeleton device, gait analysis, and a digital care platform.'
+            ),
+        },
+        'sectors': ['HealthTech', 'MedTech', 'Robotics'],
+        'rounds': [{
+            'round_type': 'Seed',
+            'amount_eur': 6,
+            'announced_date': '2026-03-01',
+            'announced_month': '3',
+            'announced_year': 2026,
+            'is_verified': True,
+            'source': 'ftj',
+            'news_url': 'https://www.mind.eu.com/health/article/lifebloom-leve-8-me-pour-deployer-sa-therapie-basee-sur-un-fauteuil-exosquelette/',
+            'notes': (
+                'Lifebloom raised \u20ac8M total (\u20ac6M equity + \u20ac2M France 2030) to industrialize '
+                'its exoskeleton therapy. Targets 30 hospitals and 1,000 patients regaining autonomous walking by 2028.'
+            ),
+            'investors': ['Business Angels', 'France 2030'],
+        }],
+        'founders': ['Damien Roche'],
+    },
+    {
+        'company': {
+            'name': 'Fairglow',
+            'hq_city_name': 'Paris',
+            'hq_country': 'France',
+            'website': 'https://www.fairglow.io/',
+            'status': 'active',
+            'description': (
+                'Fairglow is a French sustainability data platform for the beauty and health industries, '
+                'enabling companies to measure, report, and reduce product-level environmental impacts through '
+                'LCA, carbon accounting, and AI-powered eco-design tools.'
+            ),
+        },
+        'sectors': ['ClimateTech', 'SaaS & Enterprise'],
+        'rounds': [{
+            'round_type': 'Seed',
+            'amount_eur': 3,
+            'announced_date': '2026-03-01',
+            'announced_month': '3',
+            'announced_year': 2026,
+            'is_verified': True,
+            'source': 'ftj',
+            'news_url': 'https://www.esgtoday.com/fairglow-raises-e3-million-to-decarbonize-beauty-supply-chain/',
+            'notes': (
+                'Fairglow raised \u20ac3M in a seed round co-led by Ternel and SWEN Capital Partners '
+                'to scale its sustainability platform for cosmetics and health, serving 50+ industry players.'
+            ),
+            'investors': ['Ternel', 'SWEN Capital Partners', 'Kima Ventures'],
+        }],
+        'founders': ['Quentin Carayon', 'Evan Peters'],
+    },
 ]
 
 # ── Main ──────────────────────────────────────────────────────────────────────
