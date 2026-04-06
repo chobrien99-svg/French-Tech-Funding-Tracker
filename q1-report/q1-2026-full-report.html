@@ -507,58 +507,86 @@ footer {
 
 /* ── PRINT / PDF ──────────────────────────────────────────────────── */
 @media print {
-  @page { size: A4 portrait; margin: 1.5cm 1.8cm; }
-  body { font-size: 9.5pt; background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { size: A4 portrait; margin: 1.2cm 1.5cm; }
+  body { font-size: 8.5pt; background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
-  /* Force single-column for everything in print */
-  .two-col { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
-  .three-col { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
-  .sector-grid { grid-template-columns: 1fr 1fr !important; gap: 0 !important; }
-  .stat-row { flex-wrap: wrap; gap: 0.5rem; }
-  .stat-item { min-width: 120px; flex: 1 1 18%; padding: 0.5rem 0.8rem; }
-  .stat-value { font-size: 1.8rem !important; }
+  /* Keep two-col but tighten — it fits on portrait based on screenshot */
+  .two-col { gap: 0.8rem !important; }
+  .three-col { gap: 0.6rem !important; }
+  .sector-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: 0 !important; }
+  .stat-row { flex-wrap: wrap; gap: 0; }
+  .stat-item { min-width: 100px; flex: 1 1 18%; padding: 0.3rem 0.6rem; }
+  .stat-value { font-size: 1.5rem !important; }
+  .stat-label { font-size: 0.5rem !important; margin-bottom: 0.2rem; }
+  .stat-sub { font-size: 0.6rem !important; margin-top: 0.15rem; }
 
-  /* Constrain container width */
-  .page-container { max-width: 100% !important; padding: 0 0.5cm !important; }
-  .surface-shift, .surface-shift-high { padding: 1.5rem 0 !important; }
+  /* Constrain container */
+  .page-container { max-width: 100% !important; padding: 0 0.3cm !important; }
+  .surface-shift, .surface-shift-high { padding: 0.8rem 0 !important; }
 
-  /* Chart sizing */
+  /* Chart sizing — compact */
   .chart-wrap {
     height: auto !important;
-    max-height: 250px !important;
-    padding: 1rem !important;
+    max-height: 200px !important;
+    padding: 0.6rem 0.8rem !important;
+    margin-top: 0.5rem !important;
     background: white !important;
     break-inside: avoid;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  canvas { max-width: 100% !important; max-height: 220px !important; }
+  canvas { max-width: 100% !important; max-height: 170px !important; }
 
   /* Colors */
-  .masthead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .masthead { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 8px 20px !important; }
   .surface-shift, .surface-shift-high { background: #f5f2eb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .sector-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
-  .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; padding: 1.2rem 1.5rem !important; }
+  .sector-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; padding: 0.8rem 0.7rem !important; }
+  .sector-card-value { font-size: 1.2rem !important; }
+  .sector-card-name { font-size: 0.8rem !important; }
+  .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; padding: 0.8rem 1.2rem !important; margin: 1rem 0 !important; }
+  .callout-title { font-size: 0.95rem !important; margin-bottom: 0.3rem !important; }
+  .callout .body-md { font-size: 0.75rem !important; line-height: 1.5 !important; }
   .callout::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .deal-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .deal-table tr { break-inside: avoid; }
-  .deal-tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .deal-tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-size: 0.5rem !important; padding: 1px 4px !important; }
 
-  /* Spacing */
+  /* Spacing — aggressive */
   .page-break { page-break-before: always; }
   .no-print { display: none !important; }
-  .section-break { padding: 1.5rem 0; }
-  .hero { padding: 1.5rem 0 1rem; }
-  .display-lg { font-size: 2.4rem !important; }
-  .headline-lg { font-size: 1.5rem !important; }
-  .timeline-item { padding-bottom: 0.6rem; }
-  .timeline-text { font-size: 0.85rem; }
-  .timeline-sub { font-size: 0.7rem; }
+  .section-break { padding: 0.8rem 0 !important; }
+  .hero { padding: 1rem 0 0.5rem !important; }
+  .hero-intro { font-size: 0.8rem !important; line-height: 1.5 !important; }
+  .hero-intro p + p { margin-top: 0.4rem !important; }
+  .display-lg { font-size: 2rem !important; margin-bottom: 0.8rem !important; }
+  .headline-lg { font-size: 1.2rem !important; margin-bottom: 0.4rem !important; }
+  .headline-md { font-size: 1rem !important; }
+  .headline-sm { font-size: 0.85rem !important; }
+  .label-md { font-size: 0.55rem !important; margin-bottom: 0.3rem !important; }
+  .label-sm { font-size: 0.5rem !important; }
+  .body-md { font-size: 0.75rem !important; line-height: 1.5 !important; }
+  .body-sm { font-size: 0.65rem !important; line-height: 1.4 !important; }
+  p.body-md { margin-bottom: 0.3rem !important; }
 
-  /* Deal table tighter */
-  .deal-table td, .deal-table th { padding: 0.4rem 0.6rem !important; font-size: 0.75rem; }
-  .deal-table .deal-company { font-size: 0.85rem; }
-  .deal-table .deal-amount { font-size: 0.85rem; }
-  .deal-table .deal-rank { font-size: 0.85rem; }
+  /* Timeline compact */
+  .timeline-item { padding-bottom: 0.4rem !important; }
+  .timeline-text { font-size: 0.75rem !important; }
+  .timeline-sub { font-size: 0.6rem !important; }
+  .timeline-date { font-size: 0.55rem !important; }
+  .timeline { padding-left: 1.2rem !important; }
+  .timeline-item { padding-left: 1rem !important; }
+
+  /* Deal table compact */
+  .deal-table td, .deal-table th { padding: 0.25rem 0.4rem !important; font-size: 0.65rem !important; }
+  .deal-table .deal-company { font-size: 0.75rem !important; }
+  .deal-table .deal-amount { font-size: 0.75rem !important; }
+  .deal-table .deal-rank { font-size: 0.75rem !important; }
+
+  /* Stage breakdown compact */
+  .ghost-border-bottom { padding: 0.5rem 0 !important; }
+
+  /* VC / Outlook sections */
+  .three-col .callout { padding: 0.6rem 0.8rem !important; }
+  .three-col .callout .body-sm { font-size: 0.6rem !important; }
 }
 </style>
 </head>
