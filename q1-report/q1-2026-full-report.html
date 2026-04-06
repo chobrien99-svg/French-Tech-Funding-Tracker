@@ -276,8 +276,9 @@ h1, h2, h3 { font-family: 'Newsreader', serif; color: var(--primary); font-weigh
   margin-top: 1.2rem;
 }
 
-.chart-canvas {
+.chart-wrap canvas {
   width: 100% !important;
+  max-height: 100%;
 }
 
 /* ── DEAL TABLE ───────────────────────────────────────────────────── */
@@ -506,18 +507,25 @@ footer {
 
 /* ── PRINT / PDF ──────────────────────────────────────────────────── */
 @media print {
-  body { font-size: 11pt; background: white; }
+  @page { size: A4; margin: 1.5cm 2cm; }
+  body { font-size: 10pt; background: white !important; }
   .masthead { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .surface-shift, .surface-shift-high { background: #f5f2eb !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .chart-wrap { background: white !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .sector-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .chart-wrap { background: white !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; break-inside: avoid; }
+  .sector-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; break-inside: avoid; }
+  .sector-grid { break-inside: avoid; }
   .callout { print-color-adjust: exact; -webkit-print-color-adjust: exact; break-inside: avoid; }
   .deal-table th { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .deal-table tr { break-inside: avoid; }
   .page-break { page-break-before: always; }
   .no-print { display: none !important; }
-  canvas { max-width: 100% !important; }
-  .section-break { padding: 2.5rem 0; }
-  .hero { padding: 3rem 0 2rem; }
+  canvas { max-width: 100% !important; max-height: 280px !important; }
+  .section-break { padding: 2rem 0; }
+  .hero { padding: 2rem 0 1.5rem; }
+  .stat-row { gap: 0; }
+  .two-col, .three-col { gap: 1.5rem; }
+  .timeline-item { padding-bottom: 1rem; }
+  .display-lg { font-size: 2.8rem; }
 }
 </style>
 </head>
@@ -591,13 +599,13 @@ footer {
     <p class="body-md" style="max-width: 640px; margin-bottom: 0.5rem;">January and February tracked roughly flat against 2025. Then March exploded&mdash;more than four times March 2025&mdash;driven by AMI (&euro;890M), Hynaero (&euro;117M), and Alan (&euro;100M).</p>
 
     <div class="two-col" style="margin-top: 2rem;">
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 300px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Funding by Month (&euro;M)</div>
-        <canvas id="chart-monthly-funding" height="220"></canvas>
+        <canvas id="chart-monthly-funding"></canvas>
       </div>
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 300px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Deals by Month</div>
-        <canvas id="chart-monthly-deals" height="220"></canvas>
+        <canvas id="chart-monthly-deals"></canvas>
       </div>
     </div>
 
@@ -616,9 +624,9 @@ footer {
     <div class="label-md" style="margin-bottom: 0.4rem;">Landmark Deals</div>
     <h2 class="headline-lg" style="margin-bottom: 2.5rem;">The 15 Largest Rounds of Q1 2026</h2>
 
-    <div class="chart-wrap" style="margin-bottom: 3rem;">
+    <div class="chart-wrap" style="margin-bottom: 3rem; height: 380px;">
       <div class="label-sm" style="margin-bottom: 0.8rem;">Top 10 Deals by Amount (&euro;M)</div>
-      <canvas id="chart-top-deals" height="300"></canvas>
+      <canvas id="chart-top-deals"></canvas>
     </div>
 
     <table class="deal-table">
@@ -669,13 +677,13 @@ footer {
     <p class="body-md" style="max-width: 640px; margin-bottom: 2rem;">AI captured an unprecedented 67% of all Q1 funding. Energy surged 23x. New categories&mdash;DefenseTech, ClimateTech&mdash;materialized from nothing. The capital is concentrating around France&rsquo;s strategic priorities.</p>
 
     <div class="two-col">
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 420px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Top Sectors by Funding (&euro;M)</div>
-        <canvas id="chart-sectors" height="340"></canvas>
+        <canvas id="chart-sectors"></canvas>
       </div>
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 420px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Sector YoY Change</div>
-        <canvas id="chart-sector-change" height="340"></canvas>
+        <canvas id="chart-sector-change"></canvas>
       </div>
     </div>
 
@@ -745,9 +753,9 @@ footer {
     <p class="body-md" style="max-width: 640px; margin-bottom: 2rem;">Growth-stage funding boomed. Seed was inflated by AMI. Series A contracted. The pipeline is shifting&mdash;more capital at the top, less in the middle.</p>
 
     <div class="two-col">
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 360px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Stage Distribution by Amount</div>
-        <canvas id="chart-stage-donut" height="280"></canvas>
+        <canvas id="chart-stage-donut"></canvas>
       </div>
       <div>
         <div style="padding: 1rem 0;">
@@ -818,13 +826,13 @@ footer {
     <p class="body-md" style="max-width: 640px; margin-bottom: 2rem;">Paris commands 77% of funding but only 50% of deals. Average Paris round: &euro;30M. Average outside Paris: &euro;9.2M. Yet 44 cities hosted funded startups&mdash;the long tail of French innovation is very much alive.</p>
 
     <div class="two-col">
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 300px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Paris vs. Regions</div>
-        <canvas id="chart-geo-split" height="240"></canvas>
+        <canvas id="chart-geo-split"></canvas>
       </div>
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 300px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Top Cities by Funding (&euro;M)</div>
-        <canvas id="chart-cities" height="240"></canvas>
+        <canvas id="chart-cities"></canvas>
       </div>
     </div>
 
@@ -861,9 +869,9 @@ footer {
     <p class="body-md" style="max-width: 680px; margin-bottom: 2rem;">AMI&rsquo;s &euro;890M seed round dominates Q1&rsquo;s headline numbers. Strip it out and the underlying market is still healthy&mdash;not the dip many feared after 2025&rsquo;s slowdown, but a market that&rsquo;s genuinely maturing.</p>
 
     <div class="two-col">
-      <div class="chart-wrap">
+      <div class="chart-wrap" style="height: 340px;">
         <div class="label-sm" style="margin-bottom: 0.8rem;">Q1 Funding: With &amp; Without AMI</div>
-        <canvas id="chart-ami-comparison" height="260"></canvas>
+        <canvas id="chart-ami-comparison"></canvas>
       </div>
       <div style="padding: 1.5rem 0;">
         <div class="label-md" style="margin-bottom: 1.5rem;">The Numbers Without AMI</div>
@@ -1121,6 +1129,25 @@ footer {
 <!-- ═══════════════════════════════════════════════════════════════════
      FOOTER
      ═══════════════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════════════
+     SAVE AS PDF
+     ═══════════════════════════════════════════════════════════════════ -->
+<div class="page-container no-print" style="padding: 3rem 0; text-align: center;">
+  <button onclick="window.print()" style="
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, #114563 0%, #2f5d7c 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+  ">Save as PDF</button>
+  <p class="body-sm" style="margin-top: 0.8rem;">Opens your browser&rsquo;s print dialog. Select &ldquo;Save as PDF&rdquo; as the destination.</p>
+</div>
+
 <footer class="page-container">
   <p>Data: French Tech Funding Tracker &middot; <strong>funding.frenchtechjournal.com</strong></p>
   <p style="margin-top: 0.3rem;">Tracking 689+ companies and &euro;8.48B+ in funding across the French tech ecosystem.</p>
