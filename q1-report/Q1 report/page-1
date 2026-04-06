@@ -550,6 +550,53 @@ footer {
   </section>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════════════════
+     CHART.JS SCRIPTS
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+// ── Design system chart defaults ──────────────────────────────────
+Chart.defaults.font.family = "'Public Sans', sans-serif";
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#41474d';
+Chart.defaults.plugins.legend.display = false;
+Chart.defaults.plugins.tooltip.backgroundColor = '#114563';
+Chart.defaults.plugins.tooltip.titleFont = { family: "'Public Sans', sans-serif", size: 11, weight: 600 };
+Chart.defaults.plugins.tooltip.bodyFont = { family: "'Public Sans', sans-serif", size: 11 };
+Chart.defaults.plugins.tooltip.cornerRadius = 0;
+Chart.defaults.plugins.tooltip.padding = 10;
+
+const P = ['#114563','#2f5d7c','#775a0f','#3c6840','#503863','#8b6914','#460602','#5a7a8b','#7a5a3a','#3a7a7a'];
+const gridColor = 'rgba(193,199,206,0.15)';
+
+function fmt(m) {
+  if (m >= 1000) return '\u20ac' + (m/1000).toFixed(1) + 'B';
+  if (m >= 1) return '\u20ac' + Math.round(m) + 'M';
+  return '\u20ac' + (m*1000).toFixed(0) + 'K';
+}
+
+// ── 1. MONTHLY FUNDING ────────────────────────────────────────────
+new Chart(document.getElementById('chart-monthly-funding'), {
+  type: 'bar',
+  data: {
+    labels: ['January', 'February', 'March'],
+    datasets: [
+      { label: 'Q1 2025', data: [779.2, 383.7, 366.8], backgroundColor: 'rgba(17,69,99,0.25)', borderWidth: 0 },
+      { label: 'Q1 2026', data: [776.6, 367.7, 1588.5], backgroundColor: '#114563', borderWidth: 0 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, position: 'top', align: 'end', labels: { boxWidth: 12, padding: 16, font: { size: 10, weight: 500 } } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmt(ctx.raw) } }
+    },
+    scales: {
+      x: { grid: { display: false }, border: { display: false } },
+      y: { grid: { color: gridColor }, border: { display: false }, ticks: { callback: v => fmt(v) } }
+    }
+  }
+});
+
 <!-- iframe-resizer support -->
 <script src="https://cdn.jsdelivr.net/npm/iframe-resizer@4/js/iframeResizer.contentWindow.min.js"></script>
 </body>
