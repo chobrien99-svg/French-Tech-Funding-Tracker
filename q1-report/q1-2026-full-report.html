@@ -507,25 +507,58 @@ footer {
 
 /* ── PRINT / PDF ──────────────────────────────────────────────────── */
 @media print {
-  @page { size: A4; margin: 1.5cm 2cm; }
-  body { font-size: 10pt; background: white !important; }
-  .masthead { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .surface-shift, .surface-shift-high { background: #f5f2eb !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .chart-wrap { background: white !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; break-inside: avoid; }
-  .sector-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; break-inside: avoid; }
-  .sector-grid { break-inside: avoid; }
-  .callout { print-color-adjust: exact; -webkit-print-color-adjust: exact; break-inside: avoid; }
-  .deal-table th { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  @page { size: A4 portrait; margin: 1.5cm 1.8cm; }
+  body { font-size: 9.5pt; background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Force single-column for everything in print */
+  .two-col { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+  .three-col { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
+  .sector-grid { grid-template-columns: 1fr 1fr !important; gap: 0 !important; }
+  .stat-row { flex-wrap: wrap; gap: 0.5rem; }
+  .stat-item { min-width: 120px; flex: 1 1 18%; padding: 0.5rem 0.8rem; }
+  .stat-value { font-size: 1.8rem !important; }
+
+  /* Constrain container width */
+  .page-container { max-width: 100% !important; padding: 0 0.5cm !important; }
+  .surface-shift, .surface-shift-high { padding: 1.5rem 0 !important; }
+
+  /* Chart sizing */
+  .chart-wrap {
+    height: auto !important;
+    max-height: 250px !important;
+    padding: 1rem !important;
+    background: white !important;
+    break-inside: avoid;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  canvas { max-width: 100% !important; max-height: 220px !important; }
+
+  /* Colors */
+  .masthead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .surface-shift, .surface-shift-high { background: #f5f2eb !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sector-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+  .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; padding: 1.2rem 1.5rem !important; }
+  .callout::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .deal-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .deal-table tr { break-inside: avoid; }
+  .deal-tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Spacing */
   .page-break { page-break-before: always; }
   .no-print { display: none !important; }
-  canvas { max-width: 100% !important; max-height: 280px !important; }
-  .section-break { padding: 2rem 0; }
-  .hero { padding: 2rem 0 1.5rem; }
-  .stat-row { gap: 0; }
-  .two-col, .three-col { gap: 1.5rem; }
-  .timeline-item { padding-bottom: 1rem; }
-  .display-lg { font-size: 2.8rem; }
+  .section-break { padding: 1.5rem 0; }
+  .hero { padding: 1.5rem 0 1rem; }
+  .display-lg { font-size: 2.4rem !important; }
+  .headline-lg { font-size: 1.5rem !important; }
+  .timeline-item { padding-bottom: 0.6rem; }
+  .timeline-text { font-size: 0.85rem; }
+  .timeline-sub { font-size: 0.7rem; }
+
+  /* Deal table tighter */
+  .deal-table td, .deal-table th { padding: 0.4rem 0.6rem !important; font-size: 0.75rem; }
+  .deal-table .deal-company { font-size: 0.85rem; }
+  .deal-table .deal-amount { font-size: 0.85rem; }
+  .deal-table .deal-rank { font-size: 0.85rem; }
 }
 </style>
 </head>
