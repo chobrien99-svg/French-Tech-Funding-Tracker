@@ -213,16 +213,14 @@ h1, h2, h3 { font-family: 'Newsreader', serif; color: var(--primary); font-weigh
 
 /* ── STAT DISPLAY (no boxes — per design system) ──────────────────── */
 .stat-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 0;
   padding: 3.5rem 0;
-  flex-wrap: wrap;
 }
 
 .stat-item {
-  flex: 1;
-  min-width: 160px;
-  padding: 0 1.5rem;
+  padding: 0 1.8rem;
 }
 
 .stat-item:first-child { padding-left: 0; }
@@ -498,8 +496,9 @@ footer {
 
 /* ── RESPONSIVE ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .stat-row { flex-direction: column; gap: 2rem; }
+  .stat-row { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .stat-item + .stat-item { border-left: none; padding-left: 0; }
+  .stat-item:nth-child(4) { border-left: none; }
   .two-col, .three-col { grid-template-columns: 1fr; }
   .sector-grid { grid-template-columns: 1fr; }
   .asymmetric-canvas { padding-left: 1.5rem; padding-right: 1.5rem; }
