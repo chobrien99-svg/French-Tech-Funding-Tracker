@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q1 2026 Newsletter Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; padding: 0; background: #888; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+
+  .cover {
+    width: 960px;
+    height: 600px;
+    background: linear-gradient(155deg, #0d3048 0%, #114563 35%, #1a5a7a 65%, #2f5d7c 100%);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Public Sans', sans-serif;
+    color: #ffffff;
+  }
+
+  /* Subtle grid texture overlay */
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  /* Warm light wash from top-right */
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(237,191,116,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Masthead bar */
+  .masthead {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .masthead-brand {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .masthead-right {
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* Content area */
+  .content {
+    position: absolute;
+    left: 48px;
+    bottom: 48px;
+    right: 48px;
+    z-index: 2;
+  }
+
+  .report-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #edbf74;
+    margin-bottom: 14px;
+  }
+
+  .title {
+    font-family: 'Newsreader', serif;
+    font-size: 3.8rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-family: 'Newsreader', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+  }
+
+  /* Right-side stat column */
+  .stats-column {
+    position: absolute;
+    right: 48px;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-end;
+    z-index: 2;
+  }
+
+  .stat-block {
+    text-align: right;
+  }
+
+  .stat-number {
+    font-family: 'Newsreader', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #ffffff;
+  }
+
+  .stat-label {
+    font-size: 0.55rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
+  .stat-change {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #edbf74;
+    margin-top: 2px;
+  }
+
+  /* Decorative accent line */
+  .accent-line {
+    position: absolute;
+    left: 48px;
+    bottom: 200px;
+    width: 40px;
+    height: 3px;
+    background: #edbf74;
+    z-index: 2;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #edbf74 0%, #edbf74 30%, transparent 100%);
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <!-- Masthead -->
+  <div class="masthead">
+    <span class="masthead-brand">The French Tech Journal</span>
+    <span class="masthead-right">Quarterly Funding Report</span>
+  </div>
+
+  <!-- Right-side stats -->
+  <div class="stats-column">
+    <div class="stat-block">
+      <div class="stat-number">&euro;2.73B</div>
+      <div class="stat-label">Total Raised</div>
+      <div class="stat-change">+79% YoY</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">139</div>
+      <div class="stat-label">Deals</div>
+      <div class="stat-change">&minus;27% YoY</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">67%</div>
+      <div class="stat-label">Went to AI</div>
+    </div>
+  </div>
+
+  <!-- Accent line -->
+  <div class="accent-line"></div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="report-label">Q1 2026 Funding Report &middot; January&ndash;March</div>
+    <div class="title">The Great<br>Concentration</div>
+    <div class="subtitle">Artificial intelligence captured two-thirds of all French tech funding as investors made fewer, bigger, and bolder bets.</div>
+  </div>
+
+  <!-- Bottom accent -->
+  <div class="bottom-bar"></div>
+</div>
+
+</body>
+</html>
